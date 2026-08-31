@@ -1,0 +1,28 @@
+{
+  "countries": ["KR", "US", "BR"],
+  "categories": [
+    {
+      "id": "phy",
+      "name": "물리계층",
+      "items": [
+        { "key": "channel_bw", "label": "채널 대역폭", "KR": "6 MHz", "US": "6 MHz", "BR": "6 MHz" },
+        { "key": "modulation", "label": "변조/코딩", "KR": "OFDM, LDPC/BCH", "US": "OFDM, LDPC/BCH", "BR": "OFDM, LDPC/BCH (ATSC 3.0 PHY)" }
+      ]
+    },
+    {
+      "id": "transport",
+      "name": "전송계층",
+      "items": [
+        { "key": "protocol", "label": "전송 프로토콜", "KR": "MMT", "US": "ROUTE/DASH", "BR": "ROUTE/DASH" }
+      ]
+    },
+    {
+      "id": "codec",
+      "name": "코덱",
+      "items": [
+        { "key": "video", "label": "비디오", "KR": "HEVC", "US": "HEVC", "BR": "VVC (H.266)" },
+        { "key": "audio", "label": "오디오", "KR": "MPEG-H 3D Audio", "US": "AC-4", "BR": "MPEG-H 3D Audio" }
+      ]
+    }
+  ]
+}
