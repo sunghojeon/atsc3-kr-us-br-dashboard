@@ -68,7 +68,15 @@
   td.doc, thead th:first-child { position: sticky; left: 0; background: var(--sheet); z-index: 1; }
   tr.row:hover td.doc, tr.row[aria-expanded="true"] td.doc { background: var(--blue-soft); }
   td.org { min-width: 190px; }
-  td.verdict { width: 150px; white-space: nowrap; }
+  td.verdict { width: 165px; min-width: 150px; }
+  th.vh { min-width: 150px; }
+  .vk { display: block; color: var(--ink-3); font-size: 11.5px; line-height: 1.35; margin-top: 2px; }
+  .vk.flag { color: var(--partial); }
+  .note.meta { color: var(--ink-3); }
+  .legend2 { margin: 6px 0; font-size: 12.5px; color: var(--ink-2); }
+  .legend2 b { font-weight: 600; color: var(--ink); margin-right: 6px; }
+  .legend2 span { margin-right: 14px; }
+  .legend2 i { font-style: normal; font-weight: 600; }
   tr.group td { background: var(--sheet-2); border-bottom: 1px solid var(--line-2); padding: 8px 10px; font-weight: 600; }
   tr.group td small { font-weight: 400; color: var(--ink-3); margin-left: 10px; }
   tr.row { cursor: pointer; }
@@ -157,6 +165,8 @@
   document.getElementById('meta').innerHTML =
     '<span><b>Scope</b> ' + esc(data.meta.scope) + '</span><span><b>Updated</b> ' + esc(data.meta.updated) + '</span>';
   document.getElementById('legend').innerHTML = Object.keys(V).map(k => '<span class="v ' + k + '"><span class="i">' + V[k].icon + '</span>' + esc(V[k].label) + '</span><span>' + esc(V[k].desc) + '</span>').join('');
+  const dl = (obj, title) => '<div class="legend2"><b>' + title + '</b> ' + Object.keys(obj).map(k => '<span><i>' + esc(obj[k].label || obj[k]) + '</i>' + (obj[k].desc ? ' — ' + esc(obj[k].desc) : '') + '</span>').join('') + '</div>';
+  document.getElementById('legend').insertAdjacentHTML('afterend', dl(data.noneKinds || {}, 'No counterpart, sub-types:') + dl(data.relations || {}, 'Relation to the ATSC document:') + dl(data.confidence || {}, 'Confidence:'));
   const orgOf = id => orgs.find(o => o.id === id) || {};
   document.getElementById('regs').innerHTML = (data.regulations || []).map(rg => {
     const o = orgOf(rg.org);
@@ -188,14 +198,23 @@
     const docs = c.docs.map(d => (rowId && baseId(d) === rowId) ? '<span class="d"><span class="n">' + esc(d) + '</span></span>' : docHtml(d)).join('');
     return docs + (c.note ? '<span class="note">' + hl(c.note) + '</span>' : '') + regHtml(c, false);
   }
+  const REL = data.relations || {}, CONF = data.confidence || {}, NK = data.noneKinds || {};
+  function verdictHtml(r, org) {
+    const vd = (r.verdicts || {})[org] || r.verdict || { code: 'review' }, v = V[vd.code] || V.review, c = r.cells[org] || {};
+    const kind = vd.code === 'none' && vd.kind && NK[vd.kind] ? '<span class="vk">' + esc(NK[vd.kind]) + '</span>' : '';
+    const tags = [c.rel && REL[c.rel] ? REL[c.rel].label : '', c.conf && CONF[c.conf] ? CONF[c.conf].label : ''].filter(Boolean).join(' · ');
+    return '<span class="v ' + vd.code + '"><span class="i">' + v.icon + '</span>' + esc(v.label) + '</span>' + kind + (tags ? '<span class="vk">' + esc(tags) + '</span>' : '') + (c.flag ? '<span class="vk flag">' + esc(c.flag) + '</span>' : '');
+  }
   function detailHtml(r) {
     const cols = orgs.map(o => { const c = r.cells[o.id] || { docs: [], note: '' };
-      return '<div><h4 style="--org:' + o.color + '"><span></span>' + esc(o.label) + '</h4>' + (c.docs.length ? c.docs.map(docHtml).join('') : '<span class="dash">—</span>') + (c.note ? '<span class="note">' + esc(c.note) + '</span>' : '') + regHtml(c, true) + '</div>'; }).join('');
-    const v = V[r.verdict.code] || V.review;
+      const meta = [c.rel && REL[c.rel] ? 'Relation: ' + REL[c.rel].label : '', c.conf && CONF[c.conf] ? 'Confidence: ' + CONF[c.conf].label : '', c.flag || ''].filter(Boolean).join(' · ');
+      return '<div><h4 style="--org:' + o.color + '"><span></span>' + esc(o.label) + '</h4>' + (c.docs.length ? c.docs.map(docHtml).join('') : '<span class="dash">—</span>') + (c.note ? '<span class="note">' + esc(c.note) + '</span>' : '') + (meta ? '<span class="note meta">' + esc(meta) + '</span>' : '') + regHtml(c, true) + '</div>'; }).join('');
+    const vs = ['TTA', 'SBTVD'].map(org => { const vd = (r.verdicts || {})[org] || { code: 'review', text: '' }, v = V[vd.code] || V.review;
+      return '<p class="v ' + vd.code + '"><span class="i">' + v.icon + '</span>' + esc(org === 'TTA' ? 'TTA vs ATSC: ' : 'SBTVD vs ATSC: ') + esc(v.label) + (vd.kind && NK[vd.kind] ? ' — ' + esc(NK[vd.kind]) : '') + '</p>' + (vd.text ? '<p>' + esc(vd.text) + '</p>' : ''); }).join('');
     const ev = r.evidence && r.evidence.length ? '<ul class="evidence">' + r.evidence.map(e => '<li>' + esc(e.org) + ' · ' + esc(e.doc) + (e.clause ? ' — ' + esc(e.clause) : '') + (e.url ? ' · <a href="' + esc(e.url) + '">source</a>' : '') + '</li>').join('') + '</ul>' : '<p class="evidence">No clause-level evidence recorded yet.</p>';
     const rv = r.review || {};
     return '<div class="panel">' +
-      '<div><h4>Summary</h4><p>' + esc(r.summary) + '</p><p class="v ' + r.verdict.code + '"><span class="i">' + v.icon + '</span>' + esc(v.label) + '</p><p>' + esc(r.verdict.text || v.desc) + '</p></div>' + cols +
+      '<div><h4>Summary</h4><p>' + esc(r.summary) + '</p>' + vs + '</div>' + cols +
       (r.impact ? '<div class="full"><h4>Impact</h4><p>' + esc(r.impact) + '</p></div>' : '') +
       (r.recommendation ? '<div class="full reco"><h4>Recommendation</h4><p>' + esc(r.recommendation) + '</p></div>' : '') +
       '<div class="full"><h4>Evidence and history</h4>' + ev + '<p class="history">Review status: ' + esc(rv.status || '—') + (rv.by ? ' · by ' + esc(rv.by) : '') + ' · updated ' + esc(rv.updated || '') + '</p></div>' +
@@ -204,19 +223,20 @@
   function render() {
     tabs.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.id === state.cat)));
     document.querySelector('#matrix thead').innerHTML = '<tr><th>Document<small>ATSC 3.0 baseline</small></th>' +
-      orgs.map(o => '<th class="org" style="--org:' + o.color + '">' + esc(o.label) + '<small>' + esc(o.sub) + '</small></th>').join('') + '<th>Verdict<small>vs. ATSC baseline</small></th></tr>';
+      orgs.map(o => '<th class="org" style="--org:' + o.color + '">' + esc(o.label) + '<small>' + esc(o.sub) + '</small></th>').join('') +
+      '<th class="vh">TTA vs ATSC<small>Korea</small></th><th class="vh">SBTVD vs ATSC<small>Brazil</small></th></tr>';
     let html = '';
     data.categories.forEach(c => {
       if (state.cat !== 'all' && c.id !== state.cat) return;
       const rows = data.rows.filter(r => r.category === c.id);
       if (!rows.length) return;
-      html += '<tr class="group"><td colspan="' + (orgs.length + 2) + '">' + esc(c.name) + (c.desc ? '<small>' + esc(c.desc) + '</small>' : '') + '</td></tr>';
+      html += '<tr class="group"><td colspan="' + (orgs.length + 3) + '">' + esc(c.name) + (c.desc ? '<small>' + esc(c.desc) + '</small>' : '') + '</td></tr>';
       rows.forEach((r, i) => {
-        const key = c.id + ':' + i + ':' + r.id, open = state.open === key, v = V[r.verdict.code] || V.review;
+        const key = c.id + ':' + i + ':' + r.id, open = state.open === key;
         html += '<tr class="row" data-key="' + esc(key) + '" aria-expanded="' + open + '"><td class="doc"><span class="id">' + hl(r.id) + '</span>' + (r.type === 'RP' ? '<span class="type">RP</span>' : '') + '<span class="title">' + hl(r.title) + '</span></td>' +
           orgs.map(o => '<td class="org">' + cellHtml(r.cells[o.id], o.id === 'ATSC' ? r.id : null) + '</td>').join('') +
-          '<td class="verdict"><span class="v ' + r.verdict.code + '"><span class="i">' + v.icon + '</span>' + esc(v.label) + '</span></td></tr>';
-        if (open) html += '<tr class="detail"><td colspan="' + (orgs.length + 2) + '">' + detailHtml(r) + '</td></tr>';
+          '<td class="verdict">' + verdictHtml(r, 'TTA') + '</td><td class="verdict">' + verdictHtml(r, 'SBTVD') + '</td></tr>';
+        if (open) html += '<tr class="detail"><td colspan="' + (orgs.length + 3) + '">' + detailHtml(r) + '</td></tr>';
       });
     });
     document.querySelector('#matrix tbody').innerHTML = html;

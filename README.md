@@ -7,8 +7,9 @@ Live page: https://sunghojeon.github.io/atsc3-kr-us-br-dashboard/
 ## Structure
 
 - **Rows** — ATSC 3.0 documents, grouped by number series (A/200–A/300 System, A/320 Physical Layer, A/330 Management and Protocols, A/340 Presentation, A/350, A/360 Security, A/370 Redistribution, A/380) plus a *Datacasting services* group (NRT delivery, broadcast RTK / HP-GNSS correction data, traffic and travel information, emergency information).
-- **Columns** — ITU-R, ATSC (baseline), TTA, SBTVD Forum, and a verdict against the ATSC baseline:
-  ✓ Same · △ Partial match · ≠ Different · — No counterpart · ⓘ Review needed.
+- **Columns** — ITU-R, ATSC (baseline), TTA, SBTVD Forum, and **two verdicts against the ATSC baseline** (TTA vs ATSC, SBTVD vs ATSC):
+  ✓ Same · △ Partial match · ≠ Different · — No counterpart (*officially not adopted / searched, none found / not yet reviewed / not applicable*) · ⓘ Review needed.
+- **Per mapping** — relation to the ATSC document (baseline, incorporated by reference, profile, normative equivalent, alternative technology, related, international reference) and confidence (confirmed, partly verified, title-level, inferred, unverified). Brazilian mappings that rest on unread ABNT standards carry an *ABNT clause unverified* flag.
 - **Regulatory technical standards** — national rules mapped clause by clause to ATSC documents: Korea (MSIT Notice No. 2023-34, Article 13), United States (47 CFR § 73.682(f)), Brazil (to be added).
 - Click a row for the summary, per-organization documents, impact, recommendation, evidence and review history.
 

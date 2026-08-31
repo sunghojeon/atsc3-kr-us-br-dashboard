@@ -97,9 +97,37 @@ CATEGORIES = [
     {"id": "datacast", "name": "Datacasting services", "desc": "Data services carried over the broadcast, anchored to A/331 NRT delivery where applicable; broadcast positioning (BPS) listed separately"},
 ]
 
-V = lambda code, text="": {"code": code, "text": text}
-C = lambda docs=(), note="": {"docs": list(docs), "note": note}
+V = lambda code, text="", kind="": {"code": code, "text": text, **({"kind": kind} if kind else {})}
+def C(docs=(), note="", rel="", conf=""):
+    """Cell: documents of one body, an annotation, the mapping relation to the ATSC document and the confidence of that mapping."""
+    c = {"docs": list(docs), "note": note}
+    if rel: c["rel"] = rel
+    if conf: c["conf"] = conf
+    return c
 ITU_NONE, NONE = C(), C()
+
+RELATIONS = {  # how a body's document relates to the ATSC baseline document
+    "baseline":     {"label": "Baseline",                 "desc": "The ATSC document itself"},
+    "incorporated": {"label": "Incorporated by reference", "desc": "The ATSC document is adopted by citing it (law or standard)"},
+    "profile":      {"label": "Profile",                  "desc": "Adopts the ATSC technology with national constraints or options"},
+    "normative":    {"label": "Normative equivalent",     "desc": "Independent standard specifying the same function"},
+    "alternative":  {"label": "Alternative technology",   "desc": "A different technology fulfils the function"},
+    "related":      {"label": "Related",                  "desc": "Covers the topic; equivalence not established"},
+    "reference":    {"label": "International reference",  "desc": "ITU-R Recommendation/Report used as reference"},
+}
+CONFIDENCE = {  # how well the mapping has been verified
+    "confirmed":  {"label": "Confirmed",     "desc": "Verified against the official text (clause level)"},
+    "partial":    {"label": "Partly verified", "desc": "Key clauses checked; full comparison pending"},
+    "metadata":   {"label": "Title-level",   "desc": "Mapped from titles, scopes and catalogue metadata only"},
+    "inferred":   {"label": "Inferred",      "desc": "Deduced from secondary sources"},
+    "unverified": {"label": "Unverified",    "desc": "Not yet checked"},
+}
+NONE_KINDS = {  # sub-types of 'No counterpart'
+    "not-adopted": "Officially not adopted",
+    "not-found":   "Searched, none found",
+    "pending":     "Not yet reviewed",
+    "n/a":         "Not applicable",
+}
 
 # Per-document mapping. Keys: ATSC doc id as in index.csv.
 MAP = {
@@ -366,6 +394,69 @@ for e in EXTRA_ROWS:
     for rg in REG_BY_DOC.get(e["id"], []):
         e["cells"][rg["org"]].setdefault("reg", []).append(rg)
     e.setdefault("impact", ""); e.setdefault("recommendation", ""); e.setdefault("evidence", []); e["review"] = dict(REVIEW); rows.append(e)
+# ---- Per-country verdicts (TTA vs ATSC, SBTVD vs ATSC), mapping relations and confidence ----------------------------
+# Explicit values for the rows examined so far; everything else is derived from the cell contents below.
+PER_ORG = {  # doc id -> {org: (code, text, none-kind)}
+ "A/300": {"TTA": ("review", "TTA Part 1 plays the role of system requirements; clause-level comparison pending"), "SBTVD": ("review", "System specified as the ABNT NBR 25601–25609 series; no umbrella document")},
+ "A/321": {"TTA": ("partial", "Bootstrap adopted within TTA Part 4; EA wake-up usage to be confirmed"), "SBTVD": ("same", "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); ABNT NBR 25601 profile to be checked")},
+ "A/322": {"TTA": ("partial", "ATSC 3.0 PHY adopted with Korean operating parameters (6 MHz; MSIT Notice Art. 13 ①6–7, ②)"), "SBTVD": ("partial", "A/322:2025-07a incorporated by reference; MIMO, LDM and TxID mandated by Decreto 12.595/2025 Art. 3º")},
+ "A/323": {"TTA": ("none", "", "not-found"), "SBTVD": ("none", "", "not-found")},
+ "A/324": {"TTA": ("review", "Gateway/exciter functions in Part 4; STLTP adoption and SFN rules to be compared"), "SBTVD": ("same", "A/324:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1)")},
+ "A/331": {"TTA": ("partial", "Part 3 restricts the ROUTE/DASH and MMT profile; emergency alerting extended in national standards"), "SBTVD": ("review", "ABNT NBR 25602 transport layer — clause comparison pending (ABNT clause unverified)")},
+ "A/341": {"TTA": ("partial", "HEVC mandated (MSIT Notice Art. 13 ①3: Main 10 / Scalable Main 10, Level 5.2); HDR and frame-rate constraints to be compared"), "SBTVD": ("diff", "VVC (+LCEVC) adopted instead of HEVC (ABNT NBR 25603)")},
+ "A/342 Part 1": {"TTA": ("review", "Audio clauses of Part 2 to be compared"), "SBTVD": ("review", "ABNT NBR 25604 — clause comparison pending (ABNT clause unverified)")},
+ "A/342 Part 2": {"TTA": ("none", "AC-4 not adopted (MSIT Notice Art. 13 ①4 mandates MPEG-H only)", "not-adopted"), "SBTVD": ("none", "AC-4 not adopted (MPEG-H selected for TV 3.0)", "not-adopted")},
+ "A/342 Part 3": {"TTA": ("partial", "MPEG-H LC profile, Level 1–3 mandated (MSIT Notice Art. 13 ①4); profile/level table vs A/342-3 to be compared"), "SBTVD": ("partial", "MPEG-H adopted (ABNT NBR 25604); profile constraints unverified")},
+ "A/343": {"TTA": ("review", "Caption provisions of Part 2 (Korean fonts, character codes) to be compared"), "SBTVD": ("review", "ABNT NBR 25605 closed captioning — clause comparison pending")},
+ "A/344": {"TTA": ("diff", "HbbTV 2.0-based IBB (TTAK.KO-07.0128/R3) instead of the A/344 Broadcaster Application"), "SBTVD": ("diff", "Ginga-based application coding (ABNT NBR 25608) instead of A/344")},
+ "A/345": {"TTA": ("none", "VVC not adopted (MSIT Notice Art. 13 ①3 mandates HEVC only)", "not-adopted"), "SBTVD": ("review", "VVC adopted (ABNT NBR 25603); profile alignment with A/345 to be compared")},
+ "A/360": {"TTA": ("review", "Part 5 content protection — scope vs A/360 (signaling signatures) to be compared"), "SBTVD": ("review", "Security provisions to be located in ABNT NBR 25602/25608/25609")},
+}
+RELS = {  # doc id -> {org: (relation, confidence)}
+ "A/321": {"TTA": ("profile", "partial"), "SBTVD": ("incorporated", "confirmed")},
+ "A/322": {"TTA": ("profile", "partial"), "SBTVD": ("incorporated", "confirmed")},
+ "A/324": {"TTA": ("related", "metadata"), "SBTVD": ("incorporated", "confirmed")},
+ "A/331": {"TTA": ("profile", "metadata"), "SBTVD": ("related", "metadata")},
+ "A/341": {"TTA": ("profile", "partial"), "SBTVD": ("alternative", "confirmed")},
+ "A/342 Part 1": {"TTA": ("profile", "metadata"), "SBTVD": ("related", "metadata")},
+ "A/342 Part 2": {"TTA": ("alternative", "confirmed"), "SBTVD": ("alternative", "confirmed")},
+ "A/342 Part 3": {"TTA": ("profile", "partial"), "SBTVD": ("profile", "metadata")},
+ "A/343": {"TTA": ("related", "metadata"), "SBTVD": ("related", "metadata")},
+ "A/344": {"TTA": ("alternative", "partial"), "SBTVD": ("alternative", "confirmed")},
+ "A/345": {"TTA": ("alternative", "confirmed"), "SBTVD": ("related", "metadata")},
+ "A/360": {"TTA": ("related", "metadata"), "SBTVD": ("related", "unverified")},
+}
+def derive(cell, org, doc_id):
+    """Default per-country verdict from the cell contents when no explicit value is given."""
+    note = (cell.get("note") or "").lower()
+    if cell["docs"]:
+        return V("review", "Counterpart document identified; clause-level comparison pending")
+    if "not adopted" in note: return V("none", cell.get("note", ""), "not-adopted")
+    if "no counterpart" in note or "not identified" in note or "no ats" in note: return V("none", cell.get("note", ""), "not-found")
+    if cell.get("reg"): return V("review", "Regulatory reference only; standard document to be identified")
+    return V("none", "", "pending")
+for r in rows:
+    r["verdicts"] = {}
+    for org in ("TTA", "SBTVD"):
+        cell = r["cells"].get(org) or C()
+        spec = PER_ORG.get(r["id"], {}).get(org)
+        r["verdicts"][org] = V(*spec) if spec else derive(cell, org, r["id"])
+        rel, conf = RELS.get(r["id"], {}).get(org, (None, None))
+        if rel: cell["rel"] = rel
+        if conf: cell["conf"] = conf
+        if "rel" not in cell:
+            code = r["verdicts"][org]["code"]
+            cell["rel"] = {"same": "incorporated", "partial": "profile", "diff": "alternative", "review": "related"}.get(code, "") if cell["docs"] else ""
+        if "conf" not in cell and cell["docs"]:
+            cell["conf"] = "metadata"
+    if r["cells"].get("ITU", {}).get("docs"):
+        r["cells"]["ITU"].setdefault("rel", "reference"); r["cells"]["ITU"].setdefault("conf", "metadata")
+    r["cells"]["ATSC"].setdefault("rel", "baseline"); r["cells"]["ATSC"].setdefault("conf", "confirmed")
+    # 'ABNT clause unverified' flag: Brazilian mappings that rest on paid ABNT standards we have not read
+    sb = r["cells"].get("SBTVD", {})
+    if any(d.startswith("ABNT NBR") for d in sb.get("docs", [])) and sb.get("conf") in (None, "metadata", "unverified"):
+        sb["flag"] = "ABNT clause unverified"
+
 order = {c["id"]: i for i, c in enumerate(CATEGORIES)}
 rows.sort(key=lambda x: (order[x["category"]], not x["id"].startswith("A/"), x["type"] == "RP", x["id"]))  # ATSC-anchored rows first
 
@@ -392,6 +483,7 @@ data = {
     "review":  {"icon": "ⓘ", "label": "Review needed", "desc": "Counterpart documents identified; clause-level comparison pending"}
   },
   "categories": CATEGORIES,
+  "relations": RELATIONS, "confidence": CONFIDENCE, "noneKinds": NONE_KINDS,
   "docTitles": DOC_TITLES,
   "rows": rows,
 }

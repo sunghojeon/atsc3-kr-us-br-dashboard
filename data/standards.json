@@ -313,6 +313,64 @@
       "desc": "Data services carried over the broadcast, anchored to A/331 NRT delivery where applicable; broadcast positioning (BPS) listed separately"
     }
   ],
+  "relations": {
+    "baseline": {
+      "label": "Baseline",
+      "desc": "The ATSC document itself"
+    },
+    "incorporated": {
+      "label": "Incorporated by reference",
+      "desc": "The ATSC document is adopted by citing it (law or standard)"
+    },
+    "profile": {
+      "label": "Profile",
+      "desc": "Adopts the ATSC technology with national constraints or options"
+    },
+    "normative": {
+      "label": "Normative equivalent",
+      "desc": "Independent standard specifying the same function"
+    },
+    "alternative": {
+      "label": "Alternative technology",
+      "desc": "A different technology fulfils the function"
+    },
+    "related": {
+      "label": "Related",
+      "desc": "Covers the topic; equivalence not established"
+    },
+    "reference": {
+      "label": "International reference",
+      "desc": "ITU-R Recommendation/Report used as reference"
+    }
+  },
+  "confidence": {
+    "confirmed": {
+      "label": "Confirmed",
+      "desc": "Verified against the official text (clause level)"
+    },
+    "partial": {
+      "label": "Partly verified",
+      "desc": "Key clauses checked; full comparison pending"
+    },
+    "metadata": {
+      "label": "Title-level",
+      "desc": "Mapped from titles, scopes and catalogue metadata only"
+    },
+    "inferred": {
+      "label": "Inferred",
+      "desc": "Deduced from secondary sources"
+    },
+    "unverified": {
+      "label": "Unverified",
+      "desc": "Not yet checked"
+    }
+  },
+  "noneKinds": {
+    "not-adopted": "Officially not adopted",
+    "not-found": "Searched, none found",
+    "pending": "Not yet reviewed",
+    "n/a": "Not applicable"
+  },
   "docTitles": {
     "A/200": {
       "title": "Regional Service Availability",
@@ -1490,13 +1548,17 @@
             "BT.1299",
             "Report BT.2400"
           ],
-          "note": "DTTB system specifications (ATSC 3.0 description); common family of DTTB systems (BT.1299); global platform for broadcasting (Report BT.2400)."
+          "note": "DTTB system specifications (ATSC 3.0 description); common family of DTTB systems (BT.1299); global platform for broadcasting (Report BT.2400).",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/300:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -1517,7 +1579,9 @@
               "ref": "Art. 13 ① 2",
               "text": "방송신호의 표현 형식은 한국정보통신기술협회가 정한 \"지상파 UHDTV방송 송수신 정합 표준\"에서 규정하는 내용을 따를 것"
             }
-          ]
+          ],
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [],
@@ -1535,7 +1599,8 @@
               "ref": "Art. 5º",
               "text": "O padrão tecnológico da TV 3.0 possibilitará: qualidade audiovisual superior; recepção fixa, móvel e portátil; integração entre radiodifusão e internet com interação entre dispositivos; interface baseada em catálogo de aplicativos; segmentação e personalização de conteúdo; uso otimizado do espectro; multiprogramação aprimorada; transmissão de dados como serviço de valor adicionado."
             }
-          ]
+          ],
+          "rel": ""
         }
       },
       "verdict": {
@@ -1549,6 +1614,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "TTA Part 1 plays the role of system requirements; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "System specified as the ABNT NBR 25601–25609 series; no umbrella document"
+        }
       }
     },
     {
@@ -1563,23 +1638,32 @@
           "docs": [
             "BT.2036"
           ],
-          "note": "Reference receiving system for frequency planning."
+          "note": "Reference receiving system for frequency planning.",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [],
-          "note": "No single ATSC receiver standard (requirements spread across the A/300 series)."
+          "note": "No single ATSC receiver standard (requirements spread across the A/300 series).",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAR-07.0022"
           ],
-          "note": "Minimum technical specification for terrestrial UHD set-top boxes (technical report, 2017)."
+          "note": "Minimum technical specification for terrestrial UHD set-top boxes (technical report, 2017).",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25609:2025"
           ],
-          "note": "TV 3.0 receiver standard (113 pp.)."
+          "note": "TV 3.0 receiver standard (113 pp.).",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -1593,6 +1677,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -1608,7 +1702,9 @@
             "BT.1877",
             "BT.1306"
           ],
-          "note": "Second-generation DTTB system specifications (ATSC 3.0 included)."
+          "note": "Second-generation DTTB system specifications (ATSC 3.0 included).",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
@@ -1622,7 +1718,9 @@
               "ref": "§ 73.682(f)",
               "text": "Transmission of Next Gen TV broadcast television (ATSC 3.0) signals shall comply with ATSC A/321:2016 \"System Discovery and Signaling\" (March 23, 2016) and ATSC A/322:2017 \"Physical Layer Protocol\" (June 6, 2017), incorporated by reference (§ 73.8000). Compliance with A/322:2017 for free over-the-air primary video programming sunsets on July 17, 2027."
             }
-          ]
+          ],
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -1636,7 +1734,9 @@
               "ref": "Art. 13 ① 7",
               "text": "전송방식은 OFDM 방식으로 하며, 전송 프레임, 전송 다중화 방식, 부트스트랩 등의 송신 규격은 TTA 표준에서 규정한 방식으로 할 것"
             }
-          ]
+          ],
+          "rel": "profile",
+          "conf": "partial"
         },
         "SBTVD": {
           "docs": [
@@ -1657,7 +1757,9 @@
               "ref": "Anexo, item 4.1",
               "text": "Os equipamentos básicos de transmissão da camada física (Over-the-Air Physical Layer) da TV 3.0, compreendendo transmissores e retransmissores, devem implementar o padrão ATSC 3.0, em conformidade com as normas ATSC A/321:2025-07, ATSC A/322:2025-07a e ATSC A/324:2025-07 …"
             }
-          ]
+          ],
+          "rel": "incorporated",
+          "conf": "confirmed"
         }
       },
       "verdict": {
@@ -1671,6 +1773,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "Bootstrap adopted within TTA Part 4; EA wake-up usage to be confirmed"
+        },
+        "SBTVD": {
+          "code": "same",
+          "text": "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); ABNT NBR 25601 profile to be checked"
+        }
       }
     },
     {
@@ -1690,7 +1802,9 @@
             "Report BT.2467",
             "BT.1206"
           ],
-          "note": "Second-generation DTTB system in Rec. BT.1877; parameter selection and QoS evaluation guidance (Reports BT.2468, BT.2467); spectrum limit masks (BT.1206)."
+          "note": "Second-generation DTTB system in Rec. BT.1877; parameter selection and QoS evaluation guidance (Reports BT.2468, BT.2467); spectrum limit masks (BT.1206).",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
@@ -1704,7 +1818,9 @@
               "ref": "§ 73.682(f)",
               "text": "Transmission of Next Gen TV broadcast television (ATSC 3.0) signals shall comply with ATSC A/321:2016 \"System Discovery and Signaling\" (March 23, 2016) and ATSC A/322:2017 \"Physical Layer Protocol\" (June 6, 2017), incorporated by reference (§ 73.8000). Compliance with A/322:2017 for free over-the-air primary video programming sunsets on July 17, 2027."
             }
-          ]
+          ],
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -1730,7 +1846,9 @@
               "ref": "Art. 13 ② 1–10",
               "text": "무선설비 기술적 조건: 주파수허용편차(SFN ±2.1 Hz), 전파형식 D7W·점유대역폭 6 ㎒, 대역외 발사강도(별표 20·21), 스퓨리어스(별표 22), PAPR ≤ 13 ㏈, MER ≥ 27 ㏈, 편파면, 실효복사전력, 안테나 지향특성"
             }
-          ]
+          ],
+          "rel": "profile",
+          "conf": "partial"
         },
         "SBTVD": {
           "docs": [
@@ -1763,7 +1881,9 @@
               "ref": "Anexo, item 5.9.2",
               "text": "Taxa de Erro de Modulação (MER) — Requisito: considera-se aceitável um valor de pelo menos 30 dB medido na saída do filtro de RF do transmissor."
             }
-          ]
+          ],
+          "rel": "incorporated",
+          "conf": "confirmed"
         }
       },
       "verdict": {
@@ -1777,6 +1897,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "ATSC 3.0 PHY adopted with Korean operating parameters (6 MHz; MSIT Notice Art. 13 ①6–7, ②)"
+        },
+        "SBTVD": {
+          "code": "partial",
+          "text": "A/322:2025-07a incorporated by reference; MIMO, LDM and TxID mandated by Decreto 12.595/2025 Art. 3º"
+        }
       }
     },
     {
@@ -1795,15 +1925,19 @@
           "docs": [
             "A/323:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": "No counterpart (within the reviewed set)."
+          "note": "No counterpart (within the reviewed set).",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -1817,6 +1951,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "",
+          "kind": "not-found"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "not-found"
+        }
       }
     },
     {
@@ -1831,13 +1977,17 @@
           "docs": [
             "Report BT.2386"
           ],
-          "note": "Design and implementation of single frequency networks."
+          "note": "Design and implementation of single frequency networks.",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/324:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -1852,7 +2002,9 @@
               "ref": "Art. 13 ② 1–10",
               "text": "무선설비 기술적 조건: 주파수허용편차(SFN ±2.1 Hz), 전파형식 D7W·점유대역폭 6 ㎒, 대역외 발사강도(별표 20·21), 스퓨리어스(별표 22), PAPR ≤ 13 ㏈, MER ≥ 27 ㏈, 편파면, 실효복사전력, 안테나 지향특성"
             }
-          ]
+          ],
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
@@ -1866,7 +2018,9 @@
               "ref": "Anexo, item 4.1",
               "text": "Os equipamentos básicos de transmissão da camada física (Over-the-Air Physical Layer) da TV 3.0, compreendendo transmissores e retransmissores, devem implementar o padrão ATSC 3.0, em conformidade com as normas ATSC A/321:2025-07, ATSC A/322:2025-07a e ATSC A/324:2025-07 …"
             }
-          ]
+          ],
+          "rel": "incorporated",
+          "conf": "confirmed"
         }
       },
       "verdict": {
@@ -1880,6 +2034,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Gateway/exciter functions in Part 4; STLTP adoption and SFN rules to be compared"
+        },
+        "SBTVD": {
+          "code": "same",
+          "text": "A/324:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1)"
+        }
       }
     },
     {
@@ -1895,25 +2059,33 @@
             "Report BT.2495",
             "Report BT.2389"
           ],
-          "note": "Laboratory and field measurement methods for ATSC 3.0 reception quality; DTTB measurement guidelines."
+          "note": "Laboratory and field measurement methods for ATSC 3.0 reception quality; DTTB measurement guidelines.",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/325:2026-04"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0157"
           ],
-          "note": "Guideline for test methods of terrestrial UHD radio equipment (2022)."
+          "note": "Guideline for test methods of terrestrial UHD radio equipment (2022).",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "TV 3.0 Phase 3 PL lab report"
           ],
-          "note": "Fórum SBTVD Phase 2/3 laboratory test reports (2021, 2023)."
+          "note": "Fórum SBTVD Phase 2/3 laboratory test reports (2021, 2023).",
+          "rel": "related",
+          "conf": "metadata"
         }
       },
       "verdict": {
@@ -1927,6 +2099,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -1943,25 +2125,33 @@
             "Report BT.2495",
             "Report BT.2035"
           ],
-          "note": "UHDTV-over-DTTB field trials; ATSC 3.0 measurement methods; DTTB system evaluation guidelines."
+          "note": "UHDTV-over-DTTB field trials; ATSC 3.0 measurement methods; DTTB system evaluation guidelines.",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/326:2026-04"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0157"
           ],
-          "note": ""
+          "note": "",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "TV 3.0 Phase 3 PL field report"
           ],
-          "note": "Fórum SBTVD Phase 2/3 field test reports (2021, 2024)."
+          "note": "Fórum SBTVD Phase 2/3 field test reports (2021, 2024).",
+          "rel": "related",
+          "conf": "metadata"
         }
       },
       "verdict": {
@@ -1975,6 +2165,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -1993,17 +2193,22 @@
           "docs": [
             "A/327:2026-08"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0154/R1"
           ],
-          "note": "Terrestrial UHD system monitoring guideline (related, not equivalent)."
+          "note": "Terrestrial UHD system monitoring guideline (related, not equivalent).",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -2017,6 +2222,17 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -2033,17 +2249,22 @@
         },
         "ATSC": {
           "docs": [],
-          "note": "No ATSC standard; related material in A/327 guidelines."
+          "note": "No ATSC standard; related material in A/327 guidelines.",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0154/R1"
           ],
-          "note": "Terrestrial UHD system monitoring guideline (Dec 2023)."
+          "note": "Terrestrial UHD system monitoring guideline (Dec 2023).",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -2057,6 +2278,17 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -2073,13 +2305,17 @@
             "BT.1869",
             "BT.1209"
           ],
-          "note": "Multiplexing scheme for variable-length packets (BT.1869); service multiplex methods (BT.1209)."
+          "note": "Multiplexing scheme for variable-length packets (BT.1869); service multiplex methods (BT.1209).",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/330:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -2093,14 +2329,19 @@
               "ref": "Art. 13 ① 5",
               "text": "다중화: 컴포넌트들을 하나의 프로그램 채널로 다중화; 전송채널(6㎒ 폭)에 적어도 하나의 4K UHDTV 프로그램 채널 포함; 다중화의 기술적 조건은 TTA 표준의 IP(Internet Protocol) 기반 다중화 방법을 따를 것"
             }
-          ]
+          ],
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25602:2025",
             "SBTVD OG-02"
           ],
-          "note": "Transport layer standard; ALP inclusion to be confirmed."
+          "note": "Transport layer standard; ALP inclusion to be confirmed.",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -2114,6 +2355,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -2132,13 +2383,17 @@
             "BT.1774",
             "Report BT.2299"
           ],
-          "note": "Transport/multiplex methods (BT.1300), MMT-based Smart Media Transport (Report BT.2557); public warning via broadcasting (BT.1774, Report BT.2299)."
+          "note": "Transport/multiplex methods (BT.1300), MMT-based Smart Media Transport (Report BT.2557); public warning via broadcasting (BT.1774, Report BT.2299).",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/331:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -2154,14 +2409,19 @@
               "ref": "Art. 13 ① 5",
               "text": "다중화: 컴포넌트들을 하나의 프로그램 채널로 다중화; 전송채널(6㎒ 폭)에 적어도 하나의 4K UHDTV 프로그램 채널 포함; 다중화의 기술적 조건은 TTA 표준의 IP(Internet Protocol) 기반 다중화 방법을 따를 것"
             }
-          ]
+          ],
+          "rel": "profile",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25602:2025",
             "SBTVD OG-02"
           ],
-          "note": "Transport layer standard and operational guideline."
+          "note": "Transport layer standard and operational guideline.",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -2175,6 +2435,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "Part 3 restricts the ROUTE/DASH and MMT profile; emergency alerting extended in national standards"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25602 transport layer — clause comparison pending (ABNT clause unverified)"
+        }
       }
     },
     {
@@ -2193,19 +2463,26 @@
           "docs": [
             "A/332:2026-08"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0150/R3"
           ],
-          "note": "ESG provisions in Part 3 to be confirmed."
+          "note": "ESG provisions in Part 3 to be confirmed.",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25602:2025"
           ],
-          "note": "ESG provisions to be confirmed."
+          "note": "ESG provisions to be confirmed.",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -2219,6 +2496,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -2237,17 +2524,23 @@
           "docs": [
             "A/333:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": "No counterpart identified."
+          "note": "No counterpart identified.",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25602:2025"
           ],
-          "note": "Usage reporting provisions to be confirmed."
+          "note": "Usage reporting provisions to be confirmed.",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -2261,6 +2554,17 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "No counterpart identified.",
+          "kind": "not-found"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -2279,15 +2583,19 @@
           "docs": [
             "A/334:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": "No counterpart (within the reviewed set)."
+          "note": "No counterpart (within the reviewed set).",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -2301,6 +2609,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "No counterpart (within the reviewed set).",
+          "kind": "not-found"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -2319,15 +2639,19 @@
           "docs": [
             "A/335:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": "No counterpart (within the reviewed set)."
+          "note": "No counterpart (within the reviewed set).",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -2341,6 +2665,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "No counterpart (within the reviewed set).",
+          "kind": "not-found"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -2359,15 +2695,19 @@
           "docs": [
             "A/336:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": "No counterpart (within the reviewed set)."
+          "note": "No counterpart (within the reviewed set).",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -2381,6 +2721,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "No counterpart (within the reviewed set).",
+          "kind": "not-found"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -2399,21 +2751,28 @@
           "docs": [
             "A/337:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0128/R3",
             "TTAK.KO-07.0150/R3"
           ],
-          "note": "Event provisions in the IBB standard and Part 3 to be confirmed."
+          "note": "Event provisions in the IBB standard and Part 3 to be confirmed.",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25608:2025",
             "SBTVD OG-08"
           ],
-          "note": "Application coding standard; event delivery to be confirmed."
+          "note": "Application coding standard; event delivery to be confirmed.",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -2427,6 +2786,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -2442,19 +2811,25 @@
             "BT.2053",
             "BT.2075"
           ],
-          "note": "IBB requirements and system specifications."
+          "note": "IBB requirements and system specifications.",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/338:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0128/R3"
           ],
-          "note": "Companion-screen provisions of the IBB standard."
+          "note": "Companion-screen provisions of the IBB standard.",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
@@ -2468,7 +2843,10 @@
               "ref": "Art. 5º",
               "text": "O padrão tecnológico da TV 3.0 possibilitará: qualidade audiovisual superior; recepção fixa, móvel e portátil; integração entre radiodifusão e internet com interação entre dispositivos; interface baseada em catálogo de aplicativos; segmentação e personalização de conteúdo; uso otimizado do espectro; multiprogramação aprimorada; transmissão de dados como serviço de valor adicionado."
             }
-          ]
+          ],
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -2482,6 +2860,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -2500,15 +2888,19 @@
           "docs": [
             "A/339:2026-04"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -2522,6 +2914,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -2539,13 +2943,17 @@
             "BT.2100",
             "Report BT.2390"
           ],
-          "note": "Use of HEVC for UHDTV/HDTV broadcasting (BT.2073); UHDTV and HDR-TV image parameters; HDR report."
+          "note": "Use of HEVC for UHDTV/HDTV broadcasting (BT.2073); UHDTV and HDR-TV image parameters; HDR report.",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/341:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -2559,14 +2967,18 @@
               "ref": "Art. 13 ① 3",
               "text": "비디오 신호의 압축 조건은 … ISO/IEC 23008-2의 Main 10 Profile 또는 Scalable Main 10 Profile, Main tier, Level 5.2의 내용을 따를 것"
             }
-          ]
+          ],
+          "rel": "profile",
+          "conf": "partial"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25603:2025",
             "SBTVD OG-03"
           ],
-          "note": "TV 3.0 video coding adopts VVC (+LCEVC); HEVC not used."
+          "note": "TV 3.0 video coding adopts VVC (+LCEVC); HEVC not used.",
+          "rel": "alternative",
+          "conf": "confirmed"
         }
       },
       "verdict": {
@@ -2580,6 +2992,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "HEVC mandated (MSIT Notice Art. 13 ①3: Main 10 / Scalable Main 10, Level 5.2); HDR and frame-rate constraints to be compared"
+        },
+        "SBTVD": {
+          "code": "diff",
+          "text": "VVC (+LCEVC) adopted instead of HEVC (ABNT NBR 25603)"
+        }
       }
     },
     {
@@ -2595,13 +3017,17 @@
             "BS.2051",
             "BS.1770"
           ],
-          "note": "Advanced sound systems; loudness."
+          "note": "Advanced sound systems; loudness.",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/342 Part 1:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -2615,14 +3041,19 @@
               "ref": "Art. 13 ① 4",
               "text": "오디오 신호의 압축 조건은 … ISO/IEC 23008-3의 LC(low complexity) Profile, Level 1, 2 또는 3의 내용을 따를 것"
             }
-          ]
+          ],
+          "rel": "profile",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25604:2025",
             "SBTVD OG-04"
           ],
-          "note": "Audio coding standard and operational guideline."
+          "note": "Audio coding standard and operational guideline.",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -2636,6 +3067,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Audio clauses of Part 2 to be compared"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25604 — clause comparison pending (ABNT clause unverified)"
+        }
       }
     },
     {
@@ -2654,17 +3095,23 @@
           "docs": [
             "A/342 Part 2:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": "AC-4 not adopted: MSIT Notice 2023-34 Art. 13 ①4 mandates MPEG-H (ISO/IEC 23008-3, LC profile) only."
+          "note": "AC-4 not adopted: MSIT Notice 2023-34 Art. 13 ①4 mandates MPEG-H (ISO/IEC 23008-3, LC profile) only.",
+          "rel": "alternative",
+          "conf": "confirmed"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25604:2025"
           ],
-          "note": "TV 3.0 adopts MPEG-H; AC-4 not adopted."
+          "note": "TV 3.0 adopts MPEG-H; AC-4 not adopted.",
+          "rel": "alternative",
+          "conf": "confirmed"
         }
       },
       "verdict": {
@@ -2678,6 +3125,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "AC-4 not adopted (MSIT Notice Art. 13 ①4 mandates MPEG-H only)",
+          "kind": "not-adopted"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "AC-4 not adopted (MPEG-H selected for TV 3.0)",
+          "kind": "not-adopted"
+        }
       }
     },
     {
@@ -2693,13 +3152,17 @@
             "BS.2051",
             "BS.2088"
           ],
-          "note": "Advanced sound systems; ADM/BW64."
+          "note": "Advanced sound systems; ADM/BW64.",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/342 Part 3:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -2713,14 +3176,19 @@
               "ref": "Art. 13 ① 4",
               "text": "오디오 신호의 압축 조건은 … ISO/IEC 23008-3의 LC(low complexity) Profile, Level 1, 2 또는 3의 내용을 따를 것"
             }
-          ]
+          ],
+          "rel": "profile",
+          "conf": "partial"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25604:2025",
             "SBTVD OG-04"
           ],
-          "note": "TV 3.0 audio: MPEG-H adopted."
+          "note": "TV 3.0 audio: MPEG-H adopted.",
+          "rel": "profile",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -2734,6 +3202,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "MPEG-H LC profile, Level 1–3 mandated (MSIT Notice Art. 13 ①4); profile/level table vs A/342-3 to be compared"
+        },
+        "SBTVD": {
+          "code": "partial",
+          "text": "MPEG-H adopted (ABNT NBR 25604); profile constraints unverified"
+        }
       }
     },
     {
@@ -2752,7 +3230,9 @@
           "docs": [
             "A/343:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -2766,14 +3246,19 @@
               "ref": "Art. 13 ① 2",
               "text": "방송신호의 표현 형식은 한국정보통신기술협회가 정한 \"지상파 UHDTV방송 송수신 정합 표준\"에서 규정하는 내용을 따를 것"
             }
-          ]
+          ],
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25605:2025",
             "SBTVD OG-05"
           ],
-          "note": "Closed captioning standard and operational guideline."
+          "note": "Closed captioning standard and operational guideline.",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -2787,6 +3272,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Caption provisions of Part 2 (Korean fonts, character codes) to be compared"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25605 closed captioning — clause comparison pending"
+        }
       }
     },
     {
@@ -2806,19 +3301,25 @@
             "Report BT.2267",
             "Report BT.2568"
           ],
-          "note": "IBB requirements and systems; broadcast-oriented IBB applications (BT.2037); declarative application formats (BT.1699); application-oriented broadcasting report."
+          "note": "IBB requirements and systems; broadcast-oriented IBB applications (BT.2037); declarative application formats (BT.1699); application-oriented broadcasting report.",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/344:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0128/R3"
           ],
-          "note": "Terrestrial UHD IBB service — HbbTV 2.0-based browser environment."
+          "note": "Terrestrial UHD IBB service — HbbTV 2.0-based browser environment.",
+          "rel": "alternative",
+          "conf": "partial"
         },
         "SBTVD": {
           "docs": [
@@ -2833,7 +3334,9 @@
               "ref": "Art. 5º",
               "text": "O padrão tecnológico da TV 3.0 possibilitará: qualidade audiovisual superior; recepção fixa, móvel e portátil; integração entre radiodifusão e internet com interação entre dispositivos; interface baseada em catálogo de aplicativos; segmentação e personalização de conteúdo; uso otimizado do espectro; multiprogramação aprimorada; transmissão de dados como serviço de valor adicionado."
             }
-          ]
+          ],
+          "rel": "alternative",
+          "conf": "confirmed"
         }
       },
       "verdict": {
@@ -2847,6 +3350,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "diff",
+          "text": "HbbTV 2.0-based IBB (TTAK.KO-07.0128/R3) instead of the A/344 Broadcaster Application"
+        },
+        "SBTVD": {
+          "code": "diff",
+          "text": "Ginga-based application coding (ABNT NBR 25608) instead of A/344"
+        }
       }
     },
     {
@@ -2861,24 +3374,33 @@
           "docs": [
             "Report BT.2538"
           ],
-          "note": "VVC multilayer-profile use cases for broadcasting; a draft new Recommendation on the use of VVC is in progress in WP 6B."
+          "note": "VVC multilayer-profile use cases for broadcasting; a draft new Recommendation on the use of VVC is in progress in WP 6B.",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/345:2026-04"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": "VVC not adopted: MSIT Notice 2023-34 Art. 13 ①3 mandates HEVC (ISO/IEC 23008-2, Main 10 / Scalable Main 10, Level 5.2) only."
+          "note": "VVC not adopted: MSIT Notice 2023-34 Art. 13 ①3 mandates HEVC (ISO/IEC 23008-2, Main 10 / Scalable Main 10, Level 5.2) only.",
+          "rel": "alternative",
+          "conf": "confirmed"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25603:2025",
             "SBTVD OG-03"
           ],
-          "note": "TV 3.0 video coding: VVC (+LCEVC)."
+          "note": "TV 3.0 video coding: VVC (+LCEVC).",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -2892,6 +3414,17 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "VVC not adopted (MSIT Notice Art. 13 ①3 mandates HEVC only)",
+          "kind": "not-adopted"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "VVC adopted (ABNT NBR 25603); profile alignment with A/345 to be compared"
+        }
       }
     },
     {
@@ -2906,21 +3439,28 @@
           "docs": [
             "BT.2160"
           ],
-          "note": "3DTV broadcasting features (reference)."
+          "note": "3DTV broadcasting features (reference).",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [],
-          "note": "No ATSC 3.0 standard."
+          "note": "No ATSC 3.0 standard.",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0153"
           ],
-          "note": "Part 6: 3DTV (June 2021)."
+          "note": "Part 6: 3DTV (June 2021).",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -2934,6 +3474,17 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -2950,18 +3501,24 @@
         },
         "ATSC": {
           "docs": [],
-          "note": "No ATSC 3.0 standard."
+          "note": "No ATSC 3.0 standard.",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": "No counterpart identified."
+          "note": "No counterpart identified.",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25606:2025",
             "SBTVD OG-06"
           ],
-          "note": "Closed signing standard and operational guideline."
+          "note": "Closed signing standard and operational guideline.",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -2975,6 +3532,17 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "No counterpart identified.",
+          "kind": "not-found"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -2993,15 +3561,19 @@
           "docs": [
             "A/350:2026-04"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -3015,6 +3587,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -3033,15 +3617,19 @@
           "docs": [
             "A/351:2026-04"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -3055,6 +3643,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -3073,7 +3673,9 @@
           "docs": [
             "A/360:2026-08"
           ],
-          "note": "Baseline document"
+          "note": "Baseline document",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -3087,11 +3689,15 @@
               "ref": "Art. 13 ② 11",
               "text": "지상파 방송사업자가 콘텐츠 보호기술을 도입하고자 하는 경우 … 수상기 제조사와 협의를 거쳐 지상파 UHDTV 방송을 시청할 수 있는 조치가 수반된 경우에 한할 것"
             }
-          ]
+          ],
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [],
-          "note": "Security provisions not identified as a separate document; to be checked in ABNT NBR 25602/25608/25609."
+          "note": "Security provisions not identified as a separate document; to be checked in ABNT NBR 25602/25608/25609.",
+          "rel": "related",
+          "conf": "unverified"
         }
       },
       "verdict": {
@@ -3105,6 +3711,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Part 5 content protection — scope vs A/360 (signaling signatures) to be compared"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Security provisions to be located in ABNT NBR 25602/25608/25609"
+        }
       }
     },
     {
@@ -3123,7 +3739,9 @@
           "docs": [
             "A/361:2026-08"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -3137,11 +3755,14 @@
               "ref": "Art. 13 ② 11",
               "text": "지상파 방송사업자가 콘텐츠 보호기술을 도입하고자 하는 경우 … 수상기 제조사와 협의를 거쳐 지상파 UHDTV 방송을 시청할 수 있는 조치가 수반된 경우에 한할 것"
             }
-          ]
+          ],
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -3155,6 +3776,17 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -3173,7 +3805,9 @@
           "docs": [
             "A/362:2026-04"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -3187,11 +3821,14 @@
               "ref": "Art. 13 ② 11",
               "text": "지상파 방송사업자가 콘텐츠 보호기술을 도입하고자 하는 경우 … 수상기 제조사와 협의를 거쳐 지상파 UHDTV 방송을 시청할 수 있는 조치가 수반된 경우에 한할 것"
             }
-          ]
+          ],
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -3205,6 +3842,17 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -3223,15 +3871,19 @@
           "docs": [
             "A/370:2026-04"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -3245,6 +3897,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -3263,15 +3927,19 @@
           "docs": [
             "A/371:2026-04"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -3285,6 +3953,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -3303,15 +3983,19 @@
           "docs": [
             "A/380:2026-04"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -3325,6 +4009,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -3343,19 +4039,25 @@
           "docs": [
             "A/381:2026-04"
           ],
-          "note": "Baseline document (Recommended Practice)"
+          "note": "Baseline document (Recommended Practice)",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0128/R3"
           ],
-          "note": ""
+          "note": "",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "SBTVD OG-08"
           ],
-          "note": "Application coding operational guideline."
+          "note": "Application coding operational guideline.",
+          "rel": "related",
+          "conf": "metadata"
         }
       },
       "verdict": {
@@ -3369,6 +4071,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -3384,13 +4096,17 @@
             "BT.1774",
             "Report BT.2299"
           ],
-          "note": "Use of broadcast infrastructures for public warning (BT.1774); broadcasting for public warning, disaster mitigation and relief (Report BT.2299)."
+          "note": "Use of broadcast infrastructures for public warning (BT.1774); broadcasting for public warning, disaster mitigation and relief (Report BT.2299).",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/331:2026-04"
           ],
-          "note": "AEA messages and rich-media delivery."
+          "note": "AEA messages and rich-media delivery.",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -3398,14 +4114,19 @@
             "TTAK.KO-07.0156",
             "TTAK.KO-06.0523"
           ],
-          "note": "Emergency alert implementation guide for dedicated receivers; emergency information service for community broadcasting; guideline for using disaster information."
+          "note": "Emergency alert implementation guide for dedicated receivers; emergency information service for community broadcasting; guideline for using disaster information.",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25607:2025",
             "SBTVD OG-07 v1"
           ],
-          "note": "Emergency warning system standard and operational guideline (v1, June 2026)."
+          "note": "Emergency warning system standard and operational guideline (v1, June 2026).",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -3419,6 +4140,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -3434,26 +4165,35 @@
             "Report BT.2295",
             "Report BT.2545"
           ],
-          "note": "Inter-tower communications network for broadcasting and datacasting systems."
+          "note": "Inter-tower communications network for broadcasting and datacasting systems.",
+          "rel": "reference",
+          "conf": "metadata"
         },
         "ATSC": {
           "docs": [
             "A/331:2026-04"
           ],
-          "note": "Baseline (NRT/ROUTE clauses)."
+          "note": "Baseline (NRT/ROUTE clauses).",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0150/R3"
           ],
-          "note": "NRT provisions in Part 3: Systems to be confirmed."
+          "note": "NRT provisions in Part 3: Systems to be confirmed.",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
             "ABNT NBR 25602:2025",
             "SBTVD OG-CPC (draft)"
           ],
-          "note": "Transport layer; Common Public Communication / Digital Government platform guideline (draft, Aug 2026)."
+          "note": "Transport layer; Common Public Communication / Digital Government platform guideline (draft, Aug 2026).",
+          "rel": "related",
+          "conf": "metadata",
+          "flag": "ABNT clause unverified"
         }
       },
       "verdict": {
@@ -3467,6 +4207,16 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        }
       }
     },
     {
@@ -3483,7 +4233,9 @@
         },
         "ATSC": {
           "docs": [],
-          "note": "No counterpart document."
+          "note": "No counterpart document.",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
@@ -3491,11 +4243,14 @@
             "TTAK.KO-07.0167",
             "TTAK.KO-07.0168"
           ],
-          "note": "Broadcast RTK correction data service (June 2025); HP-GNSS correction information message structure and datagram IP tunneling (June 2025)."
+          "note": "Broadcast RTK correction data service (June 2025); HP-GNSS correction information message structure and datagram IP tunneling (June 2025).",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [],
-          "note": "No counterpart identified."
+          "note": "No counterpart identified.",
+          "rel": ""
         }
       },
       "verdict": {
@@ -3528,6 +4283,17 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "No counterpart identified.",
+          "kind": "not-found"
+        }
       }
     },
     {
@@ -3544,17 +4310,22 @@
         },
         "ATSC": {
           "docs": [],
-          "note": "No counterpart (can be realized with NRT delivery)."
+          "note": "No counterpart (can be realized with NRT delivery).",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [
             "TTAK.KO-07.0139"
           ],
-          "note": "Requirements for terrestrial UHD traffic and travel information service (Dec 2019)."
+          "note": "Requirements for terrestrial UHD traffic and travel information service (Dec 2019).",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "",
+          "rel": ""
         }
       },
       "verdict": {
@@ -3568,6 +4339,17 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "",
+          "kind": "pending"
+        }
       }
     },
     {
@@ -3584,15 +4366,19 @@
         },
         "ATSC": {
           "docs": [],
-          "note": "No published standard; BPS is in industry trials — formal standardization status to be confirmed."
+          "note": "No published standard; BPS is in industry trials — formal standardization status to be confirmed.",
+          "rel": "baseline",
+          "conf": "confirmed"
         },
         "TTA": {
           "docs": [],
-          "note": "No counterpart document."
+          "note": "No counterpart document.",
+          "rel": ""
         },
         "SBTVD": {
           "docs": [],
-          "note": "No counterpart identified."
+          "note": "No counterpart identified.",
+          "rel": ""
         }
       },
       "verdict": {
@@ -3606,6 +4392,18 @@
         "status": "draft",
         "by": "",
         "updated": "2026-08-31"
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "No counterpart document.",
+          "kind": "not-found"
+        },
+        "SBTVD": {
+          "code": "none",
+          "text": "No counterpart identified.",
+          "kind": "not-found"
+        }
       }
     }
   ]
