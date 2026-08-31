@@ -520,9 +520,9 @@
         },
         "TTA": {
           "doc": "TTAK.KO-07.0128/R3",
-          "clause": "§6 Part 2 애플리케이션 시그널링 (ETSI TS 102 809 AIT-based; ISO/IEC 23009-1 events)",
-          "page": "—",
-          "value": "HbbTV-style application information (AIT) carried over ATSC 3.0 delivery; DASH events",
+          "clause": "§6.2 애플리케이션 시그널링 (6.2.2.1 AST; <표 6-1> AST 제약, <표 6-2> AST 추가 사항); DASH events",
+          "page": "doc p.14–17 (pdf 22–25)",
+          "value": "AST (Application Signaling Table) = XML AIT per ETSI TS 102 809 / HbbTV 2.0 §7.2.3.2 with a Korean extension namespace (http://www.nextb.or.kr/XMLSchemas/UHDIBB/AST/1.0/, prefix uhdibb: requiredCapabilities, appSize, contentLinkage …); broadcast delivery of app files over ROUTE; static events via MPD EventStream, dynamic events via DASH 'emsg' (as in A/337)",
           "req": "mandatory for IBB"
         },
         "SBTVD": {
@@ -533,7 +533,7 @@
           "req": "mandatory"
         }
       },
-      "difference": "Each market signals applications with its own descriptor (HELD vs AIT vs BALD) although all ride on ATSC 3.0 delivery.",
+      "difference": "Each market signals applications with its own descriptor (HELD vs XML-AIT-based AST vs BALD) although all ride on ATSC 3.0 delivery; event carriage (EventStream/emsg) is shared between ATSC and Korea.",
       "impact": "Signaling generators must be market-specific.",
       "cells": {
         "TTA": {
@@ -548,7 +548,7 @@
       "verdicts": {
         "TTA": {
           "code": "diff",
-          "text": "AIT-based signaling (HbbTV) instead of HELD",
+          "text": "AST (XML AIT + uhdibb extensions) instead of HELD; event carriage as in A/337",
           "req": "mandatory"
         },
         "SBTVD": {
@@ -582,7 +582,7 @@
           "doc": "TTAK.KO-07.0128/R3",
           "clause": "§8 Part 4 컴패니언 스크린 서비스 (참조: OIPF Release 2, ETSI TS 102 796, A/338)",
           "page": "—",
-          "value": "HbbTV 2.0 companion-screen framework; A/338 listed as a reference",
+          "value": "HbbTV 2.0 companion-screen framework (WebSocket server on the IBB terminal for app-to-app communication); A/338:2017 listed as a reference",
           "req": "optional"
         },
         "SBTVD": {
@@ -5912,8 +5912,8 @@
               "text": "다중화: 컴포넌트들을 하나의 프로그램 채널로 다중화; 전송채널(6㎒ 폭)에 적어도 하나의 4K UHDTV 프로그램 채널 포함; 다중화의 기술적 조건은 TTA 표준의 IP(Internet Protocol) 기반 다중화 방법을 따를 것"
             }
           ],
-          "rel": "related",
-          "conf": "metadata"
+          "rel": "profile",
+          "conf": "partial"
         },
         "SBTVD": {
           "docs": [
@@ -5922,7 +5922,7 @@
           ],
           "note": "Transport layer standard; ALP inclusion to be confirmed.",
           "rel": "related",
-          "conf": "metadata",
+          "conf": "unverified",
           "flag": "ABNT clause unverified"
         }
       },
@@ -5940,12 +5940,12 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "same",
+          "text": "Part 3 §6 (6.1 개요, 6.2 ALP 패킷 포맷, 6.3 IP 헤더 압축, 6.4 링크 계층 시그널링) adopts A/330 (cited 2017 edition). Section diff A/330:2019a → 2026-04 shows only small edits (§5.4 MPEG-2 TS encapsulation, §6.1 ROHC pre-processing) — not yet itemized against the Korean text"
         },
         "SBTVD": {
           "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "text": "ABNT NBR 25602 transport layer not read"
         }
       },
       "chapters": {
@@ -6869,8 +6869,8 @@
             "TTAK.KO-07.0150/R3"
           ],
           "note": "ESG provisions in Part 3 to be confirmed.",
-          "rel": "related",
-          "conf": "metadata"
+          "rel": "profile",
+          "conf": "partial"
         },
         "SBTVD": {
           "docs": [
@@ -6878,7 +6878,7 @@
           ],
           "note": "ESG provisions to be confirmed.",
           "rel": "related",
-          "conf": "metadata",
+          "conf": "unverified",
           "flag": "ABNT clause unverified"
         }
       },
@@ -6896,12 +6896,12 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "partial",
+          "text": "Part 2 §8 adopts A/332 (2016 Proposed Standard): data model, encapsulation, delivery, update/management; A/332 §5.6 (SG data update and management) and §5.5 (delivery) were substantially revised by 2026-08 — Korean text follows the 2016 version; Korean SG XML schema annex; also referenced by IBB Part 5"
         },
         "SBTVD": {
           "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "text": "ESG provisions to be located in ABNT NBR 25602; OG-08 §8.5–8.6 EPG/ECG in the application catalog"
         }
       },
       "chapters": {
@@ -7285,7 +7285,7 @@
       "verdicts": {
         "TTA": {
           "code": "partial",
-          "text": "Event delivery via DASH events / HbbTV application signaling in IBB Part 2; A/337 EventStream/emsg mechanism not adopted as such"
+          "text": "IBB Part 2 carries broadcast events like A/337 — static events in the MPD Period EventStream, dynamic events in DASH 'emsg' boxes — while application signaling itself uses the AST (XML AIT-based) instead of HELD"
         },
         "SBTVD": {
           "code": "review",
@@ -7311,9 +7311,9 @@
             },
             "TTA": {
               "doc": "TTAK.KO-07.0128/R3",
-              "clause": "§6 Part 2 애플리케이션 시그널링 (ETSI TS 102 809 AIT-based; ISO/IEC 23009-1 events)",
-              "page": "—",
-              "value": "HbbTV-style application information (AIT) carried over ATSC 3.0 delivery; DASH events",
+              "clause": "§6.2 애플리케이션 시그널링 (6.2.2.1 AST; <표 6-1> AST 제약, <표 6-2> AST 추가 사항); DASH events",
+              "page": "doc p.14–17 (pdf 22–25)",
+              "value": "AST (Application Signaling Table) = XML AIT per ETSI TS 102 809 / HbbTV 2.0 §7.2.3.2 with a Korean extension namespace (http://www.nextb.or.kr/XMLSchemas/UHDIBB/AST/1.0/, prefix uhdibb: requiredCapabilities, appSize, contentLinkage …); broadcast delivery of app files over ROUTE; static events via MPD EventStream, dynamic events via DASH 'emsg' (as in A/337)",
               "req": "mandatory for IBB"
             },
             "SBTVD": {
@@ -7324,7 +7324,7 @@
               "req": "mandatory"
             }
           },
-          "difference": "Each market signals applications with its own descriptor (HELD vs AIT vs BALD) although all ride on ATSC 3.0 delivery.",
+          "difference": "Each market signals applications with its own descriptor (HELD vs XML-AIT-based AST vs BALD) although all ride on ATSC 3.0 delivery; event carriage (EventStream/emsg) is shared between ATSC and Korea.",
           "impact": "Signaling generators must be market-specific.",
           "cells": {
             "TTA": {
@@ -7339,7 +7339,7 @@
           "verdicts": {
             "TTA": {
               "code": "diff",
-              "text": "AIT-based signaling (HbbTV) instead of HELD",
+              "text": "AST (XML AIT + uhdibb extensions) instead of HELD; event carriage as in A/337",
               "req": "mandatory"
             },
             "SBTVD": {
@@ -7464,7 +7464,7 @@
               "doc": "TTAK.KO-07.0128/R3",
               "clause": "§8 Part 4 컴패니언 스크린 서비스 (참조: OIPF Release 2, ETSI TS 102 796, A/338)",
               "page": "—",
-              "value": "HbbTV 2.0 companion-screen framework; A/338 listed as a reference",
+              "value": "HbbTV 2.0 companion-screen framework (WebSocket server on the IBB terminal for app-to-app communication); A/338:2017 listed as a reference",
               "req": "optional"
             },
             "SBTVD": {
@@ -8934,9 +8934,9 @@
             },
             "TTA": {
               "doc": "TTAK.KO-07.0128/R3",
-              "clause": "§6 Part 2 애플리케이션 시그널링 (ETSI TS 102 809 AIT-based; ISO/IEC 23009-1 events)",
-              "page": "—",
-              "value": "HbbTV-style application information (AIT) carried over ATSC 3.0 delivery; DASH events",
+              "clause": "§6.2 애플리케이션 시그널링 (6.2.2.1 AST; <표 6-1> AST 제약, <표 6-2> AST 추가 사항); DASH events",
+              "page": "doc p.14–17 (pdf 22–25)",
+              "value": "AST (Application Signaling Table) = XML AIT per ETSI TS 102 809 / HbbTV 2.0 §7.2.3.2 with a Korean extension namespace (http://www.nextb.or.kr/XMLSchemas/UHDIBB/AST/1.0/, prefix uhdibb: requiredCapabilities, appSize, contentLinkage …); broadcast delivery of app files over ROUTE; static events via MPD EventStream, dynamic events via DASH 'emsg' (as in A/337)",
               "req": "mandatory for IBB"
             },
             "SBTVD": {
@@ -8947,7 +8947,7 @@
               "req": "mandatory"
             }
           },
-          "difference": "Each market signals applications with its own descriptor (HELD vs AIT vs BALD) although all ride on ATSC 3.0 delivery.",
+          "difference": "Each market signals applications with its own descriptor (HELD vs XML-AIT-based AST vs BALD) although all ride on ATSC 3.0 delivery; event carriage (EventStream/emsg) is shared between ATSC and Korea.",
           "impact": "Signaling generators must be market-specific.",
           "cells": {
             "TTA": {
@@ -8962,7 +8962,7 @@
           "verdicts": {
             "TTA": {
               "code": "diff",
-              "text": "AIT-based signaling (HbbTV) instead of HELD",
+              "text": "AST (XML AIT + uhdibb extensions) instead of HELD; event carriage as in A/337",
               "req": "mandatory"
             },
             "SBTVD": {
