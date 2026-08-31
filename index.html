@@ -108,6 +108,8 @@
   td.org { min-width: 190px; }
   td.verdict { width: 165px; min-width: 150px; }
   th.vh { min-width: 150px; }
+  /* Verdict block (TTA vs ATSC / SBTVD vs ATSC) separated from the document columns by a rule */
+  th.vh.vsep, td.verdict.vsep, tr.group td.vsep { border-left: 2px solid var(--line-2); padding-left: 16px; }
   .vk { display: block; color: var(--ink-3); font-size: 11.5px; line-height: 1.35; margin-top: 2px; }
   .vk.flag { color: var(--partial); }
   .vk.req { color: var(--blue); font-weight: 600; }
@@ -348,19 +350,19 @@
     tabs.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.id === state.cat)));
     document.querySelector('#matrix thead').innerHTML = '<tr><th>Document<small>ATSC 3.0 baseline</small></th>' +
       orgs.map(o => '<th class="org" style="--org:' + o.color + '">' + esc(o.label) + '<small>' + esc(o.sub) + '</small></th>').join('') +
-      '<th class="vh">TTA vs ATSC<small>Korea</small></th><th class="vh">SBTVD vs ATSC<small>Brazil</small></th></tr>';
+      '<th class="vh vsep">TTA vs ATSC<small>Korea</small></th><th class="vh">SBTVD vs ATSC<small>Brazil</small></th></tr>';
     let html = '', shown = 0, total = 0;
     data.categories.forEach(c => {
       if (state.cat !== 'all' && c.id !== state.cat) return;
       const rows = data.rows.filter(r => r.category === c.id).filter(r => { total++; return passes(r); });
       shown += rows.length;
       if (!rows.length) return;
-      html += '<tr class="group"><td colspan="' + (orgs.length + 3) + '">' + esc(c.name) + (c.desc ? '<small>' + esc(c.desc) + '</small>' : '') + '</td></tr>';
+      html += '<tr class="group"><td colspan="' + (orgs.length + 1) + '">' + esc(c.name) + (c.desc ? '<small>' + esc(c.desc) + '</small>' : '') + '</td><td class="vsep" colspan="2"></td></tr>';
       rows.forEach((r, i) => {
         const key = c.id + ':' + i + ':' + r.id, open = state.open === key;
         html += '<tr class="row" data-key="' + esc(key) + '" aria-expanded="' + open + '"><td class="doc"><span class="id">' + hl(r.id) + '</span>' + (r.type === 'RP' ? '<span class="type">RP</span>' : '') + '<span class="title">' + hl(r.title) + '</span></td>' +
           orgs.map(o => '<td class="org">' + cellHtml(r.cells[o.id], o.id === 'ATSC' ? r.id : null) + '</td>').join('') +
-          '<td class="verdict">' + verdictHtml(r, 'TTA') + '</td><td class="verdict">' + verdictHtml(r, 'SBTVD') + '</td></tr>';
+          '<td class="verdict vsep">' + verdictHtml(r, 'TTA') + '</td><td class="verdict">' + verdictHtml(r, 'SBTVD') + '</td></tr>';
         if (open) html += '<tr class="detail"><td colspan="' + (orgs.length + 3) + '">' + detailHtml(r) + '</td></tr>';
       });
     });

@@ -1,0 +1,69 @@
+[
+  {
+    "id": "stl-ref-version", "group": "STL · basis", "feature": "Reference edition and coverage of A/324 in national documents",
+    "atsc_docs": ["A/324"],
+    "sides": {
+      "ATSC": {"doc": "A/324:2026-04", "clause": "Revision history; §5–§10", "page": "p.ii–iii", "value": "Baseline: A/324:2025-04 (incl. 2025-01 Amd 1 and Corrigendum 1) with references updated 2025-07 and 2026-04 — no technical change after 2025-04", "req": "baseline"},
+      "TTA": {"doc": "TTAK.KO-07.0151/R1 · TTAR-07.0026/R1", "clause": "Part 4 §2 인용 표준 (A/324 Candidate Standard revision of A/324:2018, 2020.01); 서문 3.2 비교표 (부록 Ⅰ-2 = A/324 §7, §8 동일(번역)); §1.2 (SFN/STL 분배 인터페이스 언급)", "page": "doc p.5; p.ii–iii; p.2", "value": "Only DSTP (§7) and ALPTP (§8) are translated (부록 Ⅰ-2). Scheduler/BGW management (§5), CTP (§6), STLTP (§9) and transmitter requirements (§10) are not part of the Korean standard; TxID/BSID operation is covered by the technical report TTAR-07.0026/R1", "req": "DSTP/ALPTP normative; STLTP not standardized nationally"},
+      "SBTVD": {"doc": "Anatel Ato nº 2.705/2026 · ABNT NBR 25601:2025", "clause": "Anexo item 4.1 (A/324:2025-07)", "page": "—", "value": "A/324:2025-07 incorporated by reference for transmitters and retransmitters; content identical to the 2026-04 baseline (reference updates only)", "req": "mandatory (regulation)"}
+    },
+    "difference": "Korea standardizes only the data-source side (DSTP/ALPTP, from the 2020 candidate revision) and leaves STL transport, scheduler and transmitter requirements to vendor implementation plus a national TxID/BSID guideline; Brazil incorporates the whole of A/324:2025-07, which is technically identical to the baseline.",
+    "impact": "Korean gateway–exciter links are not bound to STLTP by standard (interoperability relies on A/324 as de facto practice); Brazilian transmitters must implement STLTP per regulation.",
+    "cells": {"TTA": {"rel": "profile", "conf": "confirmed"}, "SBTVD": {"rel": "incorporated", "conf": "confirmed"}},
+    "verdicts": {"TTA": {"code": "partial", "text": "DSTP/ALPTP translated (2020 CS); STLTP, CTP, scheduler and transmitter clauses not standardized in Korea", "req": "DSTP/ALPTP mandatory"}, "SBTVD": {"code": "same", "text": "Referenced edition technically identical to baseline (2025-04 content); ABNT NBR 25601 profile unverified", "req": "mandatory"}},
+    "evidence": [
+      {"label": "TTAK.KO-07.0151/R1 서문 비교표", "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0151%2FR1&nowSu=1"},
+      {"label": "Anatel Ato 2.705/2026", "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"}
+    ],
+    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+  },
+  {
+    "id": "stl-dstp-alptp", "group": "STL · protocols", "feature": "Data Source Transport Protocol (DSTP) and ALP Transport Protocol (ALPTP)",
+    "atsc_docs": ["A/324"],
+    "sides": {
+      "ATSC": {"doc": "A/324:2026-04", "clause": "§7 DSTP (7.1 overview, 7.2 design); §8 ALPTP (8.1, 8.2)", "page": "doc p.71–81 (pdf 78–88)", "value": "RTP-tunneled data-source and ALP packet transport, incl. Emergency Alert wake-up RTP control", "req": "mandatory for the interfaces used"},
+      "TTA": {"doc": "TTAK.KO-07.0151/R1", "clause": "부록 Ⅰ-2.1 DSTP (Ⅰ-2.1.1 개요, Ⅰ-2.1.1.1 매핑 설정, Ⅰ-2.1.2 설계, Ⅰ-2.1.2.2 Emergency Alert Wakeup RTP 제어); 부록 Ⅰ-2.2 ALPTP", "page": "doc p.365–379 (pdf 372–386)", "value": "Translation of A/324 CS (2020-01) §7–§8 per the TTA comparison table", "req": "mandatory"},
+      "SBTVD": {"doc": "A/324:2025-07 (by reference)", "clause": "Anatel Ato 2.705/2026 item 4.1", "page": "—", "value": "Identical to baseline", "req": "mandatory"}
+    },
+    "difference": "Same protocols; Korea's text is the 2020 candidate revision (changes in A/324:2021 → 2025-04 amendments/corrigendum not itemized here).",
+    "impact": "Low — DSTP/ALPTP are gateway-side interfaces.",
+    "cells": {"TTA": {"rel": "profile", "conf": "partial"}, "SBTVD": {"rel": "incorporated", "conf": "confirmed"}},
+    "verdicts": {"TTA": {"code": "same", "text": "Translation of §7–§8; 2021–2025 amendment deltas not yet itemized", "req": "mandatory"}, "SBTVD": {"code": "same", "text": "Incorporated; identical content", "req": "mandatory"}},
+    "evidence": [],
+    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+  },
+  {
+    "id": "stl-stltp-sfn", "group": "STL · protocols", "feature": "STLTP, Common Tunneling Protocol, scheduler/BGW management and SFN timing",
+    "atsc_docs": ["A/324"],
+    "sides": {
+      "ATSC": {"doc": "A/324:2026-04", "clause": "§5 Scheduler (5.3 BGW management protocol, 5.5 DSCP); §6 CTP (6.4 tunneled packet security); §9 STLTP (9.2 preamble data generator, 9.3 timing and management, 9.5 channel bonding); §10 transmitter requirements (10.1 timing manager); Annex F MIMO configuration", "page": "doc p.28–100 (pdf 35–109)", "value": "Normative STL transport and SFN timing/management", "req": "mandatory"},
+      "TTA": {"doc": "TTAK.KO-07.0151/R1 · MSIT Notice 2023-34", "clause": "Part 4 §1.2 (SFN/STL 분배 인터페이스 존재 언급); Notice Art. 13 ② 1 (SFN 주파수허용편차 ±2.1 Hz)", "page": "doc p.2; docs/refs KR excerpt", "value": "No national STLTP/CTP text; SFN frequency tolerance fixed by regulation (±2.1 Hz)", "req": "not standardized (regulation on SFN tolerance only)"},
+      "SBTVD": {"doc": "A/324:2025-07 (by reference) · Anatel Ato nº 2.705/2026", "clause": "Ato item 4.1; Anexo (transmitter conformity tests)", "page": "—", "value": "STLTP and transmitter requirements incorporated; conformity assessment of transmitters/retransmitters", "req": "mandatory"}
+    },
+    "difference": "Korea has no standard for the studio-to-transmitter link or transmitter timing beyond the regulatory SFN tolerance; Brazil incorporates A/324 in full and tests transmitters against it.",
+    "impact": "Korean broadcasters rely on A/324-compatible equipment de facto; formal conformance is not defined nationally.",
+    "recommendation": "Consider adopting A/324 §9–§10 (STLTP, transmitter requirements) in a future TTA revision or guideline.",
+    "cells": {"TTA": {"rel": "related", "conf": "confirmed"}, "SBTVD": {"rel": "incorporated", "conf": "confirmed"}},
+    "verdicts": {"TTA": {"code": "none", "text": "No Korean standard for STLTP/CTP/transmitter requirements", "req": "not standardized", "kind": "not-adopted"}, "SBTVD": {"code": "same", "text": "Incorporated by regulation", "req": "mandatory"}},
+    "evidence": [],
+    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+  },
+  {
+    "id": "stl-txid-bsid", "group": "STL · identification", "feature": "Transmitter identification (TxID) and broadcast stream identifier (BSID) assignment",
+    "atsc_docs": ["A/324", "A/322"],
+    "sides": {
+      "ATSC": {"doc": "A/322:2026-06 Annex N · A/324:2026-04", "clause": "A/322 Annex N (TxID signal, Table N.3.1 injection levels); A/324 §5 (TxID control from BGW), L1D_bsid", "page": "A/322 doc p.253–256", "value": "Gold-code DSBSS RF watermark in the first preamble symbol; injection level codes; BSID in SLT@bsid and L1D_bsid", "req": "TxID optional"},
+      "TTA": {"doc": "TTAK.KO-07.0151/R1 · TTAR-07.0026/R1", "clause": "Part 4 부록 Ⅰ-1.12 송신기 식별부호 (translation of Annex N); TTAR §5 (TxID 적용·운용·확인), §6 방송사별 TxID 할당 규칙 (KBS/EBS/OBS, MBC, 민영), §7 BSID 할당 규칙 (DTV TSID 방식, SLT@bsid = L1D_bsid), <표 5-1> recommended maximum injection level per L1 mode, 부록 Ⅱ BSID 할당표", "page": "Part 4 doc p.343–349; TTAR doc p.2–11", "value": "National allocation scheme: 4-digit TxID per broadcaster/region, STL-mode (BGW) or MANUAL-mode activation, ≥ −24 dB recommended in SFN overlap areas; BSID unique per broadcaster following the DTV TSID plan", "req": "TxID optional (activated on demand); BSID mandatory"},
+      "SBTVD": {"doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)", "clause": "Decreto Art. 3º III (Ferramenta de Identificação de Transmissor – TxID)", "page": "docs/refs BR excerpt", "value": "TxID mandated as a TV 3.0 feature; allocation rules not published", "req": "TxID mandatory (decree)"}
+    },
+    "difference": "The TxID mechanism is identical (A/322 Annex N); Korea adds a national allocation and operating guideline (TTAR-07.0026/R1) while keeping TxID optional; Brazil makes TxID mandatory by decree but has no published allocation scheme.",
+    "impact": "Requirement level differs (optional vs mandatory); national numbering plans are needed for interference analysis and SFN tuning.",
+    "cells": {"TTA": {"rel": "profile", "conf": "confirmed"}, "SBTVD": {"rel": "incorporated", "conf": "confirmed"}},
+    "verdicts": {"TTA": {"code": "same", "text": "Same mechanism; national allocation guideline", "req": "TxID optional"}, "SBTVD": {"code": "same", "text": "Same mechanism; TxID mandatory by decree", "req": "TxID mandatory"}},
+    "evidence": [
+      {"label": "TTAR-07.0026/R1 (committee.tta.or.kr)", "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAR-07.0026%2FR1&nowSu=1"},
+      {"label": "Decreto 12.595/2025 (excerpt)", "url": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md"}
+    ],
+    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+  }
+]

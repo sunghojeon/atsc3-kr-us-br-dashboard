@@ -374,6 +374,579 @@
   },
   "comparisons": [
     {
+      "id": "app-runtime",
+      "group": "Applications · runtime",
+      "feature": "Broadcaster application runtime and standards basis",
+      "atsc_docs": [
+        "A/344"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/344:2026-04",
+          "clause": "§4 Overview; §5 ATSC Reference Receiver Model; §6 Broadcaster Application Management",
+          "page": "doc p.10–32",
+          "value": "HTML5 Broadcaster Application executed by the receiver's user agent; lifecycle per HELD signaling (A/331 §7.1.8)",
+          "req": "mandatory for interactive services"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0128/R3",
+          "clause": "§5 Part 1 공통 기술; §6 Part 2 애플리케이션 시그널링; §7 Part 3 브라우저 애플리케이션 환경 (참조표준: ETSI TS 102 796 HbbTV, ETSI TS 102 809, OIPF Release 2, W3C HTML5, A/333, A/338)",
+          "page": "doc §5–§7",
+          "value": "HbbTV 2.0-based IBB service: application signaling per ETSI TS 102 809 / TS 102 796 with ROUTE/DASH and MMT carriage",
+          "req": "mandatory for IBB services"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25608:2025 · SBTVD OG-08",
+          "clause": "OG-08 §6 architecture; §7 Ginga Common Core; Annex A NCL 4.0; Annex B; Annex C TV 3.0 WebServices; Annex D NCLua",
+          "page": "OG-08 pdf p.3–38",
+          "value": "Ginga (NCL 4.0 + NCLua + HTML/WebServices) application coding; harmonization with TV 2.X Ginga",
+          "req": "mandatory (ABNT NBR 25608, 528 pp.)"
+        }
+      },
+      "difference": "Three different runtimes: A/344 Broadcaster Application (HTML5 + WebSocket/JSON-RPC), Korea's HbbTV-based IBB, Brazil's Ginga. Only the ATSC signaling substrate (ROUTE/DASH, NRT) is shared.",
+      "impact": "Applications are not portable across the three markets; receivers need market-specific application engines.",
+      "cells": {
+        "TTA": {
+          "rel": "alternative",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "alternative",
+          "conf": "confirmed"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "diff",
+          "text": "HbbTV 2.0-based IBB instead of A/344",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "diff",
+          "text": "Ginga instead of A/344",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [
+        {
+          "label": "TTAK.KO-07.0128/R3 (committee.tta.or.kr)",
+          "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0128%2FR3&nowSu=1"
+        },
+        {
+          "label": "SBTVD OG-08 Application Coding (forumsbtvd.org.br)",
+          "url": "https://forumsbtvd.org.br/tv3-0/"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "app-apis",
+      "group": "Applications · APIs",
+      "feature": "Receiver APIs available to applications",
+      "atsc_docs": [
+        "A/344"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/344:2026-04",
+          "clause": "§8 ATSC 3.0 WebSocket Interface; §9 Supported Methods (JSON-RPC 2.0)",
+          "page": "doc p.33–180",
+          "value": "WebSocket JSON-RPC methods (content recovery, DRM, event stream, media player, receiver settings, caption/audio preferences …)",
+          "req": "mandatory subset"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0128/R3",
+          "clause": "§7.2 브라우저 애플리케이션 (HbbTV/OIPF JavaScript APIs)",
+          "page": "—",
+          "value": "OIPF DAE / HbbTV JavaScript object model",
+          "req": "mandatory subset"
+        },
+        "SBTVD": {
+          "doc": "SBTVD OG-08",
+          "clause": "Annex C.6 TV 3.0 WebServices APIs (client identification, event notification, DTV context, broadcaster tables, media players, geolocation, closed signing, application context cache, audience measurement, remote devices, sensory effects, NRT filters); Annex D NCLua APIs",
+          "page": "OG-08 pdf p.27–38",
+          "value": "REST/WebServices API groups plus NCLua libraries",
+          "req": "mandatory (ABNT NBR 25608)"
+        }
+      },
+      "difference": "API models differ entirely (JSON-RPC over WebSocket vs OIPF/HbbTV DOM objects vs Ginga WebServices/NCLua).",
+      "impact": "No API-level compatibility.",
+      "cells": {
+        "TTA": {
+          "rel": "alternative",
+          "conf": "partial"
+        },
+        "SBTVD": {
+          "rel": "alternative",
+          "conf": "confirmed"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "diff",
+          "text": "Different API model",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "diff",
+          "text": "Different API model",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "app-signaling",
+      "group": "Applications · signaling",
+      "feature": "Application signaling and event delivery",
+      "atsc_docs": [
+        "A/344",
+        "A/337"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/344:2026-04 · A/337:2026-04 · A/331 §7.1.8",
+          "clause": "HELD (HTML Entry pages Location Description); A/337 event delivery (EventStream / emsg)",
+          "page": "—",
+          "value": "HELD in SLS; events via DASH EventStream and emsg boxes",
+          "req": "mandatory for apps"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0128/R3",
+          "clause": "§6 Part 2 애플리케이션 시그널링 (ETSI TS 102 809 AIT-based; ISO/IEC 23009-1 events)",
+          "page": "—",
+          "value": "HbbTV-style application information (AIT) carried over ATSC 3.0 delivery; DASH events",
+          "req": "mandatory for IBB"
+        },
+        "SBTVD": {
+          "doc": "SBTVD OG-08 §10.1 · ABNT NBR 25608:2025",
+          "clause": "Broadcaster Application Location Description (BALD); §8.4 Bootstrap applications",
+          "page": "OG-08 pdf p.14",
+          "value": "BALD signaling for Ginga applications; application catalog bootstrap",
+          "req": "mandatory"
+        }
+      },
+      "difference": "Each market signals applications with its own descriptor (HELD vs AIT vs BALD) although all ride on ATSC 3.0 delivery.",
+      "impact": "Signaling generators must be market-specific.",
+      "cells": {
+        "TTA": {
+          "rel": "alternative",
+          "conf": "partial"
+        },
+        "SBTVD": {
+          "rel": "alternative",
+          "conf": "partial"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "diff",
+          "text": "AIT-based signaling (HbbTV) instead of HELD",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "diff",
+          "text": "BALD signaling (Ginga) instead of HELD",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "app-companion",
+      "group": "Applications · companion",
+      "feature": "Companion device / second screen",
+      "atsc_docs": [
+        "A/338"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/338:2026-04",
+          "clause": "§5 Specification (discovery, WebSocket communication)",
+          "page": "doc p.8–25",
+          "value": "Companion device protocol",
+          "req": "optional"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0128/R3",
+          "clause": "§8 Part 4 컴패니언 스크린 서비스 (참조: OIPF Release 2, ETSI TS 102 796, A/338)",
+          "page": "—",
+          "value": "HbbTV 2.0 companion-screen framework; A/338 listed as a reference",
+          "req": "optional"
+        },
+        "SBTVD": {
+          "doc": "SBTVD OG-08 §9 · Annex C.6.15",
+          "clause": "Remote devices; remote device communication APIs",
+          "page": "OG-08 pdf p.14, p.34",
+          "value": "Ginga remote-device communication",
+          "req": "optional"
+        }
+      },
+      "difference": "Functionally similar goals with different protocols; Korea references A/338 but its normative basis is HbbTV/OIPF.",
+      "impact": "Second-screen apps are market-specific.",
+      "cells": {
+        "TTA": {
+          "rel": "related",
+          "conf": "metadata"
+        },
+        "SBTVD": {
+          "rel": "alternative",
+          "conf": "metadata"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "HbbTV companion framework with A/338 as reference",
+          "req": "optional"
+        },
+        "SBTVD": {
+          "code": "diff",
+          "text": "Ginga remote-device APIs",
+          "req": "optional"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "codec-ref-version",
+      "group": "Presentation · basis",
+      "feature": "Reference editions adopted for video, audio and captions",
+      "atsc_docs": [
+        "A/341",
+        "A/342 Part 3",
+        "A/343"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/341:2026-04 · A/342-3:2026-04 · A/343:2026-04",
+          "clause": "Revision histories",
+          "page": "—",
+          "value": "Current editions (A/341 adds VVC via A/345; A/342-3 includes Baseline and LC profiles)",
+          "req": "baseline"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+          "clause": "§2 인용 표준",
+          "page": "doc p.1 (pdf 13)",
+          "value": "Cites the 2016 Candidate Standards: A/341 (2016-07), A/342 Part 3 (2016-05), A/343 (2016-08), A/332 Proposed Standard (2016-10) — all marked 'work in progress'",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25603/25604/25605:2025 · SBTVD OG-03/04/05",
+          "clause": "ABNT clauses unverified",
+          "page": "—",
+          "value": "Independent TV 3.0 codec standards (VVC+LCEVC video, MPEG-H audio, captions)",
+          "req": "mandatory (ABNT)"
+        }
+      },
+      "difference": "Korea's Part 2 is anchored to the 2016 candidate editions and has been revised only for animated-image captions (R1); ATSC has since finalized and amended these documents. Brazil uses its own ABNT texts.",
+      "impact": "Post-2016 ATSC changes (e.g., A/341 HDR/HFR clarifications, A/342 audio emergency information, A/343 font names) need a clause-level delta check; not itemized here.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "normative",
+          "conf": "unverified"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "2016 candidate-standard basis; later ATSC revisions not carried over",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT texts not read",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [
+        {
+          "label": "TTAK.KO-07.0149/R1 (committee.tta.or.kr)",
+          "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "codec-video-format",
+      "group": "Presentation · video",
+      "feature": "Video formats, codec profile/level and coding constraints",
+      "atsc_docs": [
+        "A/341"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/341:2026-04",
+          "clause": "§6.1 HEVC; §6.2.1 legacy SD, §6.2.2 interlaced HD, §6.2.3 progressive (6.2.3.1 formats, 6.2.3.2 constraints); §6.3.1 spatial scalable; §6.3.4 HFR temporal sub-layering",
+          "page": "doc p.13–24 (pdf 13–24)",
+          "value": "HEVC Main 10 / Scalable Main 10, Main Tier, Level 5.2; ≤ 3840×2160, divisible by 8, square pixels, progressive (plus legacy SD and interlaced HD formats); 60 Hz-region rates 24/1.001…120; 4:2:0; two-layer spatial scalability (×1.5/2/3)",
+          "req": "mandatory (options)"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0149/R1 · MSIT Notice 2023-34",
+          "clause": "§5.2 <표 5-1>, §5.2.1; §5.3.1–5.3.4; Notice Art. 13 ①3",
+          "page": "doc p.6–12 (pdf 14–20)",
+          "value": "HEVC (ISO/IEC 23008-2:2015) Main 10 / Scalable Main 10, Main Tier, Level 5.2; formats limited to 1280×720, 1920×1080, 3840×2160, 16:9, progressive, 4:2:0, 8- or 10-bit, 23.976/24/29.97/30/59.94/60/120/1.001/120 Hz; BT.709 or BT.2020; scalable-coding constraints identical; 120 Hz must use temporal layering when 3840×2160 (mandatory) and must not otherwise",
+          "req": "mandatory; regulation mandates the same profile/level"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25603:2025 · SBTVD OG-03",
+          "clause": "ABNT clause unverified",
+          "page": "—",
+          "value": "VVC (H.266) with LCEVC enhancement; HEVC not used",
+          "req": "mandatory"
+        }
+      },
+      "difference": "Korea adopts the A/341 progressive formats and constraints (selecting HD/UHD progressive formats only — no SD or interlaced HD — and 60 Hz-region rates) and the same profile/level; Korea's rule for HFR temporal layering is stricter (mandatory at 2160p120, prohibited otherwise). Brazil uses a different codec (VVC + LCEVC).",
+      "impact": "Korean and US receivers share the HEVC decoding profile; Korean content is always progressive. Brazilian receivers need VVC/LCEVC decoders.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "alternative",
+          "conf": "confirmed"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "Same codec, profile and constraints; national format subset (progressive only) and HFR layering rule",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "diff",
+          "text": "VVC (+LCEVC) instead of HEVC",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [
+        {
+          "label": "A/341 §6.2.3 (pdf p.16–17)",
+          "url": "https://www.atsc.org/atsc-documents/3412017-video-hevc/"
+        },
+        {
+          "label": "MSIT Notice Art. 13 ①3",
+          "url": "docs/refs/KR_MSIT-Notice-2023-34_Art13.md"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "codec-video-hdr",
+      "group": "Presentation · video",
+      "feature": "HDR / WCG transfer characteristics",
+      "atsc_docs": [
+        "A/341"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/341:2026-04",
+          "clause": "§6.3.2 Specific Constraints Regarding Video Transfer Characteristics",
+          "page": "doc p.18–23",
+          "value": "SDR (BT.709/BT.2020) and HDR with PQ (SMPTE ST 2084 / BT.2100) or HLG (BT.2100); optional metadata (ST 2086, content light level, SL-HDR1 …)",
+          "req": "options"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0149/R1",
+          "clause": "§5.3.5 HDR/WCG 비디오 신호 부호화의 제한 사항 (5.3.5.1 HDR, 5.3.5.2 WCG)",
+          "page": "doc p.~11",
+          "value": "HDR uses HLG or PQ (transfer_characteristics 18 or 14 for HLG); WCG per BT.2020 (colour_primaries)",
+          "req": "options"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25603:2025",
+          "clause": "ABNT clause unverified",
+          "page": "—",
+          "value": "—",
+          "req": "unverified"
+        }
+      },
+      "difference": "Same HDR/WCG toolset (HLG and PQ over BT.2020); detailed metadata constraints (e.g., SL-HDR1, dynamic metadata added to A/341 after 2016) not compared clause by clause.",
+      "impact": "Interoperable at the transfer-function level.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "partial"
+        },
+        "SBTVD": {
+          "rel": "alternative",
+          "conf": "unverified"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "HLG/PQ over BT.2020 in both; later metadata clauses not itemized",
+          "req": "options"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25603 not read",
+          "req": "unverified"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "codec-audio",
+      "group": "Presentation · audio",
+      "feature": "Audio codec, profile/level and stream constraints",
+      "atsc_docs": [
+        "A/342 Part 3",
+        "A/342 Part 1",
+        "A/342 Part 2"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/342-3:2026-04 · A/342-2:2026-04",
+          "clause": "A/342-3 §5.1 (5.1.1 Baseline profile, 5.1.2 Low Complexity profile), §5.2 MHAS / ISOBMFF encapsulation, §5.3 loudness/DRC, §5.4 audio emergency information; A/342-2 AC-4",
+          "page": "A/342-3 doc p.11–16",
+          "value": "Two audio systems (AC-4, MPEG-H); MPEG-H Baseline or LC profile",
+          "req": "one system mandatory per service"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0149/R1 · MSIT Notice 2023-34",
+          "clause": "§6.2 오디오 신호 규격; §6.3 오디오 부호화 (6.3.1 MHAS, 6.3.1.2 ISOBMFF mhm1/mhm2, RAP, configuration change); Notice Art. 13 ①4",
+          "page": "doc p.13–18 (pdf 21–26)",
+          "value": "MPEG-H 3D Audio (ISO/IEC 23008-3:2015 + Amd 3) LC profile Level 1–3 only; 48 kHz; 16/20/24-bit; up to 16 core channels (channels, objects, HOA); MHAS packet rules (no CRC packets, SYNC ignored); mhm1/mhm2; regulation mandates LC profile Level 1–3",
+          "req": "mandatory (single system)"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25604:2025 · SBTVD OG-04",
+          "clause": "ABNT clause unverified; OG-04 (2.0 stereo, 5.1 multichannel …)",
+          "page": "—",
+          "value": "MPEG-H audio",
+          "req": "mandatory"
+        }
+      },
+      "difference": "Korea and Brazil use MPEG-H only (AC-4 not adopted); Korea selects the LC profile (Levels 1–3) among the profiles A/342-3 defines. Stream-level rules in Korea correspond to the A/342-3 candidate text.",
+      "impact": "Receivers for Korea/Brazil need MPEG-H LC decoders only; US receivers additionally support AC-4.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "profile",
+          "conf": "metadata"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "MPEG-H LC profile selected from the defined profiles; MHAS/ISOBMFF rules as in A/342-3",
+          "req": "MPEG-H mandatory; AC-4 not adopted"
+        },
+        "SBTVD": {
+          "code": "partial",
+          "text": "MPEG-H adopted; profile/level constraints not read",
+          "req": "MPEG-H mandatory"
+        }
+      },
+      "evidence": [
+        {
+          "label": "MSIT Notice Art. 13 ①4",
+          "url": "docs/refs/KR_MSIT-Notice-2023-34_Art13.md"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "codec-captions",
+      "group": "Presentation · captions",
+      "feature": "Closed captions and subtitles",
+      "atsc_docs": [
+        "A/343"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/343:2026-04",
+          "clause": "§5 Content essence (IMSC1; 5.1 extensions 3D/HDR-WCG; 5.2 legacy CTA-708 conversion; 5.3 safe title area; 5.4 IMSC1 font names); §6 ISOBMFF packaging; §7 signaling; §8 decoder behaviour",
+          "page": "doc p.10–14",
+          "value": "IMSC1 text and image profiles",
+          "req": "mandatory when captions are provided"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0149/R1",
+          "clause": "§7.1 시스템 구조; §7.2 폐쇄 자막 데이터 규격 (IMSC1 + animated images, APNG); §7.2.1 확장; §7.3 ISOBMFF 패키징; §7.4 시그널링",
+          "page": "doc p.21–27 (pdf 29–35)",
+          "value": "IMSC1 with a Korean extension for animated-image captions (APNG, compatible with PNG image profile); Korean text/fonts",
+          "req": "mandatory when captions are provided"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25605:2025 · SBTVD OG-05 · ABNT NBR 25606:2025 (closed signing)",
+          "clause": "ABNT clauses unverified",
+          "page": "—",
+          "value": "Closed captioning standard (5 pp.) plus a separate closed-signing (sign language) standard",
+          "req": "mandatory (accessibility)"
+        }
+      },
+      "difference": "Korea extends IMSC1 with animated-image (APNG) captions and does not need the CTA-708 legacy conversion; Brazil adds closed signing as a separate standard.",
+      "impact": "Korean animated-image captions are not decodable by receivers implementing plain A/343.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "related",
+          "conf": "unverified"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "IMSC1 core same; APNG animated-image extension",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25605 not read",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
       "id": "phy-ref-versions",
       "group": "Physical layer · basis",
       "feature": "Reference versions adopted",
@@ -1691,6 +2264,267 @@
         "date": "2026-08-31",
         "by": "draft (AI-assisted; human review pending)"
       }
+    },
+    {
+      "id": "stl-ref-version",
+      "group": "STL · basis",
+      "feature": "Reference edition and coverage of A/324 in national documents",
+      "atsc_docs": [
+        "A/324"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/324:2026-04",
+          "clause": "Revision history; §5–§10",
+          "page": "p.ii–iii",
+          "value": "Baseline: A/324:2025-04 (incl. 2025-01 Amd 1 and Corrigendum 1) with references updated 2025-07 and 2026-04 — no technical change after 2025-04",
+          "req": "baseline"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1 · TTAR-07.0026/R1",
+          "clause": "Part 4 §2 인용 표준 (A/324 Candidate Standard revision of A/324:2018, 2020.01); 서문 3.2 비교표 (부록 Ⅰ-2 = A/324 §7, §8 동일(번역)); §1.2 (SFN/STL 분배 인터페이스 언급)",
+          "page": "doc p.5; p.ii–iii; p.2",
+          "value": "Only DSTP (§7) and ALPTP (§8) are translated (부록 Ⅰ-2). Scheduler/BGW management (§5), CTP (§6), STLTP (§9) and transmitter requirements (§10) are not part of the Korean standard; TxID/BSID operation is covered by the technical report TTAR-07.0026/R1",
+          "req": "DSTP/ALPTP normative; STLTP not standardized nationally"
+        },
+        "SBTVD": {
+          "doc": "Anatel Ato nº 2.705/2026 · ABNT NBR 25601:2025",
+          "clause": "Anexo item 4.1 (A/324:2025-07)",
+          "page": "—",
+          "value": "A/324:2025-07 incorporated by reference for transmitters and retransmitters; content identical to the 2026-04 baseline (reference updates only)",
+          "req": "mandatory (regulation)"
+        }
+      },
+      "difference": "Korea standardizes only the data-source side (DSTP/ALPTP, from the 2020 candidate revision) and leaves STL transport, scheduler and transmitter requirements to vendor implementation plus a national TxID/BSID guideline; Brazil incorporates the whole of A/324:2025-07, which is technically identical to the baseline.",
+      "impact": "Korean gateway–exciter links are not bound to STLTP by standard (interoperability relies on A/324 as de facto practice); Brazilian transmitters must implement STLTP per regulation.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "confirmed"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "DSTP/ALPTP translated (2020 CS); STLTP, CTP, scheduler and transmitter clauses not standardized in Korea",
+          "req": "DSTP/ALPTP mandatory"
+        },
+        "SBTVD": {
+          "code": "same",
+          "text": "Referenced edition technically identical to baseline (2025-04 content); ABNT NBR 25601 profile unverified",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [
+        {
+          "label": "TTAK.KO-07.0151/R1 서문 비교표",
+          "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0151%2FR1&nowSu=1"
+        },
+        {
+          "label": "Anatel Ato 2.705/2026",
+          "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "stl-dstp-alptp",
+      "group": "STL · protocols",
+      "feature": "Data Source Transport Protocol (DSTP) and ALP Transport Protocol (ALPTP)",
+      "atsc_docs": [
+        "A/324"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/324:2026-04",
+          "clause": "§7 DSTP (7.1 overview, 7.2 design); §8 ALPTP (8.1, 8.2)",
+          "page": "doc p.71–81 (pdf 78–88)",
+          "value": "RTP-tunneled data-source and ALP packet transport, incl. Emergency Alert wake-up RTP control",
+          "req": "mandatory for the interfaces used"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1",
+          "clause": "부록 Ⅰ-2.1 DSTP (Ⅰ-2.1.1 개요, Ⅰ-2.1.1.1 매핑 설정, Ⅰ-2.1.2 설계, Ⅰ-2.1.2.2 Emergency Alert Wakeup RTP 제어); 부록 Ⅰ-2.2 ALPTP",
+          "page": "doc p.365–379 (pdf 372–386)",
+          "value": "Translation of A/324 CS (2020-01) §7–§8 per the TTA comparison table",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "doc": "A/324:2025-07 (by reference)",
+          "clause": "Anatel Ato 2.705/2026 item 4.1",
+          "page": "—",
+          "value": "Identical to baseline",
+          "req": "mandatory"
+        }
+      },
+      "difference": "Same protocols; Korea's text is the 2020 candidate revision (changes in A/324:2021 → 2025-04 amendments/corrigendum not itemized here).",
+      "impact": "Low — DSTP/ALPTP are gateway-side interfaces.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "partial"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "confirmed"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "Translation of §7–§8; 2021–2025 amendment deltas not yet itemized",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "same",
+          "text": "Incorporated; identical content",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "stl-stltp-sfn",
+      "group": "STL · protocols",
+      "feature": "STLTP, Common Tunneling Protocol, scheduler/BGW management and SFN timing",
+      "atsc_docs": [
+        "A/324"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/324:2026-04",
+          "clause": "§5 Scheduler (5.3 BGW management protocol, 5.5 DSCP); §6 CTP (6.4 tunneled packet security); §9 STLTP (9.2 preamble data generator, 9.3 timing and management, 9.5 channel bonding); §10 transmitter requirements (10.1 timing manager); Annex F MIMO configuration",
+          "page": "doc p.28–100 (pdf 35–109)",
+          "value": "Normative STL transport and SFN timing/management",
+          "req": "mandatory"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1 · MSIT Notice 2023-34",
+          "clause": "Part 4 §1.2 (SFN/STL 분배 인터페이스 존재 언급); Notice Art. 13 ② 1 (SFN 주파수허용편차 ±2.1 Hz)",
+          "page": "doc p.2; docs/refs KR excerpt",
+          "value": "No national STLTP/CTP text; SFN frequency tolerance fixed by regulation (±2.1 Hz)",
+          "req": "not standardized (regulation on SFN tolerance only)"
+        },
+        "SBTVD": {
+          "doc": "A/324:2025-07 (by reference) · Anatel Ato nº 2.705/2026",
+          "clause": "Ato item 4.1; Anexo (transmitter conformity tests)",
+          "page": "—",
+          "value": "STLTP and transmitter requirements incorporated; conformity assessment of transmitters/retransmitters",
+          "req": "mandatory"
+        }
+      },
+      "difference": "Korea has no standard for the studio-to-transmitter link or transmitter timing beyond the regulatory SFN tolerance; Brazil incorporates A/324 in full and tests transmitters against it.",
+      "impact": "Korean broadcasters rely on A/324-compatible equipment de facto; formal conformance is not defined nationally.",
+      "recommendation": "Consider adopting A/324 §9–§10 (STLTP, transmitter requirements) in a future TTA revision or guideline.",
+      "cells": {
+        "TTA": {
+          "rel": "related",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "confirmed"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "none",
+          "text": "No Korean standard for STLTP/CTP/transmitter requirements",
+          "req": "not standardized",
+          "kind": "not-adopted"
+        },
+        "SBTVD": {
+          "code": "same",
+          "text": "Incorporated by regulation",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "stl-txid-bsid",
+      "group": "STL · identification",
+      "feature": "Transmitter identification (TxID) and broadcast stream identifier (BSID) assignment",
+      "atsc_docs": [
+        "A/324",
+        "A/322"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/322:2026-06 Annex N · A/324:2026-04",
+          "clause": "A/322 Annex N (TxID signal, Table N.3.1 injection levels); A/324 §5 (TxID control from BGW), L1D_bsid",
+          "page": "A/322 doc p.253–256",
+          "value": "Gold-code DSBSS RF watermark in the first preamble symbol; injection level codes; BSID in SLT@bsid and L1D_bsid",
+          "req": "TxID optional"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1 · TTAR-07.0026/R1",
+          "clause": "Part 4 부록 Ⅰ-1.12 송신기 식별부호 (translation of Annex N); TTAR §5 (TxID 적용·운용·확인), §6 방송사별 TxID 할당 규칙 (KBS/EBS/OBS, MBC, 민영), §7 BSID 할당 규칙 (DTV TSID 방식, SLT@bsid = L1D_bsid), <표 5-1> recommended maximum injection level per L1 mode, 부록 Ⅱ BSID 할당표",
+          "page": "Part 4 doc p.343–349; TTAR doc p.2–11",
+          "value": "National allocation scheme: 4-digit TxID per broadcaster/region, STL-mode (BGW) or MANUAL-mode activation, ≥ −24 dB recommended in SFN overlap areas; BSID unique per broadcaster following the DTV TSID plan",
+          "req": "TxID optional (activated on demand); BSID mandatory"
+        },
+        "SBTVD": {
+          "doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)",
+          "clause": "Decreto Art. 3º III (Ferramenta de Identificação de Transmissor – TxID)",
+          "page": "docs/refs BR excerpt",
+          "value": "TxID mandated as a TV 3.0 feature; allocation rules not published",
+          "req": "TxID mandatory (decree)"
+        }
+      },
+      "difference": "The TxID mechanism is identical (A/322 Annex N); Korea adds a national allocation and operating guideline (TTAR-07.0026/R1) while keeping TxID optional; Brazil makes TxID mandatory by decree but has no published allocation scheme.",
+      "impact": "Requirement level differs (optional vs mandatory); national numbering plans are needed for interference analysis and SFN tuning.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "confirmed"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "Same mechanism; national allocation guideline",
+          "req": "TxID optional"
+        },
+        "SBTVD": {
+          "code": "same",
+          "text": "Same mechanism; TxID mandatory by decree",
+          "req": "TxID mandatory"
+        }
+      },
+      "evidence": [
+        {
+          "label": "TTAR-07.0026/R1 (committee.tta.or.kr)",
+          "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAR-07.0026%2FR1&nowSu=1"
+        },
+        {
+          "label": "Decreto 12.595/2025 (excerpt)",
+          "url": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
     }
   ],
   "docTitles": {
@@ -2902,8 +3736,8 @@
               "text": "방송신호의 표현 형식은 한국정보통신기술협회가 정한 \"지상파 UHDTV방송 송수신 정합 표준\"에서 규정하는 내용을 따를 것"
             }
           ],
-          "rel": "related",
-          "conf": "metadata"
+          "rel": "profile",
+          "conf": "partial"
         },
         "SBTVD": {
           "docs": [],
@@ -2922,7 +3756,8 @@
               "text": "O padrão tecnológico da TV 3.0 possibilitará: qualidade audiovisual superior; recepção fixa, móvel e portátil; integração entre radiodifusão e internet com interação entre dispositivos; interface baseada em catálogo de aplicativos; segmentação e personalização de conteúdo; uso otimizado do espectro; multiprogramação aprimorada; transmissão de dados como serviço de valor adicionado."
             }
           ],
-          "rel": ""
+          "rel": "related",
+          "conf": "metadata"
         }
       },
       "verdict": {
@@ -2939,8 +3774,8 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "TTA Part 1 plays the role of system requirements; clause-level comparison pending"
+          "code": "partial",
+          "text": "Umbrella TTAK.KO-07.0147 (cites A/300:2020) splits the system into Parts 1–6; Part 1 (0148/R1) adds national service/system requirements (§5: 수신 신호 품질, 계층적 미디어, 재난방송 채널 자동 변경, 이종망 연동, 콘텐츠보호, 3DTV; §6 system requirements) that A/300 does not contain"
         },
         "SBTVD": {
           "code": "review",
@@ -4279,6 +5114,76 @@
             "date": "2026-08-31",
             "by": "draft (AI-assisted; human review pending)"
           }
+        },
+        {
+          "id": "stl-txid-bsid",
+          "group": "STL · identification",
+          "feature": "Transmitter identification (TxID) and broadcast stream identifier (BSID) assignment",
+          "atsc_docs": [
+            "A/324",
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/322:2026-06 Annex N · A/324:2026-04",
+              "clause": "A/322 Annex N (TxID signal, Table N.3.1 injection levels); A/324 §5 (TxID control from BGW), L1D_bsid",
+              "page": "A/322 doc p.253–256",
+              "value": "Gold-code DSBSS RF watermark in the first preamble symbol; injection level codes; BSID in SLT@bsid and L1D_bsid",
+              "req": "TxID optional"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1 · TTAR-07.0026/R1",
+              "clause": "Part 4 부록 Ⅰ-1.12 송신기 식별부호 (translation of Annex N); TTAR §5 (TxID 적용·운용·확인), §6 방송사별 TxID 할당 규칙 (KBS/EBS/OBS, MBC, 민영), §7 BSID 할당 규칙 (DTV TSID 방식, SLT@bsid = L1D_bsid), <표 5-1> recommended maximum injection level per L1 mode, 부록 Ⅱ BSID 할당표",
+              "page": "Part 4 doc p.343–349; TTAR doc p.2–11",
+              "value": "National allocation scheme: 4-digit TxID per broadcaster/region, STL-mode (BGW) or MANUAL-mode activation, ≥ −24 dB recommended in SFN overlap areas; BSID unique per broadcaster following the DTV TSID plan",
+              "req": "TxID optional (activated on demand); BSID mandatory"
+            },
+            "SBTVD": {
+              "doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)",
+              "clause": "Decreto Art. 3º III (Ferramenta de Identificação de Transmissor – TxID)",
+              "page": "docs/refs BR excerpt",
+              "value": "TxID mandated as a TV 3.0 feature; allocation rules not published",
+              "req": "TxID mandatory (decree)"
+            }
+          },
+          "difference": "The TxID mechanism is identical (A/322 Annex N); Korea adds a national allocation and operating guideline (TTAR-07.0026/R1) while keeping TxID optional; Brazil makes TxID mandatory by decree but has no published allocation scheme.",
+          "impact": "Requirement level differs (optional vs mandatory); national numbering plans are needed for interference analysis and SFN tuning.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Same mechanism; national allocation guideline",
+              "req": "TxID optional"
+            },
+            "SBTVD": {
+              "code": "same",
+              "text": "Same mechanism; TxID mandatory by decree",
+              "req": "TxID mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAR-07.0026/R1 (committee.tta.or.kr)",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAR-07.0026%2FR1&nowSu=1"
+            },
+            {
+              "label": "Decreto 12.595/2025 (excerpt)",
+              "url": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
         }
       ]
     },
@@ -4376,8 +5281,8 @@
               "text": "무선설비 기술적 조건: 주파수허용편차(SFN ±2.1 Hz), 전파형식 D7W·점유대역폭 6 ㎒, 대역외 발사강도(별표 20·21), 스퓨리어스(별표 22), PAPR ≤ 13 ㏈, MER ≥ 27 ㏈, 편파면, 실효복사전력, 안테나 지향특성"
             }
           ],
-          "rel": "related",
-          "conf": "metadata"
+          "rel": "profile",
+          "conf": "confirmed"
         },
         "SBTVD": {
           "docs": [
@@ -4410,12 +5315,12 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Gateway/exciter functions in Part 4; STLTP adoption and SFN rules to be compared"
+          "code": "partial",
+          "text": "Only DSTP (§7) and ALPTP (§8) are translated (Part 4 부록 Ⅰ-2, from the 2020 candidate revision); scheduler/BGW management, CTP, STLTP and transmitter requirements are not standardized in Korea — TxID/BSID operation covered by TTAR-07.0026/R1, SFN tolerance by regulation"
         },
         "SBTVD": {
-          "code": "review",
-          "text": "A/324:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); changes between A/324:2025-07 and the baseline A/324:2026-04 not yet compared"
+          "code": "same",
+          "text": "A/324:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); the 2026-04 baseline differs only by reference updates (no technical change since 2025-04); TxID mandatory by decree"
         }
       },
       "chapters": {
@@ -4457,7 +5362,270 @@
             "note": "Next comparison bundle"
           }
         ]
-      }
+      },
+      "comparisons": [
+        {
+          "id": "stl-ref-version",
+          "group": "STL · basis",
+          "feature": "Reference edition and coverage of A/324 in national documents",
+          "atsc_docs": [
+            "A/324"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/324:2026-04",
+              "clause": "Revision history; §5–§10",
+              "page": "p.ii–iii",
+              "value": "Baseline: A/324:2025-04 (incl. 2025-01 Amd 1 and Corrigendum 1) with references updated 2025-07 and 2026-04 — no technical change after 2025-04",
+              "req": "baseline"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1 · TTAR-07.0026/R1",
+              "clause": "Part 4 §2 인용 표준 (A/324 Candidate Standard revision of A/324:2018, 2020.01); 서문 3.2 비교표 (부록 Ⅰ-2 = A/324 §7, §8 동일(번역)); §1.2 (SFN/STL 분배 인터페이스 언급)",
+              "page": "doc p.5; p.ii–iii; p.2",
+              "value": "Only DSTP (§7) and ALPTP (§8) are translated (부록 Ⅰ-2). Scheduler/BGW management (§5), CTP (§6), STLTP (§9) and transmitter requirements (§10) are not part of the Korean standard; TxID/BSID operation is covered by the technical report TTAR-07.0026/R1",
+              "req": "DSTP/ALPTP normative; STLTP not standardized nationally"
+            },
+            "SBTVD": {
+              "doc": "Anatel Ato nº 2.705/2026 · ABNT NBR 25601:2025",
+              "clause": "Anexo item 4.1 (A/324:2025-07)",
+              "page": "—",
+              "value": "A/324:2025-07 incorporated by reference for transmitters and retransmitters; content identical to the 2026-04 baseline (reference updates only)",
+              "req": "mandatory (regulation)"
+            }
+          },
+          "difference": "Korea standardizes only the data-source side (DSTP/ALPTP, from the 2020 candidate revision) and leaves STL transport, scheduler and transmitter requirements to vendor implementation plus a national TxID/BSID guideline; Brazil incorporates the whole of A/324:2025-07, which is technically identical to the baseline.",
+          "impact": "Korean gateway–exciter links are not bound to STLTP by standard (interoperability relies on A/324 as de facto practice); Brazilian transmitters must implement STLTP per regulation.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "DSTP/ALPTP translated (2020 CS); STLTP, CTP, scheduler and transmitter clauses not standardized in Korea",
+              "req": "DSTP/ALPTP mandatory"
+            },
+            "SBTVD": {
+              "code": "same",
+              "text": "Referenced edition technically identical to baseline (2025-04 content); ABNT NBR 25601 profile unverified",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAK.KO-07.0151/R1 서문 비교표",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0151%2FR1&nowSu=1"
+            },
+            {
+              "label": "Anatel Ato 2.705/2026",
+              "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "stl-dstp-alptp",
+          "group": "STL · protocols",
+          "feature": "Data Source Transport Protocol (DSTP) and ALP Transport Protocol (ALPTP)",
+          "atsc_docs": [
+            "A/324"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/324:2026-04",
+              "clause": "§7 DSTP (7.1 overview, 7.2 design); §8 ALPTP (8.1, 8.2)",
+              "page": "doc p.71–81 (pdf 78–88)",
+              "value": "RTP-tunneled data-source and ALP packet transport, incl. Emergency Alert wake-up RTP control",
+              "req": "mandatory for the interfaces used"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1",
+              "clause": "부록 Ⅰ-2.1 DSTP (Ⅰ-2.1.1 개요, Ⅰ-2.1.1.1 매핑 설정, Ⅰ-2.1.2 설계, Ⅰ-2.1.2.2 Emergency Alert Wakeup RTP 제어); 부록 Ⅰ-2.2 ALPTP",
+              "page": "doc p.365–379 (pdf 372–386)",
+              "value": "Translation of A/324 CS (2020-01) §7–§8 per the TTA comparison table",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "A/324:2025-07 (by reference)",
+              "clause": "Anatel Ato 2.705/2026 item 4.1",
+              "page": "—",
+              "value": "Identical to baseline",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Same protocols; Korea's text is the 2020 candidate revision (changes in A/324:2021 → 2025-04 amendments/corrigendum not itemized here).",
+          "impact": "Low — DSTP/ALPTP are gateway-side interfaces.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "partial"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Translation of §7–§8; 2021–2025 amendment deltas not yet itemized",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "same",
+              "text": "Incorporated; identical content",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "stl-stltp-sfn",
+          "group": "STL · protocols",
+          "feature": "STLTP, Common Tunneling Protocol, scheduler/BGW management and SFN timing",
+          "atsc_docs": [
+            "A/324"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/324:2026-04",
+              "clause": "§5 Scheduler (5.3 BGW management protocol, 5.5 DSCP); §6 CTP (6.4 tunneled packet security); §9 STLTP (9.2 preamble data generator, 9.3 timing and management, 9.5 channel bonding); §10 transmitter requirements (10.1 timing manager); Annex F MIMO configuration",
+              "page": "doc p.28–100 (pdf 35–109)",
+              "value": "Normative STL transport and SFN timing/management",
+              "req": "mandatory"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1 · MSIT Notice 2023-34",
+              "clause": "Part 4 §1.2 (SFN/STL 분배 인터페이스 존재 언급); Notice Art. 13 ② 1 (SFN 주파수허용편차 ±2.1 Hz)",
+              "page": "doc p.2; docs/refs KR excerpt",
+              "value": "No national STLTP/CTP text; SFN frequency tolerance fixed by regulation (±2.1 Hz)",
+              "req": "not standardized (regulation on SFN tolerance only)"
+            },
+            "SBTVD": {
+              "doc": "A/324:2025-07 (by reference) · Anatel Ato nº 2.705/2026",
+              "clause": "Ato item 4.1; Anexo (transmitter conformity tests)",
+              "page": "—",
+              "value": "STLTP and transmitter requirements incorporated; conformity assessment of transmitters/retransmitters",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Korea has no standard for the studio-to-transmitter link or transmitter timing beyond the regulatory SFN tolerance; Brazil incorporates A/324 in full and tests transmitters against it.",
+          "impact": "Korean broadcasters rely on A/324-compatible equipment de facto; formal conformance is not defined nationally.",
+          "recommendation": "Consider adopting A/324 §9–§10 (STLTP, transmitter requirements) in a future TTA revision or guideline.",
+          "cells": {
+            "TTA": {
+              "rel": "related",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "none",
+              "text": "No Korean standard for STLTP/CTP/transmitter requirements",
+              "req": "not standardized",
+              "kind": "not-adopted"
+            },
+            "SBTVD": {
+              "code": "same",
+              "text": "Incorporated by regulation",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "stl-txid-bsid",
+          "group": "STL · identification",
+          "feature": "Transmitter identification (TxID) and broadcast stream identifier (BSID) assignment",
+          "atsc_docs": [
+            "A/324",
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/322:2026-06 Annex N · A/324:2026-04",
+              "clause": "A/322 Annex N (TxID signal, Table N.3.1 injection levels); A/324 §5 (TxID control from BGW), L1D_bsid",
+              "page": "A/322 doc p.253–256",
+              "value": "Gold-code DSBSS RF watermark in the first preamble symbol; injection level codes; BSID in SLT@bsid and L1D_bsid",
+              "req": "TxID optional"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1 · TTAR-07.0026/R1",
+              "clause": "Part 4 부록 Ⅰ-1.12 송신기 식별부호 (translation of Annex N); TTAR §5 (TxID 적용·운용·확인), §6 방송사별 TxID 할당 규칙 (KBS/EBS/OBS, MBC, 민영), §7 BSID 할당 규칙 (DTV TSID 방식, SLT@bsid = L1D_bsid), <표 5-1> recommended maximum injection level per L1 mode, 부록 Ⅱ BSID 할당표",
+              "page": "Part 4 doc p.343–349; TTAR doc p.2–11",
+              "value": "National allocation scheme: 4-digit TxID per broadcaster/region, STL-mode (BGW) or MANUAL-mode activation, ≥ −24 dB recommended in SFN overlap areas; BSID unique per broadcaster following the DTV TSID plan",
+              "req": "TxID optional (activated on demand); BSID mandatory"
+            },
+            "SBTVD": {
+              "doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)",
+              "clause": "Decreto Art. 3º III (Ferramenta de Identificação de Transmissor – TxID)",
+              "page": "docs/refs BR excerpt",
+              "value": "TxID mandated as a TV 3.0 feature; allocation rules not published",
+              "req": "TxID mandatory (decree)"
+            }
+          },
+          "difference": "The TxID mechanism is identical (A/322 Annex N); Korea adds a national allocation and operating guideline (TTAR-07.0026/R1) while keeping TxID optional; Brazil makes TxID mandatory by decree but has no published allocation scheme.",
+          "impact": "Requirement level differs (optional vs mandatory); national numbering plans are needed for interference analysis and SFN tuning.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Same mechanism; national allocation guideline",
+              "req": "TxID optional"
+            },
+            "SBTVD": {
+              "code": "same",
+              "text": "Same mechanism; TxID mandatory by decree",
+              "req": "TxID mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAR-07.0026/R1 (committee.tta.or.kr)",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAR-07.0026%2FR1&nowSu=1"
+            },
+            {
+              "label": "Decreto 12.595/2025 (excerpt)",
+              "url": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/325",
@@ -6088,7 +7256,7 @@
             "TTAK.KO-07.0150/R3"
           ],
           "note": "Event provisions in the IBB standard and Part 3 to be confirmed.",
-          "rel": "related",
+          "rel": "alternative",
           "conf": "metadata"
         },
         "SBTVD": {
@@ -6116,14 +7284,77 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "partial",
+          "text": "Event delivery via DASH events / HbbTV application signaling in IBB Part 2; A/337 EventStream/emsg mechanism not adopted as such"
         },
         "SBTVD": {
           "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "text": "Ginga event handling (OG-08) — equivalence not established"
         }
-      }
+      },
+      "comparisons": [
+        {
+          "id": "app-signaling",
+          "group": "Applications · signaling",
+          "feature": "Application signaling and event delivery",
+          "atsc_docs": [
+            "A/344",
+            "A/337"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/344:2026-04 · A/337:2026-04 · A/331 §7.1.8",
+              "clause": "HELD (HTML Entry pages Location Description); A/337 event delivery (EventStream / emsg)",
+              "page": "—",
+              "value": "HELD in SLS; events via DASH EventStream and emsg boxes",
+              "req": "mandatory for apps"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0128/R3",
+              "clause": "§6 Part 2 애플리케이션 시그널링 (ETSI TS 102 809 AIT-based; ISO/IEC 23009-1 events)",
+              "page": "—",
+              "value": "HbbTV-style application information (AIT) carried over ATSC 3.0 delivery; DASH events",
+              "req": "mandatory for IBB"
+            },
+            "SBTVD": {
+              "doc": "SBTVD OG-08 §10.1 · ABNT NBR 25608:2025",
+              "clause": "Broadcaster Application Location Description (BALD); §8.4 Bootstrap applications",
+              "page": "OG-08 pdf p.14",
+              "value": "BALD signaling for Ginga applications; application catalog bootstrap",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Each market signals applications with its own descriptor (HELD vs AIT vs BALD) although all ride on ATSC 3.0 delivery.",
+          "impact": "Signaling generators must be market-specific.",
+          "cells": {
+            "TTA": {
+              "rel": "alternative",
+              "conf": "partial"
+            },
+            "SBTVD": {
+              "rel": "alternative",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "diff",
+              "text": "AIT-based signaling (HbbTV) instead of HELD",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "diff",
+              "text": "BALD signaling (Ginga) instead of HELD",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/338",
@@ -6171,7 +7402,7 @@
               "text": "O padrão tecnológico da TV 3.0 possibilitará: qualidade audiovisual superior; recepção fixa, móvel e portátil; integração entre radiodifusão e internet com interação entre dispositivos; interface baseada em catálogo de aplicativos; segmentação e personalização de conteúdo; uso otimizado do espectro; multiprogramação aprimorada; transmissão de dados como serviço de valor adicionado."
             }
           ],
-          "rel": "related",
+          "rel": "alternative",
           "conf": "metadata",
           "flag": "ABNT clause unverified"
         }
@@ -6190,12 +7421,12 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "partial",
+          "text": "IBB Part 4 companion-screen service on the HbbTV 2.0/OIPF framework; A/338 listed as a reference"
         },
         "SBTVD": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "diff",
+          "text": "Ginga remote-device APIs (OG-08 §9, Annex C.6.15)"
         }
       },
       "chapters": {
@@ -6212,7 +7443,69 @@
             "note": ""
           }
         ]
-      }
+      },
+      "comparisons": [
+        {
+          "id": "app-companion",
+          "group": "Applications · companion",
+          "feature": "Companion device / second screen",
+          "atsc_docs": [
+            "A/338"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/338:2026-04",
+              "clause": "§5 Specification (discovery, WebSocket communication)",
+              "page": "doc p.8–25",
+              "value": "Companion device protocol",
+              "req": "optional"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0128/R3",
+              "clause": "§8 Part 4 컴패니언 스크린 서비스 (참조: OIPF Release 2, ETSI TS 102 796, A/338)",
+              "page": "—",
+              "value": "HbbTV 2.0 companion-screen framework; A/338 listed as a reference",
+              "req": "optional"
+            },
+            "SBTVD": {
+              "doc": "SBTVD OG-08 §9 · Annex C.6.15",
+              "clause": "Remote devices; remote device communication APIs",
+              "page": "OG-08 pdf p.14, p.34",
+              "value": "Ginga remote-device communication",
+              "req": "optional"
+            }
+          },
+          "difference": "Functionally similar goals with different protocols; Korea references A/338 but its normative basis is HbbTV/OIPF.",
+          "impact": "Second-screen apps are market-specific.",
+          "cells": {
+            "TTA": {
+              "rel": "related",
+              "conf": "metadata"
+            },
+            "SBTVD": {
+              "rel": "alternative",
+              "conf": "metadata"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "HbbTV companion framework with A/338 as reference",
+              "req": "optional"
+            },
+            "SBTVD": {
+              "code": "diff",
+              "text": "Ginga remote-device APIs",
+              "req": "optional"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/339",
@@ -6311,7 +7604,7 @@
             }
           ],
           "rel": "profile",
-          "conf": "partial"
+          "conf": "confirmed"
         },
         "SBTVD": {
           "docs": [
@@ -6337,8 +7630,8 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "partial",
-          "text": "HEVC mandated (MSIT Notice Art. 13 ①3: Main 10 / Scalable Main 10, Level 5.2); HDR and frame-rate constraints to be compared"
+          "code": "same",
+          "text": "Part 2 §5 adopts A/341 (2016 CS text): HEVC Main 10 / Scalable Main 10, Main tier, Level 5.2 (also mandated by MSIT Notice Art. 13 ①3); Korean profile selects progressive 720p/1080p/2160p only (no SD/interlaced), BT.709/BT.2020, 4:2:0, 8/10-bit, 23.976–120 Hz; scalable-coding and HFR temporal-layering constraints identical (Korea requires temporal layering for 2160p120)"
         },
         "SBTVD": {
           "code": "diff",
@@ -6392,7 +7685,205 @@
             "note": ""
           }
         ]
-      }
+      },
+      "comparisons": [
+        {
+          "id": "codec-ref-version",
+          "group": "Presentation · basis",
+          "feature": "Reference editions adopted for video, audio and captions",
+          "atsc_docs": [
+            "A/341",
+            "A/342 Part 3",
+            "A/343"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/341:2026-04 · A/342-3:2026-04 · A/343:2026-04",
+              "clause": "Revision histories",
+              "page": "—",
+              "value": "Current editions (A/341 adds VVC via A/345; A/342-3 includes Baseline and LC profiles)",
+              "req": "baseline"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+              "clause": "§2 인용 표준",
+              "page": "doc p.1 (pdf 13)",
+              "value": "Cites the 2016 Candidate Standards: A/341 (2016-07), A/342 Part 3 (2016-05), A/343 (2016-08), A/332 Proposed Standard (2016-10) — all marked 'work in progress'",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25603/25604/25605:2025 · SBTVD OG-03/04/05",
+              "clause": "ABNT clauses unverified",
+              "page": "—",
+              "value": "Independent TV 3.0 codec standards (VVC+LCEVC video, MPEG-H audio, captions)",
+              "req": "mandatory (ABNT)"
+            }
+          },
+          "difference": "Korea's Part 2 is anchored to the 2016 candidate editions and has been revised only for animated-image captions (R1); ATSC has since finalized and amended these documents. Brazil uses its own ABNT texts.",
+          "impact": "Post-2016 ATSC changes (e.g., A/341 HDR/HFR clarifications, A/342 audio emergency information, A/343 font names) need a clause-level delta check; not itemized here.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "normative",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "2016 candidate-standard basis; later ATSC revisions not carried over",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT texts not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAK.KO-07.0149/R1 (committee.tta.or.kr)",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "codec-video-format",
+          "group": "Presentation · video",
+          "feature": "Video formats, codec profile/level and coding constraints",
+          "atsc_docs": [
+            "A/341"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/341:2026-04",
+              "clause": "§6.1 HEVC; §6.2.1 legacy SD, §6.2.2 interlaced HD, §6.2.3 progressive (6.2.3.1 formats, 6.2.3.2 constraints); §6.3.1 spatial scalable; §6.3.4 HFR temporal sub-layering",
+              "page": "doc p.13–24 (pdf 13–24)",
+              "value": "HEVC Main 10 / Scalable Main 10, Main Tier, Level 5.2; ≤ 3840×2160, divisible by 8, square pixels, progressive (plus legacy SD and interlaced HD formats); 60 Hz-region rates 24/1.001…120; 4:2:0; two-layer spatial scalability (×1.5/2/3)",
+              "req": "mandatory (options)"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0149/R1 · MSIT Notice 2023-34",
+              "clause": "§5.2 <표 5-1>, §5.2.1; §5.3.1–5.3.4; Notice Art. 13 ①3",
+              "page": "doc p.6–12 (pdf 14–20)",
+              "value": "HEVC (ISO/IEC 23008-2:2015) Main 10 / Scalable Main 10, Main Tier, Level 5.2; formats limited to 1280×720, 1920×1080, 3840×2160, 16:9, progressive, 4:2:0, 8- or 10-bit, 23.976/24/29.97/30/59.94/60/120/1.001/120 Hz; BT.709 or BT.2020; scalable-coding constraints identical; 120 Hz must use temporal layering when 3840×2160 (mandatory) and must not otherwise",
+              "req": "mandatory; regulation mandates the same profile/level"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25603:2025 · SBTVD OG-03",
+              "clause": "ABNT clause unverified",
+              "page": "—",
+              "value": "VVC (H.266) with LCEVC enhancement; HEVC not used",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Korea adopts the A/341 progressive formats and constraints (selecting HD/UHD progressive formats only — no SD or interlaced HD — and 60 Hz-region rates) and the same profile/level; Korea's rule for HFR temporal layering is stricter (mandatory at 2160p120, prohibited otherwise). Brazil uses a different codec (VVC + LCEVC).",
+          "impact": "Korean and US receivers share the HEVC decoding profile; Korean content is always progressive. Brazilian receivers need VVC/LCEVC decoders.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "alternative",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Same codec, profile and constraints; national format subset (progressive only) and HFR layering rule",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "diff",
+              "text": "VVC (+LCEVC) instead of HEVC",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "A/341 §6.2.3 (pdf p.16–17)",
+              "url": "https://www.atsc.org/atsc-documents/3412017-video-hevc/"
+            },
+            {
+              "label": "MSIT Notice Art. 13 ①3",
+              "url": "docs/refs/KR_MSIT-Notice-2023-34_Art13.md"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "codec-video-hdr",
+          "group": "Presentation · video",
+          "feature": "HDR / WCG transfer characteristics",
+          "atsc_docs": [
+            "A/341"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/341:2026-04",
+              "clause": "§6.3.2 Specific Constraints Regarding Video Transfer Characteristics",
+              "page": "doc p.18–23",
+              "value": "SDR (BT.709/BT.2020) and HDR with PQ (SMPTE ST 2084 / BT.2100) or HLG (BT.2100); optional metadata (ST 2086, content light level, SL-HDR1 …)",
+              "req": "options"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0149/R1",
+              "clause": "§5.3.5 HDR/WCG 비디오 신호 부호화의 제한 사항 (5.3.5.1 HDR, 5.3.5.2 WCG)",
+              "page": "doc p.~11",
+              "value": "HDR uses HLG or PQ (transfer_characteristics 18 or 14 for HLG); WCG per BT.2020 (colour_primaries)",
+              "req": "options"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25603:2025",
+              "clause": "ABNT clause unverified",
+              "page": "—",
+              "value": "—",
+              "req": "unverified"
+            }
+          },
+          "difference": "Same HDR/WCG toolset (HLG and PQ over BT.2020); detailed metadata constraints (e.g., SL-HDR1, dynamic metadata added to A/341 after 2016) not compared clause by clause.",
+          "impact": "Interoperable at the transfer-function level.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "partial"
+            },
+            "SBTVD": {
+              "rel": "alternative",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "HLG/PQ over BT.2020 in both; later metadata clauses not itemized",
+              "req": "options"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT NBR 25603 not read",
+              "req": "unverified"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/342 Part 1",
@@ -6491,7 +7982,76 @@
             "note": ""
           }
         ]
-      }
+      },
+      "comparisons": [
+        {
+          "id": "codec-audio",
+          "group": "Presentation · audio",
+          "feature": "Audio codec, profile/level and stream constraints",
+          "atsc_docs": [
+            "A/342 Part 3",
+            "A/342 Part 1",
+            "A/342 Part 2"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/342-3:2026-04 · A/342-2:2026-04",
+              "clause": "A/342-3 §5.1 (5.1.1 Baseline profile, 5.1.2 Low Complexity profile), §5.2 MHAS / ISOBMFF encapsulation, §5.3 loudness/DRC, §5.4 audio emergency information; A/342-2 AC-4",
+              "page": "A/342-3 doc p.11–16",
+              "value": "Two audio systems (AC-4, MPEG-H); MPEG-H Baseline or LC profile",
+              "req": "one system mandatory per service"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0149/R1 · MSIT Notice 2023-34",
+              "clause": "§6.2 오디오 신호 규격; §6.3 오디오 부호화 (6.3.1 MHAS, 6.3.1.2 ISOBMFF mhm1/mhm2, RAP, configuration change); Notice Art. 13 ①4",
+              "page": "doc p.13–18 (pdf 21–26)",
+              "value": "MPEG-H 3D Audio (ISO/IEC 23008-3:2015 + Amd 3) LC profile Level 1–3 only; 48 kHz; 16/20/24-bit; up to 16 core channels (channels, objects, HOA); MHAS packet rules (no CRC packets, SYNC ignored); mhm1/mhm2; regulation mandates LC profile Level 1–3",
+              "req": "mandatory (single system)"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25604:2025 · SBTVD OG-04",
+              "clause": "ABNT clause unverified; OG-04 (2.0 stereo, 5.1 multichannel …)",
+              "page": "—",
+              "value": "MPEG-H audio",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Korea and Brazil use MPEG-H only (AC-4 not adopted); Korea selects the LC profile (Levels 1–3) among the profiles A/342-3 defines. Stream-level rules in Korea correspond to the A/342-3 candidate text.",
+          "impact": "Receivers for Korea/Brazil need MPEG-H LC decoders only; US receivers additionally support AC-4.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "profile",
+              "conf": "metadata"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "MPEG-H LC profile selected from the defined profiles; MHAS/ISOBMFF rules as in A/342-3",
+              "req": "MPEG-H mandatory; AC-4 not adopted"
+            },
+            "SBTVD": {
+              "code": "partial",
+              "text": "MPEG-H adopted; profile/level constraints not read",
+              "req": "MPEG-H mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "MSIT Notice Art. 13 ①4",
+              "url": "docs/refs/KR_MSIT-Notice-2023-34_Art13.md"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/342 Part 2",
@@ -6566,7 +8126,76 @@
             "note": ""
           }
         ]
-      }
+      },
+      "comparisons": [
+        {
+          "id": "codec-audio",
+          "group": "Presentation · audio",
+          "feature": "Audio codec, profile/level and stream constraints",
+          "atsc_docs": [
+            "A/342 Part 3",
+            "A/342 Part 1",
+            "A/342 Part 2"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/342-3:2026-04 · A/342-2:2026-04",
+              "clause": "A/342-3 §5.1 (5.1.1 Baseline profile, 5.1.2 Low Complexity profile), §5.2 MHAS / ISOBMFF encapsulation, §5.3 loudness/DRC, §5.4 audio emergency information; A/342-2 AC-4",
+              "page": "A/342-3 doc p.11–16",
+              "value": "Two audio systems (AC-4, MPEG-H); MPEG-H Baseline or LC profile",
+              "req": "one system mandatory per service"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0149/R1 · MSIT Notice 2023-34",
+              "clause": "§6.2 오디오 신호 규격; §6.3 오디오 부호화 (6.3.1 MHAS, 6.3.1.2 ISOBMFF mhm1/mhm2, RAP, configuration change); Notice Art. 13 ①4",
+              "page": "doc p.13–18 (pdf 21–26)",
+              "value": "MPEG-H 3D Audio (ISO/IEC 23008-3:2015 + Amd 3) LC profile Level 1–3 only; 48 kHz; 16/20/24-bit; up to 16 core channels (channels, objects, HOA); MHAS packet rules (no CRC packets, SYNC ignored); mhm1/mhm2; regulation mandates LC profile Level 1–3",
+              "req": "mandatory (single system)"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25604:2025 · SBTVD OG-04",
+              "clause": "ABNT clause unverified; OG-04 (2.0 stereo, 5.1 multichannel …)",
+              "page": "—",
+              "value": "MPEG-H audio",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Korea and Brazil use MPEG-H only (AC-4 not adopted); Korea selects the LC profile (Levels 1–3) among the profiles A/342-3 defines. Stream-level rules in Korea correspond to the A/342-3 candidate text.",
+          "impact": "Receivers for Korea/Brazil need MPEG-H LC decoders only; US receivers additionally support AC-4.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "profile",
+              "conf": "metadata"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "MPEG-H LC profile selected from the defined profiles; MHAS/ISOBMFF rules as in A/342-3",
+              "req": "MPEG-H mandatory; AC-4 not adopted"
+            },
+            "SBTVD": {
+              "code": "partial",
+              "text": "MPEG-H adopted; profile/level constraints not read",
+              "req": "MPEG-H mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "MSIT Notice Art. 13 ①4",
+              "url": "docs/refs/KR_MSIT-Notice-2023-34_Art13.md"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/342 Part 3",
@@ -6607,7 +8236,7 @@
             }
           ],
           "rel": "profile",
-          "conf": "partial"
+          "conf": "confirmed"
         },
         "SBTVD": {
           "docs": [
@@ -6634,12 +8263,12 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "partial",
-          "text": "MPEG-H LC profile, Level 1–3 mandated (MSIT Notice Art. 13 ①4); profile/level table vs A/342-3 to be compared"
+          "code": "same",
+          "text": "Part 2 §6 adopts A/342-3 (2016 CS text): MPEG-H 3D Audio LC profile Level 1–3 selected (A/342-3 also defines the Baseline profile), 48 kHz, up to 16 core channels, MHAS packet rules, mhm1/mhm2 ISOBMFF encapsulation; MSIT Notice Art. 13 ①4 mandates the same"
         },
         "SBTVD": {
           "code": "partial",
-          "text": "MPEG-H adopted (ABNT NBR 25604); profile constraints unverified"
+          "text": "MPEG-H adopted (ABNT NBR 25604; OG-04 profiles 2.0/5.1 …); profile constraints unverified"
         }
       },
       "chapters": {
@@ -6672,7 +8301,143 @@
             "note": ""
           }
         ]
-      }
+      },
+      "comparisons": [
+        {
+          "id": "codec-ref-version",
+          "group": "Presentation · basis",
+          "feature": "Reference editions adopted for video, audio and captions",
+          "atsc_docs": [
+            "A/341",
+            "A/342 Part 3",
+            "A/343"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/341:2026-04 · A/342-3:2026-04 · A/343:2026-04",
+              "clause": "Revision histories",
+              "page": "—",
+              "value": "Current editions (A/341 adds VVC via A/345; A/342-3 includes Baseline and LC profiles)",
+              "req": "baseline"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+              "clause": "§2 인용 표준",
+              "page": "doc p.1 (pdf 13)",
+              "value": "Cites the 2016 Candidate Standards: A/341 (2016-07), A/342 Part 3 (2016-05), A/343 (2016-08), A/332 Proposed Standard (2016-10) — all marked 'work in progress'",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25603/25604/25605:2025 · SBTVD OG-03/04/05",
+              "clause": "ABNT clauses unverified",
+              "page": "—",
+              "value": "Independent TV 3.0 codec standards (VVC+LCEVC video, MPEG-H audio, captions)",
+              "req": "mandatory (ABNT)"
+            }
+          },
+          "difference": "Korea's Part 2 is anchored to the 2016 candidate editions and has been revised only for animated-image captions (R1); ATSC has since finalized and amended these documents. Brazil uses its own ABNT texts.",
+          "impact": "Post-2016 ATSC changes (e.g., A/341 HDR/HFR clarifications, A/342 audio emergency information, A/343 font names) need a clause-level delta check; not itemized here.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "normative",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "2016 candidate-standard basis; later ATSC revisions not carried over",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT texts not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAK.KO-07.0149/R1 (committee.tta.or.kr)",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "codec-audio",
+          "group": "Presentation · audio",
+          "feature": "Audio codec, profile/level and stream constraints",
+          "atsc_docs": [
+            "A/342 Part 3",
+            "A/342 Part 1",
+            "A/342 Part 2"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/342-3:2026-04 · A/342-2:2026-04",
+              "clause": "A/342-3 §5.1 (5.1.1 Baseline profile, 5.1.2 Low Complexity profile), §5.2 MHAS / ISOBMFF encapsulation, §5.3 loudness/DRC, §5.4 audio emergency information; A/342-2 AC-4",
+              "page": "A/342-3 doc p.11–16",
+              "value": "Two audio systems (AC-4, MPEG-H); MPEG-H Baseline or LC profile",
+              "req": "one system mandatory per service"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0149/R1 · MSIT Notice 2023-34",
+              "clause": "§6.2 오디오 신호 규격; §6.3 오디오 부호화 (6.3.1 MHAS, 6.3.1.2 ISOBMFF mhm1/mhm2, RAP, configuration change); Notice Art. 13 ①4",
+              "page": "doc p.13–18 (pdf 21–26)",
+              "value": "MPEG-H 3D Audio (ISO/IEC 23008-3:2015 + Amd 3) LC profile Level 1–3 only; 48 kHz; 16/20/24-bit; up to 16 core channels (channels, objects, HOA); MHAS packet rules (no CRC packets, SYNC ignored); mhm1/mhm2; regulation mandates LC profile Level 1–3",
+              "req": "mandatory (single system)"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25604:2025 · SBTVD OG-04",
+              "clause": "ABNT clause unverified; OG-04 (2.0 stereo, 5.1 multichannel …)",
+              "page": "—",
+              "value": "MPEG-H audio",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Korea and Brazil use MPEG-H only (AC-4 not adopted); Korea selects the LC profile (Levels 1–3) among the profiles A/342-3 defines. Stream-level rules in Korea correspond to the A/342-3 candidate text.",
+          "impact": "Receivers for Korea/Brazil need MPEG-H LC decoders only; US receivers additionally support AC-4.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "profile",
+              "conf": "metadata"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "MPEG-H LC profile selected from the defined profiles; MHAS/ISOBMFF rules as in A/342-3",
+              "req": "MPEG-H mandatory; AC-4 not adopted"
+            },
+            "SBTVD": {
+              "code": "partial",
+              "text": "MPEG-H adopted; profile/level constraints not read",
+              "req": "MPEG-H mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "MSIT Notice Art. 13 ①4",
+              "url": "docs/refs/KR_MSIT-Notice-2023-34_Art13.md"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/343",
@@ -6707,8 +8472,8 @@
               "text": "방송신호의 표현 형식은 한국정보통신기술협회가 정한 \"지상파 UHDTV방송 송수신 정합 표준\"에서 규정하는 내용을 따를 것"
             }
           ],
-          "rel": "related",
-          "conf": "metadata"
+          "rel": "profile",
+          "conf": "confirmed"
         },
         "SBTVD": {
           "docs": [
@@ -6735,12 +8500,12 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Caption provisions of Part 2 (Korean fonts, character codes) to be compared"
+          "code": "partial",
+          "text": "Part 2 §7 adopts A/343 (2016 CS): IMSC1 captions, ISOBMFF packaging, signaling; Korean extension: animated-image (APNG) captions (§7.2, §7.2.1); CTA-708 legacy conversion not applicable"
         },
         "SBTVD": {
           "code": "review",
-          "text": "ABNT NBR 25605 closed captioning — clause comparison pending"
+          "text": "ABNT NBR 25605 closed captioning — clause comparison pending; closed signing (ABNT NBR 25606) is Brazil-only"
         }
       },
       "chapters": {
@@ -6781,7 +8546,136 @@
             "note": ""
           }
         ]
-      }
+      },
+      "comparisons": [
+        {
+          "id": "codec-ref-version",
+          "group": "Presentation · basis",
+          "feature": "Reference editions adopted for video, audio and captions",
+          "atsc_docs": [
+            "A/341",
+            "A/342 Part 3",
+            "A/343"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/341:2026-04 · A/342-3:2026-04 · A/343:2026-04",
+              "clause": "Revision histories",
+              "page": "—",
+              "value": "Current editions (A/341 adds VVC via A/345; A/342-3 includes Baseline and LC profiles)",
+              "req": "baseline"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+              "clause": "§2 인용 표준",
+              "page": "doc p.1 (pdf 13)",
+              "value": "Cites the 2016 Candidate Standards: A/341 (2016-07), A/342 Part 3 (2016-05), A/343 (2016-08), A/332 Proposed Standard (2016-10) — all marked 'work in progress'",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25603/25604/25605:2025 · SBTVD OG-03/04/05",
+              "clause": "ABNT clauses unverified",
+              "page": "—",
+              "value": "Independent TV 3.0 codec standards (VVC+LCEVC video, MPEG-H audio, captions)",
+              "req": "mandatory (ABNT)"
+            }
+          },
+          "difference": "Korea's Part 2 is anchored to the 2016 candidate editions and has been revised only for animated-image captions (R1); ATSC has since finalized and amended these documents. Brazil uses its own ABNT texts.",
+          "impact": "Post-2016 ATSC changes (e.g., A/341 HDR/HFR clarifications, A/342 audio emergency information, A/343 font names) need a clause-level delta check; not itemized here.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "normative",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "2016 candidate-standard basis; later ATSC revisions not carried over",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT texts not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAK.KO-07.0149/R1 (committee.tta.or.kr)",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "codec-captions",
+          "group": "Presentation · captions",
+          "feature": "Closed captions and subtitles",
+          "atsc_docs": [
+            "A/343"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/343:2026-04",
+              "clause": "§5 Content essence (IMSC1; 5.1 extensions 3D/HDR-WCG; 5.2 legacy CTA-708 conversion; 5.3 safe title area; 5.4 IMSC1 font names); §6 ISOBMFF packaging; §7 signaling; §8 decoder behaviour",
+              "page": "doc p.10–14",
+              "value": "IMSC1 text and image profiles",
+              "req": "mandatory when captions are provided"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0149/R1",
+              "clause": "§7.1 시스템 구조; §7.2 폐쇄 자막 데이터 규격 (IMSC1 + animated images, APNG); §7.2.1 확장; §7.3 ISOBMFF 패키징; §7.4 시그널링",
+              "page": "doc p.21–27 (pdf 29–35)",
+              "value": "IMSC1 with a Korean extension for animated-image captions (APNG, compatible with PNG image profile); Korean text/fonts",
+              "req": "mandatory when captions are provided"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25605:2025 · SBTVD OG-05 · ABNT NBR 25606:2025 (closed signing)",
+              "clause": "ABNT clauses unverified",
+              "page": "—",
+              "value": "Closed captioning standard (5 pp.) plus a separate closed-signing (sign language) standard",
+              "req": "mandatory (accessibility)"
+            }
+          },
+          "difference": "Korea extends IMSC1 with animated-image (APNG) captions and does not need the CTA-708 legacy conversion; Brazil adds closed signing as a separate standard.",
+          "impact": "Korean animated-image captions are not decodable by receivers implementing plain A/343.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "IMSC1 core same; APNG animated-image extension",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT NBR 25605 not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/344",
@@ -6818,7 +8712,7 @@
           ],
           "note": "Terrestrial UHD IBB service — HbbTV 2.0-based browser environment.",
           "rel": "alternative",
-          "conf": "partial"
+          "conf": "confirmed"
         },
         "SBTVD": {
           "docs": [
@@ -6853,11 +8747,11 @@
       "verdicts": {
         "TTA": {
           "code": "diff",
-          "text": "HbbTV 2.0-based IBB (TTAK.KO-07.0128/R3) instead of the A/344 Broadcaster Application"
+          "text": "HbbTV 2.0-based IBB (TTAK.KO-07.0128/R3: ETSI TS 102 796 / TS 102 809, OIPF, HTML5) instead of the A/344 Broadcaster Application — different runtime, signaling (AIT vs HELD) and APIs"
         },
         "SBTVD": {
           "code": "diff",
-          "text": "Ginga-based application coding (ABNT NBR 25608) instead of A/344"
+          "text": "Ginga-based application coding (ABNT NBR 25608; OG-08: NCL 4.0, NCLua, WebServices APIs, BALD signaling, application catalog) instead of A/344"
         }
       },
       "chapters": {
@@ -6891,7 +8785,199 @@
             "note": "Application catalog mandated by Decreto 12.595/2025 Art. 5º IV"
           }
         ]
-      }
+      },
+      "comparisons": [
+        {
+          "id": "app-runtime",
+          "group": "Applications · runtime",
+          "feature": "Broadcaster application runtime and standards basis",
+          "atsc_docs": [
+            "A/344"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/344:2026-04",
+              "clause": "§4 Overview; §5 ATSC Reference Receiver Model; §6 Broadcaster Application Management",
+              "page": "doc p.10–32",
+              "value": "HTML5 Broadcaster Application executed by the receiver's user agent; lifecycle per HELD signaling (A/331 §7.1.8)",
+              "req": "mandatory for interactive services"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0128/R3",
+              "clause": "§5 Part 1 공통 기술; §6 Part 2 애플리케이션 시그널링; §7 Part 3 브라우저 애플리케이션 환경 (참조표준: ETSI TS 102 796 HbbTV, ETSI TS 102 809, OIPF Release 2, W3C HTML5, A/333, A/338)",
+              "page": "doc §5–§7",
+              "value": "HbbTV 2.0-based IBB service: application signaling per ETSI TS 102 809 / TS 102 796 with ROUTE/DASH and MMT carriage",
+              "req": "mandatory for IBB services"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25608:2025 · SBTVD OG-08",
+              "clause": "OG-08 §6 architecture; §7 Ginga Common Core; Annex A NCL 4.0; Annex B; Annex C TV 3.0 WebServices; Annex D NCLua",
+              "page": "OG-08 pdf p.3–38",
+              "value": "Ginga (NCL 4.0 + NCLua + HTML/WebServices) application coding; harmonization with TV 2.X Ginga",
+              "req": "mandatory (ABNT NBR 25608, 528 pp.)"
+            }
+          },
+          "difference": "Three different runtimes: A/344 Broadcaster Application (HTML5 + WebSocket/JSON-RPC), Korea's HbbTV-based IBB, Brazil's Ginga. Only the ATSC signaling substrate (ROUTE/DASH, NRT) is shared.",
+          "impact": "Applications are not portable across the three markets; receivers need market-specific application engines.",
+          "cells": {
+            "TTA": {
+              "rel": "alternative",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "alternative",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "diff",
+              "text": "HbbTV 2.0-based IBB instead of A/344",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "diff",
+              "text": "Ginga instead of A/344",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAK.KO-07.0128/R3 (committee.tta.or.kr)",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0128%2FR3&nowSu=1"
+            },
+            {
+              "label": "SBTVD OG-08 Application Coding (forumsbtvd.org.br)",
+              "url": "https://forumsbtvd.org.br/tv3-0/"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "app-apis",
+          "group": "Applications · APIs",
+          "feature": "Receiver APIs available to applications",
+          "atsc_docs": [
+            "A/344"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/344:2026-04",
+              "clause": "§8 ATSC 3.0 WebSocket Interface; §9 Supported Methods (JSON-RPC 2.0)",
+              "page": "doc p.33–180",
+              "value": "WebSocket JSON-RPC methods (content recovery, DRM, event stream, media player, receiver settings, caption/audio preferences …)",
+              "req": "mandatory subset"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0128/R3",
+              "clause": "§7.2 브라우저 애플리케이션 (HbbTV/OIPF JavaScript APIs)",
+              "page": "—",
+              "value": "OIPF DAE / HbbTV JavaScript object model",
+              "req": "mandatory subset"
+            },
+            "SBTVD": {
+              "doc": "SBTVD OG-08",
+              "clause": "Annex C.6 TV 3.0 WebServices APIs (client identification, event notification, DTV context, broadcaster tables, media players, geolocation, closed signing, application context cache, audience measurement, remote devices, sensory effects, NRT filters); Annex D NCLua APIs",
+              "page": "OG-08 pdf p.27–38",
+              "value": "REST/WebServices API groups plus NCLua libraries",
+              "req": "mandatory (ABNT NBR 25608)"
+            }
+          },
+          "difference": "API models differ entirely (JSON-RPC over WebSocket vs OIPF/HbbTV DOM objects vs Ginga WebServices/NCLua).",
+          "impact": "No API-level compatibility.",
+          "cells": {
+            "TTA": {
+              "rel": "alternative",
+              "conf": "partial"
+            },
+            "SBTVD": {
+              "rel": "alternative",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "diff",
+              "text": "Different API model",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "diff",
+              "text": "Different API model",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "app-signaling",
+          "group": "Applications · signaling",
+          "feature": "Application signaling and event delivery",
+          "atsc_docs": [
+            "A/344",
+            "A/337"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/344:2026-04 · A/337:2026-04 · A/331 §7.1.8",
+              "clause": "HELD (HTML Entry pages Location Description); A/337 event delivery (EventStream / emsg)",
+              "page": "—",
+              "value": "HELD in SLS; events via DASH EventStream and emsg boxes",
+              "req": "mandatory for apps"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0128/R3",
+              "clause": "§6 Part 2 애플리케이션 시그널링 (ETSI TS 102 809 AIT-based; ISO/IEC 23009-1 events)",
+              "page": "—",
+              "value": "HbbTV-style application information (AIT) carried over ATSC 3.0 delivery; DASH events",
+              "req": "mandatory for IBB"
+            },
+            "SBTVD": {
+              "doc": "SBTVD OG-08 §10.1 · ABNT NBR 25608:2025",
+              "clause": "Broadcaster Application Location Description (BALD); §8.4 Bootstrap applications",
+              "page": "OG-08 pdf p.14",
+              "value": "BALD signaling for Ginga applications; application catalog bootstrap",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Each market signals applications with its own descriptor (HELD vs AIT vs BALD) although all ride on ATSC 3.0 delivery.",
+          "impact": "Signaling generators must be market-specific.",
+          "cells": {
+            "TTA": {
+              "rel": "alternative",
+              "conf": "partial"
+            },
+            "SBTVD": {
+              "rel": "alternative",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "diff",
+              "text": "AIT-based signaling (HbbTV) instead of HELD",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "diff",
+              "text": "BALD signaling (Ginga) instead of HELD",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/345",
@@ -7328,7 +9414,7 @@
               "text": "지상파 방송사업자가 콘텐츠 보호기술을 도입하고자 하는 경우 … 수상기 제조사와 협의를 거쳐 지상파 UHDTV 방송을 시청할 수 있는 조치가 수반된 경우에 한할 것"
             }
           ],
-          "rel": "related",
+          "rel": "alternative",
           "conf": "metadata"
         },
         "SBTVD": {
@@ -7351,13 +9437,13 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "diff",
+          "text": "Korean content protection (Part 5, SimulCrypt/CENC basis) does not follow the A/360/A/361 security model"
         },
         "SBTVD": {
           "code": "none",
           "text": "",
-          "kind": "pending"
+          "kind": "not-found"
         }
       }
     },
@@ -7394,7 +9480,7 @@
               "text": "지상파 방송사업자가 콘텐츠 보호기술을 도입하고자 하는 경우 … 수상기 제조사와 협의를 거쳐 지상파 UHDTV 방송을 시청할 수 있는 조치가 수반된 경우에 한할 것"
             }
           ],
-          "rel": "related",
+          "rel": "alternative",
           "conf": "metadata"
         },
         "SBTVD": {
@@ -7417,13 +9503,13 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "diff",
+          "text": "DRM handled by the Korean Part 5 mechanism (CENC, UHDCP/DP, CA Token download platform) rather than A/362"
         },
         "SBTVD": {
           "code": "none",
           "text": "",
-          "kind": "pending"
+          "kind": "not-found"
         }
       }
     },
@@ -7620,7 +9706,7 @@
             "TTAK.KO-07.0128/R3"
           ],
           "note": "",
-          "rel": "related",
+          "rel": "alternative",
           "conf": "metadata"
         },
         "SBTVD": {
@@ -7628,7 +9714,7 @@
             "SBTVD OG-08"
           ],
           "note": "Application coding operational guideline.",
-          "rel": "related",
+          "rel": "alternative",
           "conf": "metadata"
         }
       },
@@ -7646,12 +9732,12 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "diff",
+          "text": "Interactive content in Korea follows the HbbTV-based IBB standard, not A/344/A/381"
         },
         "SBTVD": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "diff",
+          "text": "Ginga application guideline (OG-08) instead of A/344/A/381"
         }
       }
     },

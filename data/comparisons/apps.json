@@ -1,0 +1,65 @@
+[
+  {
+    "id": "app-runtime", "group": "Applications · runtime", "feature": "Broadcaster application runtime and standards basis",
+    "atsc_docs": ["A/344"],
+    "sides": {
+      "ATSC": {"doc": "A/344:2026-04", "clause": "§4 Overview; §5 ATSC Reference Receiver Model; §6 Broadcaster Application Management", "page": "doc p.10–32", "value": "HTML5 Broadcaster Application executed by the receiver's user agent; lifecycle per HELD signaling (A/331 §7.1.8)", "req": "mandatory for interactive services"},
+      "TTA": {"doc": "TTAK.KO-07.0128/R3", "clause": "§5 Part 1 공통 기술; §6 Part 2 애플리케이션 시그널링; §7 Part 3 브라우저 애플리케이션 환경 (참조표준: ETSI TS 102 796 HbbTV, ETSI TS 102 809, OIPF Release 2, W3C HTML5, A/333, A/338)", "page": "doc §5–§7", "value": "HbbTV 2.0-based IBB service: application signaling per ETSI TS 102 809 / TS 102 796 with ROUTE/DASH and MMT carriage", "req": "mandatory for IBB services"},
+      "SBTVD": {"doc": "ABNT NBR 25608:2025 · SBTVD OG-08", "clause": "OG-08 §6 architecture; §7 Ginga Common Core; Annex A NCL 4.0; Annex B; Annex C TV 3.0 WebServices; Annex D NCLua", "page": "OG-08 pdf p.3–38", "value": "Ginga (NCL 4.0 + NCLua + HTML/WebServices) application coding; harmonization with TV 2.X Ginga", "req": "mandatory (ABNT NBR 25608, 528 pp.)"}
+    },
+    "difference": "Three different runtimes: A/344 Broadcaster Application (HTML5 + WebSocket/JSON-RPC), Korea's HbbTV-based IBB, Brazil's Ginga. Only the ATSC signaling substrate (ROUTE/DASH, NRT) is shared.",
+    "impact": "Applications are not portable across the three markets; receivers need market-specific application engines.",
+    "cells": {"TTA": {"rel": "alternative", "conf": "confirmed"}, "SBTVD": {"rel": "alternative", "conf": "confirmed"}},
+    "verdicts": {"TTA": {"code": "diff", "text": "HbbTV 2.0-based IBB instead of A/344", "req": "mandatory"}, "SBTVD": {"code": "diff", "text": "Ginga instead of A/344", "req": "mandatory"}},
+    "evidence": [
+      {"label": "TTAK.KO-07.0128/R3 (committee.tta.or.kr)", "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0128%2FR3&nowSu=1"},
+      {"label": "SBTVD OG-08 Application Coding (forumsbtvd.org.br)", "url": "https://forumsbtvd.org.br/tv3-0/"}
+    ],
+    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+  },
+  {
+    "id": "app-apis", "group": "Applications · APIs", "feature": "Receiver APIs available to applications",
+    "atsc_docs": ["A/344"],
+    "sides": {
+      "ATSC": {"doc": "A/344:2026-04", "clause": "§8 ATSC 3.0 WebSocket Interface; §9 Supported Methods (JSON-RPC 2.0)", "page": "doc p.33–180", "value": "WebSocket JSON-RPC methods (content recovery, DRM, event stream, media player, receiver settings, caption/audio preferences …)", "req": "mandatory subset"},
+      "TTA": {"doc": "TTAK.KO-07.0128/R3", "clause": "§7.2 브라우저 애플리케이션 (HbbTV/OIPF JavaScript APIs)", "page": "—", "value": "OIPF DAE / HbbTV JavaScript object model", "req": "mandatory subset"},
+      "SBTVD": {"doc": "SBTVD OG-08", "clause": "Annex C.6 TV 3.0 WebServices APIs (client identification, event notification, DTV context, broadcaster tables, media players, geolocation, closed signing, application context cache, audience measurement, remote devices, sensory effects, NRT filters); Annex D NCLua APIs", "page": "OG-08 pdf p.27–38", "value": "REST/WebServices API groups plus NCLua libraries", "req": "mandatory (ABNT NBR 25608)"}
+    },
+    "difference": "API models differ entirely (JSON-RPC over WebSocket vs OIPF/HbbTV DOM objects vs Ginga WebServices/NCLua).",
+    "impact": "No API-level compatibility.",
+    "cells": {"TTA": {"rel": "alternative", "conf": "partial"}, "SBTVD": {"rel": "alternative", "conf": "confirmed"}},
+    "verdicts": {"TTA": {"code": "diff", "text": "Different API model", "req": "mandatory"}, "SBTVD": {"code": "diff", "text": "Different API model", "req": "mandatory"}},
+    "evidence": [],
+    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+  },
+  {
+    "id": "app-signaling", "group": "Applications · signaling", "feature": "Application signaling and event delivery",
+    "atsc_docs": ["A/344", "A/337"],
+    "sides": {
+      "ATSC": {"doc": "A/344:2026-04 · A/337:2026-04 · A/331 §7.1.8", "clause": "HELD (HTML Entry pages Location Description); A/337 event delivery (EventStream / emsg)", "page": "—", "value": "HELD in SLS; events via DASH EventStream and emsg boxes", "req": "mandatory for apps"},
+      "TTA": {"doc": "TTAK.KO-07.0128/R3", "clause": "§6 Part 2 애플리케이션 시그널링 (ETSI TS 102 809 AIT-based; ISO/IEC 23009-1 events)", "page": "—", "value": "HbbTV-style application information (AIT) carried over ATSC 3.0 delivery; DASH events", "req": "mandatory for IBB"},
+      "SBTVD": {"doc": "SBTVD OG-08 §10.1 · ABNT NBR 25608:2025", "clause": "Broadcaster Application Location Description (BALD); §8.4 Bootstrap applications", "page": "OG-08 pdf p.14", "value": "BALD signaling for Ginga applications; application catalog bootstrap", "req": "mandatory"}
+    },
+    "difference": "Each market signals applications with its own descriptor (HELD vs AIT vs BALD) although all ride on ATSC 3.0 delivery.",
+    "impact": "Signaling generators must be market-specific.",
+    "cells": {"TTA": {"rel": "alternative", "conf": "partial"}, "SBTVD": {"rel": "alternative", "conf": "partial"}},
+    "verdicts": {"TTA": {"code": "diff", "text": "AIT-based signaling (HbbTV) instead of HELD", "req": "mandatory"}, "SBTVD": {"code": "diff", "text": "BALD signaling (Ginga) instead of HELD", "req": "mandatory"}},
+    "evidence": [],
+    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+  },
+  {
+    "id": "app-companion", "group": "Applications · companion", "feature": "Companion device / second screen",
+    "atsc_docs": ["A/338"],
+    "sides": {
+      "ATSC": {"doc": "A/338:2026-04", "clause": "§5 Specification (discovery, WebSocket communication)", "page": "doc p.8–25", "value": "Companion device protocol", "req": "optional"},
+      "TTA": {"doc": "TTAK.KO-07.0128/R3", "clause": "§8 Part 4 컴패니언 스크린 서비스 (참조: OIPF Release 2, ETSI TS 102 796, A/338)", "page": "—", "value": "HbbTV 2.0 companion-screen framework; A/338 listed as a reference", "req": "optional"},
+      "SBTVD": {"doc": "SBTVD OG-08 §9 · Annex C.6.15", "clause": "Remote devices; remote device communication APIs", "page": "OG-08 pdf p.14, p.34", "value": "Ginga remote-device communication", "req": "optional"}
+    },
+    "difference": "Functionally similar goals with different protocols; Korea references A/338 but its normative basis is HbbTV/OIPF.",
+    "impact": "Second-screen apps are market-specific.",
+    "cells": {"TTA": {"rel": "related", "conf": "metadata"}, "SBTVD": {"rel": "alternative", "conf": "metadata"}},
+    "verdicts": {"TTA": {"code": "partial", "text": "HbbTV companion framework with A/338 as reference", "req": "optional"}, "SBTVD": {"code": "diff", "text": "Ginga remote-device APIs", "req": "optional"}},
+    "evidence": [],
+    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+  }
+]
