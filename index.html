@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ATSC 3.0 Standards Comparison</title>
+<title>ATSC 3.0 Common Ground</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
@@ -44,10 +44,6 @@
   .meta { display: flex; flex-wrap: wrap; gap: 6px 28px; color: var(--ink-2); font-size: 13.5px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 10px 0; margin-bottom: 30px; }
   .meta b { color: var(--ink); font-weight: 600; }
   h2 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; margin: 0 0 12px; }
-  .highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px 32px; margin-bottom: 34px; }
-  .hl { border-left: 3px solid var(--yellow); padding: 2px 0 2px 14px; }
-  .hl b { display: block; font-weight: 600; margin-bottom: 2px; }
-  .hl p { margin: 0; color: var(--ink-2); font-size: 14px; }
   .regs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px 32px; margin-bottom: 34px; }
   .reg-card { border-top: 3px solid var(--org); padding-top: 8px; font-size: 14px; }
   .reg-card b { display: block; font-weight: 600; }
@@ -110,17 +106,13 @@
 <body>
 <div class="sheet">
   <header>
-    <p class="eyebrow">Comparison of digital terrestrial television broadcasting standards</p>
-    <h1 id="title">ATSC 3.0 Standards Comparison</h1>
+    <p class="eyebrow">ITU-R · ATSC · TTA · SBTVD Forum</p>
+    <h1 id="title">ATSC 3.0 Common Ground</h1>
     <p class="subtitle" id="subtitle"></p>
     <p class="purpose" id="purpose"></p>
     <div class="meta" id="meta"></div>
   </header>
 
-  <section>
-    <h2>Key differences</h2>
-    <div class="highlights" id="highlights"></div>
-  </section>
 
   <section>
     <h2>Regulatory technical standards</h2>
@@ -160,7 +152,6 @@
   document.getElementById('purpose').textContent = data.meta.purpose;
   document.getElementById('meta').innerHTML =
     '<span><b>Scope</b> ' + esc(data.meta.scope) + '</span><span><b>Updated</b> ' + esc(data.meta.updated) + '</span>';
-  document.getElementById('highlights').innerHTML = data.meta.highlights.map(h => '<div class="hl"><b>' + esc(h.title) + '</b><p>' + esc(h.text) + '</p></div>').join('');
   document.getElementById('legend').innerHTML = Object.keys(V).map(k => '<span class="v ' + k + '"><span class="i">' + V[k].icon + '</span>' + esc(V[k].label) + '</span><span>' + esc(V[k].desc) + '</span>').join('');
   const orgOf = id => orgs.find(o => o.id === id) || {};
   document.getElementById('regs').innerHTML = (data.regulations || []).map(rg => {

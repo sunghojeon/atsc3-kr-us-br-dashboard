@@ -34,12 +34,44 @@ ITU_TITLES = {  # ITU-R — English (overridden by standards/ITU/index.csv when 
 }
 for k, v in ITU_TITLES.items():
     DOC_TITLES[k] = {"title": v, "lang": "en", "title_en": v}
-for folder, lang in (("ITU", "en"), ("BR", "pt")):  # agent-produced indexes: ITU (English), SBTVD (Portuguese)
+for folder, lang in (("ITU", "en"), ("BR", "pt")):  # agent-produced indexes: ITU (English), SBTVD Forum (language column)
     p = ROOT / "standards" / folder / "index.csv"
     if p.exists():
         for r in csv.DictReader(open(p, encoding="utf-8-sig")):
-            if r.get("doc_id") and r.get("title"):
-                DOC_TITLES[r["doc_id"].strip()] = {"title": r["title"].strip(), "lang": lang, "title_en": r["title"].strip() if lang == "en" else ""}
+            did = (r.get("doc_id") or "").strip()
+            if not did or not r.get("title") or did.startswith("ABNT-") or did.startswith("BR-REG-"):
+                continue  # ABNT and regulation titles are set explicitly below (verified against the catalogue / official text)
+            l = (r.get("language") or lang).strip() or lang
+            title = re.sub(r"\s*\[.*?\]\s*", " ", r["title"]).strip()  # drop collector annotations in brackets
+            DOC_TITLES[did] = {"title": title, "lang": l, "title_en": title if l == "en" else ""}
+# ABNT NBR 25601–25609:2025 (TV 3.0 series). Titles verified on abntcatalogo.com.br (2026-08-31): Portuguese title plus the
+# official English secondary title where ABNT provides one; 25601, 25607 and 25608 carry an English title only.
+ABNT_TITLES = {
+    "ABNT NBR 25601:2025": ("TV 3.0 — Over-the-air physical layer", "en", ""),
+    "ABNT NBR 25602:2025": ("TV 3.0 — Camada de transporte", "pt", "TV 3.0 — Transport layer"),
+    "ABNT NBR 25603:2025": ("TV 3.0 — Codificação de vídeo", "pt", "TV 3.0 — Video coding"),
+    "ABNT NBR 25604:2025": ("TV 3.0 — Codificação de áudio", "pt", "TV 3.0 — Audio coding"),
+    "ABNT NBR 25605:2025": ("TV 3.0 — Legendas", "pt", "TV 3.0 — Closed captioning"),
+    "ABNT NBR 25606:2025": ("TV 3.0 — Língua de sinais", "pt", "TV 3.0 — Closed signing"),
+    "ABNT NBR 25607:2025": ("TV 3.0 — Emergency warning system", "en", ""),
+    "ABNT NBR 25608:2025": ("TV 3.0 — Application coding", "en", ""),
+    "ABNT NBR 25609:2025": ("TV 3.0 — Receptores", "pt", "TV 3.0 — Receivers"),
+}
+for k, (t, l, en) in ABNT_TITLES.items():
+    DOC_TITLES[k] = {"title": t, "lang": l, "title_en": en}
+OG = {  # Fórum SBTVD TV 3.0 Operational Guidelines (English documents), ids as used in the cells
+    "SBTVD OG-01": "TV 3.0 Operational Guidelines — Over-the-Air Physical Layer",
+    "SBTVD OG-02": "TV 3.0 Operational Guidelines — Transport Layer",
+    "SBTVD OG-03": "TV 3.0 Operational Guidelines — Video Coding",
+    "SBTVD OG-04": "TV 3.0 Operational Guidelines — Audio Coding",
+    "SBTVD OG-05": "TV 3.0 Operational Guidelines — Closed Captioning",
+    "SBTVD OG-06": "TV 3.0 Operational Guidelines — Closed Signing",
+    "SBTVD OG-07 v1": "TV 3.0 Operational Guidelines — Emergency Warning System",
+    "SBTVD OG-08": "TV 3.0 Operational Guidelines — Application Coding",
+    "SBTVD OG-CPC (draft)": "TV 3.0 Operational Guidelines — Common Public Communication and Digital Government Platform Support (final draft)",
+}
+for k, t in OG.items():
+    DOC_TITLES[k] = {"title": t, "lang": "en", "title_en": t}
 
 TODAY = "2026-08-31"
 REVIEW = {"status": "draft", "by": "", "updated": TODAY}
@@ -60,7 +92,7 @@ CATEGORIES = [
     {"id": "s360", "name": "A/360 series · Security", "desc": "Security, service protection, DRM"},
     {"id": "s370", "name": "A/370 series · Redistribution", "desc": "Conversion and delivery of ATSC 3.0 services for redistribution"},
     {"id": "s380", "name": "A/380 series · Haptics and Interactive Use", "desc": ""},
-    {"id": "datacast", "name": "Datacasting services", "desc": "Data services carried over the broadcast; anchored to A/331 NRT delivery where applicable (no dedicated ATSC standard for RTK — ATSC BPS in progress)"},
+    {"id": "datacast", "name": "Datacasting services", "desc": "Data services carried over the broadcast, anchored to A/331 NRT delivery where applicable; broadcast positioning (BPS) listed separately"},
 ]
 
 V = lambda code, text="": {"code": code, "text": text}
@@ -179,20 +211,35 @@ EXTRA_ROWS = [  # rows without an ATSC document anchor
       summary="3DTV service over terrestrial UHDTV broadcasting.",
       cells=dict(ITU=C(["BT.2160"], "3DTV broadcasting features (reference)."), ATSC=C((), "No ATSC 3.0 standard."), TTA=C(["TTAK.KO-07.0153"], "Part 6: 3DTV (June 2021)."), SBTVD=NONE),
       verdict=V("none", "TTA-only provision.")),
+ dict(id="(no ATSC document)", category="s340", type="—", title="TV 3.0 — Closed signing", title_ko="",
+      summary="Sign-language (closed signing) presentation for accessibility.",
+      cells=dict(ITU=ITU_NONE, ATSC=C((), "No ATSC 3.0 standard."), TTA=C((), "No counterpart identified."), SBTVD=C(["ABNT NBR 25606:2025", "SBTVD OG-06"], "Closed signing standard and operational guideline.")),
+      verdict=V("none", "SBTVD Forum-only provision.")),
+ dict(id="(no ATSC document)", category="s300", type="—", title="Receivers", title_ko="",
+      summary="Receiver requirements and minimum specifications.",
+      cells=dict(ITU=ITU_NONE, ATSC=C((), "No single ATSC receiver standard (requirements spread across the A/300 series)."),
+                 TTA=C(["TTAR-07.0022"], "Minimum technical specification for terrestrial UHD set-top boxes (technical report, 2017)."),
+                 SBTVD=C(["ABNT NBR 25609:2025"], "TV 3.0 receiver standard (113 pp.).")),
+      verdict=V("review")),
  dict(id="A/331 §NRT", category="datacast", type="Standard", title="Datacasting — NRT file and data delivery", title_ko="",
       summary="Non-real-time file delivery over ROUTE sessions and data service signaling. There is no dedicated ATSC datacasting standard; the NRT provisions of A/331 apply.",
       cells=dict(ITU=C(["Report BT.2295"], ""), ATSC=C(["A/331:2026-04"], "Baseline (NRT/ROUTE clauses)."), TTA=C(["TTAK.KO-07.0150/R3"], "NRT provisions in Part 3: Systems to be confirmed."), SBTVD=NONE),
       verdict=V("review")),
- dict(id="ATSC BPS (in progress)", category="datacast", type="—", title=official("TTAK.KO-07.0165", "Broadcast RTK correction data service"), title_ko="",
-      summary="Datacasting of RTK (real-time kinematic) correction signals and high-precision GNSS correction information over the terrestrial UHD broadcast network. Different approach from ATSC BPS, which uses the broadcast signal itself for positioning.",
-      cells=dict(ITU=C(["WP 6A contribution: Broadcast Positioning System (Sept 2026, planned)"], "Contributions on broadcast positioning in progress."),
-                 ATSC=C((), "No published standard — Broadcast Positioning System (BPS) standardization in progress."),
+ dict(id="(no ATSC document)", category="datacast", type="—", title=official("TTAK.KO-07.0165", "Broadcast RTK correction data service"), title_ko="",
+      summary="Datacasting of RTK (real-time kinematic) correction signals and high-precision GNSS correction information over the terrestrial UHD broadcast network. The broadcast carries correction data for GNSS receivers; it does not use the broadcast signal itself for positioning.",
+      cells=dict(ITU=ITU_NONE,
+                 ATSC=C((), "No counterpart document."),
                  TTA=C(["TTAK.KO-07.0165", "TTAK.KO-07.0167", "TTAK.KO-07.0168"], "Broadcast RTK correction data service (June 2025); HP-GNSS correction information message structure and datagram IP tunneling (June 2025)."),
                  SBTVD=C((), "No counterpart identified.")),
-      verdict=V("diff", "TTA leads standardization of RTK/HP-GNSS correction datacasting; ATSC is pursuing BPS."),
-      impact="Korean RTK datacasting can operate independently of ATSC standards; alignment may be needed once BPS is published.",
-      recommendation="Present TTAK.KO-07.0165–0168 as reference documents in the ITU-R WP 6A BPS discussion.",
+      verdict=V("none", "TTA-only provision; no ATSC or SBTVD Forum counterpart."),
       evidence=[dict(org="TTA", doc="TTAK.KO-07.0165", clause="whole document", url=""), dict(org="TTA", doc="TTAK.KO-07.0167", clause="message structure", url=""), dict(org="TTA", doc="TTAK.KO-07.0168", clause="IP tunneling", url="")]),
+ dict(id="ATSC BPS (in progress)", category="datacast", type="—", title="Broadcast Positioning System (BPS)", title_ko="",
+      summary="Positioning and timing derived from the terrestrial broadcast signal itself (ATSC 3.0 signal as a PNT source, independent of GNSS). A different technology from RTK correction datacasting.",
+      cells=dict(ITU=C(["WP 6A contribution: Broadcast Positioning System (Sept 2026, planned)"], "Contributions on broadcast positioning in progress."),
+                 ATSC=C((), "No published standard — Broadcast Positioning System (BPS) standardization in progress."),
+                 TTA=C((), "No counterpart document."),
+                 SBTVD=C((), "No counterpart identified.")),
+      verdict=V("review", "ATSC standardization in progress; no TTA or SBTVD Forum counterpart.")),
  dict(id="(no ATSC document)", category="datacast", type="—", title=official("TTAK.KO-07.0139", "TTAK.KO-07.0139"), title_ko="",
       summary="Requirements for traffic and travel information (TPEG-family) data services over the terrestrial UHD network.",
       cells=dict(ITU=ITU_NONE, ATSC=C((), "No counterpart (can be realized with NRT delivery)."), TTA=C(["TTAK.KO-07.0139"], "Requirements for terrestrial UHD traffic and travel information service (Dec 2019)."), SBTVD=NONE),
@@ -231,9 +278,30 @@ REGULATIONS = [
    "clauses": [
      {"ref": "§ 73.682(f)", "text": "Transmission of Next Gen TV broadcast television (ATSC 3.0) signals shall comply with ATSC A/321:2016 \"System Discovery and Signaling\" (March 23, 2016) and ATSC A/322:2017 \"Physical Layer Protocol\" (June 6, 2017), incorporated by reference (§ 73.8000). Compliance with A/322:2017 for free over-the-air primary video programming sunsets on July 17, 2027.", "maps": ["A/321", "A/322"]},
    ]},
-  {"org": "SBTVD", "country": "Brazil", "id": "TV 3.0 regulation (MCom / Anatel)",
-   "title": "", "title_lang": "pt", "title_en": "", "issuer": "Ministério das Comunicações / Anatel", "effective": "",
-   "url": "", "local": "", "note": "Regulatory instrument defining the TV 3.0 system to be added once the documents are collected (standards/BR/regulatory).",
+  {"org": "SBTVD", "country": "Brazil", "id": "Decreto nº 12.595, de 27 de agosto de 2025",
+   "title": "Dispõe sobre a escolha do padrão tecnológico da segunda geração do Sistema Brasileiro de Televisão Digital Terrestre, denominada TV 3.0, e sobre a sua implantação no território nacional.", "title_lang": "pt", "title_en": "",
+   "issuer": "Presidência da República", "effective": "2025-08-27",
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12595.htm", "local": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md",
+   "note": "Adopts the ATSC 3.0 physical-layer signal standard for TV 3.0 (Art. 3º) with MIMO, LDM and TxID; technical specifications are drafted by Fórum SBTVD and standardized by ABNT (Art. 3º §1º–§2º). Art. 5º lists the system characteristics; Art. 2º of Decreto 11.484/2023 is revoked.",
+   "clauses": [
+     {"ref": "Art. 3º, caput", "text": "A TV 3.0 adotará o padrão de sinais da camada física do sistema ATSC 3.0, e incorporará, entre outras, as seguintes inovações tecnológicas recomendadas pelo Fórum SBTVD: I - Múltiplas Entradas e Múltiplas Saídas – MIMO; II - Multiplexação por Divisão de Camadas – LDM; e III - Ferramenta de Identificação de Transmissor – TxID.", "maps": ["A/321", "A/322"]},
+     {"ref": "Art. 3º, § 1º–§ 2º", "text": "O Fórum SBTVD elaborará as especificações técnicas a serem adotadas pela TV 3.0 … As especificações técnicas … serão normatizadas pela ABNT.", "maps": ["A/300"]},
+     {"ref": "Art. 5º", "text": "O padrão tecnológico da TV 3.0 possibilitará: qualidade audiovisual superior; recepção fixa, móvel e portátil; integração entre radiodifusão e internet com interação entre dispositivos; interface baseada em catálogo de aplicativos; segmentação e personalização de conteúdo; uso otimizado do espectro; multiprogramação aprimorada; transmissão de dados como serviço de valor adicionado.", "maps": ["A/300", "A/344", "A/338"]},
+   ]},
+  {"org": "SBTVD", "country": "Brazil", "id": "Anatel Ato nº 2.705, de 24 de fevereiro de 2026",
+   "title": "Requisitos técnicos provisórios para avaliação da conformidade de transmissores e retransmissores da segunda geração do SBTVD-T – TV 3.0", "title_lang": "pt", "title_en": "",
+   "issuer": "Agência Nacional de Telecomunicações (Anatel)", "effective": "2026-02-24",
+   "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2705-ato-2705", "local": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md",
+   "note": "Provisional conformity-assessment requirements for TV 3.0 transmitters: the physical layer shall implement ATSC 3.0 per ATSC A/321:2025-07, A/322:2025-07a and A/324:2025-07 (item 4.1), with MER and emission-mask tests; definitive requirements under Consulta Pública nº 10/2026.",
+   "clauses": [
+     {"ref": "Anexo, item 4.1", "text": "Os equipamentos básicos de transmissão da camada física (Over-the-Air Physical Layer) da TV 3.0, compreendendo transmissores e retransmissores, devem implementar o padrão ATSC 3.0, em conformidade com as normas ATSC A/321:2025-07, ATSC A/322:2025-07a e ATSC A/324:2025-07 …", "maps": ["A/321", "A/322", "A/324"]},
+     {"ref": "Anexo, item 5.9", "text": "Taxa de Erro de Modulação (MER) — ensaio; máscara de emissão conforme os Requisitos Técnicos de Condições de Uso de Radiofrequências (RCC-SRA).", "maps": ["A/322"]},
+   ]},
+  {"org": "SBTVD", "country": "Brazil", "id": "Portaria MCom nº 10.693, de 5 de outubro de 2023 · Anatel Resolução nº 789/2026",
+   "title": "Diretrizes complementares para a canalização, cobertura do serviço e harmonização de faixas de frequência para implantação da TV 3.0 · PDFF / RCC-SRA", "title_lang": "pt", "title_en": "",
+   "issuer": "Ministério das Comunicações · Anatel", "effective": "2023-10-05 · 2026-07-06",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-mcom-n-10.693-de-5-de-outubro-de-2023", "local": "",
+   "note": "Spectrum and channelization framework: primary and exclusive allocation of high-VHF (174–216 MHz) and UHF (470–608, 614–698 MHz) to broadcasting for TV 3.0; channel plan updated by Anatel Resolução nº 789/2026 (PDFF and RCC-SRA). No clause mapped to an ATSC document.",
    "clauses": []},
 ]
 REG_BY_DOC = {}
@@ -242,34 +310,70 @@ for reg in REGULATIONS:
         for doc in cl["maps"]:
             REG_BY_DOC.setdefault(doc, []).append({"org": reg["org"], "id": reg["id"], "ref": cl["ref"], "text": cl["text"]})
 
+# SBTVD Forum / ABNT counterparts per ATSC document (TV 3.0 series ABNT NBR 25601–25609:2025 and Fórum SBTVD Operational Guidelines).
+SBTVD_MAP = {
+ "A/300": C((), "TV 3.0 is specified as the ABNT NBR 25601–25609:2025 series (physical layer, transport, video, audio, captions, closed signing, EWS, application coding, receivers); no single umbrella document identified."),
+ "A/321": C(["ABNT NBR 25601:2025", "SBTVD OG-01"], "ATSC 3.0 physical layer adopted by decree; transmitters must implement A/321:2025-07 (Anatel Ato 2.705/2026)."),
+ "A/322": C(["ABNT NBR 25601:2025", "SBTVD OG-01"], "ATSC 3.0 physical layer with MIMO, LDM and TxID (Decreto 12.595/2025 Art. 3º); A/322:2025-07a required for transmitters."),
+ "A/324": C((), "A/324:2025-07 required for transmitters and retransmitters (Anatel Ato 2.705/2026, item 4.1)."),
+ "A/325": C(["TV 3.0 Phase 3 PL lab report"], "Fórum SBTVD Phase 2/3 laboratory test reports (2021, 2023)."),
+ "A/326": C(["TV 3.0 Phase 3 PL field report"], "Fórum SBTVD Phase 2/3 field test reports (2021, 2024)."),
+ "A/330": C(["ABNT NBR 25602:2025", "SBTVD OG-02"], "Transport layer standard; ALP inclusion to be confirmed."),
+ "A/331": C(["ABNT NBR 25602:2025", "SBTVD OG-02"], "Transport layer standard and operational guideline."),
+ "A/332": C(["ABNT NBR 25602:2025"], "ESG provisions to be confirmed."),
+ "A/333": C(["ABNT NBR 25602:2025"], "Usage reporting provisions to be confirmed."),
+ "A/337": C(["ABNT NBR 25608:2025", "SBTVD OG-08"], "Application coding standard; event delivery to be confirmed."),
+ "A/338": C(["ABNT NBR 25608:2025"], "Companion-device provisions to be confirmed."),
+ "A/341": C(["ABNT NBR 25603:2025", "SBTVD OG-03"], "TV 3.0 video coding adopts VVC (+LCEVC); HEVC not used."),
+ "A/342 Part 1": C(["ABNT NBR 25604:2025", "SBTVD OG-04"], "Audio coding standard and operational guideline."),
+ "A/342 Part 2": C(["ABNT NBR 25604:2025"], "TV 3.0 adopts MPEG-H; AC-4 not adopted."),
+ "A/342 Part 3": C(["ABNT NBR 25604:2025", "SBTVD OG-04"], "TV 3.0 audio: MPEG-H adopted."),
+ "A/343": C(["ABNT NBR 25605:2025", "SBTVD OG-05"], "Closed captioning standard and operational guideline."),
+ "A/344": C(["ABNT NBR 25608:2025", "SBTVD OG-08"], "Ginga-based application coding (528 pp.)."),
+ "A/345": C(["ABNT NBR 25603:2025", "SBTVD OG-03"], "TV 3.0 video coding: VVC (+LCEVC)."),
+ "A/360": C((), "Security provisions not identified as a separate document; to be checked in ABNT NBR 25602/25608/25609."),
+ "A/381": C(["SBTVD OG-08"], "Application coding operational guideline."),
+}
+SBTVD_EXTRA = {  # by row title for rows without an ATSC anchor
+ "Datacasting — NRT file and data delivery": C(["ABNT NBR 25602:2025", "SBTVD OG-CPC (draft)"], "Transport layer; Common Public Communication / Digital Government platform guideline (draft, Aug 2026)."),
+ "Emergency information datacasting": C(["ABNT NBR 25607:2025", "SBTVD OG-07 v1"], "Emergency warning system standard and operational guideline (v1, June 2026)."),
+}
+VERDICT_OVERRIDE = {
+ "A/321": V("partial", "Korea (TTA Part 4) and Brazil (ABNT NBR 25601, Anatel Ato 2.705 referencing A/321:2025-07) both adopt the ATSC 3.0 bootstrap; wake-up bit usage to be confirmed."),
+ "A/322": V("partial", "Both Korea and Brazil adopt the ATSC 3.0 physical layer; Korea restricts operating parameters (6 MHz), Brazil mandates MIMO, LDM and TxID by decree."),
+ "A/324": V("partial", "Brazil requires A/324:2025-07 for transmitters; Korean STL/SFN provisions in Part 4 to be compared."),
+ "A/341": V("partial", "TTA adopts HEVC (profile and HDR options to be compared); SBTVD Forum differs (VVC +LCEVC, ABNT NBR 25603)."),
+ "A/344": V("diff", "Application runtimes differ: A/344 Broadcaster Application vs HbbTV 2.0-based IBB (TTA) vs Ginga (ABNT NBR 25608)."),
+ "A/345": V("review", "SBTVD VVC specification (ABNT NBR 25603) and A/345 profiles to be compared; no TTA counterpart."),
+}
+
 rows = []
 for r in US:
     doc, m = r["doc_id"], MAP.get(r["doc_id"])
     if not m: continue
     is_rp = r["filename"].startswith("RP/")
-    cells = {"ITU": dict(m["ITU"]), "ATSC": C([f"{doc}:{r['version_date'][:7]}"], "Baseline document" + (" (Recommended Practice)" if is_rp else "")), "TTA": dict(m["TTA"]), "SBTVD": dict(m["SBTVD"])}
+    sb = SBTVD_MAP.get(doc, m["SBTVD"])
+    cells = {"ITU": dict(m["ITU"]), "ATSC": C([f"{doc}:{r['version_date'][:7]}"], "Baseline document" + (" (Recommended Practice)" if is_rp else "")), "TTA": dict(m["TTA"]), "SBTVD": dict(sb)}
+    if doc in VERDICT_OVERRIDE: m = dict(m, verdict=VERDICT_OVERRIDE[doc])
     for rg in REG_BY_DOC.get(doc, []):
         cells[rg["org"]].setdefault("reg", []).append(rg)
     rows.append(dict(id=doc, category=series_of(doc), type="RP" if is_rp else "Standard", title=r["title"], title_ko="", summary=m["summary"],
                      cells=cells, verdict=m["verdict"], impact=m.get("impact", ""), recommendation=m.get("recommendation", ""), evidence=[], review=dict(REVIEW)))
 for e in EXTRA_ROWS:
+    if e["title"] in SBTVD_EXTRA: e["cells"]["SBTVD"] = dict(SBTVD_EXTRA[e["title"]])
+    for rg in REG_BY_DOC.get(e["id"], []):
+        e["cells"][rg["org"]].setdefault("reg", []).append(rg)
     e.setdefault("impact", ""); e.setdefault("recommendation", ""); e.setdefault("evidence", []); e["review"] = dict(REVIEW); rows.append(e)
 order = {c["id"]: i for i, c in enumerate(CATEGORIES)}
-rows.sort(key=lambda x: (order[x["category"]], x["type"] == "RP", x["id"]))
+rows.sort(key=lambda x: (order[x["category"]], not x["id"].startswith("A/"), x["type"] == "RP", x["id"]))  # ATSC-anchored rows first
 
 data = {
   "meta": {
-    "title": "ATSC 3.0 Standards Comparison",
-    "subtitle": "ITU-R · ATSC · TTA · SBTVD Forum",
+    "title": "ATSC 3.0 Common Ground",
+    "subtitle": "One Standard. Connected Worldwide.",
     "purpose": "Using the US ATSC 3.0 standards (A/300 series) as the baseline, this page maps each ATSC document to the corresponding ITU-R Recommendations/Reports, Korean TTA terrestrial UHDTV standards and Brazilian SBTVD Forum TV 3.0 specifications, and records the differences.",
     "baseline": "ATSC", "scope": "ATSC 3.0 Standards and Recommended Practices listed on atsc.org (35 documents) plus datacasting services without a dedicated ATSC document.",
     "updated": TODAY,
-    "highlights": [
-      {"title": "Audio codec", "text": "ATSC specifies both AC-4 and MPEG-H (A/342 Parts 2 and 3); TTA adopted MPEG-H 3D Audio only, and SBTVD Forum also selected MPEG-H."},
-      {"title": "Video codec", "text": "ATSC and TTA use HEVC (A/341) as the baseline and ATSC added VVC (A/345); SBTVD Forum adopted VVC (+LCEVC) from the start."},
-      {"title": "Application platform", "text": "ATSC uses the A/344 Broadcaster Application, TTA an HbbTV 2.0-based IBB (TTAK.KO-07.0128/R3), and SBTVD Forum Ginga — three different runtimes."},
-      {"title": "Datacasting · RTK", "text": "TTA standardized broadcast RTK correction data (TTAK.KO-07.0165) and HP-GNSS correction delivery (0167, 0168). ATSC's Broadcast Positioning System is still in progress; no SBTVD counterpart identified."}
-    ]
   },
   "orgs": [
     {"id": "ITU", "label": "ITU-R", "sub": "International · BT/BS-series Recommendations and Reports", "color": "#1a73b5"},

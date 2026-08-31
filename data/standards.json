@@ -1,29 +1,11 @@
 {
   "meta": {
-    "title": "ATSC 3.0 Standards Comparison",
-    "subtitle": "ITU-R · ATSC · TTA · SBTVD Forum",
+    "title": "ATSC 3.0 Common Ground",
+    "subtitle": "One Standard. Connected Worldwide.",
     "purpose": "Using the US ATSC 3.0 standards (A/300 series) as the baseline, this page maps each ATSC document to the corresponding ITU-R Recommendations/Reports, Korean TTA terrestrial UHDTV standards and Brazilian SBTVD Forum TV 3.0 specifications, and records the differences.",
     "baseline": "ATSC",
     "scope": "ATSC 3.0 Standards and Recommended Practices listed on atsc.org (35 documents) plus datacasting services without a dedicated ATSC document.",
-    "updated": "2026-08-31",
-    "highlights": [
-      {
-        "title": "Audio codec",
-        "text": "ATSC specifies both AC-4 and MPEG-H (A/342 Parts 2 and 3); TTA adopted MPEG-H 3D Audio only, and SBTVD Forum also selected MPEG-H."
-      },
-      {
-        "title": "Video codec",
-        "text": "ATSC and TTA use HEVC (A/341) as the baseline and ATSC added VVC (A/345); SBTVD Forum adopted VVC (+LCEVC) from the start."
-      },
-      {
-        "title": "Application platform",
-        "text": "ATSC uses the A/344 Broadcaster Application, TTA an HbbTV 2.0-based IBB (TTAK.KO-07.0128/R3), and SBTVD Forum Ginga — three different runtimes."
-      },
-      {
-        "title": "Datacasting · RTK",
-        "text": "TTA standardized broadcast RTK correction data (TTAK.KO-07.0165) and HP-GNSS correction delivery (0167, 0168). ATSC's Broadcast Positioning System is still in progress; no SBTVD counterpart identified."
-      }
-    ]
+    "updated": "2026-08-31"
   },
   "orgs": [
     {
@@ -170,15 +152,85 @@
     {
       "org": "SBTVD",
       "country": "Brazil",
-      "id": "TV 3.0 regulation (MCom / Anatel)",
-      "title": "",
+      "id": "Decreto nº 12.595, de 27 de agosto de 2025",
+      "title": "Dispõe sobre a escolha do padrão tecnológico da segunda geração do Sistema Brasileiro de Televisão Digital Terrestre, denominada TV 3.0, e sobre a sua implantação no território nacional.",
       "title_lang": "pt",
       "title_en": "",
-      "issuer": "Ministério das Comunicações / Anatel",
-      "effective": "",
-      "url": "",
+      "issuer": "Presidência da República",
+      "effective": "2025-08-27",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12595.htm",
+      "local": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md",
+      "note": "Adopts the ATSC 3.0 physical-layer signal standard for TV 3.0 (Art. 3º) with MIMO, LDM and TxID; technical specifications are drafted by Fórum SBTVD and standardized by ABNT (Art. 3º §1º–§2º). Art. 5º lists the system characteristics; Art. 2º of Decreto 11.484/2023 is revoked.",
+      "clauses": [
+        {
+          "ref": "Art. 3º, caput",
+          "text": "A TV 3.0 adotará o padrão de sinais da camada física do sistema ATSC 3.0, e incorporará, entre outras, as seguintes inovações tecnológicas recomendadas pelo Fórum SBTVD: I - Múltiplas Entradas e Múltiplas Saídas – MIMO; II - Multiplexação por Divisão de Camadas – LDM; e III - Ferramenta de Identificação de Transmissor – TxID.",
+          "maps": [
+            "A/321",
+            "A/322"
+          ]
+        },
+        {
+          "ref": "Art. 3º, § 1º–§ 2º",
+          "text": "O Fórum SBTVD elaborará as especificações técnicas a serem adotadas pela TV 3.0 … As especificações técnicas … serão normatizadas pela ABNT.",
+          "maps": [
+            "A/300"
+          ]
+        },
+        {
+          "ref": "Art. 5º",
+          "text": "O padrão tecnológico da TV 3.0 possibilitará: qualidade audiovisual superior; recepção fixa, móvel e portátil; integração entre radiodifusão e internet com interação entre dispositivos; interface baseada em catálogo de aplicativos; segmentação e personalização de conteúdo; uso otimizado do espectro; multiprogramação aprimorada; transmissão de dados como serviço de valor adicionado.",
+          "maps": [
+            "A/300",
+            "A/344",
+            "A/338"
+          ]
+        }
+      ]
+    },
+    {
+      "org": "SBTVD",
+      "country": "Brazil",
+      "id": "Anatel Ato nº 2.705, de 24 de fevereiro de 2026",
+      "title": "Requisitos técnicos provisórios para avaliação da conformidade de transmissores e retransmissores da segunda geração do SBTVD-T – TV 3.0",
+      "title_lang": "pt",
+      "title_en": "",
+      "issuer": "Agência Nacional de Telecomunicações (Anatel)",
+      "effective": "2026-02-24",
+      "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2705-ato-2705",
+      "local": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md",
+      "note": "Provisional conformity-assessment requirements for TV 3.0 transmitters: the physical layer shall implement ATSC 3.0 per ATSC A/321:2025-07, A/322:2025-07a and A/324:2025-07 (item 4.1), with MER and emission-mask tests; definitive requirements under Consulta Pública nº 10/2026.",
+      "clauses": [
+        {
+          "ref": "Anexo, item 4.1",
+          "text": "Os equipamentos básicos de transmissão da camada física (Over-the-Air Physical Layer) da TV 3.0, compreendendo transmissores e retransmissores, devem implementar o padrão ATSC 3.0, em conformidade com as normas ATSC A/321:2025-07, ATSC A/322:2025-07a e ATSC A/324:2025-07 …",
+          "maps": [
+            "A/321",
+            "A/322",
+            "A/324"
+          ]
+        },
+        {
+          "ref": "Anexo, item 5.9",
+          "text": "Taxa de Erro de Modulação (MER) — ensaio; máscara de emissão conforme os Requisitos Técnicos de Condições de Uso de Radiofrequências (RCC-SRA).",
+          "maps": [
+            "A/322"
+          ]
+        }
+      ]
+    },
+    {
+      "org": "SBTVD",
+      "country": "Brazil",
+      "id": "Portaria MCom nº 10.693, de 5 de outubro de 2023 · Anatel Resolução nº 789/2026",
+      "title": "Diretrizes complementares para a canalização, cobertura do serviço e harmonização de faixas de frequência para implantação da TV 3.0 · PDFF / RCC-SRA",
+      "title_lang": "pt",
+      "title_en": "",
+      "issuer": "Ministério das Comunicações · Anatel",
+      "effective": "2023-10-05 · 2026-07-06",
+      "url": "https://www.in.gov.br/web/dou/-/portaria-mcom-n-10.693-de-5-de-outubro-de-2023",
       "local": "",
-      "note": "Regulatory instrument defining the TV 3.0 system to be added once the documents are collected (standards/BR/regulatory).",
+      "note": "Spectrum and channelization framework: primary and exclusive allocation of high-VHF (174–216 MHz) and UHF (470–608, 614–698 MHz) to broadcasting for TV 3.0; channel plan updated by Anatel Resolução nº 789/2026 (PDFF and RCC-SRA). No clause mapped to an ATSC document.",
       "clauses": []
     }
   ],
@@ -253,7 +305,7 @@
     {
       "id": "datacast",
       "name": "Datacasting services",
-      "desc": "Data services carried over the broadcast; anchored to A/331 NRT delivery where applicable (no dedicated ATSC standard for RTK — ATSC BPS in progress)"
+      "desc": "Data services carried over the broadcast, anchored to A/331 NRT delivery where applicable; broadcast positioning (BPS) listed separately"
     }
   ],
   "docTitles": {
@@ -996,6 +1048,236 @@
       "title": "Collection of field trials of ultra-high definition television over digital terrestrial television broadcasting networks",
       "lang": "en",
       "title_en": "Collection of field trials of ultra-high definition television over digital terrestrial television broadcasting networks"
+    },
+    "BR-SBTVD-TV30-CFP-2020": {
+      "title": "TV 3.0 Project - Call for Proposals (Forum SBTVD)",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Call for Proposals (Forum SBTVD)"
+    },
+    "BR-SBTVD-TV30-CFP-MIMO-2021": {
+      "title": "TV 3.0 Project - Call for Prototypes: MIMO Indoor Antennas (revised version)",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Call for Prototypes: MIMO Indoor Antennas (revised version)"
+    },
+    "BR-SBTVD-TV30-P2-TE-2021": {
+      "title": "TV 3.0 Project - CfP Phase 2 / Testing and Evaluation (test procedures, revised version)",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - CfP Phase 2 / Testing and Evaluation (test procedures, revised version)"
+    },
+    "BR-SBTVD-TV30-P2-PLLAB-REPORT": {
+      "title": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Over-the-air Physical Layer Laboratory Tests",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Over-the-air Physical Layer Laboratory Tests"
+    },
+    "BR-SBTVD-TV30-P2-PLFIELD-REPORT": {
+      "title": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Over-the-air Physical Layer Field Tests",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Over-the-air Physical Layer Field Tests"
+    },
+    "BR-SBTVD-TV30-P2-TL-REPORT": {
+      "title": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Transport Layer",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Transport Layer"
+    },
+    "BR-SBTVD-TV30-P2-VC-REPORT": {
+      "title": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Video Coding",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Video Coding"
+    },
+    "BR-SBTVD-TV30-P2-AC-REPORT": {
+      "title": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Audio Coding",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Audio Coding"
+    },
+    "BR-SBTVD-TV30-P2-CC-REPORT": {
+      "title": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Captions",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Captions"
+    },
+    "BR-SBTVD-TV30-P2-AP-REPORT": {
+      "title": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Application Coding",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Phase 2 Testing and Evaluation Report: Application Coding"
+    },
+    "BR-SBTVD-TV30-P3-PL-LAB-REPORT": {
+      "title": "TV 3.0 Project - Phase 3 - Over-the-air Physical Layer Laboratory Tests (report)",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Phase 3 - Over-the-air Physical Layer Laboratory Tests (report)"
+    },
+    "BR-SBTVD-TV30-P3-VC-REPORT": {
+      "title": "TV 3.0 Project - Phase 3 - Real-Time Video Coding Subjective Quality Assessment (report)",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Phase 3 - Real-Time Video Coding Subjective Quality Assessment (report)"
+    },
+    "BR-SBTVD-TV30-P3-PL-FIELD-REPORT": {
+      "title": "TV 3.0 Project - Phase 3 - Over-the-air Physical Layer Field Tests (report)",
+      "lang": "en",
+      "title_en": "TV 3.0 Project - Phase 3 - Over-the-air Physical Layer Field Tests (report)"
+    },
+    "BR-SBTVD-TV30-OG-01": {
+      "title": "TV 3.0 Operational Guidelines - Over-the-Air Physical Layer (companion to ABNT NBR 25601:2025)",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines - Over-the-Air Physical Layer (companion to ABNT NBR 25601:2025)"
+    },
+    "BR-SBTVD-TV30-OG-02": {
+      "title": "TV 3.0 Operational Guidelines - Transport Layer (companion to ABNT NBR 25602:2025)",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines - Transport Layer (companion to ABNT NBR 25602:2025)"
+    },
+    "BR-SBTVD-TV30-OG-03": {
+      "title": "TV 3.0 Operational Guidelines - Video Coding (companion to ABNT NBR 25603:2025)",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines - Video Coding (companion to ABNT NBR 25603:2025)"
+    },
+    "BR-SBTVD-TV30-OG-04": {
+      "title": "TV 3.0 Operational Guidelines - Audio Coding (companion to ABNT NBR 25604:2025)",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines - Audio Coding (companion to ABNT NBR 25604:2025)"
+    },
+    "BR-SBTVD-TV30-OG-05": {
+      "title": "TV 3.0 Operational Guidelines - Closed Captioning (companion to ABNT NBR 25605:2025)",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines - Closed Captioning (companion to ABNT NBR 25605:2025)"
+    },
+    "BR-SBTVD-TV30-OG-06": {
+      "title": "TV 3.0 Operational Guidelines - Closed Signing (companion to ABNT NBR 25606:2025)",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines - Closed Signing (companion to ABNT NBR 25606:2025)"
+    },
+    "BR-SBTVD-TV30-OG-07-2026-01": {
+      "title": "TV 3.0 Operational Guidelines - Emergency Warning System (January 2026 edition, superseded by v1 June 2026)",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines - Emergency Warning System (January 2026 edition, superseded by v1 June 2026)"
+    },
+    "BR-SBTVD-TV30-OG-07-V1": {
+      "title": "TV 3.0 Operational Guidelines - Emergency Warning System (v1, June 2026; current edition on forumsbtvd.org.br)",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines - Emergency Warning System (v1, June 2026; current edition on forumsbtvd.org.br)"
+    },
+    "BR-SBTVD-TV30-OG-08": {
+      "title": "TV 3.0 Operational Guidelines - Application Coding (companion to ABNT NBR 25608:2025; PDF cover dated July 2026, site lists 2026-02)",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines - Application Coding (companion to ABNT NBR 25608:2025; PDF cover dated July 2026, site lists 2026-02)"
+    },
+    "BR-SBTVD-TV30-OG-CPC-DRAFT": {
+      "title": "TV 3.0 Operational Guidelines - Common Public Communication and Digital Government Platform Support in Experimental AoP Implementations (final draft)",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines - Common Public Communication and Digital Government Platform Support in Experimental AoP Implementations (final draft)"
+    },
+    "BR-SBTVD-TV30-GUIDE-USABILITY-PT": {
+      "title": "TV 3.0 Guia de Usabilidade (Modulo de Mercado, Forum SBTVD)",
+      "lang": "pt",
+      "title_en": ""
+    },
+    "BR-SBTVD-TV30-GUIDE-USABILITY-EN": {
+      "title": "TV 3.0 Usability Guide (Market Module, Forum SBTVD) - English version",
+      "lang": "en",
+      "title_en": "TV 3.0 Usability Guide (Market Module, Forum SBTVD) - English version"
+    },
+    "BR-SBTVD-TV30-GUIDE-PRIVACY-PT": {
+      "title": "TV 3.0 Guia de Acesso a Dados e Privacidade (Modulo de Propriedade Intelectual, Forum SBTVD)",
+      "lang": "pt",
+      "title_en": ""
+    },
+    "BR-SBTVD-TV30-GUIDE-PRIVACY-EN": {
+      "title": "TV 3.0 Data Access and Privacy Guide (Intellectual Property Module, Forum SBTVD) - English version",
+      "lang": "en",
+      "title_en": "TV 3.0 Data Access and Privacy Guide (Intellectual Property Module, Forum SBTVD) - English version"
+    },
+    "BR-SBTVD-TV30-GUIDE-MARKET-MEASUREMENT": {
+      "title": "TV 3.0 Guia de Mensuracao de Mercado (Forum SBTVD)",
+      "lang": "pt",
+      "title_en": ""
+    },
+    "ABNT NBR 25601:2025": {
+      "title": "TV 3.0 — Over-the-air physical layer",
+      "lang": "en",
+      "title_en": ""
+    },
+    "ABNT NBR 25602:2025": {
+      "title": "TV 3.0 — Camada de transporte",
+      "lang": "pt",
+      "title_en": "TV 3.0 — Transport layer"
+    },
+    "ABNT NBR 25603:2025": {
+      "title": "TV 3.0 — Codificação de vídeo",
+      "lang": "pt",
+      "title_en": "TV 3.0 — Video coding"
+    },
+    "ABNT NBR 25604:2025": {
+      "title": "TV 3.0 — Codificação de áudio",
+      "lang": "pt",
+      "title_en": "TV 3.0 — Audio coding"
+    },
+    "ABNT NBR 25605:2025": {
+      "title": "TV 3.0 — Legendas",
+      "lang": "pt",
+      "title_en": "TV 3.0 — Closed captioning"
+    },
+    "ABNT NBR 25606:2025": {
+      "title": "TV 3.0 — Língua de sinais",
+      "lang": "pt",
+      "title_en": "TV 3.0 — Closed signing"
+    },
+    "ABNT NBR 25607:2025": {
+      "title": "TV 3.0 — Emergency warning system",
+      "lang": "en",
+      "title_en": ""
+    },
+    "ABNT NBR 25608:2025": {
+      "title": "TV 3.0 — Application coding",
+      "lang": "en",
+      "title_en": ""
+    },
+    "ABNT NBR 25609:2025": {
+      "title": "TV 3.0 — Receptores",
+      "lang": "pt",
+      "title_en": "TV 3.0 — Receivers"
+    },
+    "SBTVD OG-01": {
+      "title": "TV 3.0 Operational Guidelines — Over-the-Air Physical Layer",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines — Over-the-Air Physical Layer"
+    },
+    "SBTVD OG-02": {
+      "title": "TV 3.0 Operational Guidelines — Transport Layer",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines — Transport Layer"
+    },
+    "SBTVD OG-03": {
+      "title": "TV 3.0 Operational Guidelines — Video Coding",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines — Video Coding"
+    },
+    "SBTVD OG-04": {
+      "title": "TV 3.0 Operational Guidelines — Audio Coding",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines — Audio Coding"
+    },
+    "SBTVD OG-05": {
+      "title": "TV 3.0 Operational Guidelines — Closed Captioning",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines — Closed Captioning"
+    },
+    "SBTVD OG-06": {
+      "title": "TV 3.0 Operational Guidelines — Closed Signing",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines — Closed Signing"
+    },
+    "SBTVD OG-07 v1": {
+      "title": "TV 3.0 Operational Guidelines — Emergency Warning System",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines — Emergency Warning System"
+    },
+    "SBTVD OG-08": {
+      "title": "TV 3.0 Operational Guidelines — Application Coding",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines — Application Coding"
+    },
+    "SBTVD OG-CPC (draft)": {
+      "title": "TV 3.0 Operational Guidelines — Common Public Communication and Digital Government Platform Support (final draft)",
+      "lang": "en",
+      "title_en": "TV 3.0 Operational Guidelines — Common Public Communication and Digital Government Platform Support (final draft)"
     }
   },
   "rows": [
@@ -1082,7 +1364,21 @@
         },
         "SBTVD": {
           "docs": [],
-          "note": "TV 3.0 system overview document to be confirmed."
+          "note": "TV 3.0 is specified as the ABNT NBR 25601–25609:2025 series (physical layer, transport, video, audio, captions, closed signing, EWS, application coding, receivers); no single umbrella document identified.",
+          "reg": [
+            {
+              "org": "SBTVD",
+              "id": "Decreto nº 12.595, de 27 de agosto de 2025",
+              "ref": "Art. 3º, § 1º–§ 2º",
+              "text": "O Fórum SBTVD elaborará as especificações técnicas a serem adotadas pela TV 3.0 … As especificações técnicas … serão normatizadas pela ABNT."
+            },
+            {
+              "org": "SBTVD",
+              "id": "Decreto nº 12.595, de 27 de agosto de 2025",
+              "ref": "Art. 5º",
+              "text": "O padrão tecnológico da TV 3.0 possibilitará: qualidade audiovisual superior; recepção fixa, móvel e portátil; integração entre radiodifusão e internet com interação entre dispositivos; interface baseada em catálogo de aplicativos; segmentação e personalização de conteúdo; uso otimizado do espectro; multiprogramação aprimorada; transmissão de dados como serviço de valor adicionado."
+            }
+          ]
         }
       },
       "verdict": {
@@ -1100,11 +1396,11 @@
     },
     {
       "id": "(no ATSC document)",
-      "category": "s320",
+      "category": "s300",
       "type": "—",
-      "title": "Monitoring Guidelines for Terrestrial UHD Systems",
+      "title": "Receivers",
       "title_ko": "",
-      "summary": "Operational guideline for monitoring terrestrial UHD (ATSC 3.0) transmission systems.",
+      "summary": "Receiver requirements and minimum specifications.",
       "cells": {
         "ITU": {
           "docs": [],
@@ -1112,22 +1408,24 @@
         },
         "ATSC": {
           "docs": [],
-          "note": "No ATSC standard; related material in A/327 guidelines."
+          "note": "No single ATSC receiver standard (requirements spread across the A/300 series)."
         },
         "TTA": {
           "docs": [
-            "TTAK.KO-07.0154/R1"
+            "TTAR-07.0022"
           ],
-          "note": "Terrestrial UHD system monitoring guideline (Dec 2023)."
+          "note": "Minimum technical specification for terrestrial UHD set-top boxes (technical report, 2017)."
         },
         "SBTVD": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "ABNT NBR 25609:2025"
+          ],
+          "note": "TV 3.0 receiver standard (113 pp.)."
         }
       },
       "verdict": {
-        "code": "none",
-        "text": "TTA-only provision."
+        "code": "review",
+        "text": ""
       },
       "impact": "",
       "recommendation": "",
@@ -1182,13 +1480,30 @@
           ]
         },
         "SBTVD": {
-          "docs": [],
-          "note": "TV 3.0 physical layer is ATSC 3.0-based; bootstrap version to be confirmed."
+          "docs": [
+            "ABNT NBR 25601:2025",
+            "SBTVD OG-01"
+          ],
+          "note": "ATSC 3.0 physical layer adopted by decree; transmitters must implement A/321:2025-07 (Anatel Ato 2.705/2026).",
+          "reg": [
+            {
+              "org": "SBTVD",
+              "id": "Decreto nº 12.595, de 27 de agosto de 2025",
+              "ref": "Art. 3º, caput",
+              "text": "A TV 3.0 adotará o padrão de sinais da camada física do sistema ATSC 3.0, e incorporará, entre outras, as seguintes inovações tecnológicas recomendadas pelo Fórum SBTVD: I - Múltiplas Entradas e Múltiplas Saídas – MIMO; II - Multiplexação por Divisão de Camadas – LDM; e III - Ferramenta de Identificação de Transmissor – TxID."
+            },
+            {
+              "org": "SBTVD",
+              "id": "Anatel Ato nº 2.705, de 24 de fevereiro de 2026",
+              "ref": "Anexo, item 4.1",
+              "text": "Os equipamentos básicos de transmissão da camada física (Over-the-Air Physical Layer) da TV 3.0, compreendendo transmissores e retransmissores, devem implementar o padrão ATSC 3.0, em conformidade com as normas ATSC A/321:2025-07, ATSC A/322:2025-07a e ATSC A/324:2025-07 …"
+            }
+          ]
         }
       },
       "verdict": {
-        "code": "review",
-        "text": "TTA Part 4 is understood to adopt A/321 and A/322; use of the EA wake-up bits needs confirmation."
+        "code": "partial",
+        "text": "Korea (TTA Part 4) and Brazil (ABNT NBR 25601, Anatel Ato 2.705 referencing A/321:2025-07) both adopt the ATSC 3.0 bootstrap; wake-up bit usage to be confirmed."
       },
       "impact": "Whether EA wake-up is used affects receiver requirements.",
       "recommendation": "",
@@ -1256,13 +1571,36 @@
           ]
         },
         "SBTVD": {
-          "docs": [],
-          "note": "TV 3.0 physical layer (ATSC 3.0 PHY-based) specification to be confirmed."
+          "docs": [
+            "ABNT NBR 25601:2025",
+            "SBTVD OG-01"
+          ],
+          "note": "ATSC 3.0 physical layer with MIMO, LDM and TxID (Decreto 12.595/2025 Art. 3º); A/322:2025-07a required for transmitters.",
+          "reg": [
+            {
+              "org": "SBTVD",
+              "id": "Decreto nº 12.595, de 27 de agosto de 2025",
+              "ref": "Art. 3º, caput",
+              "text": "A TV 3.0 adotará o padrão de sinais da camada física do sistema ATSC 3.0, e incorporará, entre outras, as seguintes inovações tecnológicas recomendadas pelo Fórum SBTVD: I - Múltiplas Entradas e Múltiplas Saídas – MIMO; II - Multiplexação por Divisão de Camadas – LDM; e III - Ferramenta de Identificação de Transmissor – TxID."
+            },
+            {
+              "org": "SBTVD",
+              "id": "Anatel Ato nº 2.705, de 24 de fevereiro de 2026",
+              "ref": "Anexo, item 4.1",
+              "text": "Os equipamentos básicos de transmissão da camada física (Over-the-Air Physical Layer) da TV 3.0, compreendendo transmissores e retransmissores, devem implementar o padrão ATSC 3.0, em conformidade com as normas ATSC A/321:2025-07, ATSC A/322:2025-07a e ATSC A/324:2025-07 …"
+            },
+            {
+              "org": "SBTVD",
+              "id": "Anatel Ato nº 2.705, de 24 de fevereiro de 2026",
+              "ref": "Anexo, item 5.9",
+              "text": "Taxa de Erro de Modulação (MER) — ensaio; máscara de emissão conforme os Requisitos Técnicos de Condições de Uso de Radiofrequências (RCC-SRA)."
+            }
+          ]
         }
       },
       "verdict": {
         "code": "partial",
-        "text": "TTA adopts the ATSC 3.0 PHY but restricts it to Korean operating parameters (6 MHz etc.)."
+        "text": "Both Korea and Brazil adopt the ATSC 3.0 physical layer; Korea restricts operating parameters (6 MHz), Brazil mandates MIMO, LDM and TxID by decree."
       },
       "impact": "Transmission equipment (gateway, exciter) is largely compatible; operating profiles (PLP configuration, LDM use) need checking.",
       "recommendation": "Compare the mandatory/optional parameter tables of Part 4 with the A/322 annexes.",
@@ -1348,12 +1686,20 @@
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "A/324:2025-07 required for transmitters and retransmitters (Anatel Ato 2.705/2026, item 4.1).",
+          "reg": [
+            {
+              "org": "SBTVD",
+              "id": "Anatel Ato nº 2.705, de 24 de fevereiro de 2026",
+              "ref": "Anexo, item 4.1",
+              "text": "Os equipamentos básicos de transmissão da camada física (Over-the-Air Physical Layer) da TV 3.0, compreendendo transmissores e retransmissores, devem implementar o padrão ATSC 3.0, em conformidade com as normas ATSC A/321:2025-07, ATSC A/322:2025-07a e ATSC A/324:2025-07 …"
+            }
+          ]
         }
       },
       "verdict": {
-        "code": "review",
-        "text": "Adoption of STLTP and Korean SFN operating rules to be compared."
+        "code": "partial",
+        "text": "Brazil requires A/324:2025-07 for transmitters; Korean STL/SFN provisions in Part 4 to be compared."
       },
       "impact": "",
       "recommendation": "",
@@ -1389,8 +1735,10 @@
           "note": "Guideline for test methods of terrestrial UHD radio equipment (2022)."
         },
         "SBTVD": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "TV 3.0 Phase 3 PL lab report"
+          ],
+          "note": "Fórum SBTVD Phase 2/3 laboratory test reports (2021, 2023)."
         }
       },
       "verdict": {
@@ -1433,8 +1781,10 @@
           "note": ""
         },
         "SBTVD": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "TV 3.0 Phase 3 PL field report"
+          ],
+          "note": "Fórum SBTVD Phase 2/3 field test reports (2021, 2024)."
         }
       },
       "verdict": {
@@ -1493,6 +1843,46 @@
       }
     },
     {
+      "id": "(no ATSC document)",
+      "category": "s320",
+      "type": "—",
+      "title": "Monitoring Guidelines for Terrestrial UHD Systems",
+      "title_ko": "",
+      "summary": "Operational guideline for monitoring terrestrial UHD (ATSC 3.0) transmission systems.",
+      "cells": {
+        "ITU": {
+          "docs": [],
+          "note": ""
+        },
+        "ATSC": {
+          "docs": [],
+          "note": "No ATSC standard; related material in A/327 guidelines."
+        },
+        "TTA": {
+          "docs": [
+            "TTAK.KO-07.0154/R1"
+          ],
+          "note": "Terrestrial UHD system monitoring guideline (Dec 2023)."
+        },
+        "SBTVD": {
+          "docs": [],
+          "note": ""
+        }
+      },
+      "verdict": {
+        "code": "none",
+        "text": "TTA-only provision."
+      },
+      "impact": "",
+      "recommendation": "",
+      "evidence": [],
+      "review": {
+        "status": "draft",
+        "by": "",
+        "updated": "2026-08-31"
+      }
+    },
+    {
       "id": "A/330",
       "category": "s330",
       "type": "Standard",
@@ -1527,8 +1917,11 @@
           ]
         },
         "SBTVD": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "ABNT NBR 25602:2025",
+            "SBTVD OG-02"
+          ],
+          "note": "Transport layer standard; ALP inclusion to be confirmed."
         }
       },
       "verdict": {
@@ -1582,8 +1975,11 @@
           ]
         },
         "SBTVD": {
-          "docs": [],
-          "note": "TV 3.0 transport layer (ROUTE/DASH) specification to be confirmed."
+          "docs": [
+            "ABNT NBR 25602:2025",
+            "SBTVD OG-02"
+          ],
+          "note": "Transport layer standard and operational guideline."
         }
       },
       "verdict": {
@@ -1624,8 +2020,10 @@
           "note": "ESG provisions in Part 3 to be confirmed."
         },
         "SBTVD": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "ABNT NBR 25602:2025"
+          ],
+          "note": "ESG provisions to be confirmed."
         }
       },
       "verdict": {
@@ -1664,8 +2062,10 @@
           "note": "No counterpart identified."
         },
         "SBTVD": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "ABNT NBR 25602:2025"
+          ],
+          "note": "Usage reporting provisions to be confirmed."
         }
       },
       "verdict": {
@@ -1827,8 +2227,11 @@
           "note": "Event provisions in the IBB standard and Part 3 to be confirmed."
         },
         "SBTVD": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "ABNT NBR 25608:2025",
+            "SBTVD OG-08"
+          ],
+          "note": "Application coding standard; event delivery to be confirmed."
         }
       },
       "verdict": {
@@ -1872,8 +2275,18 @@
           "note": "Companion-screen provisions of the IBB standard."
         },
         "SBTVD": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "ABNT NBR 25608:2025"
+          ],
+          "note": "Companion-device provisions to be confirmed.",
+          "reg": [
+            {
+              "org": "SBTVD",
+              "id": "Decreto nº 12.595, de 27 de agosto de 2025",
+              "ref": "Art. 5º",
+              "text": "O padrão tecnológico da TV 3.0 possibilitará: qualidade audiovisual superior; recepção fixa, móvel e portátil; integração entre radiodifusão e internet com interação entre dispositivos; interface baseada em catálogo de aplicativos; segmentação e personalização de conteúdo; uso otimizado do espectro; multiprogramação aprimorada; transmissão de dados como serviço de valor adicionado."
+            }
+          ]
         }
       },
       "verdict": {
@@ -1930,48 +2343,6 @@
       }
     },
     {
-      "id": "(no ATSC document)",
-      "category": "s340",
-      "type": "—",
-      "title": "Transmission and Reception for Terrestrial UHDTV Broadcasting Service - Part 6: 3DTV",
-      "title_ko": "",
-      "summary": "3DTV service over terrestrial UHDTV broadcasting.",
-      "cells": {
-        "ITU": {
-          "docs": [
-            "BT.2160"
-          ],
-          "note": "3DTV broadcasting features (reference)."
-        },
-        "ATSC": {
-          "docs": [],
-          "note": "No ATSC 3.0 standard."
-        },
-        "TTA": {
-          "docs": [
-            "TTAK.KO-07.0153"
-          ],
-          "note": "Part 6: 3DTV (June 2021)."
-        },
-        "SBTVD": {
-          "docs": [],
-          "note": ""
-        }
-      },
-      "verdict": {
-        "code": "none",
-        "text": "TTA-only provision."
-      },
-      "impact": "",
-      "recommendation": "",
-      "evidence": [],
-      "review": {
-        "status": "draft",
-        "by": "",
-        "updated": "2026-08-31"
-      }
-    },
-    {
       "id": "A/341",
       "category": "s340",
       "type": "Standard",
@@ -2008,13 +2379,16 @@
           ]
         },
         "SBTVD": {
-          "docs": [],
-          "note": "TV 3.0 adopts VVC (+LCEVC); HEVC not used."
+          "docs": [
+            "ABNT NBR 25603:2025",
+            "SBTVD OG-03"
+          ],
+          "note": "TV 3.0 video coding adopts VVC (+LCEVC); HEVC not used."
         }
       },
       "verdict": {
         "code": "partial",
-        "text": "TTA adopts HEVC (profile and HDR options to be compared); SBTVD differs (VVC)."
+        "text": "TTA adopts HEVC (profile and HDR options to be compared); SBTVD Forum differs (VVC +LCEVC, ABNT NBR 25603)."
       },
       "impact": "Brazilian receivers are not compatible with the HEVC profile; HDR method and frame-rate constraints may also differ between Korea and the US.",
       "recommendation": "Compare the video constraint tables of Part 2 with A/341 Table 6.x.",
@@ -2061,8 +2435,11 @@
           ]
         },
         "SBTVD": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "ABNT NBR 25604:2025",
+            "SBTVD OG-04"
+          ],
+          "note": "Audio coding standard and operational guideline."
         }
       },
       "verdict": {
@@ -2109,7 +2486,9 @@
           ]
         },
         "SBTVD": {
-          "docs": [],
+          "docs": [
+            "ABNT NBR 25604:2025"
+          ],
           "note": "TV 3.0 adopts MPEG-H; AC-4 not adopted."
         }
       },
@@ -2162,7 +2541,10 @@
           ]
         },
         "SBTVD": {
-          "docs": [],
+          "docs": [
+            "ABNT NBR 25604:2025",
+            "SBTVD OG-04"
+          ],
           "note": "TV 3.0 audio: MPEG-H adopted."
         }
       },
@@ -2212,8 +2594,11 @@
           ]
         },
         "SBTVD": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "ABNT NBR 25605:2025",
+            "SBTVD OG-05"
+          ],
+          "note": "Closed captioning standard and operational guideline."
         }
       },
       "verdict": {
@@ -2258,13 +2643,24 @@
           "note": "Terrestrial UHD IBB service — HbbTV 2.0-based browser environment."
         },
         "SBTVD": {
-          "docs": [],
-          "note": "Ginga-based application environment."
+          "docs": [
+            "ABNT NBR 25608:2025",
+            "SBTVD OG-08"
+          ],
+          "note": "Ginga-based application coding (528 pp.).",
+          "reg": [
+            {
+              "org": "SBTVD",
+              "id": "Decreto nº 12.595, de 27 de agosto de 2025",
+              "ref": "Art. 5º",
+              "text": "O padrão tecnológico da TV 3.0 possibilitará: qualidade audiovisual superior; recepção fixa, móvel e portátil; integração entre radiodifusão e internet com interação entre dispositivos; interface baseada em catálogo de aplicativos; segmentação e personalização de conteúdo; uso otimizado do espectro; multiprogramação aprimorada; transmissão de dados como serviço de valor adicionado."
+            }
+          ]
         }
       },
       "verdict": {
         "code": "diff",
-        "text": "Application runtimes differ: A/344 vs HbbTV 2.0 vs Ginga."
+        "text": "Application runtimes differ: A/344 Broadcaster Application vs HbbTV 2.0-based IBB (TTA) vs Ginga (ABNT NBR 25608)."
       },
       "impact": "Broadcaster applications are hard to reuse across countries and receiver browser requirements differ.",
       "recommendation": "",
@@ -2308,13 +2704,99 @@
           ]
         },
         "SBTVD": {
-          "docs": [],
-          "note": "TV 3.0 video: VVC (+LCEVC) adopted."
+          "docs": [
+            "ABNT NBR 25603:2025",
+            "SBTVD OG-03"
+          ],
+          "note": "TV 3.0 video coding: VVC (+LCEVC)."
         }
       },
       "verdict": {
         "code": "review",
-        "text": "SBTVD VVC specification and A/345 profiles to be compared; no TTA counterpart."
+        "text": "SBTVD VVC specification (ABNT NBR 25603) and A/345 profiles to be compared; no TTA counterpart."
+      },
+      "impact": "",
+      "recommendation": "",
+      "evidence": [],
+      "review": {
+        "status": "draft",
+        "by": "",
+        "updated": "2026-08-31"
+      }
+    },
+    {
+      "id": "(no ATSC document)",
+      "category": "s340",
+      "type": "—",
+      "title": "Transmission and Reception for Terrestrial UHDTV Broadcasting Service - Part 6: 3DTV",
+      "title_ko": "",
+      "summary": "3DTV service over terrestrial UHDTV broadcasting.",
+      "cells": {
+        "ITU": {
+          "docs": [
+            "BT.2160"
+          ],
+          "note": "3DTV broadcasting features (reference)."
+        },
+        "ATSC": {
+          "docs": [],
+          "note": "No ATSC 3.0 standard."
+        },
+        "TTA": {
+          "docs": [
+            "TTAK.KO-07.0153"
+          ],
+          "note": "Part 6: 3DTV (June 2021)."
+        },
+        "SBTVD": {
+          "docs": [],
+          "note": ""
+        }
+      },
+      "verdict": {
+        "code": "none",
+        "text": "TTA-only provision."
+      },
+      "impact": "",
+      "recommendation": "",
+      "evidence": [],
+      "review": {
+        "status": "draft",
+        "by": "",
+        "updated": "2026-08-31"
+      }
+    },
+    {
+      "id": "(no ATSC document)",
+      "category": "s340",
+      "type": "—",
+      "title": "TV 3.0 — Closed signing",
+      "title_ko": "",
+      "summary": "Sign-language (closed signing) presentation for accessibility.",
+      "cells": {
+        "ITU": {
+          "docs": [],
+          "note": ""
+        },
+        "ATSC": {
+          "docs": [],
+          "note": "No ATSC 3.0 standard."
+        },
+        "TTA": {
+          "docs": [],
+          "note": "No counterpart identified."
+        },
+        "SBTVD": {
+          "docs": [
+            "ABNT NBR 25606:2025",
+            "SBTVD OG-06"
+          ],
+          "note": "Closed signing standard and operational guideline."
+        }
+      },
+      "verdict": {
+        "code": "none",
+        "text": "SBTVD Forum-only provision."
       },
       "impact": "",
       "recommendation": "",
@@ -2439,7 +2921,7 @@
         },
         "SBTVD": {
           "docs": [],
-          "note": ""
+          "note": "Security provisions not identified as a separate document; to be checked in ABNT NBR 25602/25608/25609."
         }
       },
       "verdict": {
@@ -2700,8 +3182,10 @@
           "note": ""
         },
         "SBTVD": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "SBTVD OG-08"
+          ],
+          "note": "Application coding operational guideline."
         }
       },
       "verdict": {
@@ -2711,6 +3195,164 @@
       "impact": "",
       "recommendation": "",
       "evidence": [],
+      "review": {
+        "status": "draft",
+        "by": "",
+        "updated": "2026-08-31"
+      }
+    },
+    {
+      "id": "A/331 §AEA",
+      "category": "datacast",
+      "type": "Standard",
+      "title": "Emergency information datacasting",
+      "title_ko": "",
+      "summary": "Emergency information content (maps, evacuation information) delivered by datacasting in addition to AEAT alert messages.",
+      "cells": {
+        "ITU": {
+          "docs": [
+            "BT.2090",
+            "Report BT.2382"
+          ],
+          "note": "Emergency warning via DTTB."
+        },
+        "ATSC": {
+          "docs": [
+            "A/331:2026-04"
+          ],
+          "note": "AEA messages and rich-media delivery."
+        },
+        "TTA": {
+          "docs": [
+            "TTAK.KO-07.0142/R4",
+            "TTAK.KO-07.0156",
+            "TTAK.KO-06.0523"
+          ],
+          "note": "Emergency alert implementation guide for dedicated receivers; emergency information service for community broadcasting; guideline for using disaster information."
+        },
+        "SBTVD": {
+          "docs": [
+            "ABNT NBR 25607:2025",
+            "SBTVD OG-07 v1"
+          ],
+          "note": "Emergency warning system standard and operational guideline (v1, June 2026)."
+        }
+      },
+      "verdict": {
+        "code": "partial",
+        "text": "AEAT basis is common, but TTA extends it with domestic service provisions (dedicated receivers, community broadcasting)."
+      },
+      "impact": "",
+      "recommendation": "",
+      "evidence": [],
+      "review": {
+        "status": "draft",
+        "by": "",
+        "updated": "2026-08-31"
+      }
+    },
+    {
+      "id": "A/331 §NRT",
+      "category": "datacast",
+      "type": "Standard",
+      "title": "Datacasting — NRT file and data delivery",
+      "title_ko": "",
+      "summary": "Non-real-time file delivery over ROUTE sessions and data service signaling. There is no dedicated ATSC datacasting standard; the NRT provisions of A/331 apply.",
+      "cells": {
+        "ITU": {
+          "docs": [
+            "Report BT.2295"
+          ],
+          "note": ""
+        },
+        "ATSC": {
+          "docs": [
+            "A/331:2026-04"
+          ],
+          "note": "Baseline (NRT/ROUTE clauses)."
+        },
+        "TTA": {
+          "docs": [
+            "TTAK.KO-07.0150/R3"
+          ],
+          "note": "NRT provisions in Part 3: Systems to be confirmed."
+        },
+        "SBTVD": {
+          "docs": [
+            "ABNT NBR 25602:2025",
+            "SBTVD OG-CPC (draft)"
+          ],
+          "note": "Transport layer; Common Public Communication / Digital Government platform guideline (draft, Aug 2026)."
+        }
+      },
+      "verdict": {
+        "code": "review",
+        "text": ""
+      },
+      "impact": "",
+      "recommendation": "",
+      "evidence": [],
+      "review": {
+        "status": "draft",
+        "by": "",
+        "updated": "2026-08-31"
+      }
+    },
+    {
+      "id": "(no ATSC document)",
+      "category": "datacast",
+      "type": "—",
+      "title": "Broadcast Real-Time Kinematic(RTK) Correction Data Service for Terrestrial Ultra High Definition(UHD)",
+      "title_ko": "",
+      "summary": "Datacasting of RTK (real-time kinematic) correction signals and high-precision GNSS correction information over the terrestrial UHD broadcast network. The broadcast carries correction data for GNSS receivers; it does not use the broadcast signal itself for positioning.",
+      "cells": {
+        "ITU": {
+          "docs": [],
+          "note": ""
+        },
+        "ATSC": {
+          "docs": [],
+          "note": "No counterpart document."
+        },
+        "TTA": {
+          "docs": [
+            "TTAK.KO-07.0165",
+            "TTAK.KO-07.0167",
+            "TTAK.KO-07.0168"
+          ],
+          "note": "Broadcast RTK correction data service (June 2025); HP-GNSS correction information message structure and datagram IP tunneling (June 2025)."
+        },
+        "SBTVD": {
+          "docs": [],
+          "note": "No counterpart identified."
+        }
+      },
+      "verdict": {
+        "code": "none",
+        "text": "TTA-only provision; no ATSC or SBTVD Forum counterpart."
+      },
+      "evidence": [
+        {
+          "org": "TTA",
+          "doc": "TTAK.KO-07.0165",
+          "clause": "whole document",
+          "url": ""
+        },
+        {
+          "org": "TTA",
+          "doc": "TTAK.KO-07.0167",
+          "clause": "message structure",
+          "url": ""
+        },
+        {
+          "org": "TTA",
+          "doc": "TTAK.KO-07.0168",
+          "clause": "IP tunneling",
+          "url": ""
+        }
+      ],
+      "impact": "",
+      "recommendation": "",
       "review": {
         "status": "draft",
         "by": "",
@@ -2758,103 +3400,12 @@
       }
     },
     {
-      "id": "A/331 §AEA",
-      "category": "datacast",
-      "type": "Standard",
-      "title": "Emergency information datacasting",
-      "title_ko": "",
-      "summary": "Emergency information content (maps, evacuation information) delivered by datacasting in addition to AEAT alert messages.",
-      "cells": {
-        "ITU": {
-          "docs": [
-            "BT.2090",
-            "Report BT.2382"
-          ],
-          "note": "Emergency warning via DTTB."
-        },
-        "ATSC": {
-          "docs": [
-            "A/331:2026-04"
-          ],
-          "note": "AEA messages and rich-media delivery."
-        },
-        "TTA": {
-          "docs": [
-            "TTAK.KO-07.0142/R4",
-            "TTAK.KO-07.0156",
-            "TTAK.KO-06.0523"
-          ],
-          "note": "Emergency alert implementation guide for dedicated receivers; emergency information service for community broadcasting; guideline for using disaster information."
-        },
-        "SBTVD": {
-          "docs": [],
-          "note": ""
-        }
-      },
-      "verdict": {
-        "code": "partial",
-        "text": "AEAT basis is common, but TTA extends it with domestic service provisions (dedicated receivers, community broadcasting)."
-      },
-      "impact": "",
-      "recommendation": "",
-      "evidence": [],
-      "review": {
-        "status": "draft",
-        "by": "",
-        "updated": "2026-08-31"
-      }
-    },
-    {
-      "id": "A/331 §NRT",
-      "category": "datacast",
-      "type": "Standard",
-      "title": "Datacasting — NRT file and data delivery",
-      "title_ko": "",
-      "summary": "Non-real-time file delivery over ROUTE sessions and data service signaling. There is no dedicated ATSC datacasting standard; the NRT provisions of A/331 apply.",
-      "cells": {
-        "ITU": {
-          "docs": [
-            "Report BT.2295"
-          ],
-          "note": ""
-        },
-        "ATSC": {
-          "docs": [
-            "A/331:2026-04"
-          ],
-          "note": "Baseline (NRT/ROUTE clauses)."
-        },
-        "TTA": {
-          "docs": [
-            "TTAK.KO-07.0150/R3"
-          ],
-          "note": "NRT provisions in Part 3: Systems to be confirmed."
-        },
-        "SBTVD": {
-          "docs": [],
-          "note": ""
-        }
-      },
-      "verdict": {
-        "code": "review",
-        "text": ""
-      },
-      "impact": "",
-      "recommendation": "",
-      "evidence": [],
-      "review": {
-        "status": "draft",
-        "by": "",
-        "updated": "2026-08-31"
-      }
-    },
-    {
       "id": "ATSC BPS (in progress)",
       "category": "datacast",
       "type": "—",
-      "title": "Broadcast Real-Time Kinematic(RTK) Correction Data Service for Terrestrial Ultra High Definition(UHD)",
+      "title": "Broadcast Positioning System (BPS)",
       "title_ko": "",
-      "summary": "Datacasting of RTK (real-time kinematic) correction signals and high-precision GNSS correction information over the terrestrial UHD broadcast network. Different approach from ATSC BPS, which uses the broadcast signal itself for positioning.",
+      "summary": "Positioning and timing derived from the terrestrial broadcast signal itself (ATSC 3.0 signal as a PNT source, independent of GNSS). A different technology from RTK correction datacasting.",
       "cells": {
         "ITU": {
           "docs": [
@@ -2867,12 +3418,8 @@
           "note": "No published standard — Broadcast Positioning System (BPS) standardization in progress."
         },
         "TTA": {
-          "docs": [
-            "TTAK.KO-07.0165",
-            "TTAK.KO-07.0167",
-            "TTAK.KO-07.0168"
-          ],
-          "note": "Broadcast RTK correction data service (June 2025); HP-GNSS correction information message structure and datagram IP tunneling (June 2025)."
+          "docs": [],
+          "note": "No counterpart document."
         },
         "SBTVD": {
           "docs": [],
@@ -2880,31 +3427,12 @@
         }
       },
       "verdict": {
-        "code": "diff",
-        "text": "TTA leads standardization of RTK/HP-GNSS correction datacasting; ATSC is pursuing BPS."
+        "code": "review",
+        "text": "ATSC standardization in progress; no TTA or SBTVD Forum counterpart."
       },
-      "impact": "Korean RTK datacasting can operate independently of ATSC standards; alignment may be needed once BPS is published.",
-      "recommendation": "Present TTAK.KO-07.0165–0168 as reference documents in the ITU-R WP 6A BPS discussion.",
-      "evidence": [
-        {
-          "org": "TTA",
-          "doc": "TTAK.KO-07.0165",
-          "clause": "whole document",
-          "url": ""
-        },
-        {
-          "org": "TTA",
-          "doc": "TTAK.KO-07.0167",
-          "clause": "message structure",
-          "url": ""
-        },
-        {
-          "org": "TTA",
-          "doc": "TTAK.KO-07.0168",
-          "clause": "IP tunneling",
-          "url": ""
-        }
-      ],
+      "impact": "",
+      "recommendation": "",
+      "evidence": [],
       "review": {
         "status": "draft",
         "by": "",
