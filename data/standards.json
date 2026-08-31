@@ -243,17 +243,12 @@
     "same": {
       "icon": "✓",
       "label": "Same",
-      "desc": "Clause- and table-level comparison done against the baseline version: no relevant difference (legal incorporation alone does not qualify)"
-    },
-    "profile": {
-      "icon": "◐",
-      "label": "Adopted · national profile",
-      "desc": "The ATSC document is adopted as defined; the country selects among the options and parameters the document itself permits (bandwidth, optional tools, mandated features)"
+      "desc": "Clause- and table-level comparison done: no relevant difference. Choosing one of the values or options the ATSC document defines (e.g. 6 MHz, optional tools) still counts as Same — the requirement level (optional / mandatory) is shown as a tag"
     },
     "partial": {
       "icon": "△",
       "label": "Partial match",
-      "desc": "Core is the same but the content differs: missing or stale clauses, errata not reflected, or constraints beyond the ATSC options"
+      "desc": "Core is the same but the content differs: missing or stale clauses, errata not reflected, or constraints outside the ATSC-defined options"
     },
     "diff": {
       "icon": "≠",
@@ -495,11 +490,13 @@
       "verdicts": {
         "TTA": {
           "code": "same",
-          "text": "Clause-level comparison: identical parameters"
+          "text": "Clause-level comparison: identical parameters",
+          "req": "mandatory"
         },
         "SBTVD": {
           "code": "same",
-          "text": "Referenced edition identical to baseline for §5; ABNT profile not read"
+          "text": "Referenced edition identical to baseline for §5; ABNT profile not read",
+          "req": "mandatory"
         }
       },
       "evidence": [
@@ -562,12 +559,14 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "profile",
-          "text": "Identical for version 0 (6 MHz selected); 2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over"
+          "code": "same",
+          "text": "Fields identical; 6 MHz is one of the defined values. 2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over — no effect on ATSC 3.0 services",
+          "req": "mandatory"
         },
         "SBTVD": {
-          "code": "profile",
-          "text": "Referenced 2025-07 edition identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced"
+          "code": "same",
+          "text": "Referenced 2025-07 edition identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced",
+          "req": "mandatory"
         }
       },
       "evidence": [
@@ -630,12 +629,14 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "profile",
-          "text": "Same specification; 6 MHz selected by regulation (an option A/321/A/322 permit)"
+          "code": "same",
+          "text": "Same specification; 6 MHz chosen from the defined values (regulation)",
+          "req": "6 MHz mandatory (regulation)"
         },
         "SBTVD": {
-          "code": "profile",
-          "text": "Same specification; 6 MHz selected by decree"
+          "code": "same",
+          "text": "Same specification; 6 MHz chosen from the defined values (decree)",
+          "req": "6 MHz mandatory (decree)"
         }
       },
       "evidence": [
@@ -698,11 +699,13 @@
       "verdicts": {
         "TTA": {
           "code": "same",
-          "text": "Sections identical"
+          "text": "Sections identical",
+          "req": "options as defined"
         },
         "SBTVD": {
-          "code": "review",
-          "text": "Referenced edition identical; ABNT NBR 25601 profile restrictions not read"
+          "code": "same",
+          "text": "Referenced edition identical; ABNT NBR 25601 may restrict the operated combinations (not read) but cannot redefine them",
+          "req": "options as defined"
         }
       },
       "evidence": [
@@ -765,11 +768,13 @@
       "verdicts": {
         "TTA": {
           "code": "same",
-          "text": "Sections identical; regulation consistent"
+          "text": "Sections identical; regulation lists the same option set",
+          "req": "options as defined"
         },
         "SBTVD": {
-          "code": "review",
-          "text": "Referenced edition identical; ABNT profile not read"
+          "code": "same",
+          "text": "Referenced edition identical; ABNT profile not read",
+          "req": "options as defined"
         }
       },
       "evidence": [
@@ -828,11 +833,13 @@
       "verdicts": {
         "TTA": {
           "code": "same",
-          "text": "Corrected formula present"
+          "text": "Corrected formula present",
+          "req": "mandatory"
         },
         "SBTVD": {
           "code": "same",
-          "text": "Referenced edition post-dates the correction"
+          "text": "Referenced edition post-dates the correction",
+          "req": "mandatory"
         }
       },
       "evidence": [
@@ -890,12 +897,14 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "profile",
-          "text": "Same technology; LDM optional as in ATSC; national programme-composition rule (≥ 1 4K service)"
+          "code": "same",
+          "text": "Same technology; LDM optional (as in ATSC); informative 2026 power-ratio tables absent",
+          "req": "LDM optional"
         },
         "SBTVD": {
-          "code": "profile",
-          "text": "Same technology; LDM — an ATSC option — made mandatory by decree"
+          "code": "same",
+          "text": "Same technology; LDM mandatory by decree",
+          "req": "LDM mandatory"
         }
       },
       "evidence": [
@@ -959,11 +968,13 @@
       "verdicts": {
         "TTA": {
           "code": "partial",
-          "text": "MIMO extension adopted (optional, as in ATSC); January 2026 erratum (MP4_2 removal) not reflected"
+          "text": "MIMO extension adopted (optional). Open item: January 2026 erratum (MP4_2 removal at 32K/GI6_1536) not reflected",
+          "req": "MIMO optional"
         },
         "SBTVD": {
           "code": "partial",
-          "text": "MIMO — an ATSC option — mandatory by decree; referenced edition predates the erratum"
+          "text": "MIMO mandatory by decree. Open item: referenced edition predates the erratum",
+          "req": "MIMO mandatory"
         }
       },
       "evidence": [
@@ -2389,11 +2400,11 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "profile",
-          "text": "TTA §10 is a translation of A/321:2016 §4–6: bootstrap structure and major-version-0 signaling identical (6 MHz selected nationally). A/321:2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over — no effect on ATSC 3.0 services"
+          "code": "same",
+          "text": "TTA §10 is a translation of A/321:2016 §4–6: bootstrap structure and major-version-0 signaling identical; 6 MHz is one of the defined values. A/321:2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over — no effect on ATSC 3.0 services"
         },
         "SBTVD": {
-          "code": "profile",
+          "code": "same",
           "text": "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced; ABNT NBR 25601 profile unverified"
         }
       },
@@ -2515,11 +2526,13 @@
           "verdicts": {
             "TTA": {
               "code": "same",
-              "text": "Clause-level comparison: identical parameters"
+              "text": "Clause-level comparison: identical parameters",
+              "req": "mandatory"
             },
             "SBTVD": {
               "code": "same",
-              "text": "Referenced edition identical to baseline for §5; ABNT profile not read"
+              "text": "Referenced edition identical to baseline for §5; ABNT profile not read",
+              "req": "mandatory"
             }
           },
           "evidence": [
@@ -2582,12 +2595,14 @@
           },
           "verdicts": {
             "TTA": {
-              "code": "profile",
-              "text": "Identical for version 0 (6 MHz selected); 2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over"
+              "code": "same",
+              "text": "Fields identical; 6 MHz is one of the defined values. 2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over — no effect on ATSC 3.0 services",
+              "req": "mandatory"
             },
             "SBTVD": {
-              "code": "profile",
-              "text": "Referenced 2025-07 edition identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced"
+              "code": "same",
+              "text": "Referenced 2025-07 edition identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced",
+              "req": "mandatory"
             }
           },
           "evidence": [
@@ -2650,12 +2665,14 @@
           },
           "verdicts": {
             "TTA": {
-              "code": "profile",
-              "text": "Same specification; 6 MHz selected by regulation (an option A/321/A/322 permit)"
+              "code": "same",
+              "text": "Same specification; 6 MHz chosen from the defined values (regulation)",
+              "req": "6 MHz mandatory (regulation)"
             },
             "SBTVD": {
-              "code": "profile",
-              "text": "Same specification; 6 MHz selected by decree"
+              "code": "same",
+              "text": "Same specification; 6 MHz chosen from the defined values (decree)",
+              "req": "6 MHz mandatory (decree)"
             }
           },
           "evidence": [
@@ -2790,12 +2807,12 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "profile",
-          "text": "TTA §5–9/Annex I-1 translate A/322 (2020 text + 2024 MIMO extension) and select the 6 MHz option by regulation: FEC, constellations, FFT/GI/pilots, frequency interleaver identical. Open item: Table Ⅰ.10-5 still lists MP4_2 at 32K/GI6_1536 (removed by A/322:2025-07a Amd 1)"
+          "code": "same",
+          "text": "Physical layer identical: TTA §5–9/Annex I-1 translate A/322 (2020 text + 2024 MIMO extension) — FEC, constellations, FFT/GI/pilots, frequency interleaver, PLP/LDM; 6 MHz selected; MIMO/LDM optional. Open item: Table Ⅰ.10-5 still lists MP4_2 at 32K/GI6_1536 (removed by A/322:2025-07a Amd 1, Jan 2026)"
         },
         "SBTVD": {
-          "code": "profile",
-          "text": "A/322:2025-07a incorporated by reference; national profile selects 6 MHz and mandates MIMO, LDM and TxID (Decreto 12.595/2025 Art. 3º). January/June 2026 amendments not yet referenced; ABNT profile unverified"
+          "code": "same",
+          "text": "A/322:2025-07a incorporated by reference (Anatel Ato 2.705/2026): 6 MHz; MIMO, LDM and TxID mandatory (Decreto 12.595/2025 Art. 3º). Open item: referenced edition predates the January 2026 erratum and the June 2026 bootstrap clarification; ABNT profile unverified"
         }
       },
       "comparisons": [
@@ -2916,12 +2933,14 @@
           },
           "verdicts": {
             "TTA": {
-              "code": "profile",
-              "text": "Identical for version 0 (6 MHz selected); 2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over"
+              "code": "same",
+              "text": "Fields identical; 6 MHz is one of the defined values. 2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over — no effect on ATSC 3.0 services",
+              "req": "mandatory"
             },
             "SBTVD": {
-              "code": "profile",
-              "text": "Referenced 2025-07 edition identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced"
+              "code": "same",
+              "text": "Referenced 2025-07 edition identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced",
+              "req": "mandatory"
             }
           },
           "evidence": [
@@ -2984,12 +3003,14 @@
           },
           "verdicts": {
             "TTA": {
-              "code": "profile",
-              "text": "Same specification; 6 MHz selected by regulation (an option A/321/A/322 permit)"
+              "code": "same",
+              "text": "Same specification; 6 MHz chosen from the defined values (regulation)",
+              "req": "6 MHz mandatory (regulation)"
             },
             "SBTVD": {
-              "code": "profile",
-              "text": "Same specification; 6 MHz selected by decree"
+              "code": "same",
+              "text": "Same specification; 6 MHz chosen from the defined values (decree)",
+              "req": "6 MHz mandatory (decree)"
             }
           },
           "evidence": [
@@ -3052,11 +3073,13 @@
           "verdicts": {
             "TTA": {
               "code": "same",
-              "text": "Sections identical"
+              "text": "Sections identical",
+              "req": "options as defined"
             },
             "SBTVD": {
-              "code": "review",
-              "text": "Referenced edition identical; ABNT NBR 25601 profile restrictions not read"
+              "code": "same",
+              "text": "Referenced edition identical; ABNT NBR 25601 may restrict the operated combinations (not read) but cannot redefine them",
+              "req": "options as defined"
             }
           },
           "evidence": [
@@ -3119,11 +3142,13 @@
           "verdicts": {
             "TTA": {
               "code": "same",
-              "text": "Sections identical; regulation consistent"
+              "text": "Sections identical; regulation lists the same option set",
+              "req": "options as defined"
             },
             "SBTVD": {
-              "code": "review",
-              "text": "Referenced edition identical; ABNT profile not read"
+              "code": "same",
+              "text": "Referenced edition identical; ABNT profile not read",
+              "req": "options as defined"
             }
           },
           "evidence": [
@@ -3182,11 +3207,13 @@
           "verdicts": {
             "TTA": {
               "code": "same",
-              "text": "Corrected formula present"
+              "text": "Corrected formula present",
+              "req": "mandatory"
             },
             "SBTVD": {
               "code": "same",
-              "text": "Referenced edition post-dates the correction"
+              "text": "Referenced edition post-dates the correction",
+              "req": "mandatory"
             }
           },
           "evidence": [
@@ -3244,12 +3271,14 @@
           },
           "verdicts": {
             "TTA": {
-              "code": "profile",
-              "text": "Same technology; LDM optional as in ATSC; national programme-composition rule (≥ 1 4K service)"
+              "code": "same",
+              "text": "Same technology; LDM optional (as in ATSC); informative 2026 power-ratio tables absent",
+              "req": "LDM optional"
             },
             "SBTVD": {
-              "code": "profile",
-              "text": "Same technology; LDM — an ATSC option — made mandatory by decree"
+              "code": "same",
+              "text": "Same technology; LDM mandatory by decree",
+              "req": "LDM mandatory"
             }
           },
           "evidence": [
@@ -3313,11 +3342,13 @@
           "verdicts": {
             "TTA": {
               "code": "partial",
-              "text": "MIMO extension adopted (optional, as in ATSC); January 2026 erratum (MP4_2 removal) not reflected"
+              "text": "MIMO extension adopted (optional). Open item: January 2026 erratum (MP4_2 removal at 32K/GI6_1536) not reflected",
+              "req": "MIMO optional"
             },
             "SBTVD": {
               "code": "partial",
-              "text": "MIMO — an ATSC option — mandatory by decree; referenced edition predates the erratum"
+              "text": "MIMO mandatory by decree. Open item: referenced edition predates the erratum",
+              "req": "MIMO mandatory"
             }
           },
           "evidence": [

@@ -116,11 +116,13 @@
     "verdicts": {
       "TTA": {
         "code": "same",
-        "text": "Clause-level comparison: identical parameters"
+        "text": "Clause-level comparison: identical parameters",
+        "req": "mandatory"
       },
       "SBTVD": {
         "code": "same",
-        "text": "Referenced edition identical to baseline for §5; ABNT profile not read"
+        "text": "Referenced edition identical to baseline for §5; ABNT profile not read",
+        "req": "mandatory"
       }
     },
     "evidence": [
@@ -183,12 +185,14 @@
     },
     "verdicts": {
       "TTA": {
-        "code": "profile",
-        "text": "Identical for version 0 (6 MHz selected); 2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over"
+        "code": "same",
+        "text": "Fields identical; 6 MHz is one of the defined values. 2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over — no effect on ATSC 3.0 services",
+        "req": "mandatory"
       },
       "SBTVD": {
-        "code": "profile",
-        "text": "Referenced 2025-07 edition identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced"
+        "code": "same",
+        "text": "Referenced 2025-07 edition identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced",
+        "req": "mandatory"
       }
     },
     "evidence": [
@@ -251,12 +255,14 @@
     },
     "verdicts": {
       "TTA": {
-        "code": "profile",
-        "text": "Same specification; 6 MHz selected by regulation (an option A/321/A/322 permit)"
+        "code": "same",
+        "text": "Same specification; 6 MHz chosen from the defined values (regulation)",
+        "req": "6 MHz mandatory (regulation)"
       },
       "SBTVD": {
-        "code": "profile",
-        "text": "Same specification; 6 MHz selected by decree"
+        "code": "same",
+        "text": "Same specification; 6 MHz chosen from the defined values (decree)",
+        "req": "6 MHz mandatory (decree)"
       }
     },
     "evidence": [
@@ -319,11 +325,13 @@
     "verdicts": {
       "TTA": {
         "code": "same",
-        "text": "Sections identical"
+        "text": "Sections identical",
+        "req": "options as defined"
       },
       "SBTVD": {
-        "code": "review",
-        "text": "Referenced edition identical; ABNT NBR 25601 profile restrictions not read"
+        "code": "same",
+        "text": "Referenced edition identical; ABNT NBR 25601 may restrict the operated combinations (not read) but cannot redefine them",
+        "req": "options as defined"
       }
     },
     "evidence": [
@@ -386,11 +394,13 @@
     "verdicts": {
       "TTA": {
         "code": "same",
-        "text": "Sections identical; regulation consistent"
+        "text": "Sections identical; regulation lists the same option set",
+        "req": "options as defined"
       },
       "SBTVD": {
-        "code": "review",
-        "text": "Referenced edition identical; ABNT profile not read"
+        "code": "same",
+        "text": "Referenced edition identical; ABNT profile not read",
+        "req": "options as defined"
       }
     },
     "evidence": [
@@ -449,11 +459,13 @@
     "verdicts": {
       "TTA": {
         "code": "same",
-        "text": "Corrected formula present"
+        "text": "Corrected formula present",
+        "req": "mandatory"
       },
       "SBTVD": {
         "code": "same",
-        "text": "Referenced edition post-dates the correction"
+        "text": "Referenced edition post-dates the correction",
+        "req": "mandatory"
       }
     },
     "evidence": [
@@ -511,12 +523,14 @@
     },
     "verdicts": {
       "TTA": {
-        "code": "profile",
-        "text": "Same technology; LDM optional as in ATSC; national programme-composition rule (≥ 1 4K service)"
+        "code": "same",
+        "text": "Same technology; LDM optional (as in ATSC); informative 2026 power-ratio tables absent",
+        "req": "LDM optional"
       },
       "SBTVD": {
-        "code": "profile",
-        "text": "Same technology; LDM — an ATSC option — made mandatory by decree"
+        "code": "same",
+        "text": "Same technology; LDM mandatory by decree",
+        "req": "LDM mandatory"
       }
     },
     "evidence": [
@@ -580,11 +594,13 @@
     "verdicts": {
       "TTA": {
         "code": "partial",
-        "text": "MIMO extension adopted (optional, as in ATSC); January 2026 erratum (MP4_2 removal) not reflected"
+        "text": "MIMO extension adopted (optional). Open item: January 2026 erratum (MP4_2 removal at 32K/GI6_1536) not reflected",
+        "req": "MIMO optional"
       },
       "SBTVD": {
         "code": "partial",
-        "text": "MIMO — an ATSC option — mandatory by decree; referenced edition predates the erratum"
+        "text": "MIMO mandatory by decree. Open item: referenced edition predates the erratum",
+        "req": "MIMO mandatory"
       }
     },
     "evidence": [

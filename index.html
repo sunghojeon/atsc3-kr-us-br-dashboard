@@ -106,6 +106,7 @@
   th.vh { min-width: 150px; }
   .vk { display: block; color: var(--ink-3); font-size: 11.5px; line-height: 1.35; margin-top: 2px; }
   .vk.flag { color: var(--partial); }
+  .vk.req { color: var(--blue); font-weight: 600; }
   .note.meta { color: var(--ink-3); }
   .legend2 { margin: 6px 0; font-size: 12.5px; color: var(--ink-2); }
   .legend2 b { font-weight: 600; color: var(--ink); margin-right: 6px; }
@@ -297,7 +298,7 @@
     const cmpTable = (r.comparisons && r.comparisons.length) ? '<div class="full"><h4>Feature comparison (clause level)</h4><div class="wrap"><table class="cmp"><thead><tr><th>Feature</th><th>ATSC</th><th>TTA</th><th>SBTVD Forum</th><th>Difference · impact</th><th>TTA vs ATSC</th><th>SBTVD vs ATSC</th><th>Reviewed</th></tr></thead><tbody>' +
       r.comparisons.map(c => {
         const side = s => !s ? '<span class="dash">—</span>' : '<b>' + esc(s.doc || '') + '</b>' + (s.clause ? '<span class="t">' + esc(s.clause) + (s.table ? ' · ' + esc(s.table) : '') + (s.page ? ' · p.' + esc(s.page) : '') + '</span>' : '') + (s.value ? '<span class="val">' + esc(s.value) + '</span>' : '') + (s.req ? '<span class="req">' + esc(s.req) + '</span>' : '');
-        const vv = org => { const v = (c.verdicts || {})[org]; if (!v) return '<span class="dash">—</span>'; const d = V[v.code] || V.review; const cc = (c.cells || {})[org] || {}; return '<span class="v ' + v.code + '"><span class="i">' + d.icon + '</span>' + esc(d.label) + '</span>' + (cc.rel && REL[cc.rel] ? '<span class="vk">' + esc(REL[cc.rel].label) + (cc.conf && CONF[cc.conf] ? ' · ' + esc(CONF[cc.conf].label) : '') + '</span>' : ''); };
+        const vv = org => { const v = (c.verdicts || {})[org]; if (!v) return '<span class="dash">—</span>'; const d = V[v.code] || V.review; const cc = (c.cells || {})[org] || {}; return '<span class="v ' + v.code + '"><span class="i">' + d.icon + '</span>' + esc(d.label) + '</span>' + (v.req ? '<span class="vk req">' + esc(v.req) + '</span>' : '') + (cc.rel && REL[cc.rel] ? '<span class="vk">' + esc(REL[cc.rel].label) + (cc.conf && CONF[cc.conf] ? ' · ' + esc(CONF[cc.conf].label) : '') + '</span>' : ''); };
         const ev = (c.evidence || []).map(e => '<a href="' + esc(e.url || '#') + '">' + esc(e.label || e.doc || 'source') + '</a>').join(' · ');
         return '<tr><td><b>' + esc(c.feature) + '</b>' + (c.group ? '<span class="t">' + esc(c.group) + '</span>' : '') + '</td><td>' + side((c.sides || {}).ATSC) + '</td><td>' + side((c.sides || {}).TTA) + '</td><td>' + side((c.sides || {}).SBTVD) + '</td>' +
           '<td>' + esc(c.difference || '') + (c.impact ? '<span class="t">Impact: ' + esc(c.impact) + '</span>' : '') + (ev ? '<span class="t">Evidence: ' + ev + '</span>' : '') + '</td><td>' + vv('TTA') + '</td><td>' + vv('SBTVD') + '</td><td class="t">' + esc((c.reviewed || {}).date || '') + (c.reviewed && c.reviewed.by ? '<br>' + esc(c.reviewed.by) : '') + '</td></tr>';
