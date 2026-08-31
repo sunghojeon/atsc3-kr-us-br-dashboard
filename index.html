@@ -61,11 +61,6 @@
   nav.tabs button { background: none; border: 0; border-bottom: 3px solid transparent; margin-bottom: -1px; padding: 8px 0 9px; font: inherit; font-size: 14px; color: var(--ink-2); cursor: pointer; }
   nav.tabs button[aria-selected="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--yellow); }
   nav.tabs button:hover { color: var(--blue); }
-  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-bottom: 16px; font-size: 14px; }
-  .controls label { color: var(--ink-2); }
-  .controls input, .controls select { font: inherit; font-size: 14px; color: var(--ink); background: var(--sheet); border: 1px solid var(--line-2); padding: 5px 9px; }
-  .controls input { width: 300px; }
-  .count { margin-left: auto; color: var(--ink-3); font-size: 13px; }
   .wrap { overflow-x: auto; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; }
   thead th { text-align: left; vertical-align: bottom; padding: 8px 10px 10px; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line-2); font-weight: 600; }
@@ -135,12 +130,6 @@
   <section>
     <h2>Comparison by ATSC document</h2>
     <nav class="tabs" id="tabs" role="tablist"></nav>
-    <div class="controls">
-      <label>Search <input id="q" type="search" placeholder="Document number, title, keyword (e.g. A/331, MPEG-H, 재난)"></label>
-      <label>Verdict <select id="verdict"><option value="all">All</option></select></label>
-      <label>Type <select id="type"><option value="all">Standards and Recommended Practices</option><option value="Standard">Standards only</option></select></label>
-      <span class="count" id="count"></span>
-    </div>
     <div class="wrap"><table id="matrix"><thead></thead><tbody></tbody></table></div>
   </section>
 
@@ -150,14 +139,18 @@
     <div>Data: <code>data/standards.json</code> · Original standard documents are not included in the repository for copyright reasons · <a href="https://github.com/sunghojeon/atsc3-kr-us-br-dashboard">GitHub</a></div>
   </footer>
 </div>
+<script src="data/standards.js"></script>
 <script>
 (async function () {
-  const data = await fetch('data/standards.json').then(r => r.json());
+  let data = window.STANDARDS_DATA;
+  if (!data) {
+    try { data = await fetch('data/standards.json').then(r => r.json()); }
+    catch (e) { document.querySelector('.sheet').insertAdjacentHTML('afterbegin', '<p style="color:#B3261E">Could not load data/standards.js — run tools/build_data.py to generate it.</p>'); return; }
+  }
   const orgs = data.orgs, V = data.verdicts, T = data.docTitles || {};
-  const state = { cat: 'all', q: '', verdict: 'all', type: 'all', open: null };
+  const state = { cat: 'all', open: null };
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const hl = s => state.q ? esc(s).replace(new RegExp(reEsc(state.q), 'ig'), m => '<mark>' + m + '</mark>') : esc(s);
+  const hl = esc;
   const baseId = d => d.replace(/:\d{4}-\d{2}$/, '');
   const titleOf = d => T[baseId(d)];
 
@@ -183,11 +176,6 @@
   const mkTab = (id, label) => { const b = document.createElement('button'); b.setAttribute('role', 'tab'); b.dataset.id = id; b.textContent = label; b.addEventListener('click', () => { state.cat = id; state.open = null; render(); }); return b; };
   tabs.append(mkTab('all', 'All'));
   data.categories.forEach(c => tabs.append(mkTab(c.id, c.name)));
-  const vsel = document.getElementById('verdict');
-  Object.keys(V).forEach(k => { const o = document.createElement('option'); o.value = k; o.textContent = V[k].icon + ' ' + V[k].label; vsel.append(o); });
-  vsel.addEventListener('change', () => { state.verdict = vsel.value; render(); });
-  document.getElementById('type').addEventListener('change', e => { state.type = e.target.value; render(); });
-  document.getElementById('q').addEventListener('input', e => { state.q = e.target.value.trim().toLowerCase(); render(); });
 
   // Native-language title; the official English title is shown alongside only when the issuing body provides one (no in-house translation).
   function docHtml(d) {
@@ -203,11 +191,6 @@
   function cellHtml(c) {
     if (!c || (!c.docs.length && !c.note && !(c.reg && c.reg.length))) return '<span class="dash">—</span>';
     return c.docs.map(docHtml).join('') + (c.note ? '<span class="note">' + hl(c.note) + '</span>' : '') + regHtml(c, false);
-  }
-  function haystack(r) {
-    const parts = [r.id, r.title, r.summary, r.verdict.text, r.impact, r.recommendation];
-    orgs.forEach(o => { const c = r.cells[o.id]; if (c) { parts.push(c.note); c.docs.forEach(d => { parts.push(d); const t = titleOf(d); if (t) parts.push(t.title, t.title_en); }); (c.reg || []).forEach(g => parts.push(g.id, g.ref, g.text)); } });
-    return parts.join(' ').toLowerCase();
   }
   function detailHtml(r) {
     const cols = orgs.map(o => { const c = r.cells[o.id] || { docs: [], note: '' };
@@ -226,19 +209,13 @@
     tabs.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.id === state.cat)));
     document.querySelector('#matrix thead').innerHTML = '<tr><th>Document<small>ATSC 3.0 baseline</small></th>' +
       orgs.map(o => '<th class="org" style="--org:' + o.color + '">' + esc(o.label) + '<small>' + esc(o.sub) + '</small></th>').join('') + '<th>Verdict<small>vs. ATSC baseline</small></th></tr>';
-    let html = '', shown = 0, total = 0;
+    let html = '';
     data.categories.forEach(c => {
       if (state.cat !== 'all' && c.id !== state.cat) return;
-      const rows = data.rows.filter(r => r.category === c.id).filter(r => {
-        total++;
-        if (state.type !== 'all' && r.type !== state.type) return false;
-        if (state.verdict !== 'all' && r.verdict.code !== state.verdict) return false;
-        return !state.q || haystack(r).includes(state.q);
-      });
+      const rows = data.rows.filter(r => r.category === c.id);
       if (!rows.length) return;
       html += '<tr class="group"><td colspan="' + (orgs.length + 2) + '">' + esc(c.name) + (c.desc ? '<small>' + esc(c.desc) + '</small>' : '') + '</td></tr>';
       rows.forEach((r, i) => {
-        shown++;
         const key = c.id + ':' + i + ':' + r.id, open = state.open === key, v = V[r.verdict.code] || V.review;
         html += '<tr class="row" data-key="' + esc(key) + '" aria-expanded="' + open + '"><td class="doc"><span class="id">' + hl(r.id) + '</span>' + (r.type === 'RP' ? '<span class="type">RP</span>' : '') + '<span class="title">' + hl(r.title) + '</span></td>' +
           orgs.map(o => '<td class="org">' + cellHtml(r.cells[o.id]) + '</td>').join('') +
@@ -246,8 +223,7 @@
         if (open) html += '<tr class="detail"><td colspan="' + (orgs.length + 2) + '">' + detailHtml(r) + '</td></tr>';
       });
     });
-    document.querySelector('#matrix tbody').innerHTML = html || '<tr><td colspan="' + (orgs.length + 2) + '" class="dash">No documents match the current filters.</td></tr>';
-    document.getElementById('count').textContent = shown + ' of ' + total + ' documents';
+    document.querySelector('#matrix tbody').innerHTML = html;
     document.querySelectorAll('tr.row').forEach(tr => tr.addEventListener('click', () => { state.open = state.open === tr.dataset.key ? null : tr.dataset.key; render(); }));
   }
   render();

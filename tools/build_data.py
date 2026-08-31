@@ -291,4 +291,5 @@ data = {
 }
 out = ROOT / "data/standards.json"
 out.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+(ROOT / "data/standards.js").write_text("window.STANDARDS_DATA = " + json.dumps(data, ensure_ascii=False) + ";" + chr(10), encoding="utf-8")
 print(f"wrote {out}: {len(rows)} rows, {len(CATEGORIES)} categories, {len(DOC_TITLES)} document titles")
