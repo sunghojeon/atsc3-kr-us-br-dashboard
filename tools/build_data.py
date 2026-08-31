@@ -13,7 +13,7 @@ try:  # TTA — Korean (English title kept for tooltips)
     for it in json.load(open(ROOT / "standards/KR/tta_search_results.json", encoding="utf-8")):
         sid = it["standardNo"].strip().replace("　", "")
         if sid.startswith(("TTAK.KO-07", "TTAK.KO-06.0523", "TTAR-07")):
-            DOC_TITLES[sid] = {"title": it["korStandard"].strip(), "lang": "ko", "title_en": (it.get("engStandard") or "").strip()}
+            DOC_TITLES[sid] = {"title": it["korStandard"].strip(), "lang": "ko", "title_en": (it.get("engStandard") or "").strip().replace(" ? ", " - ")}  # " ? " = dash mis-encoded in the TTA API response
 except FileNotFoundError:
     pass
 ITU_TITLES = {  # ITU-R — English (overridden by standards/ITU/index.csv when present)
