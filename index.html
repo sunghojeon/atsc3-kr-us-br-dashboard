@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATSC 3.0 표준 비교 대시보드</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f7f7f5; --surface: #ffffff; --line: #e3e3df; --line-strong: #c9c9c3;
+    --ink: #1c1c1a; --ink-2: #4a4a46; --ink-3: #7a7a74;
+    --accent: #2f5fb3; --accent-soft: #e6eefb;
+    --ok: #2b7a4b; --ok-soft: #e4f3ea; --tbd: #9a6b12; --tbd-soft: #fbf1dc; --na: #7a7a74; --na-soft: #efefec;
+    --mark: #ffe58a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151514; --surface: #1e1e1c; --line: #2e2e2b; --line-strong: #44443f;
+      --ink: #ecece8; --ink-2: #bdbdb6; --ink-3: #8d8d86;
+      --accent: #8fb0f0; --accent-soft: #1f2a40;
+      --ok: #7fcf9a; --ok-soft: #1a2e22; --tbd: #e2b45a; --tbd-soft: #332a14; --na: #8d8d86; --na-soft: #262624;
+      --mark: #6b5a1a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.5 -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", Roboto, sans-serif; }
+  header { padding: 20px 24px 12px; border-bottom: 1px solid var(--line); background: var(--surface); }
+  h1 { margin: 0 0 4px; font-size: 20px; font-weight: 650; letter-spacing: -0.01em; }
+  .sub { color: var(--ink-2); font-size: 13px; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 12px 24px; background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 3; }
+  .toolbar label { color: var(--ink-2); font-size: 12px; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-2); border-radius: 999px; padding: 3px 11px; font-size: 12px; cursor: pointer; font-family: inherit; }
+  .chip[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+  input[type="search"] { border: 1px solid var(--line-strong); border-radius: 6px; padding: 5px 9px; font: inherit; background: var(--surface); color: var(--ink); min-width: 240px; }
+  .legend { margin-left: auto; display: flex; gap: 12px; font-size: 12px; color: var(--ink-2); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: -1px; margin-right: 4px; }
+  main { padding: 16px 24px 40px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+  .stat b { display: block; font-size: 22px; font-weight: 650; }
+  .stat span { color: var(--ink-3); font-size: 12px; }
+  .scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+  table { border-collapse: separate; border-spacing: 0; min-width: 100%; }
+  th, td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); vertical-align: top; text-align: left; }
+  thead th { position: sticky; top: 0; background: var(--surface); z-index: 2; font-weight: 600; }
+  thead tr.cat th { color: var(--ink-2); font-size: 12px; letter-spacing: .02em; padding: 8px 12px 4px; border-bottom: none; }
+  thead tr.item th { padding: 4px 12px 10px; min-width: 190px; font-size: 13px; }
+  tbody th { position: sticky; left: 0; background: var(--surface); z-index: 1; padding: 12px; min-width: 180px; border-right: 2px solid var(--line-strong); }
+  tbody th small { display: block; color: var(--ink-3); font-weight: 400; font-size: 11px; margin-top: 2px; }
+  td { padding: 10px 12px; min-width: 190px; }
+  .cell { display: flex; flex-direction: column; gap: 4px; }
+  .val { color: var(--ink); }
+  .val.empty { color: var(--ink-3); font-style: italic; }
+  .ref { font-size: 11px; color: var(--accent); background: var(--accent-soft); border-radius: 4px; padding: 1px 6px; align-self: flex-start; white-space: nowrap; }
+  .st { font-size: 11px; display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; padding: 1px 6px; border-radius: 4px; }
+  .st.ok { color: var(--ok); background: var(--ok-soft); }
+  .st.tbd { color: var(--tbd); background: var(--tbd-soft); }
+  .st.na { color: var(--na); background: var(--na-soft); }
+  mark { background: var(--mark); color: inherit; padding: 0 1px; }
+  .empty-msg { padding: 24px; color: var(--ink-3); }
+  footer { padding: 12px 24px; color: var(--ink-3); font-size: 12px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title">ATSC 3.0 표준 비교 대시보드</h1>
+  <div class="sub">X축: 기술 항목 · Y축: ITU → ATSC → TTA → SBTVD Forum · <span id="updated"></span></div>
+</header>
+<div class="toolbar">
+  <label for="cats">분류</label>
+  <div id="cats" class="chips"></div>
+  <input id="q" type="search" placeholder="항목·값·문서번호 검색 (예: HEVC, A/331)">
+  <div class="legend">
+    <span><i style="background:var(--ok)"></i>확인됨</span>
+    <span><i style="background:var(--tbd)"></i>TBD (원문 확인 필요)</span>
+    <span><i style="background:var(--na)"></i>해당 없음</span>
+  </div>
+</div>
+<main>
+  <div class="stats" id="stats"></div>
+  <div class="scroll"><table id="matrix"><thead></thead><tbody></tbody></table></div>
+</main>
+<footer>데이터: <code>data/standards.json</code> · 표준 원문 PDF는 저작권 문제로 리포지토리에 포함하지 않음 · <a href="https://github.com/sunghojeon/atsc3-kr-us-br-dashboard">GitHub</a></footer>
+<script>
+(async function () {
+  const data = await fetch('data/standards.json').then(r => r.json());
+  const STATUS = { ok: '확인됨', tbd: 'TBD', na: '해당 없음' };
+  const ICON = { ok: '✓', tbd: '?', na: '–' };
+  document.getElementById('updated').textContent = '갱신 ' + data.meta.updated;
+  document.getElementById('title').textContent = data.meta.title + ' 대시보드';
+  const state = { cat: 'all', q: '' };
+
+  const cats = document.getElementById('cats');
+  function mkChip(id, label) {
+    const b = document.createElement('button');
+    b.className = 'chip'; b.textContent = label; b.dataset.id = id;
+    b.setAttribute('aria-pressed', String(id === 'all'));
+    b.addEventListener('click', () => { state.cat = id; render(); });
+    return b;
+  }
+  cats.append(mkChip('all', '전체'));
+  data.categories.forEach(c => cats.append(mkChip(c.id, c.name)));
+  document.getElementById('q').addEventListener('input', e => { state.q = e.target.value.trim().toLowerCase(); render(); });
+
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const hl = s => state.q ? esc(s).replace(new RegExp(reEsc(state.q), 'ig'), m => '<mark>' + m + '</mark>') : esc(s);
+
+  function render() {
+    cats.querySelectorAll('.chip').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.id === state.cat)));
+    const visibleCats = data.categories.filter(c => state.cat === 'all' || c.id === state.cat);
+    const cols = [];
+    visibleCats.forEach(c => c.items.forEach(it => {
+      const hay = [c.name, it.label].concat(data.orgs.map(o => { const x = it.cells[o.id] || {}; return (x.value || '') + ' ' + (x.ref || ''); })).join(' ').toLowerCase();
+      if (!state.q || hay.includes(state.q)) cols.push({ cat: c, it: it });
+    }));
+    const thead = document.querySelector('#matrix thead'), tbody = document.querySelector('#matrix tbody');
+    let catRow = '<tr class="cat"><th></th>', itemRow = '<tr class="item"><th>기구 &#92; 기술</th>';
+    let i = 0;
+    while (i < cols.length) {
+      let j = i;
+      while (j < cols.length && cols[j].cat === cols[i].cat) j++;
+      catRow += '<th colspan="' + (j - i) + '">' + esc(cols[i].cat.name) + '</th>';
+      i = j;
+    }
+    cols.forEach(c => { itemRow += '<th>' + hl(c.it.label) + '</th>'; });
+    thead.innerHTML = catRow + '</tr>' + itemRow + '</tr>';
+    tbody.innerHTML = data.orgs.map(o => {
+      const tds = cols.map(col => {
+        const x = col.it.cells[o.id] || { value: '', ref: '', status: 'tbd' };
+        const st = STATUS[x.status] ? x.status : 'tbd';
+        const val = x.value ? '<span class="val">' + hl(x.value) + '</span>' : '<span class="val empty">미입력</span>';
+        const ref = x.ref ? '<span class="ref" title="근거 문서">' + hl(x.ref) + '</span>' : '';
+        return '<td><div class="cell">' + val + ref + '<span class="st ' + st + '">' + ICON[st] + ' ' + STATUS[st] + '</span></div></td>';
+      }).join('');
+      return '<tr><th>' + esc(o.label) + '<small>' + esc(o.sub) + '</small></th>' + tds + '</tr>';
+    }).join('');
+    if (!cols.length) tbody.innerHTML = '<tr><td class="empty-msg" colspan="1">검색 결과가 없습니다.</td></tr>';
+    const all = [];
+    data.categories.forEach(c => c.items.forEach(it => data.orgs.forEach(o => all.push((it.cells[o.id] || {}).status || 'tbd'))));
+    const cnt = s => all.filter(x => x === s).length;
+    const items = data.categories.reduce((n, c) => n + c.items.length, 0);
+    document.getElementById('stats').innerHTML = [
+      ['기술 항목', items, data.categories.length + '개 분류'],
+      ['확인된 셀', cnt('ok'), '전체 ' + all.length + '개 중'],
+      ['TBD', cnt('tbd'), '원문 확인 필요'],
+      ['표시 중', cols.length, '필터 결과 항목 수']
+    ].map(r => '<div class="stat"><span>' + r[0] + '</span><b>' + r[1] + '</b><span>' + r[2] + '</span></div>').join('');
+  }
+  render();
+})();
+</script>
+</body>
+</html>

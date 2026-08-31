@@ -22,18 +22,21 @@ ITU-R 권고/보고서와 미국(ATSC), 한국(TTA), 브라질(SBTVD Forum)의 �
 
 ## 구조
 ```
+index.html  대시보드 (정적, 의존성 없음)
 data/       비교 데이터 (JSON)
-src/        대시보드 소스
 docs/       참고 문서·표준 출처 정리 (docs/refs: ITU English Style Guide 등)
 tools/      표준 문서 수집 스크립트 (TTA 로그인/다운로드 자동화)
 standards/  표준 원문 PDF — 저작권 문제로 git에 포함하지 않음 (.gitignore)
 ```
 
 ## 실행
+정적 HTML 대시보드(`index.html`)가 `data/standards.json`을 읽어 렌더링합니다.
 ```bash
-# 정적 대시보드: 로컬 서버로 index.html 서빙
-python -m http.server 8080
+python -m http.server 8080   # 후 http://localhost:8080/ 접속
 ```
+GitHub Pages: https://sunghojeon.github.io/atsc3-kr-us-br-dashboard/
+
+셀 상태: `ok`(원문 확인됨) · `tbd`(원문 확인 필요) · `na`(해당 없음). 각 셀에 근거 문서 번호(`ref`)를 함께 기록합니다.
 
 ## 라이선스
 TBD

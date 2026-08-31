@@ -1,84 +1,99 @@
 {
+  "meta": {
+    "title": "ATSC 3.0 표준 비교",
+    "updated": "2026-08-31",
+    "layout": { "x": "기술 항목", "y": "표준화 기구 (ITU → ATSC → TTA → SBTVD Forum)" }
+  },
   "orgs": [
-    {
-      "id": "ITU",
-      "name": "ITU",
-      "label": "ITU-R"
-    },
-    {
-      "id": "ATSC",
-      "name": "ATSC",
-      "label": "ATSC (US)"
-    },
-    {
-      "id": "TTA",
-      "name": "TTA",
-      "label": "TTA (KR)"
-    },
-    {
-      "id": "SBTVD",
-      "name": "SBTVD Forum",
-      "label": "SBTVD Forum (BR)"
-    }
+    { "id": "ITU",   "label": "ITU-R",       "sub": "국제 (BT 시리즈 권고·보고서)" },
+    { "id": "ATSC",  "label": "ATSC",        "sub": "미국 · ATSC 3.0 (A/300 시리즈)" },
+    { "id": "TTA",   "label": "TTA",         "sub": "한국 · 지상파 UHDTV 송수신 정합 (TTAK.KO-07)" },
+    { "id": "SBTVD", "label": "SBTVD Forum", "sub": "브라질 · TV 3.0" }
   ],
   "categories": [
-    {
-      "id": "phy",
-      "name": "물리계층",
-      "items": [
-        {
-          "key": "channel_bw",
-          "label": "채널 대역폭",
-          "ITU": "",
-          "ATSC": "6 MHz",
-          "TTA": "6 MHz",
-          "SBTVD": "6 MHz"
-        },
-        {
-          "key": "modulation",
-          "label": "변조/코딩",
-          "ITU": "",
-          "ATSC": "OFDM, LDPC/BCH",
-          "TTA": "OFDM, LDPC/BCH",
-          "SBTVD": "OFDM, LDPC/BCH (ATSC 3.0 PHY)"
-        }
-      ]
-    },
-    {
-      "id": "transport",
-      "name": "전송계층",
-      "items": [
-        {
-          "key": "protocol",
-          "label": "전송 프로토콜",
-          "ITU": "",
-          "ATSC": "ROUTE/DASH",
-          "TTA": "MMT",
-          "SBTVD": "ROUTE/DASH"
-        }
-      ]
-    },
-    {
-      "id": "codec",
-      "name": "코덱",
-      "items": [
-        {
-          "key": "video",
-          "label": "비디오",
-          "ITU": "",
-          "ATSC": "HEVC",
-          "TTA": "HEVC",
-          "SBTVD": "VVC (H.266)"
-        },
-        {
-          "key": "audio",
-          "label": "오디오",
-          "ITU": "",
-          "ATSC": "AC-4",
-          "TTA": "MPEG-H 3D Audio",
-          "SBTVD": "MPEG-H 3D Audio"
-        }
-      ]
-    }
+    { "id": "phy", "name": "물리계층", "items": [
+      { "key": "channel_bw", "label": "채널 대역폭", "cells": {
+        "ITU":   { "value": "6 / 7 / 8 MHz", "ref": "BT.1877", "status": "ok" },
+        "ATSC":  { "value": "6 MHz (7/8 MHz 옵션)", "ref": "A/322", "status": "ok" },
+        "TTA":   { "value": "6 MHz", "ref": "TTAK.KO-07.0151/R1", "status": "ok" },
+        "SBTVD": { "value": "6 MHz", "ref": "TV 3.0 PHY", "status": "tbd" } } },
+      { "key": "modulation", "label": "변조 · 채널코딩", "cells": {
+        "ITU":   { "value": "OFDM, LDPC+BCH (System 'ATSC 3.0')", "ref": "BT.1877", "status": "ok" },
+        "ATSC":  { "value": "OFDM, LDPC+BCH, 부트스트랩", "ref": "A/321, A/322", "status": "ok" },
+        "TTA":   { "value": "ATSC 3.0 PHY 준용", "ref": "TTAK.KO-07.0151/R1", "status": "ok" },
+        "SBTVD": { "value": "ATSC 3.0 PHY 기반", "ref": "TV 3.0 PHY", "status": "tbd" } } },
+      { "key": "ldm", "label": "LDM (계층분할다중화)", "cells": {
+        "ITU":   { "value": "", "ref": "", "status": "tbd" },
+        "ATSC":  { "value": "지원 (2계층)", "ref": "A/322", "status": "ok" },
+        "TTA":   { "value": "", "ref": "TTAK.KO-07.0151/R1", "status": "tbd" },
+        "SBTVD": { "value": "", "ref": "", "status": "tbd" } } }
+    ] },
+    { "id": "transport", "name": "전송계층", "items": [
+      { "key": "protocol", "label": "전송 프로토콜", "cells": {
+        "ITU":   { "value": "", "ref": "BT.2295", "status": "tbd" },
+        "ATSC":  { "value": "ROUTE/DASH + MMTP", "ref": "A/331", "status": "ok" },
+        "TTA":   { "value": "", "ref": "TTAK.KO-07.0150/R3", "status": "tbd" },
+        "SBTVD": { "value": "", "ref": "", "status": "tbd" } } },
+      { "key": "signaling", "label": "시그널링", "cells": {
+        "ITU":   { "value": "", "ref": "", "status": "na" },
+        "ATSC":  { "value": "LLS / SLS (SLT, SLS-XML)", "ref": "A/331", "status": "ok" },
+        "TTA":   { "value": "", "ref": "TTAK.KO-07.0150/R3", "status": "tbd" },
+        "SBTVD": { "value": "", "ref": "", "status": "tbd" } } }
+    ] },
+    { "id": "codec", "name": "코덱", "items": [
+      { "key": "video", "label": "비디오", "cells": {
+        "ITU":   { "value": "HEVC / VVC (BT.[VVC] 초안)", "ref": "BT.2020, BT.2100", "status": "ok" },
+        "ATSC":  { "value": "HEVC (Main 10)", "ref": "A/341", "status": "ok" },
+        "TTA":   { "value": "HEVC", "ref": "TTAK.KO-07.0149/R1", "status": "ok" },
+        "SBTVD": { "value": "VVC (+ LCEVC)", "ref": "TV 3.0 Video", "status": "tbd" } } },
+      { "key": "audio", "label": "오디오", "cells": {
+        "ITU":   { "value": "", "ref": "BS.2051 등", "status": "tbd" },
+        "ATSC":  { "value": "AC-4, MPEG-H 3D Audio", "ref": "A/342 Part 2·3", "status": "ok" },
+        "TTA":   { "value": "MPEG-H 3D Audio", "ref": "TTAK.KO-07.0149/R1", "status": "ok" },
+        "SBTVD": { "value": "MPEG-H 3D Audio", "ref": "TV 3.0 Audio", "status": "tbd" } } },
+      { "key": "captions", "label": "자막", "cells": {
+        "ITU":   { "value": "", "ref": "", "status": "tbd" },
+        "ATSC":  { "value": "IMSC1 (TTML)", "ref": "A/343", "status": "ok" },
+        "TTA":   { "value": "", "ref": "TTAK.KO-07.0149/R1", "status": "tbd" },
+        "SBTVD": { "value": "", "ref": "", "status": "tbd" } } }
+    ] },
+    { "id": "app", "name": "앱 · 하이브리드", "items": [
+      { "key": "app_framework", "label": "앱 프레임워크", "cells": {
+        "ITU":   { "value": "IBB 요구사항", "ref": "BT.2053, BT.2075", "status": "ok" },
+        "ATSC":  { "value": "Broadcaster Application (HTML5/WebSocket)", "ref": "A/344", "status": "ok" },
+        "TTA":   { "value": "IBB (HbbTV 2.0 기반 브라우저 환경)", "ref": "TTAK.KO-07.0128/R3", "status": "ok" },
+        "SBTVD": { "value": "Ginga", "ref": "TV 3.0 App", "status": "tbd" } } },
+      { "key": "companion", "label": "컴패니언 디바이스", "cells": {
+        "ITU":   { "value": "", "ref": "", "status": "tbd" },
+        "ATSC":  { "value": "지원", "ref": "A/338", "status": "ok" },
+        "TTA":   { "value": "지원 (IBB)", "ref": "TTAK.KO-07.0128/R3", "status": "ok" },
+        "SBTVD": { "value": "", "ref": "", "status": "tbd" } } }
+    ] },
+    { "id": "alert", "name": "재난경보", "items": [
+      { "key": "aea", "label": "재난경보 메시지", "cells": {
+        "ITU":   { "value": "DTTB 재난경보 권고", "ref": "BT.2090", "status": "ok" },
+        "ATSC":  { "value": "AEA (Advanced Emergency Alerting)", "ref": "A/331", "status": "ok" },
+        "TTA":   { "value": "지상파 UHD 재난경보 (AEAT 기반)", "ref": "TTAK.KO-07.0142/R4, 07.0140", "status": "ok" },
+        "SBTVD": { "value": "", "ref": "", "status": "tbd" } } },
+      { "key": "wakeup", "label": "웨이크업 (부트스트랩 EAS)", "cells": {
+        "ITU":   { "value": "", "ref": "", "status": "tbd" },
+        "ATSC":  { "value": "부트스트랩 EA wake-up 비트", "ref": "A/321", "status": "ok" },
+        "TTA":   { "value": "", "ref": "TTAK.KO-07.0142/R4", "status": "tbd" },
+        "SBTVD": { "value": "", "ref": "", "status": "tbd" } } }
+    ] },
+    { "id": "security", "name": "보안 · 콘텐츠 보호", "items": [
+      { "key": "drm", "label": "콘텐츠 보호 / DRM", "cells": {
+        "ITU":   { "value": "", "ref": "", "status": "na" },
+        "ATSC":  { "value": "A/360 보안, A/362 DRM (RP)", "ref": "A/360, A/362", "status": "ok" },
+        "TTA":   { "value": "Part 5: 콘텐츠 보호", "ref": "TTAK.KO-07.0152", "status": "ok" },
+        "SBTVD": { "value": "", "ref": "", "status": "tbd" } } }
+    ] },
+    { "id": "deploy", "name": "도입 · 정책", "items": [
+      { "key": "launch", "label": "상용 개시", "cells": {
+        "ITU":   { "value": "—", "ref": "", "status": "na" },
+        "ATSC":  { "value": "2020 (NextGen TV)", "ref": "", "status": "ok" },
+        "TTA":   { "value": "2017-05 (수도권 UHD 본방송)", "ref": "", "status": "ok" },
+        "SBTVD": { "value": "2025~ 단계적", "ref": "", "status": "tbd" } } }
+    ] }
   ]
 }
