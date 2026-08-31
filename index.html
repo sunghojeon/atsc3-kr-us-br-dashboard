@@ -159,7 +159,7 @@
   document.getElementById('subtitle').textContent = data.meta.subtitle || '';
   document.getElementById('purpose').textContent = data.meta.purpose;
   document.getElementById('meta').innerHTML =
-    '<span><b>Baseline</b> ATSC 3.0 (A/300 series)</span><span><b>Scope</b> ' + esc(data.meta.scope) + '</span><span><b>Updated</b> ' + esc(data.meta.updated) + '</span>';
+    '<span><b>Scope</b> ' + esc(data.meta.scope) + '</span><span><b>Updated</b> ' + esc(data.meta.updated) + '</span>';
   document.getElementById('highlights').innerHTML = data.meta.highlights.map(h => '<div class="hl"><b>' + esc(h.title) + '</b><p>' + esc(h.text) + '</p></div>').join('');
   document.getElementById('legend').innerHTML = Object.keys(V).map(k => '<span class="v ' + k + '"><span class="i">' + V[k].icon + '</span>' + esc(V[k].label) + '</span><span>' + esc(V[k].desc) + '</span>').join('');
   const orgOf = id => orgs.find(o => o.id === id) || {};
