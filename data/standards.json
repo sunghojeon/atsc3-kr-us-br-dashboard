@@ -245,10 +245,15 @@
       "label": "Same",
       "desc": "Clause- and table-level comparison done against the baseline version: no relevant difference (legal incorporation alone does not qualify)"
     },
+    "profile": {
+      "icon": "◐",
+      "label": "Adopted · national profile",
+      "desc": "The ATSC document is adopted as defined; the country selects among the options and parameters the document itself permits (bandwidth, optional tools, mandated features)"
+    },
     "partial": {
       "icon": "△",
       "label": "Partial match",
-      "desc": "Core is the same; profiles, options, constraints or referenced version differ"
+      "desc": "Core is the same but the content differs: missing or stale clauses, errata not reflected, or constraints beyond the ATSC options"
     },
     "diff": {
       "icon": "≠",
@@ -371,7 +376,611 @@
     "pending": "Not yet reviewed",
     "n/a": "Not applicable"
   },
-  "comparisons": [],
+  "comparisons": [
+    {
+      "id": "phy-ref-versions",
+      "group": "Physical layer · basis",
+      "feature": "Reference versions adopted",
+      "atsc_docs": [
+        "A/321",
+        "A/322"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/321:2026-06 · A/322:2026-06",
+          "clause": "Revision history",
+          "page": "A/321 p.ii; A/322 p.ii–iii",
+          "value": "Baseline: latest in-force editions (A/321:2026-04 + Amd 1; A/322:2026-04 + Amd 1)",
+          "req": "baseline"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1 (2025-12-05)",
+          "clause": "§2 인용 표준; 서문 3.2 비교표",
+          "page": "doc p.5; p.ii–iii (pdf 3–4)",
+          "value": "Cites A/321 (2016.03), A/322 (2020.01), A/324 CS (2020.01); §5–9 and Annex I-1 = A/322 §5–9 / Annex A–O '동일(번역)'; §10 = A/321 §4–6 '동일(번역)'; R1 adds the MIMO extension (표준의 이력 제8판)",
+          "req": "mandatory (translation adoption)"
+        },
+        "SBTVD": {
+          "doc": "Anatel Ato nº 2.705/2026 · ABNT NBR 25601:2025",
+          "clause": "Anexo item 4.1; ABNT clause unverified",
+          "page": "—",
+          "value": "Transmitters shall implement ATSC 3.0 per A/321:2025-07, A/322:2025-07a, A/324:2025-07 (incorporated by reference)",
+          "req": "mandatory (regulation)"
+        }
+      },
+      "difference": "Korea's text corresponds to A/322:2020 plus the 2024–2025 MIMO-extension content, but the citation list still names the 2016/2020 editions; Brazil references the 2025-07(a) editions. Neither reflects A/322:2025-07a Amd 1 (Jan 2026, MP4_2 erratum) or A/321/A/322:2026-04 Amd 1 (June 2026, bootstrap usage with heterogeneous waveforms).",
+      "impact": "Version lag matters only for the two 2026 changes listed in the rows below; all other A/322 revisions since 2020 were administrative reference updates or errata.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "partial"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "Content tracks A/322 up to the 2024-09a errata; 2026 amendments not yet reflected; citation list outdated"
+        },
+        "SBTVD": {
+          "code": "partial",
+          "text": "Incorporates the 2025-07(a) editions by regulation; 2026 amendments not referenced; ABNT profile unverified"
+        }
+      },
+      "evidence": [
+        {
+          "label": "TTAK.KO-07.0151/R1 (committee.tta.or.kr)",
+          "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0151%2FR1&nowSu=1"
+        },
+        {
+          "label": "TG3-201r12 Approved Changes to A/322",
+          "url": "https://www.atsc.org/wp-content/uploads/2026/06/TG3-201r12-A322-Changes.pdf"
+        },
+        {
+          "label": "Anatel Ato 2.705/2026",
+          "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted comparison of the extracted texts; human review pending)"
+      }
+    },
+    {
+      "id": "phy-bootstrap-structure",
+      "group": "Physical layer · bootstrap",
+      "feature": "Bootstrap signal structure (sampling rate, bandwidth, FFT, symbol length, ZC/PN sequence)",
+      "atsc_docs": [
+        "A/321"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/321:2026-06",
+          "clause": "§5.1 Signal Dimensions; §5.2 Frequency Domain Sequence",
+          "page": "doc p.6–7 (pdf 11–12)",
+          "value": "6.144 Ms/s, 4.5 MHz, N_FFT = 2048 (3 kHz spacing), 500 µs/symbol, ZC sequence modulated by PN; N_S ≥ 4 symbols",
+          "req": "mandatory"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1",
+          "clause": "§10.2.1 시그널 차원; §10.2.2 주파수 영역 수열",
+          "page": "doc p.171–173 (pdf 178–180)",
+          "value": "Identical values (translation of A/321:2016 §5)",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "doc": "A/321:2025-07 (by reference) · ABNT NBR 25601:2025",
+          "clause": "Anatel Ato 2.705/2026 item 4.1; ABNT clause unverified",
+          "page": "—",
+          "value": "A/321:2025-07 §5 is identical to the baseline for these parameters",
+          "req": "mandatory"
+        }
+      },
+      "difference": "No difference in the bootstrap physical structure. A/321 §5 changed only editorially between 2016 and 2026 (text moved; 'Universal Accommodation' bullet added in §4.1 by the 2026-04 amendment).",
+      "impact": "None for signal acquisition; all three regions use the same bootstrap waveform.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "partial"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "Clause-level comparison: identical parameters"
+        },
+        "SBTVD": {
+          "code": "same",
+          "text": "Referenced edition identical to baseline for §5; ABNT profile not read"
+        }
+      },
+      "evidence": [
+        {
+          "label": "A/321:2026-06",
+          "url": "https://www.atsc.org/wp-content/uploads/2026/06/A321-2026-06-System-Discovery-and-Signaling.pdf"
+        },
+        {
+          "label": "A/321:2016",
+          "url": "https://www.atsc.org/wp-content/uploads/2021/04/A321-2016-System-Discovery-and-Signaling.pdf"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "phy-bootstrap-signaling",
+      "group": "Physical layer · bootstrap",
+      "feature": "Bootstrap signaling fields (major version 0): EA wake-up, min_time_to_next, system_bandwidth, bsr_coefficient, preamble_structure",
+      "atsc_docs": [
+        "A/321",
+        "A/322"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/321:2026-06 · A/322:2026-06",
+          "clause": "A/321 §6.1 Tables 6.1–6.5; A/322 §9.1 (constraints: major/minor version 0, preamble_structure)",
+          "page": "A/321 doc p.14–17 (pdf 19–22); A/322 doc p.108",
+          "value": "ZC root 137; symbol 1: ea_wake_up_1, min_time_to_next (5 b), system_bandwidth (00=6, 01=7, 10=8 MHz); symbol 2: ea_wake_up_2, bsr_coefficient (0–80); symbol 3: preamble_structure",
+          "req": "mandatory"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1",
+          "clause": "§10.3.1 주 버전 0에 대한 부트스트랩 시그널링; §9.1 부트스트랩",
+          "page": "doc p.178–182 (pdf 185–189); p.139 (pdf 146)",
+          "value": "Identical fields and tables (translation); MIMO bootstrap amplitude rule of A/322 §9.1 (2024 amendment) present",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "doc": "A/321:2025-07 (by reference)",
+          "clause": "Anatel Ato 2.705/2026 item 4.1",
+          "page": "—",
+          "value": "Identical to baseline for major version 0",
+          "req": "mandatory"
+        }
+      },
+      "difference": "Major-version-0 signaling is identical everywhere (A/321 §6.1 differs from 2016 only by one deleted explanatory sentence). Korea's document does not contain A/321 §6.2 (major version 1, ZC root 197), §6.3 (future major versions) or §7 (multiplexing of different signal types with bootstrap prefixing), all introduced in the 2026 editions; Brazil's referenced A/321:2025-07 likewise predates §7.",
+      "impact": "No effect on ATSC 3.0 services. The missing clauses only matter if non-ATSC 3.0 waveforms are time-multiplexed in the same RF channel (every frame must still start with a bootstrap).",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "partial"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "profile",
+          "text": "Identical for version 0 (6 MHz selected); 2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over"
+        },
+        "SBTVD": {
+          "code": "profile",
+          "text": "Referenced 2025-07 edition identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced"
+        }
+      },
+      "evidence": [
+        {
+          "label": "A/321:2026-04 Amendment No. 1",
+          "url": "https://www.atsc.org/wp-content/uploads/2026/06/A321-2026-04-Amend-No-1.pdf"
+        },
+        {
+          "label": "A/322:2026-04 Amendment No. 1",
+          "url": "https://www.atsc.org/wp-content/uploads/2026/06/A322-2026-04-Amend-No-1.pdf"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "phy-bandwidth",
+      "group": "Physical layer · channel",
+      "feature": "Channel bandwidth, post-bootstrap sample rate and number of carriers (NoC)",
+      "atsc_docs": [
+        "A/321",
+        "A/322"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/322:2026-06 · A/321:2026-06",
+          "clause": "A/322 §7.2.3 Table 7.1; A/321 §6.1 (system_bandwidth, bsr_coefficient)",
+          "page": "A/322 doc p.69; A/321 doc p.16",
+          "value": "6, 7 or 8 MHz; NoC_max 6913 / 13825 / 27649 (8K/16K/32K), C_unit 96/192/384, C_red_coeff 0–4; sample rate (N+16)×0.384 MHz",
+          "req": "6/7/8 MHz optional per market"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1 · MSIT Notice 2023-34",
+          "clause": "§7.2.3 전송 부반송파 개수 <표 7-1>; Notice Art. 13 ① 5 나 · ② 2",
+          "page": "doc p.~76; docs/refs KR excerpt",
+          "value": "Identical NoC table (6913/13825/27649); regulation fixes the channel at 6 MHz (전송채널 6 ㎒ 폭, 전파형식 D7W, 점유주파수대폭 6 ㎒ 이내)",
+          "req": "6 MHz mandatory (regulation)"
+        },
+        "SBTVD": {
+          "doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)",
+          "clause": "Decreto Art. 2º III (canal de radiofrequência com largura de banda de 6 MHz); Ato 2.705 item 4.1",
+          "page": "docs/refs BR excerpt",
+          "value": "6 MHz channel; A/322 §7.2.3 unchanged between 2025-07a and baseline",
+          "req": "6 MHz mandatory (decree)"
+        }
+      },
+      "difference": "The specification text is identical (A/322 §7.2.3 unchanged since the 2020 NoC correction). Korea and Brazil both restrict operation to 6 MHz by law, whereas the ATSC baseline also allows 7 and 8 MHz.",
+      "impact": "Receivers for Korea/Brazil need only the 6 MHz mode; 7/8 MHz bootstrap values (01, 10) are never used there.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "confirmed"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "profile",
+          "text": "Same specification; 6 MHz selected by regulation (an option A/321/A/322 permit)"
+        },
+        "SBTVD": {
+          "code": "profile",
+          "text": "Same specification; 6 MHz selected by decree"
+        }
+      },
+      "evidence": [
+        {
+          "label": "MSIT Notice 2023-34 Art. 13 (excerpt)",
+          "url": "docs/refs/KR_MSIT-Notice-2023-34_Art13.md"
+        },
+        {
+          "label": "Decreto 12.595/2025 (excerpt)",
+          "url": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "phy-ofdm-fft-gi-pilot",
+      "group": "Physical layer · OFDM",
+      "feature": "FFT sizes, guard intervals and scattered/continual pilots (SISO)",
+      "atsc_docs": [
+        "A/322"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/322:2026-06",
+          "clause": "§8.3 IFFT; §8.5 Table 8.9 (12 GI patterns 192–4864 samples); §8.1 pilots (16 SP patterns, Annex F/G)",
+          "page": "doc p.102–107, p.95–101",
+          "value": "8K/16K/32K FFT; GI1_192 … GI12_4864 with allowed combinations; SP3_2 … SP32_4",
+          "req": "mandatory (options)"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1",
+          "clause": "§8.3 IFFT; §8.5 보호 구간; §8.1 파일럿 삽입; 부록 Ⅰ-1.4/Ⅰ-1.5",
+          "page": "doc p.123–139",
+          "value": "Identical (translation; sections unchanged in A/322 between 2020 and 2026)",
+          "req": "mandatory (options)"
+        },
+        "SBTVD": {
+          "doc": "A/322:2025-07a (by reference) · ABNT NBR 25601:2025",
+          "clause": "Ato 2.705 item 4.1; ABNT clause unverified",
+          "page": "—",
+          "value": "§8.1/8.3/8.5 identical between 2025-07a and baseline",
+          "req": "mandatory (options)"
+        }
+      },
+      "difference": "None at the specification level: A/322 §8.1, §8.3 and §8.5 have not changed since 2020 (text similarity > 0.985 in the section-level diff). Which combinations Korean/Brazilian broadcasters actually operate is an operational profile, not a standards difference.",
+      "impact": "None.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "partial"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "Sections identical"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Referenced edition identical; ABNT NBR 25601 profile restrictions not read"
+        }
+      },
+      "evidence": [
+        {
+          "label": "A/322:2026-06",
+          "url": "https://www.atsc.org/wp-content/uploads/2026/06/A322-2026-06-Physical-Layer-Protocol.pdf"
+        },
+        {
+          "label": "A/322:2020",
+          "url": "https://www.atsc.org/wp-content/uploads/2016/10/A322-2020-Physical-Layer-Protocol.pdf"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "phy-fec-constellation",
+      "group": "Physical layer · BICM",
+      "feature": "FEC (LDPC 16200/64800, 12 code rates; BCH/CRC/none outer code) and constellations (QPSK, NUC 16–4096QAM)",
+      "atsc_docs": [
+        "A/322"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/322:2026-06",
+          "clause": "§6.1 FEC (Tables 6.1–6.2); §6.3.1 Constellation Overview; Annex A/B/C",
+          "page": "doc p.18–19, p.31",
+          "value": "LDPC N=64800/16200, rates 2/15–13/15; outer BCH (192/168 b), CRC-32 or none; QPSK + NUC 16/64/256/1024/4096QAM",
+          "req": "mandatory (options)"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1 · MSIT Notice 2023-34",
+          "clause": "§6.1 FEC; §6.3 성상 매핑; 부록 Ⅰ-1.1/Ⅰ-1.3; Notice Art. 13 ① 6",
+          "page": "doc p.18–36; docs/refs KR excerpt",
+          "value": "Identical; regulation allows LDPC+BCH, LDPC+CRC32 or LDPC only, and QAM (incl. QPSK) modulation — the same option set",
+          "req": "mandatory (options)"
+        },
+        "SBTVD": {
+          "doc": "A/322:2025-07a (by reference) · ABNT NBR 25601:2025",
+          "clause": "Ato 2.705 item 4.1; ABNT clause unverified",
+          "page": "—",
+          "value": "§6.1/§6.3 identical between 2025-07a and baseline",
+          "req": "mandatory (options)"
+        }
+      },
+      "difference": "None. The only 2020→2026 edits in §6.3 are figure-label corrections (Type B interleaver figures) and an example sentence moved between §6.3 and §6.4; the 2021 clarification of Type A LDPC encoding (§6.1.3.1) is editorial.",
+      "impact": "None.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "partial"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "Sections identical; regulation consistent"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Referenced edition identical; ABNT profile not read"
+        }
+      },
+      "evidence": [
+        {
+          "label": "TG3-201r12 Approved Changes to A/322 (§2.3 errata 2021)",
+          "url": "https://www.atsc.org/wp-content/uploads/2026/06/TG3-201r12-A322-Changes.pdf"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "phy-freq-interleaver",
+      "group": "Physical layer · framing",
+      "feature": "Frequency interleaver (2021 errata: ⌈L_FP/2⌉ bound, N_r−1 bits)",
+      "atsc_docs": [
+        "A/322"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/322:2026-06",
+          "clause": "§7.3 Frequency Interleaving",
+          "page": "doc p.90–93",
+          "value": "0 < k < ⌈L_FP/2⌉ (corrected from ⌊L_FP/2⌋ in A/322:2021)",
+          "req": "mandatory"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1",
+          "clause": "§7.3 주파수 인터리버",
+          "page": "doc p.108–112 (pdf 119)",
+          "value": "0 < k < ⌈L_Fm/2⌉ — the corrected form",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "doc": "A/322:2025-07a (by reference)",
+          "clause": "Ato 2.705 item 4.1",
+          "page": "—",
+          "value": "Corrected form (post-2021)",
+          "req": "mandatory"
+        }
+      },
+      "difference": "None: although Korea cites A/322:2020, its §7.3 already carries the 2021 errata correction.",
+      "impact": "None.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "confirmed"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "Corrected formula present"
+        },
+        "SBTVD": {
+          "code": "same",
+          "text": "Referenced edition post-dates the correction"
+        }
+      },
+      "evidence": [
+        {
+          "label": "A/322:2020 (pre-correction)",
+          "url": "https://www.atsc.org/wp-content/uploads/2016/10/A322-2020-Physical-Layer-Protocol.pdf"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "phy-plp-ldm",
+      "group": "Physical layer · multiplexing",
+      "feature": "PLPs and Layered Division Multiplexing (LDM)",
+      "atsc_docs": [
+        "A/322"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/322:2026-06",
+          "clause": "§7.2.7 PLP multiplexing; §6.4 LDM (Tables on injection level/power ratios and Figure 6.16 added 2024–2025); Annex O (LDM + MIMO + channel bonding)",
+          "page": "doc p.81–90, p.35–38, p.257–267",
+          "value": "Up to 64 PLPs; ≤ 4 PLPs per service; LDM optional (2-layer), combinable with MIMO and channel bonding since A/322:2024-09",
+          "req": "PLP mandatory; LDM optional"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1 · MSIT Notice 2023-34",
+          "clause": "§1.1 (64 PLP, 4 PLP/서비스); §6.4 계층 분할 다중화; 부록 Ⅰ-1.13 LDM과 MIMO의 결합; Notice Art. 13 ① 5 나",
+          "page": "doc p.2, p.37–40, p.~350; docs/refs KR excerpt",
+          "value": "Same limits; Layered MIMO annex present (R1); regulation requires at least one 4K UHDTV program channel per 6 MHz channel",
+          "req": "PLP mandatory; LDM optional; ≥1 4K programme mandatory (regulation)"
+        },
+        "SBTVD": {
+          "doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)",
+          "clause": "Decreto Art. 3º II (LDM); Ato 2.705 item 4.1",
+          "page": "docs/refs BR excerpt",
+          "value": "LDM is a mandated system feature ('incorporará … LDM'); specification by reference",
+          "req": "LDM mandatory (decree)"
+        }
+      },
+      "difference": "Specification identical in substance; A/322:2026 adds informative LDM power-ratio tables not present in the Korean text. Requirement level differs: LDM is optional in ATSC and Korea, but a mandated TV 3.0 feature in Brazil; Korea adds a programme-composition constraint (≥ 1 4K UHD channel per RF channel).",
+      "impact": "Brazilian transmitters/receivers must support LDM; Korean multiplex configurations must carry a 4K service.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "partial"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "confirmed"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "profile",
+          "text": "Same technology; LDM optional as in ATSC; national programme-composition rule (≥ 1 4K service)"
+        },
+        "SBTVD": {
+          "code": "profile",
+          "text": "Same technology; LDM — an ATSC option — made mandatory by decree"
+        }
+      },
+      "evidence": [
+        {
+          "label": "A/322:2024-04 Amendment No. 1 (MIMO/CB/LDM combinations)",
+          "url": "https://www.atsc.org/wp-content/uploads/2024/10/A322-2024-04-Amend-No-1.pdf"
+        },
+        {
+          "label": "Decreto 12.595/2025 (excerpt)",
+          "url": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "phy-mimo-pilots",
+      "group": "Physical layer · MIMO",
+      "feature": "MIMO extension and MIMO scattered-pilot table (Walsh-Hadamard) — MP4_2 at 32K FFT / GI6_1536",
+      "atsc_docs": [
+        "A/322"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/322:2026-06",
+          "clause": "Annex L.9.3 Table L.9.3 (MP4_2 removed for 32K/GI6_1536 by A/322:2025-07a Amd 1, 26 Jan 2026)",
+          "page": "doc p.228 (pdf 246)",
+          "value": "32K FFT, GI6_1536: MP8_2 only",
+          "req": "MIMO optional"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0151/R1",
+          "clause": "부록 Ⅰ-1.10 MIMO, <표 Ⅰ.10-5>",
+          "page": "doc p.319 (pdf 326)",
+          "value": "32K FFT, GI6_1536: MP8_2, MP4_2 (pre-erratum entry)",
+          "req": "MIMO optional (R1 'MIMO extension 추가')"
+        },
+        "SBTVD": {
+          "doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)",
+          "clause": "Decreto Art. 3º I (MIMO); Ato 2.705 item 4.1",
+          "page": "docs/refs BR excerpt",
+          "value": "MIMO mandated; referenced edition 2025-07a still contains the MP4_2 entry",
+          "req": "MIMO mandatory (decree)"
+        }
+      },
+      "difference": "Korea's R1 (Dec 2025) incorporates the 2024 MIMO extension (Layered MIMO, channel-bonding combinations, MIMO bootstrap amplitude rule) but its Table Ⅰ.10-5 still lists MP4_2 for 32K FFT with GI6_1536; ATSC removed that entry in January 2026 because it conflicts with continual-pilot positions. Brazil's referenced A/322:2025-07a has the same stale entry. Requirement level also differs: MIMO is optional in ATSC and Korea but a mandated TV 3.0 feature in Brazil.",
+      "impact": "A MIMO transmitter configured with 32K/GI6_1536/MP4_2 would place scattered pilots on continual-pilot carriers; the combination should be treated as not allowed.",
+      "recommendation": "Align TTAK.KO-07.0151 표 Ⅰ.10-5 with A/322:2026-06 Table L.9.3 at the next revision; Anatel/ABNT to reference A/322:2026-06 or later.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "incorporated",
+          "conf": "confirmed"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "MIMO extension adopted (optional, as in ATSC); January 2026 erratum (MP4_2 removal) not reflected"
+        },
+        "SBTVD": {
+          "code": "partial",
+          "text": "MIMO — an ATSC option — mandatory by decree; referenced edition predates the erratum"
+        }
+      },
+      "evidence": [
+        {
+          "label": "A/322:2025-07a Amendment No. 1 (errata, MP4_2)",
+          "url": "https://www.atsc.org/wp-content/uploads/2026/01/A322-2025-07a-Amend-No-1.pdf"
+        },
+        {
+          "label": "A/322:2024-09a Amendment No. 1 (errata, MIMO/CB/LDM)",
+          "url": "https://www.atsc.org/wp-content/uploads/2025/11/A322-2024-09a-Amend-No-1.pdf"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    }
+  ],
   "docTitles": {
     "A/200": {
       "title": "Regional Service Availability",
@@ -1737,7 +2346,7 @@
             }
           ],
           "rel": "profile",
-          "conf": "partial"
+          "conf": "confirmed"
         },
         "SBTVD": {
           "docs": [
@@ -1760,7 +2369,7 @@
             }
           ],
           "rel": "incorporated",
-          "conf": "confirmed"
+          "conf": "partial"
         }
       },
       "verdict": {
@@ -1777,14 +2386,291 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "partial",
-          "text": "Bootstrap adopted within TTA Part 4; EA wake-up usage to be confirmed"
+          "code": "profile",
+          "text": "TTA §10 is a translation of A/321:2016 §4–6: bootstrap structure and major-version-0 signaling identical (6 MHz selected nationally). A/321:2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over — no effect on ATSC 3.0 services"
         },
         "SBTVD": {
-          "code": "review",
-          "text": "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); changes between A/321:2025-07 and the baseline A/321:2026-06 not yet compared; ABNT NBR 25601 profile unverified"
+          "code": "profile",
+          "text": "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced; ABNT NBR 25601 profile unverified"
         }
-      }
+      },
+      "comparisons": [
+        {
+          "id": "phy-ref-versions",
+          "group": "Physical layer · basis",
+          "feature": "Reference versions adopted",
+          "atsc_docs": [
+            "A/321",
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/321:2026-06 · A/322:2026-06",
+              "clause": "Revision history",
+              "page": "A/321 p.ii; A/322 p.ii–iii",
+              "value": "Baseline: latest in-force editions (A/321:2026-04 + Amd 1; A/322:2026-04 + Amd 1)",
+              "req": "baseline"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1 (2025-12-05)",
+              "clause": "§2 인용 표준; 서문 3.2 비교표",
+              "page": "doc p.5; p.ii–iii (pdf 3–4)",
+              "value": "Cites A/321 (2016.03), A/322 (2020.01), A/324 CS (2020.01); §5–9 and Annex I-1 = A/322 §5–9 / Annex A–O '동일(번역)'; §10 = A/321 §4–6 '동일(번역)'; R1 adds the MIMO extension (표준의 이력 제8판)",
+              "req": "mandatory (translation adoption)"
+            },
+            "SBTVD": {
+              "doc": "Anatel Ato nº 2.705/2026 · ABNT NBR 25601:2025",
+              "clause": "Anexo item 4.1; ABNT clause unverified",
+              "page": "—",
+              "value": "Transmitters shall implement ATSC 3.0 per A/321:2025-07, A/322:2025-07a, A/324:2025-07 (incorporated by reference)",
+              "req": "mandatory (regulation)"
+            }
+          },
+          "difference": "Korea's text corresponds to A/322:2020 plus the 2024–2025 MIMO-extension content, but the citation list still names the 2016/2020 editions; Brazil references the 2025-07(a) editions. Neither reflects A/322:2025-07a Amd 1 (Jan 2026, MP4_2 erratum) or A/321/A/322:2026-04 Amd 1 (June 2026, bootstrap usage with heterogeneous waveforms).",
+          "impact": "Version lag matters only for the two 2026 changes listed in the rows below; all other A/322 revisions since 2020 were administrative reference updates or errata.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "Content tracks A/322 up to the 2024-09a errata; 2026 amendments not yet reflected; citation list outdated"
+            },
+            "SBTVD": {
+              "code": "partial",
+              "text": "Incorporates the 2025-07(a) editions by regulation; 2026 amendments not referenced; ABNT profile unverified"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAK.KO-07.0151/R1 (committee.tta.or.kr)",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0151%2FR1&nowSu=1"
+            },
+            {
+              "label": "TG3-201r12 Approved Changes to A/322",
+              "url": "https://www.atsc.org/wp-content/uploads/2026/06/TG3-201r12-A322-Changes.pdf"
+            },
+            {
+              "label": "Anatel Ato 2.705/2026",
+              "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted comparison of the extracted texts; human review pending)"
+          }
+        },
+        {
+          "id": "phy-bootstrap-structure",
+          "group": "Physical layer · bootstrap",
+          "feature": "Bootstrap signal structure (sampling rate, bandwidth, FFT, symbol length, ZC/PN sequence)",
+          "atsc_docs": [
+            "A/321"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/321:2026-06",
+              "clause": "§5.1 Signal Dimensions; §5.2 Frequency Domain Sequence",
+              "page": "doc p.6–7 (pdf 11–12)",
+              "value": "6.144 Ms/s, 4.5 MHz, N_FFT = 2048 (3 kHz spacing), 500 µs/symbol, ZC sequence modulated by PN; N_S ≥ 4 symbols",
+              "req": "mandatory"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1",
+              "clause": "§10.2.1 시그널 차원; §10.2.2 주파수 영역 수열",
+              "page": "doc p.171–173 (pdf 178–180)",
+              "value": "Identical values (translation of A/321:2016 §5)",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "A/321:2025-07 (by reference) · ABNT NBR 25601:2025",
+              "clause": "Anatel Ato 2.705/2026 item 4.1; ABNT clause unverified",
+              "page": "—",
+              "value": "A/321:2025-07 §5 is identical to the baseline for these parameters",
+              "req": "mandatory"
+            }
+          },
+          "difference": "No difference in the bootstrap physical structure. A/321 §5 changed only editorially between 2016 and 2026 (text moved; 'Universal Accommodation' bullet added in §4.1 by the 2026-04 amendment).",
+          "impact": "None for signal acquisition; all three regions use the same bootstrap waveform.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Clause-level comparison: identical parameters"
+            },
+            "SBTVD": {
+              "code": "same",
+              "text": "Referenced edition identical to baseline for §5; ABNT profile not read"
+            }
+          },
+          "evidence": [
+            {
+              "label": "A/321:2026-06",
+              "url": "https://www.atsc.org/wp-content/uploads/2026/06/A321-2026-06-System-Discovery-and-Signaling.pdf"
+            },
+            {
+              "label": "A/321:2016",
+              "url": "https://www.atsc.org/wp-content/uploads/2021/04/A321-2016-System-Discovery-and-Signaling.pdf"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "phy-bootstrap-signaling",
+          "group": "Physical layer · bootstrap",
+          "feature": "Bootstrap signaling fields (major version 0): EA wake-up, min_time_to_next, system_bandwidth, bsr_coefficient, preamble_structure",
+          "atsc_docs": [
+            "A/321",
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/321:2026-06 · A/322:2026-06",
+              "clause": "A/321 §6.1 Tables 6.1–6.5; A/322 §9.1 (constraints: major/minor version 0, preamble_structure)",
+              "page": "A/321 doc p.14–17 (pdf 19–22); A/322 doc p.108",
+              "value": "ZC root 137; symbol 1: ea_wake_up_1, min_time_to_next (5 b), system_bandwidth (00=6, 01=7, 10=8 MHz); symbol 2: ea_wake_up_2, bsr_coefficient (0–80); symbol 3: preamble_structure",
+              "req": "mandatory"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1",
+              "clause": "§10.3.1 주 버전 0에 대한 부트스트랩 시그널링; §9.1 부트스트랩",
+              "page": "doc p.178–182 (pdf 185–189); p.139 (pdf 146)",
+              "value": "Identical fields and tables (translation); MIMO bootstrap amplitude rule of A/322 §9.1 (2024 amendment) present",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "A/321:2025-07 (by reference)",
+              "clause": "Anatel Ato 2.705/2026 item 4.1",
+              "page": "—",
+              "value": "Identical to baseline for major version 0",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Major-version-0 signaling is identical everywhere (A/321 §6.1 differs from 2016 only by one deleted explanatory sentence). Korea's document does not contain A/321 §6.2 (major version 1, ZC root 197), §6.3 (future major versions) or §7 (multiplexing of different signal types with bootstrap prefixing), all introduced in the 2026 editions; Brazil's referenced A/321:2025-07 likewise predates §7.",
+          "impact": "No effect on ATSC 3.0 services. The missing clauses only matter if non-ATSC 3.0 waveforms are time-multiplexed in the same RF channel (every frame must still start with a bootstrap).",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "profile",
+              "text": "Identical for version 0 (6 MHz selected); 2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over"
+            },
+            "SBTVD": {
+              "code": "profile",
+              "text": "Referenced 2025-07 edition identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced"
+            }
+          },
+          "evidence": [
+            {
+              "label": "A/321:2026-04 Amendment No. 1",
+              "url": "https://www.atsc.org/wp-content/uploads/2026/06/A321-2026-04-Amend-No-1.pdf"
+            },
+            {
+              "label": "A/322:2026-04 Amendment No. 1",
+              "url": "https://www.atsc.org/wp-content/uploads/2026/06/A322-2026-04-Amend-No-1.pdf"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "phy-bandwidth",
+          "group": "Physical layer · channel",
+          "feature": "Channel bandwidth, post-bootstrap sample rate and number of carriers (NoC)",
+          "atsc_docs": [
+            "A/321",
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/322:2026-06 · A/321:2026-06",
+              "clause": "A/322 §7.2.3 Table 7.1; A/321 §6.1 (system_bandwidth, bsr_coefficient)",
+              "page": "A/322 doc p.69; A/321 doc p.16",
+              "value": "6, 7 or 8 MHz; NoC_max 6913 / 13825 / 27649 (8K/16K/32K), C_unit 96/192/384, C_red_coeff 0–4; sample rate (N+16)×0.384 MHz",
+              "req": "6/7/8 MHz optional per market"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1 · MSIT Notice 2023-34",
+              "clause": "§7.2.3 전송 부반송파 개수 <표 7-1>; Notice Art. 13 ① 5 나 · ② 2",
+              "page": "doc p.~76; docs/refs KR excerpt",
+              "value": "Identical NoC table (6913/13825/27649); regulation fixes the channel at 6 MHz (전송채널 6 ㎒ 폭, 전파형식 D7W, 점유주파수대폭 6 ㎒ 이내)",
+              "req": "6 MHz mandatory (regulation)"
+            },
+            "SBTVD": {
+              "doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)",
+              "clause": "Decreto Art. 2º III (canal de radiofrequência com largura de banda de 6 MHz); Ato 2.705 item 4.1",
+              "page": "docs/refs BR excerpt",
+              "value": "6 MHz channel; A/322 §7.2.3 unchanged between 2025-07a and baseline",
+              "req": "6 MHz mandatory (decree)"
+            }
+          },
+          "difference": "The specification text is identical (A/322 §7.2.3 unchanged since the 2020 NoC correction). Korea and Brazil both restrict operation to 6 MHz by law, whereas the ATSC baseline also allows 7 and 8 MHz.",
+          "impact": "Receivers for Korea/Brazil need only the 6 MHz mode; 7/8 MHz bootstrap values (01, 10) are never used there.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "profile",
+              "text": "Same specification; 6 MHz selected by regulation (an option A/321/A/322 permit)"
+            },
+            "SBTVD": {
+              "code": "profile",
+              "text": "Same specification; 6 MHz selected by decree"
+            }
+          },
+          "evidence": [
+            {
+              "label": "MSIT Notice 2023-34 Art. 13 (excerpt)",
+              "url": "docs/refs/KR_MSIT-Notice-2023-34_Art13.md"
+            },
+            {
+              "label": "Decreto 12.595/2025 (excerpt)",
+              "url": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/322",
@@ -1849,7 +2735,7 @@
             }
           ],
           "rel": "profile",
-          "conf": "partial"
+          "conf": "confirmed"
         },
         "SBTVD": {
           "docs": [
@@ -1884,7 +2770,7 @@
             }
           ],
           "rel": "incorporated",
-          "conf": "confirmed"
+          "conf": "partial"
         }
       },
       "verdict": {
@@ -1901,14 +2787,552 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "partial",
-          "text": "ATSC 3.0 PHY adopted with Korean operating parameters (6 MHz; MSIT Notice Art. 13 ①6–7, ②)"
+          "code": "profile",
+          "text": "TTA §5–9/Annex I-1 translate A/322 (2020 text + 2024 MIMO extension) and select the 6 MHz option by regulation: FEC, constellations, FFT/GI/pilots, frequency interleaver identical. Open item: Table Ⅰ.10-5 still lists MP4_2 at 32K/GI6_1536 (removed by A/322:2025-07a Amd 1)"
         },
         "SBTVD": {
-          "code": "partial",
-          "text": "A/322:2025-07a incorporated by reference; MIMO, LDM and TxID mandated by Decreto 12.595/2025 Art. 3º"
+          "code": "profile",
+          "text": "A/322:2025-07a incorporated by reference; national profile selects 6 MHz and mandates MIMO, LDM and TxID (Decreto 12.595/2025 Art. 3º). January/June 2026 amendments not yet referenced; ABNT profile unverified"
         }
-      }
+      },
+      "comparisons": [
+        {
+          "id": "phy-ref-versions",
+          "group": "Physical layer · basis",
+          "feature": "Reference versions adopted",
+          "atsc_docs": [
+            "A/321",
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/321:2026-06 · A/322:2026-06",
+              "clause": "Revision history",
+              "page": "A/321 p.ii; A/322 p.ii–iii",
+              "value": "Baseline: latest in-force editions (A/321:2026-04 + Amd 1; A/322:2026-04 + Amd 1)",
+              "req": "baseline"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1 (2025-12-05)",
+              "clause": "§2 인용 표준; 서문 3.2 비교표",
+              "page": "doc p.5; p.ii–iii (pdf 3–4)",
+              "value": "Cites A/321 (2016.03), A/322 (2020.01), A/324 CS (2020.01); §5–9 and Annex I-1 = A/322 §5–9 / Annex A–O '동일(번역)'; §10 = A/321 §4–6 '동일(번역)'; R1 adds the MIMO extension (표준의 이력 제8판)",
+              "req": "mandatory (translation adoption)"
+            },
+            "SBTVD": {
+              "doc": "Anatel Ato nº 2.705/2026 · ABNT NBR 25601:2025",
+              "clause": "Anexo item 4.1; ABNT clause unverified",
+              "page": "—",
+              "value": "Transmitters shall implement ATSC 3.0 per A/321:2025-07, A/322:2025-07a, A/324:2025-07 (incorporated by reference)",
+              "req": "mandatory (regulation)"
+            }
+          },
+          "difference": "Korea's text corresponds to A/322:2020 plus the 2024–2025 MIMO-extension content, but the citation list still names the 2016/2020 editions; Brazil references the 2025-07(a) editions. Neither reflects A/322:2025-07a Amd 1 (Jan 2026, MP4_2 erratum) or A/321/A/322:2026-04 Amd 1 (June 2026, bootstrap usage with heterogeneous waveforms).",
+          "impact": "Version lag matters only for the two 2026 changes listed in the rows below; all other A/322 revisions since 2020 were administrative reference updates or errata.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "Content tracks A/322 up to the 2024-09a errata; 2026 amendments not yet reflected; citation list outdated"
+            },
+            "SBTVD": {
+              "code": "partial",
+              "text": "Incorporates the 2025-07(a) editions by regulation; 2026 amendments not referenced; ABNT profile unverified"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAK.KO-07.0151/R1 (committee.tta.or.kr)",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0151%2FR1&nowSu=1"
+            },
+            {
+              "label": "TG3-201r12 Approved Changes to A/322",
+              "url": "https://www.atsc.org/wp-content/uploads/2026/06/TG3-201r12-A322-Changes.pdf"
+            },
+            {
+              "label": "Anatel Ato 2.705/2026",
+              "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted comparison of the extracted texts; human review pending)"
+          }
+        },
+        {
+          "id": "phy-bootstrap-signaling",
+          "group": "Physical layer · bootstrap",
+          "feature": "Bootstrap signaling fields (major version 0): EA wake-up, min_time_to_next, system_bandwidth, bsr_coefficient, preamble_structure",
+          "atsc_docs": [
+            "A/321",
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/321:2026-06 · A/322:2026-06",
+              "clause": "A/321 §6.1 Tables 6.1–6.5; A/322 §9.1 (constraints: major/minor version 0, preamble_structure)",
+              "page": "A/321 doc p.14–17 (pdf 19–22); A/322 doc p.108",
+              "value": "ZC root 137; symbol 1: ea_wake_up_1, min_time_to_next (5 b), system_bandwidth (00=6, 01=7, 10=8 MHz); symbol 2: ea_wake_up_2, bsr_coefficient (0–80); symbol 3: preamble_structure",
+              "req": "mandatory"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1",
+              "clause": "§10.3.1 주 버전 0에 대한 부트스트랩 시그널링; §9.1 부트스트랩",
+              "page": "doc p.178–182 (pdf 185–189); p.139 (pdf 146)",
+              "value": "Identical fields and tables (translation); MIMO bootstrap amplitude rule of A/322 §9.1 (2024 amendment) present",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "A/321:2025-07 (by reference)",
+              "clause": "Anatel Ato 2.705/2026 item 4.1",
+              "page": "—",
+              "value": "Identical to baseline for major version 0",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Major-version-0 signaling is identical everywhere (A/321 §6.1 differs from 2016 only by one deleted explanatory sentence). Korea's document does not contain A/321 §6.2 (major version 1, ZC root 197), §6.3 (future major versions) or §7 (multiplexing of different signal types with bootstrap prefixing), all introduced in the 2026 editions; Brazil's referenced A/321:2025-07 likewise predates §7.",
+          "impact": "No effect on ATSC 3.0 services. The missing clauses only matter if non-ATSC 3.0 waveforms are time-multiplexed in the same RF channel (every frame must still start with a bootstrap).",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "profile",
+              "text": "Identical for version 0 (6 MHz selected); 2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over"
+            },
+            "SBTVD": {
+              "code": "profile",
+              "text": "Referenced 2025-07 edition identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced"
+            }
+          },
+          "evidence": [
+            {
+              "label": "A/321:2026-04 Amendment No. 1",
+              "url": "https://www.atsc.org/wp-content/uploads/2026/06/A321-2026-04-Amend-No-1.pdf"
+            },
+            {
+              "label": "A/322:2026-04 Amendment No. 1",
+              "url": "https://www.atsc.org/wp-content/uploads/2026/06/A322-2026-04-Amend-No-1.pdf"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "phy-bandwidth",
+          "group": "Physical layer · channel",
+          "feature": "Channel bandwidth, post-bootstrap sample rate and number of carriers (NoC)",
+          "atsc_docs": [
+            "A/321",
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/322:2026-06 · A/321:2026-06",
+              "clause": "A/322 §7.2.3 Table 7.1; A/321 §6.1 (system_bandwidth, bsr_coefficient)",
+              "page": "A/322 doc p.69; A/321 doc p.16",
+              "value": "6, 7 or 8 MHz; NoC_max 6913 / 13825 / 27649 (8K/16K/32K), C_unit 96/192/384, C_red_coeff 0–4; sample rate (N+16)×0.384 MHz",
+              "req": "6/7/8 MHz optional per market"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1 · MSIT Notice 2023-34",
+              "clause": "§7.2.3 전송 부반송파 개수 <표 7-1>; Notice Art. 13 ① 5 나 · ② 2",
+              "page": "doc p.~76; docs/refs KR excerpt",
+              "value": "Identical NoC table (6913/13825/27649); regulation fixes the channel at 6 MHz (전송채널 6 ㎒ 폭, 전파형식 D7W, 점유주파수대폭 6 ㎒ 이내)",
+              "req": "6 MHz mandatory (regulation)"
+            },
+            "SBTVD": {
+              "doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)",
+              "clause": "Decreto Art. 2º III (canal de radiofrequência com largura de banda de 6 MHz); Ato 2.705 item 4.1",
+              "page": "docs/refs BR excerpt",
+              "value": "6 MHz channel; A/322 §7.2.3 unchanged between 2025-07a and baseline",
+              "req": "6 MHz mandatory (decree)"
+            }
+          },
+          "difference": "The specification text is identical (A/322 §7.2.3 unchanged since the 2020 NoC correction). Korea and Brazil both restrict operation to 6 MHz by law, whereas the ATSC baseline also allows 7 and 8 MHz.",
+          "impact": "Receivers for Korea/Brazil need only the 6 MHz mode; 7/8 MHz bootstrap values (01, 10) are never used there.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "profile",
+              "text": "Same specification; 6 MHz selected by regulation (an option A/321/A/322 permit)"
+            },
+            "SBTVD": {
+              "code": "profile",
+              "text": "Same specification; 6 MHz selected by decree"
+            }
+          },
+          "evidence": [
+            {
+              "label": "MSIT Notice 2023-34 Art. 13 (excerpt)",
+              "url": "docs/refs/KR_MSIT-Notice-2023-34_Art13.md"
+            },
+            {
+              "label": "Decreto 12.595/2025 (excerpt)",
+              "url": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "phy-ofdm-fft-gi-pilot",
+          "group": "Physical layer · OFDM",
+          "feature": "FFT sizes, guard intervals and scattered/continual pilots (SISO)",
+          "atsc_docs": [
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/322:2026-06",
+              "clause": "§8.3 IFFT; §8.5 Table 8.9 (12 GI patterns 192–4864 samples); §8.1 pilots (16 SP patterns, Annex F/G)",
+              "page": "doc p.102–107, p.95–101",
+              "value": "8K/16K/32K FFT; GI1_192 … GI12_4864 with allowed combinations; SP3_2 … SP32_4",
+              "req": "mandatory (options)"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1",
+              "clause": "§8.3 IFFT; §8.5 보호 구간; §8.1 파일럿 삽입; 부록 Ⅰ-1.4/Ⅰ-1.5",
+              "page": "doc p.123–139",
+              "value": "Identical (translation; sections unchanged in A/322 between 2020 and 2026)",
+              "req": "mandatory (options)"
+            },
+            "SBTVD": {
+              "doc": "A/322:2025-07a (by reference) · ABNT NBR 25601:2025",
+              "clause": "Ato 2.705 item 4.1; ABNT clause unverified",
+              "page": "—",
+              "value": "§8.1/8.3/8.5 identical between 2025-07a and baseline",
+              "req": "mandatory (options)"
+            }
+          },
+          "difference": "None at the specification level: A/322 §8.1, §8.3 and §8.5 have not changed since 2020 (text similarity > 0.985 in the section-level diff). Which combinations Korean/Brazilian broadcasters actually operate is an operational profile, not a standards difference.",
+          "impact": "None.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Sections identical"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "Referenced edition identical; ABNT NBR 25601 profile restrictions not read"
+            }
+          },
+          "evidence": [
+            {
+              "label": "A/322:2026-06",
+              "url": "https://www.atsc.org/wp-content/uploads/2026/06/A322-2026-06-Physical-Layer-Protocol.pdf"
+            },
+            {
+              "label": "A/322:2020",
+              "url": "https://www.atsc.org/wp-content/uploads/2016/10/A322-2020-Physical-Layer-Protocol.pdf"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "phy-fec-constellation",
+          "group": "Physical layer · BICM",
+          "feature": "FEC (LDPC 16200/64800, 12 code rates; BCH/CRC/none outer code) and constellations (QPSK, NUC 16–4096QAM)",
+          "atsc_docs": [
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/322:2026-06",
+              "clause": "§6.1 FEC (Tables 6.1–6.2); §6.3.1 Constellation Overview; Annex A/B/C",
+              "page": "doc p.18–19, p.31",
+              "value": "LDPC N=64800/16200, rates 2/15–13/15; outer BCH (192/168 b), CRC-32 or none; QPSK + NUC 16/64/256/1024/4096QAM",
+              "req": "mandatory (options)"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1 · MSIT Notice 2023-34",
+              "clause": "§6.1 FEC; §6.3 성상 매핑; 부록 Ⅰ-1.1/Ⅰ-1.3; Notice Art. 13 ① 6",
+              "page": "doc p.18–36; docs/refs KR excerpt",
+              "value": "Identical; regulation allows LDPC+BCH, LDPC+CRC32 or LDPC only, and QAM (incl. QPSK) modulation — the same option set",
+              "req": "mandatory (options)"
+            },
+            "SBTVD": {
+              "doc": "A/322:2025-07a (by reference) · ABNT NBR 25601:2025",
+              "clause": "Ato 2.705 item 4.1; ABNT clause unverified",
+              "page": "—",
+              "value": "§6.1/§6.3 identical between 2025-07a and baseline",
+              "req": "mandatory (options)"
+            }
+          },
+          "difference": "None. The only 2020→2026 edits in §6.3 are figure-label corrections (Type B interleaver figures) and an example sentence moved between §6.3 and §6.4; the 2021 clarification of Type A LDPC encoding (§6.1.3.1) is editorial.",
+          "impact": "None.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Sections identical; regulation consistent"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "Referenced edition identical; ABNT profile not read"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TG3-201r12 Approved Changes to A/322 (§2.3 errata 2021)",
+              "url": "https://www.atsc.org/wp-content/uploads/2026/06/TG3-201r12-A322-Changes.pdf"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "phy-freq-interleaver",
+          "group": "Physical layer · framing",
+          "feature": "Frequency interleaver (2021 errata: ⌈L_FP/2⌉ bound, N_r−1 bits)",
+          "atsc_docs": [
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/322:2026-06",
+              "clause": "§7.3 Frequency Interleaving",
+              "page": "doc p.90–93",
+              "value": "0 < k < ⌈L_FP/2⌉ (corrected from ⌊L_FP/2⌋ in A/322:2021)",
+              "req": "mandatory"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1",
+              "clause": "§7.3 주파수 인터리버",
+              "page": "doc p.108–112 (pdf 119)",
+              "value": "0 < k < ⌈L_Fm/2⌉ — the corrected form",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "A/322:2025-07a (by reference)",
+              "clause": "Ato 2.705 item 4.1",
+              "page": "—",
+              "value": "Corrected form (post-2021)",
+              "req": "mandatory"
+            }
+          },
+          "difference": "None: although Korea cites A/322:2020, its §7.3 already carries the 2021 errata correction.",
+          "impact": "None.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Corrected formula present"
+            },
+            "SBTVD": {
+              "code": "same",
+              "text": "Referenced edition post-dates the correction"
+            }
+          },
+          "evidence": [
+            {
+              "label": "A/322:2020 (pre-correction)",
+              "url": "https://www.atsc.org/wp-content/uploads/2016/10/A322-2020-Physical-Layer-Protocol.pdf"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "phy-plp-ldm",
+          "group": "Physical layer · multiplexing",
+          "feature": "PLPs and Layered Division Multiplexing (LDM)",
+          "atsc_docs": [
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/322:2026-06",
+              "clause": "§7.2.7 PLP multiplexing; §6.4 LDM (Tables on injection level/power ratios and Figure 6.16 added 2024–2025); Annex O (LDM + MIMO + channel bonding)",
+              "page": "doc p.81–90, p.35–38, p.257–267",
+              "value": "Up to 64 PLPs; ≤ 4 PLPs per service; LDM optional (2-layer), combinable with MIMO and channel bonding since A/322:2024-09",
+              "req": "PLP mandatory; LDM optional"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1 · MSIT Notice 2023-34",
+              "clause": "§1.1 (64 PLP, 4 PLP/서비스); §6.4 계층 분할 다중화; 부록 Ⅰ-1.13 LDM과 MIMO의 결합; Notice Art. 13 ① 5 나",
+              "page": "doc p.2, p.37–40, p.~350; docs/refs KR excerpt",
+              "value": "Same limits; Layered MIMO annex present (R1); regulation requires at least one 4K UHDTV program channel per 6 MHz channel",
+              "req": "PLP mandatory; LDM optional; ≥1 4K programme mandatory (regulation)"
+            },
+            "SBTVD": {
+              "doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)",
+              "clause": "Decreto Art. 3º II (LDM); Ato 2.705 item 4.1",
+              "page": "docs/refs BR excerpt",
+              "value": "LDM is a mandated system feature ('incorporará … LDM'); specification by reference",
+              "req": "LDM mandatory (decree)"
+            }
+          },
+          "difference": "Specification identical in substance; A/322:2026 adds informative LDM power-ratio tables not present in the Korean text. Requirement level differs: LDM is optional in ATSC and Korea, but a mandated TV 3.0 feature in Brazil; Korea adds a programme-composition constraint (≥ 1 4K UHD channel per RF channel).",
+          "impact": "Brazilian transmitters/receivers must support LDM; Korean multiplex configurations must carry a 4K service.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "partial"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "profile",
+              "text": "Same technology; LDM optional as in ATSC; national programme-composition rule (≥ 1 4K service)"
+            },
+            "SBTVD": {
+              "code": "profile",
+              "text": "Same technology; LDM — an ATSC option — made mandatory by decree"
+            }
+          },
+          "evidence": [
+            {
+              "label": "A/322:2024-04 Amendment No. 1 (MIMO/CB/LDM combinations)",
+              "url": "https://www.atsc.org/wp-content/uploads/2024/10/A322-2024-04-Amend-No-1.pdf"
+            },
+            {
+              "label": "Decreto 12.595/2025 (excerpt)",
+              "url": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "phy-mimo-pilots",
+          "group": "Physical layer · MIMO",
+          "feature": "MIMO extension and MIMO scattered-pilot table (Walsh-Hadamard) — MP4_2 at 32K FFT / GI6_1536",
+          "atsc_docs": [
+            "A/322"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/322:2026-06",
+              "clause": "Annex L.9.3 Table L.9.3 (MP4_2 removed for 32K/GI6_1536 by A/322:2025-07a Amd 1, 26 Jan 2026)",
+              "page": "doc p.228 (pdf 246)",
+              "value": "32K FFT, GI6_1536: MP8_2 only",
+              "req": "MIMO optional"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0151/R1",
+              "clause": "부록 Ⅰ-1.10 MIMO, <표 Ⅰ.10-5>",
+              "page": "doc p.319 (pdf 326)",
+              "value": "32K FFT, GI6_1536: MP8_2, MP4_2 (pre-erratum entry)",
+              "req": "MIMO optional (R1 'MIMO extension 추가')"
+            },
+            "SBTVD": {
+              "doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)",
+              "clause": "Decreto Art. 3º I (MIMO); Ato 2.705 item 4.1",
+              "page": "docs/refs BR excerpt",
+              "value": "MIMO mandated; referenced edition 2025-07a still contains the MP4_2 entry",
+              "req": "MIMO mandatory (decree)"
+            }
+          },
+          "difference": "Korea's R1 (Dec 2025) incorporates the 2024 MIMO extension (Layered MIMO, channel-bonding combinations, MIMO bootstrap amplitude rule) but its Table Ⅰ.10-5 still lists MP4_2 for 32K FFT with GI6_1536; ATSC removed that entry in January 2026 because it conflicts with continual-pilot positions. Brazil's referenced A/322:2025-07a has the same stale entry. Requirement level also differs: MIMO is optional in ATSC and Korea but a mandated TV 3.0 feature in Brazil.",
+          "impact": "A MIMO transmitter configured with 32K/GI6_1536/MP4_2 would place scattered pilots on continual-pilot carriers; the combination should be treated as not allowed.",
+          "recommendation": "Align TTAK.KO-07.0151 표 Ⅰ.10-5 with A/322:2026-06 Table L.9.3 at the next revision; Anatel/ABNT to reference A/322:2026-06 or later.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "incorporated",
+              "conf": "confirmed"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "MIMO extension adopted (optional, as in ATSC); January 2026 erratum (MP4_2 removal) not reflected"
+            },
+            "SBTVD": {
+              "code": "partial",
+              "text": "MIMO — an ATSC option — mandatory by decree; referenced edition predates the erratum"
+            }
+          },
+          "evidence": [
+            {
+              "label": "A/322:2025-07a Amendment No. 1 (errata, MP4_2)",
+              "url": "https://www.atsc.org/wp-content/uploads/2026/01/A322-2025-07a-Amend-No-1.pdf"
+            },
+            {
+              "label": "A/322:2024-09a Amendment No. 1 (errata, MIMO/CB/LDM)",
+              "url": "https://www.atsc.org/wp-content/uploads/2025/11/A322-2024-09a-Amend-No-1.pdf"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/323",

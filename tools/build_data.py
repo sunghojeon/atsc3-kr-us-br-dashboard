@@ -398,8 +398,8 @@ for e in EXTRA_ROWS:
 # Explicit values for the rows examined so far; everything else is derived from the cell contents below.
 PER_ORG = {  # doc id -> {org: (code, text, none-kind)}
  "A/300": {"TTA": ("review", "TTA Part 1 plays the role of system requirements; clause-level comparison pending"), "SBTVD": ("review", "System specified as the ABNT NBR 25601–25609 series; no umbrella document")},
- "A/321": {"TTA": ("partial", "Bootstrap adopted within TTA Part 4; EA wake-up usage to be confirmed"), "SBTVD": ("review", "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); changes between A/321:2025-07 and the baseline A/321:2026-06 not yet compared; ABNT NBR 25601 profile unverified")},
- "A/322": {"TTA": ("partial", "ATSC 3.0 PHY adopted with Korean operating parameters (6 MHz; MSIT Notice Art. 13 ①6–7, ②)"), "SBTVD": ("partial", "A/322:2025-07a incorporated by reference; MIMO, LDM and TxID mandated by Decreto 12.595/2025 Art. 3º")},
+ "A/321": {"TTA": ("profile", "TTA §10 is a translation of A/321:2016 §4–6: bootstrap structure and major-version-0 signaling identical (6 MHz selected nationally). A/321:2026 additions (major version 1, heterogeneous-waveform multiplexing) not yet carried over — no effect on ATSC 3.0 services"), "SBTVD": ("profile", "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced; ABNT NBR 25601 profile unverified")},
+ "A/322": {"TTA": ("profile", "TTA §5–9/Annex I-1 translate A/322 (2020 text + 2024 MIMO extension) and select the 6 MHz option by regulation: FEC, constellations, FFT/GI/pilots, frequency interleaver identical. Open item: Table Ⅰ.10-5 still lists MP4_2 at 32K/GI6_1536 (removed by A/322:2025-07a Amd 1)"), "SBTVD": ("profile", "A/322:2025-07a incorporated by reference; national profile selects 6 MHz and mandates MIMO, LDM and TxID (Decreto 12.595/2025 Art. 3º). January/June 2026 amendments not yet referenced; ABNT profile unverified")},
  "A/323": {"TTA": ("none", "", "not-found"), "SBTVD": ("none", "", "not-found")},
  "A/324": {"TTA": ("review", "Gateway/exciter functions in Part 4; STLTP adoption and SFN rules to be compared"), "SBTVD": ("review", "A/324:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); changes between A/324:2025-07 and the baseline A/324:2026-04 not yet compared")},
  "A/331": {"TTA": ("partial", "Part 3 restricts the ROUTE/DASH and MMT profile; emergency alerting extended in national standards"), "SBTVD": ("review", "ABNT NBR 25602 transport layer — clause comparison pending (ABNT clause unverified)")},
@@ -413,8 +413,8 @@ PER_ORG = {  # doc id -> {org: (code, text, none-kind)}
  "A/360": {"TTA": ("review", "Part 5 content protection — scope vs A/360 (signaling signatures) to be compared"), "SBTVD": ("review", "Security provisions to be located in ABNT NBR 25602/25608/25609")},
 }
 RELS = {  # doc id -> {org: (relation, confidence)}
- "A/321": {"TTA": ("profile", "partial"), "SBTVD": ("incorporated", "confirmed")},
- "A/322": {"TTA": ("profile", "partial"), "SBTVD": ("incorporated", "confirmed")},
+ "A/321": {"TTA": ("profile", "confirmed"), "SBTVD": ("incorporated", "partial")},
+ "A/322": {"TTA": ("profile", "confirmed"), "SBTVD": ("incorporated", "partial")},
  "A/324": {"TTA": ("related", "metadata"), "SBTVD": ("incorporated", "confirmed")},
  "A/331": {"TTA": ("profile", "metadata"), "SBTVD": ("related", "metadata")},
  "A/341": {"TTA": ("profile", "partial"), "SBTVD": ("alternative", "confirmed")},
@@ -489,7 +489,8 @@ data = {
   "regulations": REGULATIONS,
   "verdicts": {
     "same":    {"icon": "✓", "label": "Same", "desc": "Clause- and table-level comparison done against the baseline version: no relevant difference (legal incorporation alone does not qualify)"},
-    "partial": {"icon": "△", "label": "Partial match", "desc": "Core is the same; profiles, options, constraints or referenced version differ"},
+    "profile": {"icon": "◐", "label": "Adopted · national profile", "desc": "The ATSC document is adopted as defined; the country selects among the options and parameters the document itself permits (bandwidth, optional tools, mandated features)"},
+    "partial": {"icon": "△", "label": "Partial match", "desc": "Core is the same but the content differs: missing or stale clauses, errata not reflected, or constraints beyond the ATSC options"},
     "diff":    {"icon": "≠", "label": "Different", "desc": "A different technology or specification is adopted"},
     "none":    {"icon": "—", "label": "No counterpart", "desc": "No corresponding provision, or not identified"},
     "review":  {"icon": "ⓘ", "label": "Review needed", "desc": "Counterpart documents identified; clause-level comparison pending"}
