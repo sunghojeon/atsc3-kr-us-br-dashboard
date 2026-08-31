@@ -1,6 +1,6 @@
 """Build data/standards.json: rows = ATSC 3.0 documents (from standards/US/index.csv), grouped by ATSC
 number series, each mapped to corresponding ITU-R / TTA / SBTVD Forum documents. All text in English."""
-import csv, json, pathlib, re
+import csv, html, json, pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 US = list(csv.DictReader(open(ROOT / "standards/US/index.csv", encoding="utf-8-sig")))
@@ -13,7 +13,7 @@ try:  # TTA — Korean (English title kept for tooltips)
     for it in json.load(open(ROOT / "standards/KR/tta_search_results.json", encoding="utf-8")):
         sid = it["standardNo"].strip().replace("　", "")
         if sid.startswith(("TTAK.KO-07", "TTAK.KO-06.0523", "TTAR-07")):
-            DOC_TITLES[sid] = {"title": it["korStandard"].strip(), "lang": "ko", "title_en": (it.get("engStandard") or "").strip().replace(" ? ", " - ")}  # " ? " = dash mis-encoded in the TTA API response
+            DOC_TITLES[sid] = {"title": html.unescape(it["korStandard"]).strip(), "lang": "ko", "title_en": html.unescape(it.get("engStandard") or "").strip().replace(" ? ", " - ")}  # TTA API returns HTML entities (&#8211;) and " ? " for a mis-encoded dash
 except FileNotFoundError:
     pass
 ITU_TITLES = {  # ITU-R — English (overridden by standards/ITU/index.csv when present)

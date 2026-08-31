@@ -45,8 +45,11 @@
   .meta b { color: var(--ink); font-weight: 600; }
   h2 { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; margin: 0 0 12px; }
   .reg-section { margin-top: 40px; }
-  .regs { margin-top: 8px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px 32px; margin-bottom: 34px; }
-  .reg-card { border-top: 3px solid var(--org); padding-top: 8px; font-size: 14px; }
+  .regs { margin-top: 8px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px 32px; margin-bottom: 34px; }
+  .reg-country { border-top: 3px solid var(--org); padding-top: 8px; display: flex; flex-direction: column; gap: 18px; }
+  .reg-country > h3 { margin: 0; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--org); }
+  .reg-card { font-size: 14px; }
+  .reg-card + .reg-card { border-top: 1px solid var(--line); padding-top: 14px; }
   .reg-card b { display: block; font-weight: 600; }
   .reg-card .t { display: block; color: var(--ink-2); }
   .reg-card .m { display: block; color: var(--ink-3); font-size: 12.5px; margin-top: 2px; }
@@ -251,13 +254,17 @@
   const dl = (obj, title) => '<div class="legend2"><b>' + title + '</b> ' + Object.keys(obj).map(k => '<span><i>' + esc(obj[k].label || obj[k]) + '</i>' + (obj[k].desc ? ' — ' + esc(obj[k].desc) : '') + '</span>').join('') + '</div>';
   document.getElementById('legend').insertAdjacentHTML('afterend', dl(data.noneKinds || {}, 'No counterpart, sub-types:') + dl(data.relations || {}, 'Relation to the ATSC document:') + dl(data.confidence || {}, 'Confidence:'));
   const orgOf = id => orgs.find(o => o.id === id) || {};
-  document.getElementById('regs').innerHTML = (data.regulations || []).map(rg => {
-    const o = orgOf(rg.org);
+  // One column per country, in org order (United States → Korea → Brazil); documents of the same country stack vertically.
+  const regCard = rg => {
     const t = rg.title ? '<span class="t" lang="' + esc(rg.title_lang || 'en') + '">' + esc(rg.title) + '</span>' + (rg.title_en ? '<span class="t en" lang="en">' + esc(rg.title_en) + '</span>' : '') : '<span class="t dash">Document to be added</span>';
     const m = [rg.issuer, rg.effective ? 'in force ' + rg.effective : ''].filter(Boolean).join(' · ');
     const links = [rg.url ? '<a href="' + esc(rg.url) + '">source</a>' : '', rg.local ? '<a href="' + esc(rg.local) + '">excerpt</a>' : ''].filter(Boolean).join(' · ');
-    return '<div class="reg-card" style="--org:' + (o.color || 'var(--ink)') + '"><b>' + esc(rg.country) + ' — ' + esc(rg.id) + '</b>' + t + '<span class="m">' + esc(m) + (links ? ' · ' + links : '') + '</span>' + (rg.note ? '<p>' + esc(rg.note) + '</p>' : '') + '</div>';
-  }).join('');
+    return '<div class="reg-card"><b>' + esc(rg.id) + '</b>' + t + '<span class="m">' + esc(m) + (links ? ' · ' + links : '') + '</span>' + (rg.note ? '<p>' + esc(rg.note) + '</p>' : '') + '</div>';
+  };
+  const regGroups = orgs.map(o => ({ o, list: (data.regulations || []).filter(rg => rg.org === o.id) })).filter(g => g.list.length);
+  document.getElementById('regs').innerHTML = regGroups.map(g =>
+    '<div class="reg-country" style="--org:' + (g.o.color || 'var(--ink)') + '"><h3>' + esc(g.list[0].country) + '</h3>' + g.list.map(regCard).join('') + '</div>'
+  ).join('');
 
   // tabs
   const tabs = document.getElementById('tabs');
