@@ -21,3 +21,6 @@ Thumbs.db
 
 # 표준 원문 PDF (저작권 — 리포에 올리지 않음)
 standards/
+
+# third-party reference PDFs (kept locally only)
+docs/refs/*.pdf
