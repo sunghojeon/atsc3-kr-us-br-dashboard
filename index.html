@@ -58,6 +58,38 @@
   nav.tabs button { background: none; border: 0; border-bottom: 3px solid transparent; margin-bottom: -1px; padding: 8px 0 9px; font: inherit; font-size: 14px; color: var(--ink-2); cursor: pointer; }
   nav.tabs button[aria-selected="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--yellow); }
   nav.tabs button:hover { color: var(--blue); }
+  .ov-section { margin-bottom: 40px; }
+  .ov-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--ink-2); margin-bottom: 12px; }
+  .ov-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .ov-legend i { display: inline-block; width: 14px; height: 14px; border: 1px solid var(--line-2); }
+  .ov-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(430px, 1fr)); gap: 14px 28px; }
+  .ov-block h3 { font-size: 13px; font-weight: 600; margin: 0 0 4px; color: var(--ink); }
+  table.ov { width: 100%; border-collapse: collapse; font-size: 12.5px; table-layout: fixed; }
+  table.ov th { font-weight: 600; color: var(--ink-3); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; text-align: left; padding: 2px 6px; border-bottom: 1px solid var(--line-2); }
+  table.ov th.c { width: 118px; text-align: center; }
+  table.ov td { padding: 3px 6px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  table.ov td.id { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  table.ov td.id b { font-weight: 600; }
+  table.ov td.id span { color: var(--ink-3); margin-left: 6px; }
+  table.ov td.cell { text-align: center; cursor: pointer; font-weight: 600; font-size: 12px; border-left: 2px solid var(--sheet); border-right: 2px solid var(--sheet); }
+  table.ov td.cell:hover { outline: 2px solid var(--blue); outline-offset: -2px; }
+  .cell.same, .ov-legend .same { background: #DCEFD9; color: #1E5E22; }
+  .cell.partial, .ov-legend .partial { background: #FBE8C6; color: #7A4A00; }
+  .cell.diff, .ov-legend .diff { background: #F8D7D3; color: #8A1C15; }
+  .cell.none, .ov-legend .none { background: #ECEAE3; color: #5B574C; }
+  .cell.review, .ov-legend .review { background: #DCE9F7; color: #0B4F8A; }
+  @media (prefers-color-scheme: dark) {
+    .cell.same, .ov-legend .same { background: #1F3B22; color: #A8E0AC; }
+    .cell.partial, .ov-legend .partial { background: #3F2E10; color: #F0C070; }
+    .cell.diff, .ov-legend .diff { background: #45201C; color: #F2A39C; }
+    .cell.none, .ov-legend .none { background: #2C2A24; color: #B5AF9F; }
+    .cell.review, .ov-legend .review { background: #1D2F42; color: #9CC5F0; }
+  }
+  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin: 0 0 14px; font-size: 13.5px; }
+  .controls label { color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px; }
+  .controls input[type="search"], .controls select { font: inherit; font-size: 13.5px; color: var(--ink); background: var(--sheet); border: 1px solid var(--line-2); padding: 4px 8px; }
+  .controls input[type="search"] { width: 240px; }
+  .count { margin-left: auto; color: var(--ink-3); font-size: 13px; }
   .wrap { overflow-x: auto; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; }
   thead th { text-align: left; vertical-align: bottom; padding: 8px 10px 10px; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line-2); font-weight: 600; }
@@ -103,6 +135,13 @@
   .panel .full { grid-column: 1 / -1; }
   .reco { background: var(--yellow-soft); border-left: 3px solid var(--yellow-line); padding: 10px 14px; }
   .reco h4 { color: var(--ink); }
+  table.cmp { font-size: 12.5px; background: var(--sheet); border: 1px solid var(--line-2); }
+  table.cmp th { background: var(--sheet-2); border-top: 0; font-size: 12px; padding: 6px 8px; }
+  table.cmp td { padding: 7px 8px; min-width: 0; vertical-align: top; }
+  table.cmp td .t, table.cmp td .val, table.cmp td .req { display: block; }
+  table.cmp td .t { color: var(--ink-3); font-size: 11.5px; }
+  table.cmp td .val { color: var(--ink); margin-top: 2px; }
+  table.cmp td .req { color: var(--blue); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; margin-top: 2px; }
   .evidence { font-size: 13px; color: var(--ink-2); }
   .evidence li { margin-bottom: 2px; }
   .history { font-size: 12.5px; color: var(--ink-3); }
@@ -125,9 +164,24 @@
   </header>
 
 
+  <section class="ov-section">
+    <h2>At a glance — verdicts against the ATSC baseline</h2>
+    <div class="ov-legend" id="ov-legend"></div>
+    <div class="ov-grid" id="overview"></div>
+  </section>
+
   <section>
     <h2>Comparison by ATSC document</h2>
     <nav class="tabs" id="tabs" role="tablist"></nav>
+    <div class="controls">
+      <label>Search <input id="q" type="search" placeholder="Document number, title, keyword"></label>
+      <label>TTA vs ATSC <select id="f-tta"><option value="all">All</option></select></label>
+      <label>SBTVD vs ATSC <select id="f-sbtvd"><option value="all">All</option></select></label>
+      <label>Confidence <select id="f-conf"><option value="all">All</option></select></label>
+      <label><input id="f-diff" type="checkbox"> Differences only</label>
+      <label><input id="f-unv" type="checkbox"> Unverified only</label>
+      <span class="count" id="count"></span>
+    </div>
     <div class="wrap"><table id="matrix"><thead></thead><tbody></tbody></table></div>
   </section>
 
@@ -152,9 +206,34 @@
     catch (e) { document.querySelector('.sheet').insertAdjacentHTML('afterbegin', '<p style="color:#B3261E">Could not load data/standards.js — run tools/build_data.py to generate it.</p>'); return; }
   }
   const orgs = data.orgs, V = data.verdicts, T = data.docTitles || {};
-  const state = { cat: 'all', open: null };
+  const state = { cat: 'all', open: null, q: '', tta: 'all', sbtvd: 'all', conf: 'all', diff: false, unv: false };
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const hl = esc;
+  const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const hl = s => state.q ? esc(s).replace(new RegExp(reEsc(state.q), 'ig'), m => '<mark>' + m + '</mark>') : esc(s);
+  // filters
+  const fill = (id, obj, fmt) => { const s = document.getElementById(id); Object.keys(obj).forEach(k => { const o = document.createElement('option'); o.value = k; o.textContent = fmt(obj[k]); s.append(o); }); return s; };
+  const ftta = fill('f-tta', V, v => v.icon + ' ' + v.label), fsb = fill('f-sbtvd', V, v => v.icon + ' ' + v.label), fconf = fill('f-conf', data.confidence || {}, c => c.label);
+  ftta.addEventListener('change', () => { state.tta = ftta.value; render(); });
+  fsb.addEventListener('change', () => { state.sbtvd = fsb.value; render(); });
+  fconf.addEventListener('change', () => { state.conf = fconf.value; render(); });
+  document.getElementById('f-diff').addEventListener('change', e => { state.diff = e.target.checked; render(); });
+  document.getElementById('f-unv').addEventListener('change', e => { state.unv = e.target.checked; render(); });
+  document.getElementById('q').addEventListener('input', e => { state.q = e.target.value.trim().toLowerCase(); render(); });
+  function haystack(r) {
+    const parts = [r.id, r.title, r.summary, r.impact, r.recommendation];
+    orgs.forEach(o => { const c = r.cells[o.id]; if (c) { parts.push(c.note); c.docs.forEach(d => { parts.push(d); const t = titleOf(d); if (t) parts.push(t.title, t.title_en); }); (c.reg || []).forEach(g => parts.push(g.id, g.ref, g.text)); } });
+    Object.values(r.verdicts || {}).forEach(v => parts.push(v.text));
+    return parts.join(' ').toLowerCase();
+  }
+  function passes(r) {
+    const vt = (r.verdicts || {}).TTA || {}, vs = (r.verdicts || {}).SBTVD || {};
+    if (state.tta !== 'all' && vt.code !== state.tta) return false;
+    if (state.sbtvd !== 'all' && vs.code !== state.sbtvd) return false;
+    if (state.conf !== 'all' && !['TTA', 'SBTVD'].some(o => (r.cells[o] || {}).conf === state.conf)) return false;
+    if (state.diff && !['partial', 'diff'].includes(vt.code) && !['partial', 'diff'].includes(vs.code)) return false;
+    if (state.unv && !['TTA', 'SBTVD'].some(o => { const c = r.cells[o] || {}; return c.flag || ['unverified', 'metadata', 'inferred'].includes(c.conf) || (r.verdicts || {})[o]?.code === 'review'; })) return false;
+    return !state.q || haystack(r).includes(state.q);
+  }
   const baseId = d => d.replace(/:\d{4}-\d{2}$/, '');
   const titleOf = d => T[baseId(d)];
 
@@ -213,22 +292,52 @@
       return '<p class="v ' + vd.code + '"><span class="i">' + v.icon + '</span>' + esc(org === 'TTA' ? 'TTA vs ATSC: ' : 'SBTVD vs ATSC: ') + esc(v.label) + (vd.kind && NK[vd.kind] ? ' — ' + esc(NK[vd.kind]) : '') + '</p>' + (vd.text ? '<p>' + esc(vd.text) + '</p>' : ''); }).join('');
     const ev = r.evidence && r.evidence.length ? '<ul class="evidence">' + r.evidence.map(e => '<li>' + esc(e.org) + ' · ' + esc(e.doc) + (e.clause ? ' — ' + esc(e.clause) : '') + (e.url ? ' · <a href="' + esc(e.url) + '">source</a>' : '') + '</li>').join('') + '</ul>' : '<p class="evidence">No clause-level evidence recorded yet.</p>';
     const rv = r.review || {};
+    const cmpTable = (r.comparisons && r.comparisons.length) ? '<div class="full"><h4>Feature comparison (clause level)</h4><div class="wrap"><table class="cmp"><thead><tr><th>Feature</th><th>ATSC</th><th>TTA</th><th>SBTVD Forum</th><th>Difference · impact</th><th>TTA vs ATSC</th><th>SBTVD vs ATSC</th><th>Reviewed</th></tr></thead><tbody>' +
+      r.comparisons.map(c => {
+        const side = s => !s ? '<span class="dash">—</span>' : '<b>' + esc(s.doc || '') + '</b>' + (s.clause ? '<span class="t">' + esc(s.clause) + (s.table ? ' · ' + esc(s.table) : '') + (s.page ? ' · p.' + esc(s.page) : '') + '</span>' : '') + (s.value ? '<span class="val">' + esc(s.value) + '</span>' : '') + (s.req ? '<span class="req">' + esc(s.req) + '</span>' : '');
+        const vv = org => { const v = (c.verdicts || {})[org]; if (!v) return '<span class="dash">—</span>'; const d = V[v.code] || V.review; const cc = (c.cells || {})[org] || {}; return '<span class="v ' + v.code + '"><span class="i">' + d.icon + '</span>' + esc(d.label) + '</span>' + (cc.rel && REL[cc.rel] ? '<span class="vk">' + esc(REL[cc.rel].label) + (cc.conf && CONF[cc.conf] ? ' · ' + esc(CONF[cc.conf].label) : '') + '</span>' : ''); };
+        const ev = (c.evidence || []).map(e => '<a href="' + esc(e.url || '#') + '">' + esc(e.label || e.doc || 'source') + '</a>').join(' · ');
+        return '<tr><td><b>' + esc(c.feature) + '</b>' + (c.group ? '<span class="t">' + esc(c.group) + '</span>' : '') + '</td><td>' + side((c.sides || {}).ATSC) + '</td><td>' + side((c.sides || {}).TTA) + '</td><td>' + side((c.sides || {}).SBTVD) + '</td>' +
+          '<td>' + esc(c.difference || '') + (c.impact ? '<span class="t">Impact: ' + esc(c.impact) + '</span>' : '') + (ev ? '<span class="t">Evidence: ' + ev + '</span>' : '') + '</td><td>' + vv('TTA') + '</td><td>' + vv('SBTVD') + '</td><td class="t">' + esc((c.reviewed || {}).date || '') + (c.reviewed && c.reviewed.by ? '<br>' + esc(c.reviewed.by) : '') + '</td></tr>';
+      }).join('') + '</tbody></table></div></div>' : '';
     return '<div class="panel">' +
       '<div><h4>Summary</h4><p>' + esc(r.summary) + '</p>' + vs + '</div>' + cols +
+      cmpTable +
       (r.impact ? '<div class="full"><h4>Impact</h4><p>' + esc(r.impact) + '</p></div>' : '') +
       (r.recommendation ? '<div class="full reco"><h4>Recommendation</h4><p>' + esc(r.recommendation) + '</p></div>' : '') +
       '<div class="full"><h4>Evidence and history</h4>' + ev + '<p class="history">Review status: ' + esc(rv.status || '—') + (rv.by ? ' · by ' + esc(rv.by) : '') + ' · updated ' + esc(rv.updated || '') + '</p></div>' +
       '</div>';
+  }
+  // At-a-glance overview: one compact table per category, cells coloured by verdict; click = open the detailed row
+  function renderOverview() {
+    document.getElementById('ov-legend').innerHTML = Object.keys(V).map(k => '<span><i class="' + k + '"></i>' + V[k].icon + ' ' + esc(V[k].label) + '</span>').join('') + '<span>Click a cell to open the detailed row.</span>';
+    document.getElementById('overview').innerHTML = data.categories.map(c => {
+      const rows = data.rows.filter(r => r.category === c.id);
+      if (!rows.length) return '';
+      const trs = rows.map((r, i) => {
+        const cell = org => { const v = (r.verdicts || {})[org] || { code: 'review' }; const d = V[v.code] || V.review;
+          return '<td class="cell ' + v.code + '" data-cat="' + esc(c.id) + '" data-i="' + i + '" data-id="' + esc(r.id) + '" title="' + esc(org + ' vs ATSC: ' + d.label + (v.text ? ' — ' + v.text : '')) + '">' + d.icon + ' ' + esc(d.label) + '</td>'; };
+        return '<tr><td class="id" title="' + esc(r.title) + '"><b>' + esc(r.id) + '</b><span>' + esc(r.title) + '</span></td>' + cell('TTA') + cell('SBTVD') + '</tr>';
+      }).join('');
+      return '<div class="ov-block"><h3>' + esc(c.name) + '</h3><table class="ov"><thead><tr><th>Document</th><th class="c">TTA</th><th class="c">SBTVD Forum</th></tr></thead><tbody>' + trs + '</tbody></table></div>';
+    }).join('');
+    document.querySelectorAll('#overview td.cell').forEach(td => td.addEventListener('click', () => {
+      state.cat = td.dataset.cat; state.q = ''; state.tta = 'all'; state.sbtvd = 'all'; state.conf = 'all'; state.diff = false; state.unv = false;
+      document.getElementById('q').value = ''; ftta.value = 'all'; fsb.value = 'all'; fconf.value = 'all'; document.getElementById('f-diff').checked = false; document.getElementById('f-unv').checked = false;
+      state.open = td.dataset.cat + ':' + td.dataset.i + ':' + td.dataset.id; render();
+      const tr = document.querySelector('tr.row[data-key="' + state.open.replace(/"/g, '\\"') + '"]'); if (tr) tr.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
   }
   function render() {
     tabs.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.id === state.cat)));
     document.querySelector('#matrix thead').innerHTML = '<tr><th>Document<small>ATSC 3.0 baseline</small></th>' +
       orgs.map(o => '<th class="org" style="--org:' + o.color + '">' + esc(o.label) + '<small>' + esc(o.sub) + '</small></th>').join('') +
       '<th class="vh">TTA vs ATSC<small>Korea</small></th><th class="vh">SBTVD vs ATSC<small>Brazil</small></th></tr>';
-    let html = '';
+    let html = '', shown = 0, total = 0;
     data.categories.forEach(c => {
       if (state.cat !== 'all' && c.id !== state.cat) return;
-      const rows = data.rows.filter(r => r.category === c.id);
+      const rows = data.rows.filter(r => r.category === c.id).filter(r => { total++; return passes(r); });
+      shown += rows.length;
       if (!rows.length) return;
       html += '<tr class="group"><td colspan="' + (orgs.length + 3) + '">' + esc(c.name) + (c.desc ? '<small>' + esc(c.desc) + '</small>' : '') + '</td></tr>';
       rows.forEach((r, i) => {
@@ -239,9 +348,11 @@
         if (open) html += '<tr class="detail"><td colspan="' + (orgs.length + 3) + '">' + detailHtml(r) + '</td></tr>';
       });
     });
-    document.querySelector('#matrix tbody').innerHTML = html;
+    document.querySelector('#matrix tbody').innerHTML = html || '<tr><td colspan="' + (orgs.length + 3) + '" class="dash">No documents match the current filters.</td></tr>';
+    document.getElementById('count').textContent = shown + ' of ' + total + ' documents';
     document.querySelectorAll('tr.row').forEach(tr => tr.addEventListener('click', () => { state.open = state.open === tr.dataset.key ? null : tr.dataset.key; render(); }));
   }
+  renderOverview();
   render();
 })();
 </script>

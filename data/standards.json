@@ -243,12 +243,12 @@
     "same": {
       "icon": "✓",
       "label": "Same",
-      "desc": "Baseline (ATSC) provisions adopted as is"
+      "desc": "Clause- and table-level comparison done against the baseline version: no relevant difference (legal incorporation alone does not qualify)"
     },
     "partial": {
       "icon": "△",
       "label": "Partial match",
-      "desc": "Core is the same; profiles, options or constraints differ"
+      "desc": "Core is the same; profiles, options, constraints or referenced version differ"
     },
     "diff": {
       "icon": "≠",
@@ -371,6 +371,7 @@
     "pending": "Not yet reviewed",
     "n/a": "Not applicable"
   },
+  "comparisons": [],
   "docTitles": {
     "A/200": {
       "title": "Regional Service Availability",
@@ -1780,8 +1781,8 @@
           "text": "Bootstrap adopted within TTA Part 4; EA wake-up usage to be confirmed"
         },
         "SBTVD": {
-          "code": "same",
-          "text": "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); ABNT NBR 25601 profile to be checked"
+          "code": "review",
+          "text": "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); changes between A/321:2025-07 and the baseline A/321:2026-06 not yet compared; ABNT NBR 25601 profile unverified"
         }
       }
     },
@@ -2041,8 +2042,8 @@
           "text": "Gateway/exciter functions in Part 4; STLTP adoption and SFN rules to be compared"
         },
         "SBTVD": {
-          "code": "same",
-          "text": "A/324:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1)"
+          "code": "review",
+          "text": "A/324:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); changes between A/324:2025-07 and the baseline A/324:2026-04 not yet compared"
         }
       }
     },

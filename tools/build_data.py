@@ -398,10 +398,10 @@ for e in EXTRA_ROWS:
 # Explicit values for the rows examined so far; everything else is derived from the cell contents below.
 PER_ORG = {  # doc id -> {org: (code, text, none-kind)}
  "A/300": {"TTA": ("review", "TTA Part 1 plays the role of system requirements; clause-level comparison pending"), "SBTVD": ("review", "System specified as the ABNT NBR 25601–25609 series; no umbrella document")},
- "A/321": {"TTA": ("partial", "Bootstrap adopted within TTA Part 4; EA wake-up usage to be confirmed"), "SBTVD": ("same", "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); ABNT NBR 25601 profile to be checked")},
+ "A/321": {"TTA": ("partial", "Bootstrap adopted within TTA Part 4; EA wake-up usage to be confirmed"), "SBTVD": ("review", "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); changes between A/321:2025-07 and the baseline A/321:2026-06 not yet compared; ABNT NBR 25601 profile unverified")},
  "A/322": {"TTA": ("partial", "ATSC 3.0 PHY adopted with Korean operating parameters (6 MHz; MSIT Notice Art. 13 ①6–7, ②)"), "SBTVD": ("partial", "A/322:2025-07a incorporated by reference; MIMO, LDM and TxID mandated by Decreto 12.595/2025 Art. 3º")},
  "A/323": {"TTA": ("none", "", "not-found"), "SBTVD": ("none", "", "not-found")},
- "A/324": {"TTA": ("review", "Gateway/exciter functions in Part 4; STLTP adoption and SFN rules to be compared"), "SBTVD": ("same", "A/324:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1)")},
+ "A/324": {"TTA": ("review", "Gateway/exciter functions in Part 4; STLTP adoption and SFN rules to be compared"), "SBTVD": ("review", "A/324:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); changes between A/324:2025-07 and the baseline A/324:2026-04 not yet compared")},
  "A/331": {"TTA": ("partial", "Part 3 restricts the ROUTE/DASH and MMT profile; emergency alerting extended in national standards"), "SBTVD": ("review", "ABNT NBR 25602 transport layer — clause comparison pending (ABNT clause unverified)")},
  "A/341": {"TTA": ("partial", "HEVC mandated (MSIT Notice Art. 13 ①3: Main 10 / Scalable Main 10, Level 5.2); HDR and frame-rate constraints to be compared"), "SBTVD": ("diff", "VVC (+LCEVC) adopted instead of HEVC (ABNT NBR 25603)")},
  "A/342 Part 1": {"TTA": ("review", "Audio clauses of Part 2 to be compared"), "SBTVD": ("review", "ABNT NBR 25604 — clause comparison pending (ABNT clause unverified)")},
@@ -457,6 +457,18 @@ for r in rows:
     if any(d.startswith("ABNT NBR") for d in sb.get("docs", [])) and sb.get("conf") in (None, "metadata", "unverified"):
         sb["flag"] = "ABNT clause unverified"
 
+# ---- Feature-level comparisons (clause/table evidence) from data/comparisons/*.json, attached to rows by ATSC doc id ---
+COMPARISONS = []
+for cf in sorted((ROOT / "data" / "comparisons").glob("*.json")):
+    COMPARISONS.extend(json.load(open(cf, encoding="utf-8")))
+by_doc = {}
+for cmp in COMPARISONS:
+    for doc in cmp.get("atsc_docs", []):
+        by_doc.setdefault(doc, []).append(cmp)
+for r in rows:
+    if r["id"] in by_doc:
+        r["comparisons"] = by_doc[r["id"]]
+
 order = {c["id"]: i for i, c in enumerate(CATEGORIES)}
 rows.sort(key=lambda x: (order[x["category"]], not x["id"].startswith("A/"), x["type"] == "RP", x["id"]))  # ATSC-anchored rows first
 
@@ -476,14 +488,15 @@ data = {
   ],
   "regulations": REGULATIONS,
   "verdicts": {
-    "same":    {"icon": "✓", "label": "Same", "desc": "Baseline (ATSC) provisions adopted as is"},
-    "partial": {"icon": "△", "label": "Partial match", "desc": "Core is the same; profiles, options or constraints differ"},
+    "same":    {"icon": "✓", "label": "Same", "desc": "Clause- and table-level comparison done against the baseline version: no relevant difference (legal incorporation alone does not qualify)"},
+    "partial": {"icon": "△", "label": "Partial match", "desc": "Core is the same; profiles, options, constraints or referenced version differ"},
     "diff":    {"icon": "≠", "label": "Different", "desc": "A different technology or specification is adopted"},
     "none":    {"icon": "—", "label": "No counterpart", "desc": "No corresponding provision, or not identified"},
     "review":  {"icon": "ⓘ", "label": "Review needed", "desc": "Counterpart documents identified; clause-level comparison pending"}
   },
   "categories": CATEGORIES,
   "relations": RELATIONS, "confidence": CONFIDENCE, "noneKinds": NONE_KINDS,
+  "comparisons": COMPARISONS,
   "docTitles": DOC_TITLES,
   "rows": rows,
 }
