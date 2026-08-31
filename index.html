@@ -62,16 +62,17 @@
   .ov-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--ink-2); margin-bottom: 12px; }
   .ov-legend span { display: inline-flex; align-items: center; gap: 6px; }
   .ov-legend i { display: inline-block; width: 14px; height: 14px; border: 1px solid var(--line-2); }
-  .ov-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(430px, 1fr)); gap: 14px 28px; }
+  .ov-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 40px; }
+  @media (max-width: 900px) { .ov-grid { grid-template-columns: 1fr; } }
   .ov-block h3 { font-size: 13px; font-weight: 600; margin: 0 0 4px; color: var(--ink); }
   table.ov { width: 100%; border-collapse: collapse; font-size: 12.5px; table-layout: fixed; }
   table.ov th { font-weight: 600; color: var(--ink-3); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; text-align: left; padding: 2px 6px; border-bottom: 1px solid var(--line-2); }
-  table.ov th.c { width: 118px; text-align: center; }
+  table.ov th.c { width: 150px; text-align: center; }
   table.ov td { padding: 3px 6px; border-bottom: 1px solid var(--line); vertical-align: middle; }
-  table.ov td.id { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  table.ov td.id { white-space: normal; line-height: 1.35; }
   table.ov td.id b { font-weight: 600; }
-  table.ov td.id span { color: var(--ink-3); margin-left: 6px; }
-  table.ov td.cell { text-align: center; cursor: pointer; font-weight: 600; font-size: 12px; border-left: 2px solid var(--sheet); border-right: 2px solid var(--sheet); }
+  table.ov td.id span { color: var(--ink-3); margin-left: 6px; font-size: 12px; }
+  table.ov td.cell { text-align: center; cursor: pointer; font-weight: 600; font-size: 12px; white-space: nowrap; border-left: 2px solid var(--sheet); border-right: 2px solid var(--sheet); }
   table.ov td.cell:hover { outline: 2px solid var(--blue); outline-offset: -2px; }
   .cell.same, .ov-legend .same { background: #DCEFD9; color: #1E5E22; }
   .cell.profile, .ov-legend .profile { background: #D9EEEE; color: #0B5A5E; }
@@ -295,6 +296,11 @@
       return '<p class="v ' + vd.code + '"><span class="i">' + v.icon + '</span>' + esc(org === 'TTA' ? 'TTA vs ATSC: ' : 'SBTVD vs ATSC: ') + esc(v.label) + (vd.kind && NK[vd.kind] ? ' — ' + esc(NK[vd.kind]) : '') + '</p>' + (vd.text ? '<p>' + esc(vd.text) + '</p>' : ''); }).join('');
     const ev = r.evidence && r.evidence.length ? '<ul class="evidence">' + r.evidence.map(e => '<li>' + esc(e.org) + ' · ' + esc(e.doc) + (e.clause ? ' — ' + esc(e.clause) : '') + (e.url ? ' · <a href="' + esc(e.url) + '">source</a>' : '') + '</li>').join('') + '</ul>' : '<p class="evidence">No clause-level evidence recorded yet.</p>';
     const rv = r.review || {};
+    const chapTable = (r.chapters && r.chapters.rows && r.chapters.rows.length) ? '<div class="full"><h4>Chapter mapping</h4>' +
+      (r.chapters.sources && r.chapters.sources.length ? '<p class="history">Source: ' + r.chapters.sources.map(esc).join(' · ') + '</p>' : '') +
+      '<div class="wrap"><table class="cmp chap"><thead><tr><th>ATSC chapter</th><th>TTA chapter</th><th>Relation</th><th>SBTVD Forum chapter</th><th>Relation</th><th>Note</th></tr></thead><tbody>' +
+      r.chapters.rows.map(c => '<tr><td>' + esc(c.atsc || '—') + '</td><td' + (/[가-힣]/.test(c.tta || '') ? ' lang="ko"' : '') + '>' + esc(c.tta || '—') + '</td><td>' + esc(c.tta_rel || '') + '</td><td' + (/[ãçõáéíóú]/i.test(c.sbtvd || '') ? ' lang="pt"' : '') + '>' + esc(c.sbtvd || '—') + '</td><td>' + esc(c.sbtvd_rel || '') + '</td><td>' + esc(c.note || '') + '</td></tr>').join('') +
+      '</tbody></table></div></div>' : '';
     const cmpTable = (r.comparisons && r.comparisons.length) ? '<div class="full"><h4>Feature comparison (clause level)</h4><div class="wrap"><table class="cmp"><thead><tr><th>Feature</th><th>ATSC</th><th>TTA</th><th>SBTVD Forum</th><th>Difference · impact</th><th>TTA vs ATSC</th><th>SBTVD vs ATSC</th><th>Reviewed</th></tr></thead><tbody>' +
       r.comparisons.map(c => {
         const side = s => !s ? '<span class="dash">—</span>' : '<b>' + esc(s.doc || '') + '</b>' + (s.clause ? '<span class="t">' + esc(s.clause) + (s.table ? ' · ' + esc(s.table) : '') + (s.page ? ' · p.' + esc(s.page) : '') + '</span>' : '') + (s.value ? '<span class="val">' + esc(s.value) + '</span>' : '') + (s.req ? '<span class="req">' + esc(s.req) + '</span>' : '');
@@ -305,7 +311,7 @@
       }).join('') + '</tbody></table></div></div>' : '';
     return '<div class="panel">' +
       '<div><h4>Summary</h4><p>' + esc(r.summary) + '</p>' + vs + '</div>' + cols +
-      cmpTable +
+      chapTable + cmpTable +
       (r.impact ? '<div class="full"><h4>Impact</h4><p>' + esc(r.impact) + '</p></div>' : '') +
       (r.recommendation ? '<div class="full reco"><h4>Recommendation</h4><p>' + esc(r.recommendation) + '</p></div>' : '') +
       '<div class="full"><h4>Evidence and history</h4>' + ev + '<p class="history">Review status: ' + esc(rv.status || '—') + (rv.by ? ' · by ' + esc(rv.by) : '') + ' · updated ' + esc(rv.updated || '') + '</p></div>' +

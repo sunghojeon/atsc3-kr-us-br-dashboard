@@ -174,10 +174,10 @@ MAP = {
  "A/332": dict(summary="Electronic service guide (ESG) data model and delivery.",
    ITU=ITU_NONE, TTA=C(["TTAK.KO-07.0150/R3"], "ESG provisions in Part 3 to be confirmed."), SBTVD=NONE, verdict=V("review")),
  "A/333": dict(summary="Service usage reporting (consumption data messages).",
-   ITU=ITU_NONE, TTA=C((), "No counterpart identified."), SBTVD=NONE, verdict=V("review", "Check whether the Korean IBB standard includes usage reporting.")),
+   ITU=ITU_NONE, TTA=C(["TTAK.KO-07.0128/R3"], "IBB Part 3 (browser application environment) lists A/333 among its reference standards; scope to be confirmed."), SBTVD=C(["SBTVD OG-08"], "Audience Measurement Manager (§7.10) and audience-measurement APIs (Annex C.6.13) in the Ginga application coding guideline."), verdict=V("review", "Usage-reporting provisions referenced in the Korean IBB standard and the Brazilian application guideline; equivalence not established.")),
  "A/334": dict(summary="Audio watermark for service recovery in redistribution scenarios.", ITU=ITU_NONE, TTA=C((), "No counterpart (within the reviewed set)."), SBTVD=NONE, verdict=V("none")),
  "A/335": dict(summary="Video watermark for service recovery in redistribution scenarios.", ITU=ITU_NONE, TTA=C((), "No counterpart (within the reviewed set)."), SBTVD=NONE, verdict=V("none")),
- "A/336": dict(summary="Recovery of interactive services using watermark-carried information.", ITU=ITU_NONE, TTA=C((), "No counterpart (within the reviewed set)."), SBTVD=NONE, verdict=V("none")),
+ "A/336": dict(summary="Recovery of interactive services using watermark-carried information.", ITU=ITU_NONE, TTA=C(["TTAK.KO-07.0128/R3"], "IBB Part 6 (content recognition) lists A/336 among its reference standards."), SBTVD=NONE, verdict=V("review", "Referenced by the Korean IBB standard; no Brazilian counterpart identified.")),
  "A/337": dict(summary="Delivery of events (EventStream, emsg) to broadcaster applications.",
    ITU=ITU_NONE, TTA=C(["TTAK.KO-07.0128/R3", "TTAK.KO-07.0150/R3"], "Event provisions in the IBB standard and Part 3 to be confirmed."), SBTVD=NONE, verdict=V("review")),
  "A/338": dict(summary="Discovery and communication between the TV and companion devices.",
@@ -217,8 +217,8 @@ MAP = {
  "A/350": dict(summary="Guide to the link-layer protocol.", ITU=ITU_NONE, TTA=NONE, SBTVD=NONE, verdict=V("none")),
  "A/351": dict(summary="Techniques for signaling, delivery and synchronization.", ITU=ITU_NONE, TTA=NONE, SBTVD=NONE, verdict=V("none")),
  "A/360": dict(summary="Signaling signatures, certificates, application code signing, service protection.",
-   ITU=ITU_NONE, TTA=C(["TTAK.KO-07.0152"], "Part 5: Content Protection (June 2021)."), SBTVD=NONE,
-   verdict=V("review", "The scope of Part 5 (content protection) may be narrower than A/360 (which also covers signaling signatures).")),
+   ITU=ITU_NONE, TTA=C(["TTAK.KO-07.0152"], "Part 5: Content Protection (June 2021) — based on ETSI TS 103 197 (DVB SimulCrypt) and TTAK.08-0023/R2, not on A/360: CENC encryption, UHDCP/DP signaling, ECMG/EMMG head-end interfaces, download platform, forensic watermarking."), SBTVD=NONE,
+   verdict=V("diff", "Korean content protection uses a different basis (SimulCrypt/CENC/forensic watermarking) from A/360's signaling signatures and application code signing.")),
  "A/361": dict(summary="Recommended practice on security and content protection.", ITU=ITU_NONE, TTA=C(["TTAK.KO-07.0152"], ""), SBTVD=NONE, verdict=V("review")),
  "A/362": dict(summary="Digital rights management for ATSC 3.0.", ITU=ITU_NONE, TTA=C(["TTAK.KO-07.0152"], ""), SBTVD=NONE, verdict=V("review")),
  "A/370": dict(summary="Conversion of ATSC 3.0 services for redistribution.", ITU=ITU_NONE, TTA=NONE, SBTVD=NONE, verdict=V("none")),
@@ -411,7 +411,7 @@ PER_ORG = {  # doc id -> {org: (code, text, none-kind)}
  "A/343": {"TTA": ("review", "Caption provisions of Part 2 (Korean fonts, character codes) to be compared"), "SBTVD": ("review", "ABNT NBR 25605 closed captioning — clause comparison pending")},
  "A/344": {"TTA": ("diff", "HbbTV 2.0-based IBB (TTAK.KO-07.0128/R3) instead of the A/344 Broadcaster Application"), "SBTVD": ("diff", "Ginga-based application coding (ABNT NBR 25608) instead of A/344")},
  "A/345": {"TTA": ("none", "VVC not adopted (MSIT Notice Art. 13 ①3 mandates HEVC only)", "not-adopted"), "SBTVD": ("review", "VVC adopted (ABNT NBR 25603); profile alignment with A/345 to be compared")},
- "A/360": {"TTA": ("review", "Part 5 content protection — scope vs A/360 (signaling signatures) to be compared"), "SBTVD": ("review", "Security provisions to be located in ABNT NBR 25602/25608/25609")},
+ "A/360": {"TTA": ("diff", "Part 5 (TTAK.KO-07.0152) is built on ETSI TS 103 197 SimulCrypt and TTAK.08-0023/R2 — CENC, UHDCP/DP signaling, ECMG/EMMG interfaces, forensic watermarking — not on A/360 signaling signatures / app code signing (per its own comparison table)"), "SBTVD": ("review", "Security provisions to be located in ABNT NBR 25602/25608/25609")},
 }
 RELS = {  # doc id -> {org: (relation, confidence)}
  "A/321": {"TTA": ("profile", "confirmed"), "SBTVD": ("incorporated", "partial")},
@@ -425,7 +425,7 @@ RELS = {  # doc id -> {org: (relation, confidence)}
  "A/343": {"TTA": ("related", "metadata"), "SBTVD": ("related", "metadata")},
  "A/344": {"TTA": ("alternative", "partial"), "SBTVD": ("alternative", "confirmed")},
  "A/345": {"TTA": ("alternative", "confirmed"), "SBTVD": ("related", "metadata")},
- "A/360": {"TTA": ("related", "metadata"), "SBTVD": ("related", "unverified")},
+ "A/360": {"TTA": ("alternative", "partial"), "SBTVD": ("related", "unverified")},
 }
 def derive(cell, org, doc_id):
     """Default per-country verdict from the cell contents when no explicit value is given."""
@@ -459,6 +459,16 @@ for r in rows:
     sb = r["cells"].get("SBTVD", {})
     if any(d.startswith("ABNT NBR") for d in sb.get("docs", [])) and sb.get("conf") in (None, "metadata", "unverified"):
         sb["flag"] = "ABNT clause unverified"
+
+# ---- Chapter mapping (ATSC chapters <-> TTA / SBTVD document chapters) from data/chapters/*.json, keyed by ATSC doc id ---
+CHAPTERS = {}
+for cf in sorted((ROOT / "data" / "chapters").glob("*.json")):
+    for k, v in json.load(open(cf, encoding="utf-8")).items():
+        CHAPTERS.setdefault(k, {"sources": [], "rows": []})
+        CHAPTERS[k]["sources"].extend(v.get("sources", [])); CHAPTERS[k]["rows"].extend(v.get("rows", []))
+for r in rows:
+    if r["id"] in CHAPTERS:
+        r["chapters"] = CHAPTERS[r["id"]]
 
 # ---- Feature-level comparisons (clause/table evidence) from data/comparisons/*.json, attached to rows by ATSC doc id ---
 COMPARISONS = []

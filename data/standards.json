@@ -2246,6 +2246,61 @@
           "code": "review",
           "text": "System specified as the ABNT NBR 25601–25609 series; no umbrella document"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0147 서문 3.2 인용 표준과 본 표준의 비교표 (cites ATSC A/300:2020)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/300 (whole) — ATSC 3.0 System",
+            "tta": "TTAK.KO-07.0147 §5 서비스 및 시스템 요구사항",
+            "tta_rel": "인용 (개별문서 참고 → Part 1, TTAK.KO-07.0148/R1)",
+            "sbtvd": "ABNT NBR 25601–25609:2025 series (no umbrella document)",
+            "sbtvd_rel": "series",
+            "note": "TTA umbrella standard splits the system into Parts 1–6"
+          },
+          {
+            "atsc": "A/300 §5 System Architecture (component standards)",
+            "tta": "TTAK.KO-07.0147 §6 컴포넌트",
+            "tta_rel": "인용 → Part 2 (TTAK.KO-07.0149/R1)",
+            "sbtvd": "ABNT NBR 25603/25604/25605:2025",
+            "sbtvd_rel": "chapters not available (paid)",
+            "note": ""
+          },
+          {
+            "atsc": "A/300 §5 — systems (signaling, delivery, link layer)",
+            "tta": "TTAK.KO-07.0147 §7 시스템즈",
+            "tta_rel": "인용 → Part 3 (TTAK.KO-07.0150/R3)",
+            "sbtvd": "ABNT NBR 25602:2025",
+            "sbtvd_rel": "chapters not available (paid)",
+            "note": ""
+          },
+          {
+            "atsc": "A/300 §5 — physical layer",
+            "tta": "TTAK.KO-07.0147 §8 물리계층",
+            "tta_rel": "인용 → Part 4 (TTAK.KO-07.0151/R1)",
+            "sbtvd": "ABNT NBR 25601:2025 · SBTVD OG-01",
+            "sbtvd_rel": "incorporated (Anatel Ato 2.705/2026)",
+            "note": ""
+          },
+          {
+            "atsc": "A/300 §5 — security (A/360)",
+            "tta": "TTAK.KO-07.0147 §9 콘텐츠 보호",
+            "tta_rel": "추가 → Part 5 (TTAK.KO-07.0152)",
+            "sbtvd": "—",
+            "sbtvd_rel": "not identified",
+            "note": "Korean content protection is not derived from A/360 (see A/360 row)"
+          },
+          {
+            "atsc": "— (no ATSC 3.0 3DTV standard)",
+            "tta": "TTAK.KO-07.0147 §10 3DTV",
+            "tta_rel": "추가 → Part 6 (TTAK.KO-07.0153)",
+            "sbtvd": "—",
+            "sbtvd_rel": "—",
+            "note": "Korea-only"
+          }
+        ]
       }
     },
     {
@@ -2407,6 +2462,46 @@
           "code": "same",
           "text": "A/321:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); identical for ATSC 3.0 frames; 2026-04 Amd 1 not yet referenced; ABNT NBR 25601 profile unverified"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0151/R1 서문 3.2 비교표 (cites A/321 2016.03)",
+          "Anatel Ato nº 2.705/2026 Anexo item 4.1 (A/321:2025-07)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/321 §4 Bootstrap Overview",
+            "tta": "TTAK.KO-07.0151/R1 §10.1 부트스트랩 개요",
+            "tta_rel": "동일(번역)",
+            "sbtvd": "A/321:2025-07 by reference · ABNT NBR 25601:2025",
+            "sbtvd_rel": "incorporated; ABNT chapters not available",
+            "note": ""
+          },
+          {
+            "atsc": "A/321 §5 Bootstrap Specification",
+            "tta": "TTAK.KO-07.0151/R1 §10.2 부트스트랩 규격",
+            "tta_rel": "동일(번역)",
+            "sbtvd": "A/321:2025-07 by reference",
+            "sbtvd_rel": "incorporated",
+            "note": ""
+          },
+          {
+            "atsc": "A/321 §6 Bootstrap Signal Structure (§6.1 major version 0)",
+            "tta": "TTAK.KO-07.0151/R1 §10.3 부트스트랩 시그널 구조 (§10.3.1 주 버전 0)",
+            "tta_rel": "동일(번역)",
+            "sbtvd": "A/321:2025-07 by reference",
+            "sbtvd_rel": "incorporated",
+            "note": "§6.2 (major version 1) and §6.3 (future versions) of the 2026 edition have no TTA counterpart"
+          },
+          {
+            "atsc": "A/321 §7 Multiplexing of Different Signal Types with Bootstrap Prefixing (2026-04 Amd 1)",
+            "tta": "—",
+            "tta_rel": "absent (added after the cited 2016 edition)",
+            "sbtvd": "— (referenced edition 2025-07 predates §7)",
+            "sbtvd_rel": "absent",
+            "note": "Relevant only when non-ATSC 3.0 waveforms share the RF channel"
+          }
+        ]
       },
       "comparisons": [
         {
@@ -2814,6 +2909,63 @@
           "code": "same",
           "text": "A/322:2025-07a incorporated by reference (Anatel Ato 2.705/2026): 6 MHz; MIMO, LDM and TxID mandatory (Decreto 12.595/2025 Art. 3º). Open item: referenced edition predates the January 2026 erratum and the June 2026 bootstrap clarification; ABNT profile unverified"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0151/R1 서문 3.2 비교표 (cites A/322 2020.01; R1 adds the MIMO extension)",
+          "Anatel Ato nº 2.705/2026 Anexo item 4.1 (A/322:2025-07a)",
+          "SBTVD OG-01 (Over-the-Air Physical Layer operational guideline)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/322 §5 Input Formatting",
+            "tta": "TTAK.KO-07.0151/R1 §5 입력 포매팅",
+            "tta_rel": "동일(번역)",
+            "sbtvd": "A/322:2025-07a by reference · ABNT NBR 25601:2025",
+            "sbtvd_rel": "incorporated; ABNT chapters not available",
+            "note": ""
+          },
+          {
+            "atsc": "A/322 §6 BICM (FEC, bit interleaver, constellations, LDM, L1 protection)",
+            "tta": "TTAK.KO-07.0151/R1 §6 BICM",
+            "tta_rel": "동일(번역)",
+            "sbtvd": "A/322:2025-07a by reference",
+            "sbtvd_rel": "incorporated",
+            "note": ""
+          },
+          {
+            "atsc": "A/322 §7 Framing and Interleaving",
+            "tta": "TTAK.KO-07.0151/R1 §7 프레이밍/인터리빙",
+            "tta_rel": "동일(번역)",
+            "sbtvd": "A/322:2025-07a by reference",
+            "sbtvd_rel": "incorporated",
+            "note": "§7.3 carries the 2021 frequency-interleaver correction"
+          },
+          {
+            "atsc": "A/322 §8 Waveform Generation (pilots, MISO, IFFT, PAPR, GI, bootstrap)",
+            "tta": "TTAK.KO-07.0151/R1 §8 파형 생성",
+            "tta_rel": "동일(번역)",
+            "sbtvd": "A/322:2025-07a by reference · SBTVD OG-01 (bandwidth, emission mask / OOB)",
+            "sbtvd_rel": "incorporated; OG operational profile",
+            "note": ""
+          },
+          {
+            "atsc": "A/322 §9 L1 Signaling",
+            "tta": "TTAK.KO-07.0151/R1 §9 L1 시그널링",
+            "tta_rel": "동일(번역)",
+            "sbtvd": "A/322:2025-07a by reference",
+            "sbtvd_rel": "incorporated",
+            "note": "§9.1 MIMO bootstrap amplitude rule (2024 amendment) present in TTA"
+          },
+          {
+            "atsc": "A/322 Annex A–O (LDPC codes, interleaver sequences, constellations, pilots, tone reservation, MISO, channel bonding, MIMO, PAPR, TxID, Layered MIMO)",
+            "tta": "TTAK.KO-07.0151/R1 부록 Ⅰ-1 요소 기술별 세부 기술 사항 (Ⅰ-1.1 … Ⅰ-1.13)",
+            "tta_rel": "동일(번역)",
+            "sbtvd": "A/322:2025-07a by reference",
+            "sbtvd_rel": "incorporated",
+            "note": "Open item: 표 Ⅰ.10-5 still lists MP4_2 at 32K/GI6_1536 (removed by A/322:2025-07a Amd 1) — TTA revision needed to align"
+          }
+        ]
       },
       "comparisons": [
         {
@@ -3503,6 +3655,46 @@
           "code": "review",
           "text": "A/324:2025-07 incorporated by reference (Anatel Ato 2.705/2026 item 4.1); changes between A/324:2025-07 and the baseline A/324:2026-04 not yet compared"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0151/R1 서문 3.2 비교표 (cites A/324 Candidate Standard revision 2020.01)",
+          "Anatel Ato nº 2.705/2026 Anexo item 4.1 (A/324:2025-07)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/324 §5 Scheduler; §6 CTP",
+            "tta": "—",
+            "tta_rel": "absent (gateway/exciter functions described in Part 4 §1.2 only)",
+            "sbtvd": "A/324:2025-07 by reference",
+            "sbtvd_rel": "incorporated",
+            "note": ""
+          },
+          {
+            "atsc": "A/324 §7 Data Source Transport Protocol (DSTP)",
+            "tta": "TTAK.KO-07.0151/R1 부록 Ⅰ-2.1 Data Source 전송 프로토콜(DSTP)",
+            "tta_rel": "동일(번역)",
+            "sbtvd": "A/324:2025-07 by reference",
+            "sbtvd_rel": "incorporated",
+            "note": ""
+          },
+          {
+            "atsc": "A/324 §8 ALP Transport Protocol (ALPTP)",
+            "tta": "TTAK.KO-07.0151/R1 부록 Ⅰ-2.2 ALP 전송 프로토콜(ALPTP)",
+            "tta_rel": "동일(번역)",
+            "sbtvd": "A/324:2025-07 by reference",
+            "sbtvd_rel": "incorporated",
+            "note": ""
+          },
+          {
+            "atsc": "A/324 STLTP / SFN timing",
+            "tta": "TTAR-07.0026/R1 (TxID/BSID assignment guideline)",
+            "tta_rel": "related guideline",
+            "sbtvd": "A/324:2025-07 by reference",
+            "sbtvd_rel": "incorporated",
+            "note": "Next comparison bundle"
+          }
+        ]
       }
     },
     {
@@ -3825,6 +4017,53 @@
           "code": "review",
           "text": "Counterpart document identified; clause-level comparison pending"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0150/R3 서문 3.2 비교표 (§6 = A/330 준용)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/330 §4 Link Layer Overview",
+            "tta": "TTAK.KO-07.0150/R3 §6.1 링크 계층 개요",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25602:2025",
+            "sbtvd_rel": "chapters not available (paid)",
+            "note": ""
+          },
+          {
+            "atsc": "A/330 §5 ALP Packet Format",
+            "tta": "TTAK.KO-07.0150/R3 §6.2 ALP 패킷 포맷",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25602:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": ""
+          },
+          {
+            "atsc": "A/330 §6 IP Header Compression",
+            "tta": "TTAK.KO-07.0150/R3 §6.3 IP 헤더 압축",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25602:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": ""
+          },
+          {
+            "atsc": "A/330 §7 Link Layer Signaling",
+            "tta": "TTAK.KO-07.0150/R3 §6.4 링크 계층 시그널링",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25602:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": ""
+          },
+          {
+            "atsc": "A/330 Annex B ALP Packet Format Examples; Annex D IP Header Compression Examples",
+            "tta": "TTAK.KO-07.0150/R3 부록 Ⅰ ALP 패킷 포맷 예시; 부록 Ⅱ IP 헤더 압축 예시",
+            "tta_rel": "추가 (informative)",
+            "sbtvd": "—",
+            "sbtvd_rel": "—",
+            "note": ""
+          }
+        ]
       }
     },
     {
@@ -3905,6 +4144,72 @@
           "code": "review",
           "text": "ABNT NBR 25602 transport layer — clause comparison pending (ABNT clause unverified)"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0150/R3 서문 3.2 비교표 (§5 = A/331 준용)",
+          "TTAK.KO-07.0148/R1 서문 비교표 (§10–13 준용)",
+          "TTAK.KO-07.0142/R4 목차",
+          "SBTVD OG-07 v1 (Emergency Warning System) contents"
+        ],
+        "rows": [
+          {
+            "atsc": "A/331 §4 System Overview",
+            "tta": "TTAK.KO-07.0150/R3 §5.1 시스템 개요",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25602:2025 · SBTVD OG-02",
+            "sbtvd_rel": "chapters not available (paid)",
+            "note": ""
+          },
+          {
+            "atsc": "A/331 §5 Service Signaling Overview",
+            "tta": "TTAK.KO-07.0150/R3 §5.2 서비스 시그널링 개요",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25602:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": ""
+          },
+          {
+            "atsc": "A/331 §6 Low Level Signaling (SLT, RRT, SystemTime, AEAT, OnscreenMessageNotification)",
+            "tta": "TTAK.KO-07.0150/R3 §5.3 저레벨 시그널링",
+            "tta_rel": "준용 — national adaptations to be itemized (next bundle)",
+            "sbtvd": "ABNT NBR 25602:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": "Korean LLS/AEAT usage rules are in TTAK.KO-07.0142/R4 §5.2 and TTAK.KO-07.0150/R3 부록 Ⅲ (재난인지정보 비트)"
+          },
+          {
+            "atsc": "A/331 §7 Service Layer Signaling (USBD, S-TSID, MPD, MMT SLS)",
+            "tta": "TTAK.KO-07.0150/R3 §5.4 서비스 계층 시그널링",
+            "tta_rel": "준용 — national adaptations to be itemized",
+            "sbtvd": "ABNT NBR 25602:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": ""
+          },
+          {
+            "atsc": "A/331 §8 Delivery and AL-FEC (ROUTE, MMTP)",
+            "tta": "TTAK.KO-07.0150/R3 §5.5 전송 프로토콜; 부속서 A ROUTE source 프로토콜",
+            "tta_rel": "준용 + 추가 (부속서 A)",
+            "sbtvd": "ABNT NBR 25602:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": "부속서 A is a Korean addition"
+          },
+          {
+            "atsc": "A/331 §6 AEAT (Advanced Emergency Alerting) · A/321 wake-up bits",
+            "tta": "TTAK.KO-07.0142/R4 §5 AEA 기능 및 방법 (5.1 Wake-Up 시그널링, 5.2 AEAT), §6 운영 및 워크플로우, §8 전용수신기 구현, 부속서 A–C (EventCode/Location/Device code tables)",
+            "tta_rel": "구현 가이드 (national operation rules)",
+            "sbtvd": "SBTVD OG-07 v1 §6 Conversion CAP to AEA; §8 Broadcaster Station Operation; §9 Receiver Operation; Annex A Regulatory Compliance Requirements for Brazil (A.1 AEAT configuration and format in Brazil); ABNT NBR 25607:2025",
+            "sbtvd_rel": "operational guideline + national annex",
+            "note": "Both countries adapt AEAT usage nationally: Korean event/location/device code tables; Brazilian CAP→AEA conversion and regulatory annex"
+          },
+          {
+            "atsc": "— (Korean addition)",
+            "tta": "TTAK.KO-07.0150/R3 부록 Ⅲ 재난인지정보 비트",
+            "tta_rel": "추가 (national)",
+            "sbtvd": "—",
+            "sbtvd_rel": "—",
+            "note": "Disaster-recognition information bits — Korea-specific"
+          }
+        ]
       }
     },
     {
@@ -3966,6 +4271,70 @@
           "code": "review",
           "text": "Counterpart document identified; clause-level comparison pending"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0149/R1 서문 3.2 비교표 (§8 = A/332 준용)",
+          "TTAK.KO-07.0128/R3 참조표준 (Part 5 서비스 가이드 references A/332)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/332 §4 System Overview",
+            "tta": "TTAK.KO-07.0149/R1 §8.1 개요",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25602:2025 (ESG provisions to be confirmed)",
+            "sbtvd_rel": "chapters not available (paid)",
+            "note": ""
+          },
+          {
+            "atsc": "A/332 §5 Service Announcement: Service Guide — data model",
+            "tta": "TTAK.KO-07.0149/R1 §8.2 서비스 가이드 데이터 모델",
+            "tta_rel": "준용",
+            "sbtvd": "—",
+            "sbtvd_rel": "not identified",
+            "note": ""
+          },
+          {
+            "atsc": "A/332 §5 — SG data encapsulation",
+            "tta": "TTAK.KO-07.0149/R1 §8.3 서비스 가이드 데이터 캡슐화",
+            "tta_rel": "준용",
+            "sbtvd": "—",
+            "sbtvd_rel": "not identified",
+            "note": ""
+          },
+          {
+            "atsc": "A/332 §5 — SG delivery",
+            "tta": "TTAK.KO-07.0149/R1 §8.4 서비스 가이드 전송",
+            "tta_rel": "준용",
+            "sbtvd": "—",
+            "sbtvd_rel": "not identified",
+            "note": ""
+          },
+          {
+            "atsc": "A/332 §5 — SG update and management",
+            "tta": "TTAK.KO-07.0149/R1 §8.5 서비스 가이드 데이터 업데이트 및 관리",
+            "tta_rel": "준용",
+            "sbtvd": "—",
+            "sbtvd_rel": "not identified",
+            "note": ""
+          },
+          {
+            "atsc": "A/332 (XML schema)",
+            "tta": "TTAK.KO-07.0149/R1 부속서 A 서비스 가이드 XML 스키마",
+            "tta_rel": "추가",
+            "sbtvd": "—",
+            "sbtvd_rel": "—",
+            "note": "Korean schema annex"
+          },
+          {
+            "atsc": "A/332 (service guide in the IBB context)",
+            "tta": "TTAK.KO-07.0128/R3 §9 Part 5 서비스 가이드 (참조: ETSI TS 102 796, A/332, A/153, OMA BCAST)",
+            "tta_rel": "참조",
+            "sbtvd": "SBTVD OG-08 §8.5 Electronic Programming Guide (EPG); §8.6 Electronic Content Guide (ECG)",
+            "sbtvd_rel": "related (Ginga application catalog)",
+            "note": ""
+          }
+        ]
       }
     },
     {
@@ -3989,9 +4358,12 @@
           "conf": "confirmed"
         },
         "TTA": {
-          "docs": [],
-          "note": "No counterpart identified.",
-          "rel": ""
+          "docs": [
+            "TTAK.KO-07.0128/R3"
+          ],
+          "note": "IBB Part 3 (browser application environment) lists A/333 among its reference standards; scope to be confirmed.",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [
@@ -4005,7 +4377,7 @@
       },
       "verdict": {
         "code": "review",
-        "text": "Check whether the Korean IBB standard includes usage reporting."
+        "text": "Usage-reporting provisions referenced in the Korean IBB standard and the Brazilian application guideline; equivalence not established."
       },
       "impact": "",
       "recommendation": "",
@@ -4017,14 +4389,28 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "none",
-          "text": "No counterpart identified.",
-          "kind": "not-found"
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
         },
         "SBTVD": {
           "code": "review",
           "text": "Counterpart document identified; clause-level comparison pending"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0128/R3 참조표준 (Part 3 references A/333, A/338)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/333 §4 Service Usage Reporting (CDM)",
+            "tta": "TTAK.KO-07.0128/R3 §7 Part 3 브라우저 애플리케이션 환경 (참조: ETSI TS 102 796, TS 102 809, A/333, A/338)",
+            "tta_rel": "참조 (scope to be confirmed)",
+            "sbtvd": "SBTVD OG-08 §7.10 Audience Measurement Manager; Annex C.6.13 Audience measurement APIs",
+            "sbtvd_rel": "related (Ginga)",
+            "note": ""
+          }
+        ]
       }
     },
     {
@@ -4160,9 +4546,12 @@
           "conf": "confirmed"
         },
         "TTA": {
-          "docs": [],
-          "note": "No counterpart (within the reviewed set).",
-          "rel": ""
+          "docs": [
+            "TTAK.KO-07.0128/R3"
+          ],
+          "note": "IBB Part 6 (content recognition) lists A/336 among its reference standards.",
+          "rel": "related",
+          "conf": "metadata"
         },
         "SBTVD": {
           "docs": [],
@@ -4171,8 +4560,8 @@
         }
       },
       "verdict": {
-        "code": "none",
-        "text": ""
+        "code": "review",
+        "text": "Referenced by the Korean IBB standard; no Brazilian counterpart identified."
       },
       "impact": "",
       "recommendation": "",
@@ -4184,15 +4573,29 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "none",
-          "text": "No counterpart (within the reviewed set).",
-          "kind": "not-found"
+          "code": "review",
+          "text": "Counterpart document identified; clause-level comparison pending"
         },
         "SBTVD": {
           "code": "none",
           "text": "",
           "kind": "pending"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0128/R3 참조표준 (Part 6 references A/336)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/336 §5 Specification (watermark payload, recovery files)",
+            "tta": "TTAK.KO-07.0128/R3 §10 Part 6 콘텐츠 인식 (참조: ETSI TS 102 796, A/336)",
+            "tta_rel": "참조",
+            "sbtvd": "—",
+            "sbtvd_rel": "not identified",
+            "note": ""
+          }
+        ]
       }
     },
     {
@@ -4330,6 +4733,21 @@
           "code": "review",
           "text": "Counterpart document identified; clause-level comparison pending"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0128/R3 참조표준 (Part 4 references A/338, OIPF Release 2, ETSI TS 102 796)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/338 §5 Specification (discovery, communication)",
+            "tta": "TTAK.KO-07.0128/R3 §8 Part 4 컴패니언 스크린 서비스 (8.1 요구사항, 8.2 컴패니언 스크린 규격)",
+            "tta_rel": "참조 (HbbTV/OIPF companion-screen basis)",
+            "sbtvd": "SBTVD OG-08 §9 Remote devices; Annex C.6.15 Remote device communication APIs",
+            "sbtvd_rel": "related (Ginga)",
+            "note": ""
+          }
+        ]
       }
     },
     {
@@ -4462,6 +4880,54 @@
           "code": "diff",
           "text": "VVC (+LCEVC) adopted instead of HEVC (ABNT NBR 25603)"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0149/R1 서문 3.2 비교표 (§5 = A/341 준용)",
+          "TTAK.KO-07.0148/R1 서문 비교표 (§8 = A/341 준용)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/341 §4 System Capabilities",
+            "tta": "TTAK.KO-07.0149/R1 §5.1 비디오 개요",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25603:2025 (VVC) · SBTVD OG-03",
+            "sbtvd_rel": "alternative codec (chapters not available)",
+            "note": ""
+          },
+          {
+            "atsc": "A/341 §5 Active Format Description",
+            "tta": "TTAK.KO-07.0149/R1 §5.4 비디오 부호화기의 부가 데이터",
+            "tta_rel": "준용",
+            "sbtvd": "—",
+            "sbtvd_rel": "not identified",
+            "note": ""
+          },
+          {
+            "atsc": "A/341 §6 Source Coding Specification (HEVC)",
+            "tta": "TTAK.KO-07.0149/R1 §5.2 비디오 신호 규격; §5.3 비디오 부호화",
+            "tta_rel": "준용 (MSIT Notice Art. 13 ①3: Main 10 / Scalable Main 10, Level 5.2)",
+            "sbtvd": "ABNT NBR 25603:2025 (VVC + LCEVC)",
+            "sbtvd_rel": "alternative",
+            "note": ""
+          },
+          {
+            "atsc": "A/341 §7 Signaling of Video Characteristics",
+            "tta": "TTAK.KO-07.0149/R1 §5.5 비디오 특성의 시그널링",
+            "tta_rel": "준용",
+            "sbtvd": "—",
+            "sbtvd_rel": "not identified",
+            "note": ""
+          },
+          {
+            "atsc": "A/341 (service-level video requirements)",
+            "tta": "TTAK.KO-07.0148/R1 §8 비디오 신호 및 부호화; §5.2 영상 신호 표현 형태",
+            "tta_rel": "준용",
+            "sbtvd": "—",
+            "sbtvd_rel": "—",
+            "note": ""
+          }
+        ]
       }
     },
     {
@@ -4537,6 +5003,30 @@
           "code": "review",
           "text": "ABNT NBR 25604 — clause comparison pending (ABNT clause unverified)"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0149/R1 서문 3.2 비교표 (§6 = A/342 준용)",
+          "TTAK.KO-07.0148/R1 서문 비교표 (§9 = A/342 준용)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/342-1 §5 System Overview",
+            "tta": "TTAK.KO-07.0149/R1 §6.1 오디오 개요",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25604:2025 · SBTVD OG-04",
+            "sbtvd_rel": "chapters not available (paid)",
+            "note": ""
+          },
+          {
+            "atsc": "A/342-1 §6 Specification (common elements)",
+            "tta": "TTAK.KO-07.0149/R1 §6.2 오디오 신호 규격; §6.4 메타데이터; §6.5 오디오 특성의 시그널링",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25604:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": ""
+          }
+        ]
       }
     },
     {
@@ -4597,6 +5087,21 @@
           "text": "AC-4 not adopted (MPEG-H selected for TV 3.0)",
           "kind": "not-adopted"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0149/R1 서문 3.2 비교표 (AC-4 not adopted; MSIT Notice Art. 13 ①4)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/342-2 (AC-4 system)",
+            "tta": "—",
+            "tta_rel": "not adopted",
+            "sbtvd": "— (MPEG-H selected)",
+            "sbtvd_rel": "not adopted",
+            "note": ""
+          }
+        ]
       }
     },
     {
@@ -4672,6 +5177,37 @@
           "code": "partial",
           "text": "MPEG-H adopted (ABNT NBR 25604); profile constraints unverified"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0149/R1 서문 3.2 비교표 (§6 = A/342 준용); 부록 Ⅰ MPEG-H 오디오 파일 예시"
+        ],
+        "rows": [
+          {
+            "atsc": "A/342-3 §4 MPEG-H Audio System Overview",
+            "tta": "TTAK.KO-07.0149/R1 §6.1 오디오 개요",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25604:2025 · SBTVD OG-04 (2.0 stereo, 5.1 multichannel …)",
+            "sbtvd_rel": "chapters not available (paid); OG operational profile",
+            "note": ""
+          },
+          {
+            "atsc": "A/342-3 §5 MPEG-H Audio Specification",
+            "tta": "TTAK.KO-07.0149/R1 §6.3 오디오 부호화 (MSIT Notice Art. 13 ①4: LC profile, Level 1–3)",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25604:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": ""
+          },
+          {
+            "atsc": "— (example)",
+            "tta": "TTAK.KO-07.0149/R1 부록 Ⅰ MPEG-H 오디오 파일 예시",
+            "tta_rel": "추가 (informative)",
+            "sbtvd": "—",
+            "sbtvd_rel": "—",
+            "note": ""
+          }
+        ]
       }
     },
     {
@@ -4742,6 +5278,45 @@
           "code": "review",
           "text": "ABNT NBR 25605 closed captioning — clause comparison pending"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0149/R1 서문 3.2 비교표 (§7 = A/343 준용)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/343 §4 System Overview",
+            "tta": "TTAK.KO-07.0149/R1 §7.1 시스템 구조",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25605:2025 · SBTVD OG-05",
+            "sbtvd_rel": "chapters not available (paid)",
+            "note": ""
+          },
+          {
+            "atsc": "A/343 §5 Content Essence Specification (IMSC1)",
+            "tta": "TTAK.KO-07.0149/R1 §7.2 폐쇄 자막 데이터 규격",
+            "tta_rel": "준용 (Korean fonts/character codes to be confirmed)",
+            "sbtvd": "ABNT NBR 25605:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": ""
+          },
+          {
+            "atsc": "A/343 §6 Packaging and Timing in ISO BMFF",
+            "tta": "TTAK.KO-07.0149/R1 §7.3 ISOBMFF의 패키징",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25605:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": ""
+          },
+          {
+            "atsc": "A/343 §7 Signaling; §8 Expected Decoder Behavior",
+            "tta": "TTAK.KO-07.0149/R1 §7.4 폐쇄 자막 데이터의 시그널링",
+            "tta_rel": "준용",
+            "sbtvd": "ABNT NBR 25605:2025",
+            "sbtvd_rel": "chapters not available",
+            "note": ""
+          }
+        ]
       }
     },
     {
@@ -4820,6 +5395,38 @@
           "code": "diff",
           "text": "Ginga-based application coding (ABNT NBR 25608) instead of A/344"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0128/R3 참조표준 (HbbTV ETSI TS 102 796 / TS 102 809 basis)",
+          "SBTVD OG-08 contents (Ginga)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/344 §5 ATSC Reference Receiver Model; §6 Broadcaster Application Management",
+            "tta": "TTAK.KO-07.0128/R3 §5 Part 1 공통 기술; §6 Part 2 애플리케이션 시그널링 (ETSI TS 102 809)",
+            "tta_rel": "alternative (HbbTV 2.0 application signaling)",
+            "sbtvd": "SBTVD OG-08 §6 TV 3.0 application coding architecture; §10.1 Broadcaster Application Location Description (BALD); ABNT NBR 25608:2025",
+            "sbtvd_rel": "alternative (Ginga)",
+            "note": "Three different application runtimes"
+          },
+          {
+            "atsc": "A/344 §7 Media Player; §8 WebSocket Interface; §9 Supported Methods (JSON-RPC APIs)",
+            "tta": "TTAK.KO-07.0128/R3 §7 Part 3 브라우저 애플리케이션 환경 (HbbTV browser)",
+            "tta_rel": "alternative",
+            "sbtvd": "SBTVD OG-08 §7 Ginga Common Core (7.3 DASH, 7.5 NRT files, 7.6 Persistent Media Player); Annex C TV 3.0 WebServices APIs; Annex A NCL; Annex D NCLua",
+            "sbtvd_rel": "alternative",
+            "note": ""
+          },
+          {
+            "atsc": "— (application catalog / EPG UI)",
+            "tta": "—",
+            "tta_rel": "—",
+            "sbtvd": "SBTVD OG-08 §8 Application Catalog; §12 Receiver Platform UIs",
+            "sbtvd_rel": "Brazil-specific",
+            "note": "Application catalog mandated by Decreto 12.595/2025 Art. 5º IV"
+          }
+        ]
       }
     },
     {
@@ -5143,7 +5750,7 @@
           "docs": [
             "TTAK.KO-07.0152"
           ],
-          "note": "Part 5: Content Protection (June 2021).",
+          "note": "Part 5: Content Protection (June 2021) — based on ETSI TS 103 197 (DVB SimulCrypt) and TTAK.08-0023/R2, not on A/360: CENC encryption, UHDCP/DP signaling, ECMG/EMMG head-end interfaces, download platform, forensic watermarking.",
           "reg": [
             {
               "org": "TTA",
@@ -5152,8 +5759,8 @@
               "text": "지상파 방송사업자가 콘텐츠 보호기술을 도입하고자 하는 경우 … 수상기 제조사와 협의를 거쳐 지상파 UHDTV 방송을 시청할 수 있는 조치가 수반된 경우에 한할 것"
             }
           ],
-          "rel": "related",
-          "conf": "metadata"
+          "rel": "alternative",
+          "conf": "partial"
         },
         "SBTVD": {
           "docs": [],
@@ -5163,8 +5770,8 @@
         }
       },
       "verdict": {
-        "code": "review",
-        "text": "The scope of Part 5 (content protection) may be narrower than A/360 (which also covers signaling signatures)."
+        "code": "diff",
+        "text": "Korean content protection uses a different basis (SimulCrypt/CENC/forensic watermarking) from A/360's signaling signatures and application code signing."
       },
       "impact": "",
       "recommendation": "",
@@ -5176,13 +5783,52 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Part 5 content protection — scope vs A/360 (signaling signatures) to be compared"
+          "code": "diff",
+          "text": "Part 5 (TTAK.KO-07.0152) is built on ETSI TS 103 197 SimulCrypt and TTAK.08-0023/R2 — CENC, UHDCP/DP signaling, ECMG/EMMG interfaces, forensic watermarking — not on A/360 signaling signatures / app code signing (per its own comparison table)"
         },
         "SBTVD": {
           "code": "review",
           "text": "Security provisions to be located in ABNT NBR 25602/25608/25609"
         }
+      },
+      "chapters": {
+        "sources": [
+          "TTAK.KO-07.0152 서문 3.2 비교표 (cites ETSI TS 103 197 V1.5.1 SimulCrypt and TTAK.08-0023/R2 — no ATSC reference)"
+        ],
+        "rows": [
+          {
+            "atsc": "A/360 §5 Specification (signaling signatures, certificates, application code signing, service protection)",
+            "tta": "TTAK.KO-07.0152 §5 개요; §6 요구사항",
+            "tta_rel": "different basis (Korean UHDCP/DP content-protection system)",
+            "sbtvd": "—",
+            "sbtvd_rel": "not identified (check ABNT NBR 25602/25608/25609)",
+            "note": "Korean Part 5 is not derived from A/360"
+          },
+          {
+            "atsc": "A/360 — service protection (encryption)",
+            "tta": "TTAK.KO-07.0152 §7 콘텐츠 공통 암호화 방식 (CENC); §8 콘텐츠 보호 시그널링 (8.3 MMT 시그널링); 부록 Ⅰ CENC",
+            "tta_rel": "different basis (CENC + Korean signaling)",
+            "sbtvd": "—",
+            "sbtvd_rel": "—",
+            "note": ""
+          },
+          {
+            "atsc": "— (head-end CAS interfaces)",
+            "tta": "TTAK.KO-07.0152 §10 송신 시스템 연동 인터페이스 (ECMG↔SCS, EMMG↔MUX — ETSI TS 103 197 추가·수정); §11 다운로드 플랫폼 (CA Token, CAS S/W — TTAK.08-0023/R2 수정)",
+            "tta_rel": "Korea-specific (DVB SimulCrypt-based)",
+            "sbtvd": "—",
+            "sbtvd_rel": "—",
+            "note": ""
+          },
+          {
+            "atsc": "— (forensic watermarking)",
+            "tta": "TTAK.KO-07.0152 §12 포렌식 워터마킹 정보; 부록 Ⅱ 성능 평가",
+            "tta_rel": "Korea-specific",
+            "sbtvd": "—",
+            "sbtvd_rel": "—",
+            "note": ""
+          }
+        ]
       }
     },
     {
