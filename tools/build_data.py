@@ -80,11 +80,12 @@ def series_of(doc_id):
     m = re.match(r"A/(\d)(\d)(\d)", doc_id)
     if not m: return "other"
     h, t = m.group(1), m.group(2)
-    if h == "2" or (h == "3" and t == "0"): return "s300"
+    if h != "3": return None  # only the A/300 series is in scope (A/200 etc. excluded)
+    if t == "0": return "s300"
     return {"2": "s320", "3": "s330", "4": "s340", "5": "s350", "6": "s360", "7": "s370", "8": "s380"}.get(t, "other")
 
 CATEGORIES = [
-    {"id": "s300", "name": "A/200–A/300 · System", "desc": "System architecture and umbrella documents"},
+    {"id": "s300", "name": "A/300 · System", "desc": "System architecture and umbrella document"},
     {"id": "s320", "name": "A/320 series · Physical Layer", "desc": "Bootstrap, physical layer protocol, return channel, STL, PHY test plans"},
     {"id": "s330", "name": "A/330 series · Management and Protocols", "desc": "Link layer, signaling/delivery, ESG, usage reporting, watermarks, app events, companion devices"},
     {"id": "s340", "name": "A/340 series · Presentation", "desc": "Video, audio, captions, interactive content"},
@@ -101,7 +102,6 @@ ITU_NONE, NONE = C(), C()
 
 # Per-document mapping. Keys: ATSC doc id as in index.csv.
 MAP = {
- "A/200": dict(summary="Regional service availability information.", ITU=ITU_NONE, TTA=C((), "No counterpart identified."), SBTVD=NONE, verdict=V("none")),
  "A/300": dict(summary="Top-level document defining the ATSC 3.0 system architecture and the relationship between the individual standards.",
    ITU=C(["Report BT.2295"], "Collection of DTTB system specifications (includes an ATSC 3.0 system description)."),
    TTA=C(["TTAK.KO-07.0147", "TTAK.KO-07.0148/R1"], "Umbrella standard and Part 1: Service and System Requirements."),
@@ -350,7 +350,7 @@ VERDICT_OVERRIDE = {
 rows = []
 for r in US:
     doc, m = r["doc_id"], MAP.get(r["doc_id"])
-    if not m: continue
+    if not m or series_of(doc) is None: continue
     is_rp = r["filename"].startswith("RP/")
     sb = SBTVD_MAP.get(doc, m["SBTVD"])
     cells = {"ITU": dict(m["ITU"]), "ATSC": C([f"{doc}:{r['version_date'][:7]}"], "Baseline document" + (" (Recommended Practice)" if is_rp else "")), "TTA": dict(m["TTA"]), "SBTVD": dict(sb)}
@@ -372,7 +372,7 @@ data = {
     "title": "ATSC 3.0 Common Ground",
     "subtitle": "One Standard. Connected Worldwide.",
     "purpose": "Using the US ATSC 3.0 standards (A/300 series) as the baseline, this page maps each ATSC document to the corresponding ITU-R Recommendations/Reports, Korean TTA terrestrial UHDTV standards and Brazilian SBTVD Forum TV 3.0 specifications, and records the differences.",
-    "baseline": "ATSC", "scope": "ATSC 3.0 Standards and Recommended Practices listed on atsc.org (35 documents) plus datacasting services without a dedicated ATSC document.",
+    "baseline": "ATSC", "scope": "ATSC 3.0 Standards and Recommended Practices of the A/300 series listed on atsc.org (34 documents) plus datacasting services without a dedicated ATSC document.",
     "updated": TODAY,
   },
   "orgs": [

@@ -4,7 +4,7 @@
     "subtitle": "One Standard. Connected Worldwide.",
     "purpose": "Using the US ATSC 3.0 standards (A/300 series) as the baseline, this page maps each ATSC document to the corresponding ITU-R Recommendations/Reports, Korean TTA terrestrial UHDTV standards and Brazilian SBTVD Forum TV 3.0 specifications, and records the differences.",
     "baseline": "ATSC",
-    "scope": "ATSC 3.0 Standards and Recommended Practices listed on atsc.org (35 documents) plus datacasting services without a dedicated ATSC document.",
+    "scope": "ATSC 3.0 Standards and Recommended Practices of the A/300 series listed on atsc.org (34 documents) plus datacasting services without a dedicated ATSC document.",
     "updated": "2026-08-31"
   },
   "orgs": [
@@ -264,8 +264,8 @@
   "categories": [
     {
       "id": "s300",
-      "name": "A/200–A/300 · System",
-      "desc": "System architecture and umbrella documents"
+      "name": "A/300 · System",
+      "desc": "System architecture and umbrella document"
     },
     {
       "id": "s320",
@@ -1281,46 +1281,6 @@
     }
   },
   "rows": [
-    {
-      "id": "A/200",
-      "category": "s300",
-      "type": "Standard",
-      "title": "Regional Service Availability",
-      "title_ko": "",
-      "summary": "Regional service availability information.",
-      "cells": {
-        "ITU": {
-          "docs": [],
-          "note": ""
-        },
-        "ATSC": {
-          "docs": [
-            "A/200:2026-04"
-          ],
-          "note": "Baseline document"
-        },
-        "TTA": {
-          "docs": [],
-          "note": "No counterpart identified."
-        },
-        "SBTVD": {
-          "docs": [],
-          "note": ""
-        }
-      },
-      "verdict": {
-        "code": "none",
-        "text": ""
-      },
-      "impact": "",
-      "recommendation": "",
-      "evidence": [],
-      "review": {
-        "status": "draft",
-        "by": "",
-        "updated": "2026-08-31"
-      }
-    },
     {
       "id": "A/300",
       "category": "s300",
