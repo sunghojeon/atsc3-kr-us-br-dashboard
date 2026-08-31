@@ -127,6 +127,7 @@ NONE_KINDS = {  # sub-types of 'No counterpart'
     "not-found":   "Searched, none found",
     "pending":     "Not yet reviewed",
     "n/a":         "Not applicable",
+    "atsc-none":   "Country-only provision (no ATSC document)",
 }
 
 # Per-document mapping. Keys: ATSC doc id as in index.csv.
@@ -429,6 +430,8 @@ RELS = {  # doc id -> {org: (relation, confidence)}
 def derive(cell, org, doc_id):
     """Default per-country verdict from the cell contents when no explicit value is given."""
     note = (cell.get("note") or "").lower()
+    if doc_id.startswith("(no ATSC document") and cell["docs"]:
+        return V("none", "Country-only provision; ATSC has no corresponding document", "atsc-none")
     if cell["docs"]:
         return V("review", "Counterpart document identified; clause-level comparison pending")
     if "not adopted" in note: return V("none", cell.get("note", ""), "not-adopted")

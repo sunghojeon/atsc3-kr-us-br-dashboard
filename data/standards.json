@@ -374,7 +374,8 @@
     "not-adopted": "Officially not adopted",
     "not-found": "Searched, none found",
     "pending": "Not yet reviewed",
-    "n/a": "Not applicable"
+    "n/a": "Not applicable",
+    "atsc-none": "Country-only provision (no ATSC document)"
   },
   "comparisons": [
     {
@@ -2263,7 +2264,7 @@
             "TTAR-07.0022"
           ],
           "note": "Minimum technical specification for terrestrial UHD set-top boxes (technical report, 2017).",
-          "rel": "related",
+          "rel": "",
           "conf": "metadata"
         },
         "SBTVD": {
@@ -2271,7 +2272,7 @@
             "ABNT NBR 25609:2025"
           ],
           "note": "TV 3.0 receiver standard (113 pp.).",
-          "rel": "related",
+          "rel": "",
           "conf": "metadata",
           "flag": "ABNT clause unverified"
         }
@@ -2290,12 +2291,14 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "none",
+          "text": "Country-only provision; ATSC has no corresponding document",
+          "kind": "atsc-none"
         },
         "SBTVD": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "none",
+          "text": "Country-only provision; ATSC has no corresponding document",
+          "kind": "atsc-none"
         }
       }
     },
@@ -3683,7 +3686,7 @@
             "TTAK.KO-07.0154/R1"
           ],
           "note": "Terrestrial UHD system monitoring guideline (Dec 2023).",
-          "rel": "related",
+          "rel": "",
           "conf": "metadata"
         },
         "SBTVD": {
@@ -3706,8 +3709,9 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "none",
+          "text": "Country-only provision; ATSC has no corresponding document",
+          "kind": "atsc-none"
         },
         "SBTVD": {
           "code": "none",
@@ -4879,7 +4883,7 @@
             "TTAK.KO-07.0153"
           ],
           "note": "Part 6: 3DTV (June 2021).",
-          "rel": "related",
+          "rel": "",
           "conf": "metadata"
         },
         "SBTVD": {
@@ -4902,8 +4906,9 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "none",
+          "text": "Country-only provision; ATSC has no corresponding document",
+          "kind": "atsc-none"
         },
         "SBTVD": {
           "code": "none",
@@ -4941,7 +4946,7 @@
             "SBTVD OG-06"
           ],
           "note": "Closed signing standard and operational guideline.",
-          "rel": "related",
+          "rel": "",
           "conf": "metadata",
           "flag": "ABNT clause unverified"
         }
@@ -4965,8 +4970,9 @@
           "kind": "not-found"
         },
         "SBTVD": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "none",
+          "text": "Country-only provision; ATSC has no corresponding document",
+          "kind": "atsc-none"
         }
       }
     },
@@ -5669,7 +5675,7 @@
             "TTAK.KO-07.0168"
           ],
           "note": "Broadcast RTK correction data service (June 2025); HP-GNSS correction information message structure and datagram IP tunneling (June 2025).",
-          "rel": "related",
+          "rel": "",
           "conf": "metadata"
         },
         "SBTVD": {
@@ -5711,8 +5717,9 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "none",
+          "text": "Country-only provision; ATSC has no corresponding document",
+          "kind": "atsc-none"
         },
         "SBTVD": {
           "code": "none",
@@ -5744,7 +5751,7 @@
             "TTAK.KO-07.0139"
           ],
           "note": "Requirements for terrestrial UHD traffic and travel information service (Dec 2019).",
-          "rel": "related",
+          "rel": "",
           "conf": "metadata"
         },
         "SBTVD": {
@@ -5767,8 +5774,9 @@
       },
       "verdicts": {
         "TTA": {
-          "code": "review",
-          "text": "Counterpart document identified; clause-level comparison pending"
+          "code": "none",
+          "text": "Country-only provision; ATSC has no corresponding document",
+          "kind": "atsc-none"
         },
         "SBTVD": {
           "code": "none",
