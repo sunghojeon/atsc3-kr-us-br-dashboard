@@ -991,6 +991,706 @@
         "date": "2026-08-31",
         "by": "draft (AI-assisted; human review pending)"
       }
+    },
+    {
+      "id": "sig-ref-version",
+      "group": "Signaling · basis",
+      "feature": "Reference edition and national revisions",
+      "atsc_docs": [
+        "A/331"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/331:2026-04",
+          "clause": "Revision history",
+          "page": "p.ii–iv",
+          "value": "Baseline: rollup of amendments through 2026-02 (SignedMultiTable, AEA@category, RSAT, DRM for MMTP, signed MMT messages, OtherBsid, urlType 4 …)",
+          "req": "baseline"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0150/R3 (2024-12-06)",
+          "clause": "§1 적용 범위; §2 인용 표준; 부록 Ⅳ-6 표준의 이력",
+          "page": "doc p.1, p.212–214 (pdf 7, 218–220)",
+          "value": "Based on the ATSC 3.0 Candidate Standard; cites A/331 (2017) and A/330 (2017). National revisions: R0 2021-06 animated images + Data-only service (serviceCategory 10); R1 2021-12 caption bitrate; R2 2023-12 NRT file repair over broadband; R3 2024-12 signaling tables for Data-only service",
+          "req": "mandatory (adopted with Korean modifications)"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25602:2025 · SBTVD OG-02",
+          "clause": "ABNT clause unverified; OG-02 (5 pp.) has no chapter detail",
+          "page": "—",
+          "value": "TV 3.0 transport layer standard (21 pp.)",
+          "req": "mandatory (regulation via Decreto 12.595/2025 Art. 3º § 2º — ABNT standards)"
+        }
+      },
+      "difference": "Korea's Part 3 tracks the 2017 edition of A/331 and has been revised nationally four times; features added to A/331 after 2017 (SignedMultiTable 0xFE, AEA@category/@subAudience/@aeaTableId, Regional Service Availability Table, DRM for MMTP, SIGNED_MMT_MESSAGE, OtherBsid, urlType 4) are not present. Brazil's ABNT text was not read.",
+      "impact": "Signaling is functionally the same for linear services; the gaps concern security (signed signaling), regional availability and later code points.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "related",
+          "conf": "unverified"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "2017-based text with Korean revisions; post-2017 A/331 additions absent",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25602 not read",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [
+        {
+          "label": "TTAK.KO-07.0150/R3 (committee.tta.or.kr)",
+          "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0150%2FR3&nowSu=1"
+        },
+        {
+          "label": "A/331:2026-04 (atsc.org)",
+          "url": "https://www.atsc.org/atsc-documents/3312017-signaling-delivery-synchronization-error-protection/"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "sig-lls-tables",
+      "group": "Signaling · LLS",
+      "feature": "LLS table set and LLS_table_id assignments",
+      "atsc_docs": [
+        "A/331"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/331:2026-04",
+          "clause": "§6.2 Table 6.1",
+          "page": "doc p.28–30 (pdf 42–44)",
+          "value": "0x01 SLT, 0x02 RRT (Annex F), 0x03 SystemTime, 0x04 AEAT, 0x05 OnscreenMessageNotification, 0xFE SignedMultiTable, 0xFF UserDefined; other values per ATSC Code Point Registry",
+          "req": "mandatory"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0150/R3",
+          "clause": "§5.3.2 <표 5-1>, <표 5-2>",
+          "page": "doc p.13–15 (pdf 19–21)",
+          "value": "0x01–0x05 identical; 0x80 VIT (버전 정보 테이블, Korean), 0x81 CPT (콘텐츠 보호 테이블 → Part 5 §8.2, Korean), 0xFF UserDefined; no 0xFE SignedMultiTable; 0x80–0xFF described as the range for non-ATSC bodies",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25602:2025",
+          "clause": "ABNT clause unverified",
+          "page": "—",
+          "value": "—",
+          "req": "mandatory"
+        }
+      },
+      "difference": "Korea adds two national LLS tables in the private range (VIT 0x80 with namespace http://www.nextb.or.kr/XMLSchemas/T-UHDTV/Delivery/VIT/1.0/, CPT 0x81) and does not carry SignedMultiTable (0xFE, added to A/331 for signed signaling).",
+      "impact": "Korean receivers must parse VIT/CPT; US receivers ignore them (private range). Absence of SignedMultiTable means Korean LLS is not signed per A/360 (Korea handles protection in Part 5).",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "related",
+          "conf": "unverified"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "Same core tables; Korean VIT/CPT added (allowed private range); SignedMultiTable absent",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25602 not read",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [
+        {
+          "label": "A/331 §6.2 (pdf p.42–44)",
+          "url": "https://www.atsc.org/atsc-documents/3312017-signaling-delivery-synchronization-error-protection/"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "sig-slt",
+      "group": "Signaling · LLS",
+      "feature": "Service List Table (SLT) — structure, serviceCategory, urlType, slsProtocol",
+      "atsc_docs": [
+        "A/331"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/331:2026-04",
+          "clause": "§6.3, Tables 6.3–6.7",
+          "page": "doc p.31–38 (pdf 45–52)",
+          "value": "serviceCategory 1 linear A/V, 2 audio, 3 app-based, 4 ESG, 5 deprecated, 6 DRM data, 7 Data Service, 8 Common Data Service; urlType 1 signaling server, 2 ESG, 3 usage report, 4 dynamic-event WebSocket; slsProtocol 1 ROUTE / 2 MMTP; OtherBsid@type (duplicate/portion/MFN alternative)",
+          "req": "mandatory"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0150/R3",
+          "clause": "§5.3.3.2 <표 5-4>~<표 5-7>",
+          "page": "doc p.16–22 (pdf 22–28)",
+          "value": "serviceCategory 1–4 identical, 5 EAS service (not deprecated), 10 Data only service (Korean value, added 2021-06); urlType 0–3 only; slsProtocol identical; @sltCapabilities/@svcCapabilities per Part 2 §8 <sa:capabilities>; SimulcastServiceInfo/serviceReceptionType (fixed/mobile)",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25602:2025",
+          "clause": "ABNT clause unverified",
+          "page": "—",
+          "value": "—",
+          "req": "mandatory"
+        }
+      },
+      "difference": "Code-point divergence: Korea signals data-only services with serviceCategory 10 (national value) whereas ATSC later assigned 7 (Data Service) and 8 (Common Data Service); Korea keeps 5 (EAS service) which ATSC deprecated; Korea lacks urlType 4 and OtherBsid, and adds SimulcastServiceInfo/serviceReceptionType.",
+      "impact": "A receiver following A/331:2026 would not recognise Korean data-only services (10) as data services; Korean datacasting receivers key on value 10.",
+      "recommendation": "Record the Korean values in the ATSC Code Point Registry or align Part 3 with serviceCategory 7/8 at the next revision.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "related",
+          "conf": "unverified"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "Same SLT structure; national code points (serviceCategory 10, EAS 5) and missing later fields",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25602 not read",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [
+        {
+          "label": "A/331 Table 6.4 (pdf p.49)",
+          "url": "https://www.atsc.org/atsc-documents/3312017-signaling-delivery-synchronization-error-protection/"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "sig-systemtime",
+      "group": "Signaling · LLS",
+      "feature": "SystemTime fragment",
+      "atsc_docs": [
+        "A/331"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/331:2026-04",
+          "clause": "§6.4 Table 6.8",
+          "page": "doc p.39–42",
+          "value": "PTP/TAI-based; ATSC SYSTIME/1.0 namespace; currentUtcOffset, ptpPrepend, leap59/61, utcLocalOffset, dsStatus/dsDayOfMonth/dsHour",
+          "req": "mandatory"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0150/R3",
+          "clause": "§5.3.4 <표 5-8>",
+          "page": "doc p.23–24 (pdf 29–30)",
+          "value": "Identical element set and ATSC namespace; LLS period ≤ 5 s",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25602:2025",
+          "clause": "ABNT clause unverified",
+          "page": "—",
+          "value": "—",
+          "req": "mandatory"
+        }
+      },
+      "difference": "None identified.",
+      "impact": "None.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "related",
+          "conf": "unverified"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "Identical",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25602 not read",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "sig-rrt",
+      "group": "Signaling · LLS",
+      "feature": "Rating Region Table and content advisories",
+      "atsc_docs": [
+        "A/331"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/331:2026-04",
+          "clause": "§6.2 (RRT, Annex F); §7.3 Content Advisory Ratings in Service Signaling",
+          "page": "doc p.28, p.124–126",
+          "value": "RRT carried as LLS 0x02; content advisories signaled in DASH/MMTP SLS",
+          "req": "optional / per regulation"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0150/R3",
+          "clause": "§5.3.2 (RRT id kept); statement '콘텐츠 시청 등급 정보는 사용하지 않는다'",
+          "page": "doc p.15, p.~45 (pdf 21, 51)",
+          "value": "RRT table id retained for compatibility; content-advisory (viewing-rating) information is not used",
+          "req": "not used (national)"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25602:2025",
+          "clause": "ABNT clause unverified",
+          "page": "—",
+          "value": "Brazilian content rating (Classificação Indicativa) is a legal requirement; TV 3.0 signaling of it not verified",
+          "req": "unverified"
+        }
+      },
+      "difference": "Korea does not use the ATSC content-advisory mechanism (RRT / rating signaling); Korean age-rating display follows domestic broadcasting rules outside this signaling.",
+      "impact": "Korean receivers need no RRT parsing; content advisories are not machine-readable in the Korean profile.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "related",
+          "conf": "unverified"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "RRT/content advisory not used in Korea (national policy)",
+          "req": "not used"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "To be verified in ABNT NBR 25602",
+          "req": "unverified"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "sig-aeat",
+      "group": "Signaling · emergency alerting",
+      "feature": "AEAT / AEA-MF message format and national usage rules",
+      "atsc_docs": [
+        "A/331",
+        "A/331 §AEA"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/331:2026-04",
+          "clause": "§6.5 Tables 6.10–6.15",
+          "page": "doc p.43–51 (pdf 57–65)",
+          "value": "AEAT@aeaTableId; AEA @aeaId @issuer @audience @subAudience @aeaType @refAEAId @priority @category @wakeup; Header (@effective @expires EventCode EventDesc Location); AEAText; LiveMedia; Media (@mediaType …)",
+          "req": "mandatory when alerting"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0150/R3 · TTAK.KO-07.0142/R4",
+          "clause": "Part 3 §5.3.5 <표 5-11>~<표 5-13>; 0142/R4 §5.2, §6.2, §6.10 <표 6-4>, 부속서 A–C",
+          "page": "Part 3 doc p.27–34 (pdf 33–40); 0142/R4 doc p.7–8, p.15–18",
+          "value": "AEA-MF per the 2017 edition: no @aeaTableId, @subAudience, @category; adds <AEAVoiceText> (speech-friendly text, Korean addition); dateTime UTC written as '-00:00'. National usage (0142/R4): @issuer = broadcaster or originating agency (기상청·행정안전부·과학기술정보통신부), @audience 'public' baseline, EventCode/@type from national code tables (부속서 A), Location from 행정동 geocode or GPS circle (부속서 B), device codes (부속서 B-2), priority tied to mandatory-broadcast rules",
+          "req": "mandatory (national emergency-alert rules)"
+        },
+        "SBTVD": {
+          "doc": "SBTVD OG-07 v1 · ABNT NBR 25607:2025",
+          "clause": "OG-07 §6 Table 1 (CAP→AEA equivalence), Table 2 (severity/urgency→priority), Annex A Table A.1, Annex B script",
+          "page": "OG-07 pdf p.3–7, p.23–24",
+          "value": "AEAT generated by converting CAP 1.2 alerts: @wakeup = true only when priority is maximum; EventCode = COBRADE code (6 digits) with EventCode@type='COBRADE'; Location@type 'polygon' (IDAP alerts) or 'ZIP_BR'; broadcasters monitor the IDAP CAP feed (idapfile.mi.gov.br)",
+          "req": "mandatory (ABNT NBR 25607); OG non-normative"
+        }
+      },
+      "difference": "The AEA-MF core is common. Korea's text predates A/331's @category/@subAudience/@aeaTableId and Media@mediaType, and adds AEAVoiceText; Korea defines national EventCode/Location/device code tables and issuer conventions. Brazil derives AEAT from CAP (IDAP) with COBRADE event codes and Brazilian location types, and ties wake-up to maximum priority.",
+      "impact": "Receivers must apply national code tables (Korea) or COBRADE/ZIP_BR semantics (Brazil); alert content is not portable across countries even though the XML container is.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "profile",
+          "conf": "partial"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "AEA-MF core same; 2017-era subset plus AEAVoiceText; national code tables",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "partial",
+          "text": "AEA-MF used via CAP conversion with Brazilian code/location conventions (OG-07 Annex A); ABNT NBR 25607 not read",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [
+        {
+          "label": "TTAK.KO-07.0142/R4 (committee.tta.or.kr)",
+          "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0142%2FR4&nowSu=1"
+        },
+        {
+          "label": "SBTVD OG-07 v1 Emergency Warning System (forumsbtvd.org.br)",
+          "url": "https://forumsbtvd.org.br/tv3-0/"
+        },
+        {
+          "label": "A/331 Table 6.10 (pdf p.57)",
+          "url": "https://www.atsc.org/atsc-documents/3312017-signaling-delivery-synchronization-error-protection/"
+        }
+      ],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "sig-wakeup",
+      "group": "Signaling · emergency alerting",
+      "feature": "Emergency wake-up bits (bootstrap ea_wake_up) and wake-up policy",
+      "atsc_docs": [
+        "A/331",
+        "A/321",
+        "A/331 §AEA"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/321:2026-06 · A/331:2026-04",
+          "clause": "A/321 §6.1 (ea_wake_up_1/2); A/331 §6.5 (AEA@wakeup)",
+          "page": "A/321 doc p.15–16; A/331 doc p.43",
+          "value": "2-bit wake-up field in bootstrap symbols 1 and 2; AEA@wakeup marks the associated alert",
+          "req": "mandatory field; use optional"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0150/R3 · TTAK.KO-07.0142/R4",
+          "clause": "Part 3 부록 Ⅲ 재난인지정보 비트 <표 III.1-1>; 0142/R4 §5.1, §6.2 <표 6-2>",
+          "page": "Part 3 doc p.202 (pdf 208); 0142/R4 doc p.7–8",
+          "value": "ea_wake_up_1 = LSB, ea_wake_up_2 = MSB; '00' no event; each increment 01→10→11→01 = new wake-up call; at least one AEAT with @wakeup='true' while non-zero; automatic screen-on only for users who opt in (receiver setting)",
+          "req": "mandatory signaling; receiver auto-activation opt-in"
+        },
+        "SBTVD": {
+          "doc": "SBTVD OG-07 v1",
+          "clause": "§6 Table 1 (AEAT.AEA@wakeup)",
+          "page": "OG-07 pdf p.4",
+          "value": "@wakeup = true only when AEA@priority is maximum (4), false otherwise",
+          "req": "operational guideline"
+        }
+      },
+      "difference": "Bit semantics are the same; national policy differs: Korea restates the sequencing rule and makes automatic activation a user opt-in; Brazil binds wake-up to maximum-priority alerts only.",
+      "impact": "Receiver behaviour on wake-up is a national implementation policy rather than a standards difference.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "profile",
+          "conf": "partial"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "Same bits and semantics; national activation policy",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "same",
+          "text": "Same bits; wake-up limited to maximum priority by guideline",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "sig-sls-route",
+      "group": "Signaling · SLS",
+      "feature": "ROUTE/DASH Service Layer Signaling (USBD/USD, S-TSID, MPD, HELD, DWD)",
+      "atsc_docs": [
+        "A/331"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/331:2026-04",
+          "clause": "§7.1 (7.1.3 USBD, 7.1.4 S-TSID, 7.1.5 MPD, 7.1.6 delivery, 7.1.7 APD, 7.1.8 HELD, 7.1.9 DWD, 7.1.10 RSAT)",
+          "page": "doc p.60–81",
+          "value": "ATSC namespaces (ROUTEUSD, ROUTESLS …); DWD under the ATSC AppSignaling namespace",
+          "req": "mandatory for ROUTE services"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0150/R3",
+          "clause": "§5.4.1 (5.4.1.3 USD, 5.4.1.4 S-TSID, 5.4.1.5 MPD, 5.4.1.6 전송, 5.4.1.7 DWD); 부속서 A.4 (TOI rule)",
+          "page": "doc p.42–61 (pdf 48–67)",
+          "value": "Same tables; Korean extensions: USD_EX namespace (http://www.nextb.or.kr/XMLSchemas/T-UHDTV/Delivery/USD_EX/1.0 and 1.1) adding serviceLinkage/linkageData to the USD; DWD placed under the Korean namespace http://www.nextb.or.kr/XMLSchemas/T-UHDTV/AppSignaling/DWD/1.0/ (prefix dwd); no APD, no RSAT",
+          "req": "mandatory for ROUTE services"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25602:2025 · SBTVD OG-08 §7.2/7.3",
+          "clause": "ABNT clause unverified; OG-08 §7.2 Transport layer metadata, §7.3 DASH streams",
+          "page": "—",
+          "value": "DASH/ROUTE-based transport with Ginga access APIs",
+          "req": "mandatory"
+        }
+      },
+      "difference": "Korea keeps the ATSC SLS fragments but adds a service-linkage extension (USD_EX) and issues the DWD under a Korean namespace; A/331's APD and RSAT are absent.",
+      "impact": "Korean USD/DWD instances are not schema-identical to ATSC's; US receivers ignore the usdex extension but would not validate the Korean DWD namespace.",
+      "recommendation": "Document the USD_EX and DWD namespaces in the ATSC Code Point Registry or migrate DWD to the ATSC namespace.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "related",
+          "conf": "unverified"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "Same fragments; Korean USD_EX extension and DWD namespace; APD/RSAT absent",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25602 not read",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "sig-sls-mmt",
+      "group": "Signaling · SLS",
+      "feature": "MMTP Service Layer Signaling (USD for MMT, MPD, MMT signaling messages)",
+      "atsc_docs": [
+        "A/331"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/331:2026-04",
+          "clause": "§7.2 (7.2.1 USD for MMTP, 7.2.2 MPD, 7.2.3 MMTP-specific messages, 7.2.4 DRM for MMTP, 7.2.5 SIGNED_MMT_MESSAGE)",
+          "page": "doc p.81–124",
+          "value": "MMTP SLS incl. DRM and signed messages (added after 2017)",
+          "req": "mandatory for MMTP services"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0150/R3 · TTAK.KO-07.0152",
+          "clause": "Part 3 §5.4.2 (5.4.2.1 USD, 5.4.2.2 MPD, 5.4.2.3 MMT 시그널링 메시지); Part 5 §8.3 MMT 시그널링, §8.2 UHDCP/DP signaling (CPT)",
+          "page": "Part 3 doc p.62–107 (pdf 68–113)",
+          "value": "MMT SLS per the 2017 text; content-protection signaling handled in Part 5 (CPT LLS table 0x81, MMT signaling) instead of A/331 §7.2.4/§7.2.5",
+          "req": "mandatory for MMTP services"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25602:2025",
+          "clause": "ABNT clause unverified",
+          "page": "—",
+          "value": "MMTP use in TV 3.0 not verified",
+          "req": "unverified"
+        }
+      },
+      "difference": "Same MMTP signaling core; Korea routes DRM/content-protection signaling through its own Part 5 mechanism rather than A/331 §7.2.4–7.2.5.",
+      "impact": "Protected MMT services are signaled differently in Korea (CPT/UHDCP) than in the US (A/331 DRM + A/360).",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "partial"
+        },
+        "SBTVD": {
+          "rel": "related",
+          "conf": "unverified"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "Same core; protection signaling replaced by Korean Part 5 mechanism",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25602 not read",
+          "req": "unverified"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "sig-delivery",
+      "group": "Signaling · delivery",
+      "feature": "Delivery protocols (ROUTE/DASH, MMTP/MPU), hybrid delivery and file repair",
+      "atsc_docs": [
+        "A/331",
+        "A/331 §NRT"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/331:2026-04",
+          "clause": "§8.1–8.3; Annex A (ROUTE source protocol)",
+          "page": "doc p.126–146",
+          "value": "ROUTE/DASH and MMTP/MPU broadcast delivery, hybrid modes, file repair (AL-FEC capable or not)",
+          "req": "mandatory"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0150/R3",
+          "clause": "§5.5.1 방송망 전송, §5.5.2 하이브리드 전송, §5.5.2.3 파일 복구 절차; 부속서 A ROUTE source 프로토콜",
+          "page": "doc p.108–126 (pdf 113–131); p.162–188",
+          "value": "Same protocols; MPU constraint 'elst' box not used; broadband NRT file repair added in R2 (2023-12); 부속서 A corresponds to A/331 Annex A (ROUTE source protocol)",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "doc": "ABNT NBR 25602:2025 · SBTVD OG-08 §7.3/7.5",
+          "clause": "ABNT clause unverified; OG-08 DASH streams, NRT files",
+          "page": "—",
+          "value": "DASH/ROUTE and NRT delivery",
+          "req": "mandatory"
+        }
+      },
+      "difference": "No substantive difference; Korea adds an MPU profile constraint (no 'elst') and documented its file-repair procedure later than ATSC.",
+      "impact": "None for interoperability.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "related",
+          "conf": "unverified"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "same",
+          "text": "Same delivery protocols; minor MPU profile constraint",
+          "req": "mandatory"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "ABNT NBR 25602 not read",
+          "req": "mandatory"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
+    },
+    {
+      "id": "sig-data-only",
+      "group": "Signaling · datacasting",
+      "feature": "Data-only service signaling (Korean extension)",
+      "atsc_docs": [
+        "A/331",
+        "A/331 §NRT"
+      ],
+      "sides": {
+        "ATSC": {
+          "doc": "A/331:2026-04",
+          "clause": "§6.3 Table 6.4 (serviceCategory 7 Data Service, 8 Common Data Service); §7.1.9 DWD",
+          "page": "doc p.35, p.77–81",
+          "value": "Data services signaled with serviceCategory 7/8 and DWD",
+          "req": "optional"
+        },
+        "TTA": {
+          "doc": "TTAK.KO-07.0150/R3",
+          "clause": "§5.3.3.2 <표 5-5> (serviceCategory 10 Data only service); revisions R0 (2021-06) and R3 (2024-12) 'Data only service를 위한 시그널링 테이블 수정/추가'",
+          "page": "doc p.18–19; p.213–214",
+          "value": "Data-only services (basis of RTK/HP-GNSS and traffic datacasting) signaled with the national value 10 and modified signaling tables",
+          "req": "optional (national)"
+        },
+        "SBTVD": {
+          "doc": "SBTVD OG-CPC (draft) · OG-08 §7.5",
+          "clause": "Common Public Communication / Digital Government platform; NRT files",
+          "page": "—",
+          "value": "Public-communication datacasting via the application platform",
+          "req": "draft"
+        }
+      },
+      "difference": "Korea and ATSC signal data services with different serviceCategory values (10 vs 7/8); Korea's datacasting standards (TTAK.KO-07.0165/0167/0168, 0139) build on the Korean value.",
+      "impact": "Datacasting receivers are not interchangeable at the SLT level without a mapping.",
+      "recommendation": "Coordinate the Korean data-only code point with the ATSC Code Point Registry.",
+      "cells": {
+        "TTA": {
+          "rel": "profile",
+          "conf": "confirmed"
+        },
+        "SBTVD": {
+          "rel": "related",
+          "conf": "metadata"
+        }
+      },
+      "verdicts": {
+        "TTA": {
+          "code": "partial",
+          "text": "Different code point for data services (10 vs 7/8)",
+          "req": "optional"
+        },
+        "SBTVD": {
+          "code": "review",
+          "text": "Datacasting handled via the application platform; signaling not verified",
+          "req": "draft"
+        }
+      },
+      "evidence": [],
+      "reviewed": {
+        "date": "2026-08-31",
+        "by": "draft (AI-assisted; human review pending)"
+      }
     }
   ],
   "docTitles": {
@@ -2784,6 +3484,68 @@
             "date": "2026-08-31",
             "by": "draft (AI-assisted; human review pending)"
           }
+        },
+        {
+          "id": "sig-wakeup",
+          "group": "Signaling · emergency alerting",
+          "feature": "Emergency wake-up bits (bootstrap ea_wake_up) and wake-up policy",
+          "atsc_docs": [
+            "A/331",
+            "A/321",
+            "A/331 §AEA"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/321:2026-06 · A/331:2026-04",
+              "clause": "A/321 §6.1 (ea_wake_up_1/2); A/331 §6.5 (AEA@wakeup)",
+              "page": "A/321 doc p.15–16; A/331 doc p.43",
+              "value": "2-bit wake-up field in bootstrap symbols 1 and 2; AEA@wakeup marks the associated alert",
+              "req": "mandatory field; use optional"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3 · TTAK.KO-07.0142/R4",
+              "clause": "Part 3 부록 Ⅲ 재난인지정보 비트 <표 III.1-1>; 0142/R4 §5.1, §6.2 <표 6-2>",
+              "page": "Part 3 doc p.202 (pdf 208); 0142/R4 doc p.7–8",
+              "value": "ea_wake_up_1 = LSB, ea_wake_up_2 = MSB; '00' no event; each increment 01→10→11→01 = new wake-up call; at least one AEAT with @wakeup='true' while non-zero; automatic screen-on only for users who opt in (receiver setting)",
+              "req": "mandatory signaling; receiver auto-activation opt-in"
+            },
+            "SBTVD": {
+              "doc": "SBTVD OG-07 v1",
+              "clause": "§6 Table 1 (AEAT.AEA@wakeup)",
+              "page": "OG-07 pdf p.4",
+              "value": "@wakeup = true only when AEA@priority is maximum (4), false otherwise",
+              "req": "operational guideline"
+            }
+          },
+          "difference": "Bit semantics are the same; national policy differs: Korea restates the sequencing rule and makes automatic activation a user opt-in; Brazil binds wake-up to maximum-priority alerts only.",
+          "impact": "Receiver behaviour on wake-up is a national implementation policy rather than a standards difference.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "profile",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Same bits and semantics; national activation policy",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "same",
+              "text": "Same bits; wake-up limited to maximum priority by guideline",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
         }
       ]
     },
@@ -4110,7 +4872,7 @@
             }
           ],
           "rel": "profile",
-          "conf": "metadata"
+          "conf": "confirmed"
         },
         "SBTVD": {
           "docs": [
@@ -4138,11 +4900,11 @@
       "verdicts": {
         "TTA": {
           "code": "partial",
-          "text": "Part 3 restricts the ROUTE/DASH and MMT profile; emergency alerting extended in national standards"
+          "text": "Signaling is essentially the same (2017-based text): LLS/SLT/SystemTime/AEAT/SLS/delivery identical in structure. National adaptations: LLS tables VIT 0x80 and CPT 0x81; serviceCategory 10 (Data only) and 5 (EAS) kept; RRT/content advisories not used; AEAVoiceText and national event/location code tables; USD_EX service-linkage extension and Korean DWD namespace; SignedMultiTable, AEA@category, RSAT, DRM-for-MMTP absent"
         },
         "SBTVD": {
           "code": "review",
-          "text": "ABNT NBR 25602 transport layer — clause comparison pending (ABNT clause unverified)"
+          "text": "ABNT NBR 25602 transport layer not read (ABNT clause unverified); emergency alerting profile known from OG-07 (CAP→AEA, COBRADE, ZIP_BR)"
         }
       },
       "chapters": {
@@ -4170,17 +4932,17 @@
             "note": ""
           },
           {
-            "atsc": "A/331 §6 Low Level Signaling (SLT, RRT, SystemTime, AEAT, OnscreenMessageNotification)",
-            "tta": "TTAK.KO-07.0150/R3 §5.3 저레벨 시그널링",
-            "tta_rel": "준용 — national adaptations to be itemized (next bundle)",
+            "atsc": "A/331 §6 Low Level Signaling (6.2 table format, 6.3 SLT, 6.4 SystemTime, 6.5 AEAT, 6.6 OnscreenMessageNotification, 6.7 SignedMultiTable, 6.8 UserDefined, 6.9 Signaling Server)",
+            "tta": "TTAK.KO-07.0150/R3 §5.3 저레벨 시그널링 (5.3.2 테이블 형식, 5.3.3 SLT, 5.3.4 System Time, 5.3.5 AEAT, 5.3.6 OnscreenMessageNotification, 5.3.7 VIT, 5.3.8 시그널링 서버, 5.3.9 사용자 정의 테이블)",
+            "tta_rel": "준용 + national adaptations: LLS tables VIT 0x80 / CPT 0x81 added; SignedMultiTable 0xFE absent; serviceCategory 10 (Data only) and 5 (EAS) kept; urlType 0–3 only; RRT/content advisories not used; AEAT lacks @category/@subAudience/@aeaTableId and adds <AEAVoiceText>",
             "sbtvd": "ABNT NBR 25602:2025",
             "sbtvd_rel": "chapters not available",
-            "note": "Korean LLS/AEAT usage rules are in TTAK.KO-07.0142/R4 §5.2 and TTAK.KO-07.0150/R3 부록 Ⅲ (재난인지정보 비트)"
+            "note": "Korean AEAT usage rules (issuer, national EventCode/Location/device code tables, priority policy) in TTAK.KO-07.0142/R4 §6.10 and 부속서 A–C; wake-up bit sequencing in TTAK.KO-07.0150/R3 부록 Ⅲ"
           },
           {
-            "atsc": "A/331 §7 Service Layer Signaling (USBD, S-TSID, MPD, MMT SLS)",
-            "tta": "TTAK.KO-07.0150/R3 §5.4 서비스 계층 시그널링",
-            "tta_rel": "준용 — national adaptations to be itemized",
+            "atsc": "A/331 §7 Service Layer Signaling (7.1 ROUTE/DASH: USBD, S-TSID, MPD, APD, HELD, DWD, RSAT; 7.2 MMTP: USD, MPD, messages, DRM, signed messages; 7.3 content advisories)",
+            "tta": "TTAK.KO-07.0150/R3 §5.4 서비스 계층 시그널링 (5.4.1 ROUTE/DASH: USD, S-TSID, MPD, 전송, DWD; 5.4.2 MMT: USD, MPD, 시그널링 메시지)",
+            "tta_rel": "준용 + national adaptations: USD_EX extension namespace (serviceLinkage/linkageData); DWD under the Korean namespace nextb.or.kr/…/AppSignaling/DWD/1.0; APD, RSAT, DRM-for-MMTP and SIGNED_MMT_MESSAGE absent (protection signaling via Part 5 CPT); content advisories not used",
             "sbtvd": "ABNT NBR 25602:2025",
             "sbtvd_rel": "chapters not available",
             "note": ""
@@ -4210,7 +4972,709 @@
             "note": "Disaster-recognition information bits — Korea-specific"
           }
         ]
-      }
+      },
+      "comparisons": [
+        {
+          "id": "sig-ref-version",
+          "group": "Signaling · basis",
+          "feature": "Reference edition and national revisions",
+          "atsc_docs": [
+            "A/331"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "Revision history",
+              "page": "p.ii–iv",
+              "value": "Baseline: rollup of amendments through 2026-02 (SignedMultiTable, AEA@category, RSAT, DRM for MMTP, signed MMT messages, OtherBsid, urlType 4 …)",
+              "req": "baseline"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3 (2024-12-06)",
+              "clause": "§1 적용 범위; §2 인용 표준; 부록 Ⅳ-6 표준의 이력",
+              "page": "doc p.1, p.212–214 (pdf 7, 218–220)",
+              "value": "Based on the ATSC 3.0 Candidate Standard; cites A/331 (2017) and A/330 (2017). National revisions: R0 2021-06 animated images + Data-only service (serviceCategory 10); R1 2021-12 caption bitrate; R2 2023-12 NRT file repair over broadband; R3 2024-12 signaling tables for Data-only service",
+              "req": "mandatory (adopted with Korean modifications)"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25602:2025 · SBTVD OG-02",
+              "clause": "ABNT clause unverified; OG-02 (5 pp.) has no chapter detail",
+              "page": "—",
+              "value": "TV 3.0 transport layer standard (21 pp.)",
+              "req": "mandatory (regulation via Decreto 12.595/2025 Art. 3º § 2º — ABNT standards)"
+            }
+          },
+          "difference": "Korea's Part 3 tracks the 2017 edition of A/331 and has been revised nationally four times; features added to A/331 after 2017 (SignedMultiTable 0xFE, AEA@category/@subAudience/@aeaTableId, Regional Service Availability Table, DRM for MMTP, SIGNED_MMT_MESSAGE, OtherBsid, urlType 4) are not present. Brazil's ABNT text was not read.",
+          "impact": "Signaling is functionally the same for linear services; the gaps concern security (signed signaling), regional availability and later code points.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "2017-based text with Korean revisions; post-2017 A/331 additions absent",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT NBR 25602 not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAK.KO-07.0150/R3 (committee.tta.or.kr)",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0150%2FR3&nowSu=1"
+            },
+            {
+              "label": "A/331:2026-04 (atsc.org)",
+              "url": "https://www.atsc.org/atsc-documents/3312017-signaling-delivery-synchronization-error-protection/"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-lls-tables",
+          "group": "Signaling · LLS",
+          "feature": "LLS table set and LLS_table_id assignments",
+          "atsc_docs": [
+            "A/331"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§6.2 Table 6.1",
+              "page": "doc p.28–30 (pdf 42–44)",
+              "value": "0x01 SLT, 0x02 RRT (Annex F), 0x03 SystemTime, 0x04 AEAT, 0x05 OnscreenMessageNotification, 0xFE SignedMultiTable, 0xFF UserDefined; other values per ATSC Code Point Registry",
+              "req": "mandatory"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3",
+              "clause": "§5.3.2 <표 5-1>, <표 5-2>",
+              "page": "doc p.13–15 (pdf 19–21)",
+              "value": "0x01–0x05 identical; 0x80 VIT (버전 정보 테이블, Korean), 0x81 CPT (콘텐츠 보호 테이블 → Part 5 §8.2, Korean), 0xFF UserDefined; no 0xFE SignedMultiTable; 0x80–0xFF described as the range for non-ATSC bodies",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25602:2025",
+              "clause": "ABNT clause unverified",
+              "page": "—",
+              "value": "—",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Korea adds two national LLS tables in the private range (VIT 0x80 with namespace http://www.nextb.or.kr/XMLSchemas/T-UHDTV/Delivery/VIT/1.0/, CPT 0x81) and does not carry SignedMultiTable (0xFE, added to A/331 for signed signaling).",
+          "impact": "Korean receivers must parse VIT/CPT; US receivers ignore them (private range). Absence of SignedMultiTable means Korean LLS is not signed per A/360 (Korea handles protection in Part 5).",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "Same core tables; Korean VIT/CPT added (allowed private range); SignedMultiTable absent",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT NBR 25602 not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "A/331 §6.2 (pdf p.42–44)",
+              "url": "https://www.atsc.org/atsc-documents/3312017-signaling-delivery-synchronization-error-protection/"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-slt",
+          "group": "Signaling · LLS",
+          "feature": "Service List Table (SLT) — structure, serviceCategory, urlType, slsProtocol",
+          "atsc_docs": [
+            "A/331"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§6.3, Tables 6.3–6.7",
+              "page": "doc p.31–38 (pdf 45–52)",
+              "value": "serviceCategory 1 linear A/V, 2 audio, 3 app-based, 4 ESG, 5 deprecated, 6 DRM data, 7 Data Service, 8 Common Data Service; urlType 1 signaling server, 2 ESG, 3 usage report, 4 dynamic-event WebSocket; slsProtocol 1 ROUTE / 2 MMTP; OtherBsid@type (duplicate/portion/MFN alternative)",
+              "req": "mandatory"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3",
+              "clause": "§5.3.3.2 <표 5-4>~<표 5-7>",
+              "page": "doc p.16–22 (pdf 22–28)",
+              "value": "serviceCategory 1–4 identical, 5 EAS service (not deprecated), 10 Data only service (Korean value, added 2021-06); urlType 0–3 only; slsProtocol identical; @sltCapabilities/@svcCapabilities per Part 2 §8 <sa:capabilities>; SimulcastServiceInfo/serviceReceptionType (fixed/mobile)",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25602:2025",
+              "clause": "ABNT clause unverified",
+              "page": "—",
+              "value": "—",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Code-point divergence: Korea signals data-only services with serviceCategory 10 (national value) whereas ATSC later assigned 7 (Data Service) and 8 (Common Data Service); Korea keeps 5 (EAS service) which ATSC deprecated; Korea lacks urlType 4 and OtherBsid, and adds SimulcastServiceInfo/serviceReceptionType.",
+          "impact": "A receiver following A/331:2026 would not recognise Korean data-only services (10) as data services; Korean datacasting receivers key on value 10.",
+          "recommendation": "Record the Korean values in the ATSC Code Point Registry or align Part 3 with serviceCategory 7/8 at the next revision.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "Same SLT structure; national code points (serviceCategory 10, EAS 5) and missing later fields",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT NBR 25602 not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "A/331 Table 6.4 (pdf p.49)",
+              "url": "https://www.atsc.org/atsc-documents/3312017-signaling-delivery-synchronization-error-protection/"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-systemtime",
+          "group": "Signaling · LLS",
+          "feature": "SystemTime fragment",
+          "atsc_docs": [
+            "A/331"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§6.4 Table 6.8",
+              "page": "doc p.39–42",
+              "value": "PTP/TAI-based; ATSC SYSTIME/1.0 namespace; currentUtcOffset, ptpPrepend, leap59/61, utcLocalOffset, dsStatus/dsDayOfMonth/dsHour",
+              "req": "mandatory"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3",
+              "clause": "§5.3.4 <표 5-8>",
+              "page": "doc p.23–24 (pdf 29–30)",
+              "value": "Identical element set and ATSC namespace; LLS period ≤ 5 s",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25602:2025",
+              "clause": "ABNT clause unverified",
+              "page": "—",
+              "value": "—",
+              "req": "mandatory"
+            }
+          },
+          "difference": "None identified.",
+          "impact": "None.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Identical",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT NBR 25602 not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-rrt",
+          "group": "Signaling · LLS",
+          "feature": "Rating Region Table and content advisories",
+          "atsc_docs": [
+            "A/331"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§6.2 (RRT, Annex F); §7.3 Content Advisory Ratings in Service Signaling",
+              "page": "doc p.28, p.124–126",
+              "value": "RRT carried as LLS 0x02; content advisories signaled in DASH/MMTP SLS",
+              "req": "optional / per regulation"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3",
+              "clause": "§5.3.2 (RRT id kept); statement '콘텐츠 시청 등급 정보는 사용하지 않는다'",
+              "page": "doc p.15, p.~45 (pdf 21, 51)",
+              "value": "RRT table id retained for compatibility; content-advisory (viewing-rating) information is not used",
+              "req": "not used (national)"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25602:2025",
+              "clause": "ABNT clause unverified",
+              "page": "—",
+              "value": "Brazilian content rating (Classificação Indicativa) is a legal requirement; TV 3.0 signaling of it not verified",
+              "req": "unverified"
+            }
+          },
+          "difference": "Korea does not use the ATSC content-advisory mechanism (RRT / rating signaling); Korean age-rating display follows domestic broadcasting rules outside this signaling.",
+          "impact": "Korean receivers need no RRT parsing; content advisories are not machine-readable in the Korean profile.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "RRT/content advisory not used in Korea (national policy)",
+              "req": "not used"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "To be verified in ABNT NBR 25602",
+              "req": "unverified"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-aeat",
+          "group": "Signaling · emergency alerting",
+          "feature": "AEAT / AEA-MF message format and national usage rules",
+          "atsc_docs": [
+            "A/331",
+            "A/331 §AEA"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§6.5 Tables 6.10–6.15",
+              "page": "doc p.43–51 (pdf 57–65)",
+              "value": "AEAT@aeaTableId; AEA @aeaId @issuer @audience @subAudience @aeaType @refAEAId @priority @category @wakeup; Header (@effective @expires EventCode EventDesc Location); AEAText; LiveMedia; Media (@mediaType …)",
+              "req": "mandatory when alerting"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3 · TTAK.KO-07.0142/R4",
+              "clause": "Part 3 §5.3.5 <표 5-11>~<표 5-13>; 0142/R4 §5.2, §6.2, §6.10 <표 6-4>, 부속서 A–C",
+              "page": "Part 3 doc p.27–34 (pdf 33–40); 0142/R4 doc p.7–8, p.15–18",
+              "value": "AEA-MF per the 2017 edition: no @aeaTableId, @subAudience, @category; adds <AEAVoiceText> (speech-friendly text, Korean addition); dateTime UTC written as '-00:00'. National usage (0142/R4): @issuer = broadcaster or originating agency (기상청·행정안전부·과학기술정보통신부), @audience 'public' baseline, EventCode/@type from national code tables (부속서 A), Location from 행정동 geocode or GPS circle (부속서 B), device codes (부속서 B-2), priority tied to mandatory-broadcast rules",
+              "req": "mandatory (national emergency-alert rules)"
+            },
+            "SBTVD": {
+              "doc": "SBTVD OG-07 v1 · ABNT NBR 25607:2025",
+              "clause": "OG-07 §6 Table 1 (CAP→AEA equivalence), Table 2 (severity/urgency→priority), Annex A Table A.1, Annex B script",
+              "page": "OG-07 pdf p.3–7, p.23–24",
+              "value": "AEAT generated by converting CAP 1.2 alerts: @wakeup = true only when priority is maximum; EventCode = COBRADE code (6 digits) with EventCode@type='COBRADE'; Location@type 'polygon' (IDAP alerts) or 'ZIP_BR'; broadcasters monitor the IDAP CAP feed (idapfile.mi.gov.br)",
+              "req": "mandatory (ABNT NBR 25607); OG non-normative"
+            }
+          },
+          "difference": "The AEA-MF core is common. Korea's text predates A/331's @category/@subAudience/@aeaTableId and Media@mediaType, and adds AEAVoiceText; Korea defines national EventCode/Location/device code tables and issuer conventions. Brazil derives AEAT from CAP (IDAP) with COBRADE event codes and Brazilian location types, and ties wake-up to maximum priority.",
+          "impact": "Receivers must apply national code tables (Korea) or COBRADE/ZIP_BR semantics (Brazil); alert content is not portable across countries even though the XML container is.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "profile",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "AEA-MF core same; 2017-era subset plus AEAVoiceText; national code tables",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "partial",
+              "text": "AEA-MF used via CAP conversion with Brazilian code/location conventions (OG-07 Annex A); ABNT NBR 25607 not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAK.KO-07.0142/R4 (committee.tta.or.kr)",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0142%2FR4&nowSu=1"
+            },
+            {
+              "label": "SBTVD OG-07 v1 Emergency Warning System (forumsbtvd.org.br)",
+              "url": "https://forumsbtvd.org.br/tv3-0/"
+            },
+            {
+              "label": "A/331 Table 6.10 (pdf p.57)",
+              "url": "https://www.atsc.org/atsc-documents/3312017-signaling-delivery-synchronization-error-protection/"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-wakeup",
+          "group": "Signaling · emergency alerting",
+          "feature": "Emergency wake-up bits (bootstrap ea_wake_up) and wake-up policy",
+          "atsc_docs": [
+            "A/331",
+            "A/321",
+            "A/331 §AEA"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/321:2026-06 · A/331:2026-04",
+              "clause": "A/321 §6.1 (ea_wake_up_1/2); A/331 §6.5 (AEA@wakeup)",
+              "page": "A/321 doc p.15–16; A/331 doc p.43",
+              "value": "2-bit wake-up field in bootstrap symbols 1 and 2; AEA@wakeup marks the associated alert",
+              "req": "mandatory field; use optional"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3 · TTAK.KO-07.0142/R4",
+              "clause": "Part 3 부록 Ⅲ 재난인지정보 비트 <표 III.1-1>; 0142/R4 §5.1, §6.2 <표 6-2>",
+              "page": "Part 3 doc p.202 (pdf 208); 0142/R4 doc p.7–8",
+              "value": "ea_wake_up_1 = LSB, ea_wake_up_2 = MSB; '00' no event; each increment 01→10→11→01 = new wake-up call; at least one AEAT with @wakeup='true' while non-zero; automatic screen-on only for users who opt in (receiver setting)",
+              "req": "mandatory signaling; receiver auto-activation opt-in"
+            },
+            "SBTVD": {
+              "doc": "SBTVD OG-07 v1",
+              "clause": "§6 Table 1 (AEAT.AEA@wakeup)",
+              "page": "OG-07 pdf p.4",
+              "value": "@wakeup = true only when AEA@priority is maximum (4), false otherwise",
+              "req": "operational guideline"
+            }
+          },
+          "difference": "Bit semantics are the same; national policy differs: Korea restates the sequencing rule and makes automatic activation a user opt-in; Brazil binds wake-up to maximum-priority alerts only.",
+          "impact": "Receiver behaviour on wake-up is a national implementation policy rather than a standards difference.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "profile",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Same bits and semantics; national activation policy",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "same",
+              "text": "Same bits; wake-up limited to maximum priority by guideline",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-sls-route",
+          "group": "Signaling · SLS",
+          "feature": "ROUTE/DASH Service Layer Signaling (USBD/USD, S-TSID, MPD, HELD, DWD)",
+          "atsc_docs": [
+            "A/331"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§7.1 (7.1.3 USBD, 7.1.4 S-TSID, 7.1.5 MPD, 7.1.6 delivery, 7.1.7 APD, 7.1.8 HELD, 7.1.9 DWD, 7.1.10 RSAT)",
+              "page": "doc p.60–81",
+              "value": "ATSC namespaces (ROUTEUSD, ROUTESLS …); DWD under the ATSC AppSignaling namespace",
+              "req": "mandatory for ROUTE services"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3",
+              "clause": "§5.4.1 (5.4.1.3 USD, 5.4.1.4 S-TSID, 5.4.1.5 MPD, 5.4.1.6 전송, 5.4.1.7 DWD); 부속서 A.4 (TOI rule)",
+              "page": "doc p.42–61 (pdf 48–67)",
+              "value": "Same tables; Korean extensions: USD_EX namespace (http://www.nextb.or.kr/XMLSchemas/T-UHDTV/Delivery/USD_EX/1.0 and 1.1) adding serviceLinkage/linkageData to the USD; DWD placed under the Korean namespace http://www.nextb.or.kr/XMLSchemas/T-UHDTV/AppSignaling/DWD/1.0/ (prefix dwd); no APD, no RSAT",
+              "req": "mandatory for ROUTE services"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25602:2025 · SBTVD OG-08 §7.2/7.3",
+              "clause": "ABNT clause unverified; OG-08 §7.2 Transport layer metadata, §7.3 DASH streams",
+              "page": "—",
+              "value": "DASH/ROUTE-based transport with Ginga access APIs",
+              "req": "mandatory"
+            }
+          },
+          "difference": "Korea keeps the ATSC SLS fragments but adds a service-linkage extension (USD_EX) and issues the DWD under a Korean namespace; A/331's APD and RSAT are absent.",
+          "impact": "Korean USD/DWD instances are not schema-identical to ATSC's; US receivers ignore the usdex extension but would not validate the Korean DWD namespace.",
+          "recommendation": "Document the USD_EX and DWD namespaces in the ATSC Code Point Registry or migrate DWD to the ATSC namespace.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "Same fragments; Korean USD_EX extension and DWD namespace; APD/RSAT absent",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT NBR 25602 not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-sls-mmt",
+          "group": "Signaling · SLS",
+          "feature": "MMTP Service Layer Signaling (USD for MMT, MPD, MMT signaling messages)",
+          "atsc_docs": [
+            "A/331"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§7.2 (7.2.1 USD for MMTP, 7.2.2 MPD, 7.2.3 MMTP-specific messages, 7.2.4 DRM for MMTP, 7.2.5 SIGNED_MMT_MESSAGE)",
+              "page": "doc p.81–124",
+              "value": "MMTP SLS incl. DRM and signed messages (added after 2017)",
+              "req": "mandatory for MMTP services"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3 · TTAK.KO-07.0152",
+              "clause": "Part 3 §5.4.2 (5.4.2.1 USD, 5.4.2.2 MPD, 5.4.2.3 MMT 시그널링 메시지); Part 5 §8.3 MMT 시그널링, §8.2 UHDCP/DP signaling (CPT)",
+              "page": "Part 3 doc p.62–107 (pdf 68–113)",
+              "value": "MMT SLS per the 2017 text; content-protection signaling handled in Part 5 (CPT LLS table 0x81, MMT signaling) instead of A/331 §7.2.4/§7.2.5",
+              "req": "mandatory for MMTP services"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25602:2025",
+              "clause": "ABNT clause unverified",
+              "page": "—",
+              "value": "MMTP use in TV 3.0 not verified",
+              "req": "unverified"
+            }
+          },
+          "difference": "Same MMTP signaling core; Korea routes DRM/content-protection signaling through its own Part 5 mechanism rather than A/331 §7.2.4–7.2.5.",
+          "impact": "Protected MMT services are signaled differently in Korea (CPT/UHDCP) than in the US (A/331 DRM + A/360).",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "partial"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "Same core; protection signaling replaced by Korean Part 5 mechanism",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT NBR 25602 not read",
+              "req": "unverified"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-delivery",
+          "group": "Signaling · delivery",
+          "feature": "Delivery protocols (ROUTE/DASH, MMTP/MPU), hybrid delivery and file repair",
+          "atsc_docs": [
+            "A/331",
+            "A/331 §NRT"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§8.1–8.3; Annex A (ROUTE source protocol)",
+              "page": "doc p.126–146",
+              "value": "ROUTE/DASH and MMTP/MPU broadcast delivery, hybrid modes, file repair (AL-FEC capable or not)",
+              "req": "mandatory"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3",
+              "clause": "§5.5.1 방송망 전송, §5.5.2 하이브리드 전송, §5.5.2.3 파일 복구 절차; 부속서 A ROUTE source 프로토콜",
+              "page": "doc p.108–126 (pdf 113–131); p.162–188",
+              "value": "Same protocols; MPU constraint 'elst' box not used; broadband NRT file repair added in R2 (2023-12); 부속서 A corresponds to A/331 Annex A (ROUTE source protocol)",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25602:2025 · SBTVD OG-08 §7.3/7.5",
+              "clause": "ABNT clause unverified; OG-08 DASH streams, NRT files",
+              "page": "—",
+              "value": "DASH/ROUTE and NRT delivery",
+              "req": "mandatory"
+            }
+          },
+          "difference": "No substantive difference; Korea adds an MPU profile constraint (no 'elst') and documented its file-repair procedure later than ATSC.",
+          "impact": "None for interoperability.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Same delivery protocols; minor MPU profile constraint",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT NBR 25602 not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-data-only",
+          "group": "Signaling · datacasting",
+          "feature": "Data-only service signaling (Korean extension)",
+          "atsc_docs": [
+            "A/331",
+            "A/331 §NRT"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§6.3 Table 6.4 (serviceCategory 7 Data Service, 8 Common Data Service); §7.1.9 DWD",
+              "page": "doc p.35, p.77–81",
+              "value": "Data services signaled with serviceCategory 7/8 and DWD",
+              "req": "optional"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3",
+              "clause": "§5.3.3.2 <표 5-5> (serviceCategory 10 Data only service); revisions R0 (2021-06) and R3 (2024-12) 'Data only service를 위한 시그널링 테이블 수정/추가'",
+              "page": "doc p.18–19; p.213–214",
+              "value": "Data-only services (basis of RTK/HP-GNSS and traffic datacasting) signaled with the national value 10 and modified signaling tables",
+              "req": "optional (national)"
+            },
+            "SBTVD": {
+              "doc": "SBTVD OG-CPC (draft) · OG-08 §7.5",
+              "clause": "Common Public Communication / Digital Government platform; NRT files",
+              "page": "—",
+              "value": "Public-communication datacasting via the application platform",
+              "req": "draft"
+            }
+          },
+          "difference": "Korea and ATSC signal data services with different serviceCategory values (10 vs 7/8); Korea's datacasting standards (TTAK.KO-07.0165/0167/0168, 0139) build on the Korean value.",
+          "impact": "Datacasting receivers are not interchangeable at the SLT level without a mapping.",
+          "recommendation": "Coordinate the Korean data-only code point with the ATSC Code Point Registry.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "metadata"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "Different code point for data services (10 vs 7/8)",
+              "req": "optional"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "Datacasting handled via the application platform; signaling not verified",
+              "req": "draft"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/332",
@@ -6258,7 +7722,145 @@
           "code": "review",
           "text": "Counterpart document identified; clause-level comparison pending"
         }
-      }
+      },
+      "comparisons": [
+        {
+          "id": "sig-aeat",
+          "group": "Signaling · emergency alerting",
+          "feature": "AEAT / AEA-MF message format and national usage rules",
+          "atsc_docs": [
+            "A/331",
+            "A/331 §AEA"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§6.5 Tables 6.10–6.15",
+              "page": "doc p.43–51 (pdf 57–65)",
+              "value": "AEAT@aeaTableId; AEA @aeaId @issuer @audience @subAudience @aeaType @refAEAId @priority @category @wakeup; Header (@effective @expires EventCode EventDesc Location); AEAText; LiveMedia; Media (@mediaType …)",
+              "req": "mandatory when alerting"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3 · TTAK.KO-07.0142/R4",
+              "clause": "Part 3 §5.3.5 <표 5-11>~<표 5-13>; 0142/R4 §5.2, §6.2, §6.10 <표 6-4>, 부속서 A–C",
+              "page": "Part 3 doc p.27–34 (pdf 33–40); 0142/R4 doc p.7–8, p.15–18",
+              "value": "AEA-MF per the 2017 edition: no @aeaTableId, @subAudience, @category; adds <AEAVoiceText> (speech-friendly text, Korean addition); dateTime UTC written as '-00:00'. National usage (0142/R4): @issuer = broadcaster or originating agency (기상청·행정안전부·과학기술정보통신부), @audience 'public' baseline, EventCode/@type from national code tables (부속서 A), Location from 행정동 geocode or GPS circle (부속서 B), device codes (부속서 B-2), priority tied to mandatory-broadcast rules",
+              "req": "mandatory (national emergency-alert rules)"
+            },
+            "SBTVD": {
+              "doc": "SBTVD OG-07 v1 · ABNT NBR 25607:2025",
+              "clause": "OG-07 §6 Table 1 (CAP→AEA equivalence), Table 2 (severity/urgency→priority), Annex A Table A.1, Annex B script",
+              "page": "OG-07 pdf p.3–7, p.23–24",
+              "value": "AEAT generated by converting CAP 1.2 alerts: @wakeup = true only when priority is maximum; EventCode = COBRADE code (6 digits) with EventCode@type='COBRADE'; Location@type 'polygon' (IDAP alerts) or 'ZIP_BR'; broadcasters monitor the IDAP CAP feed (idapfile.mi.gov.br)",
+              "req": "mandatory (ABNT NBR 25607); OG non-normative"
+            }
+          },
+          "difference": "The AEA-MF core is common. Korea's text predates A/331's @category/@subAudience/@aeaTableId and Media@mediaType, and adds AEAVoiceText; Korea defines national EventCode/Location/device code tables and issuer conventions. Brazil derives AEAT from CAP (IDAP) with COBRADE event codes and Brazilian location types, and ties wake-up to maximum priority.",
+          "impact": "Receivers must apply national code tables (Korea) or COBRADE/ZIP_BR semantics (Brazil); alert content is not portable across countries even though the XML container is.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "profile",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "AEA-MF core same; 2017-era subset plus AEAVoiceText; national code tables",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "partial",
+              "text": "AEA-MF used via CAP conversion with Brazilian code/location conventions (OG-07 Annex A); ABNT NBR 25607 not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [
+            {
+              "label": "TTAK.KO-07.0142/R4 (committee.tta.or.kr)",
+              "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0142%2FR4&nowSu=1"
+            },
+            {
+              "label": "SBTVD OG-07 v1 Emergency Warning System (forumsbtvd.org.br)",
+              "url": "https://forumsbtvd.org.br/tv3-0/"
+            },
+            {
+              "label": "A/331 Table 6.10 (pdf p.57)",
+              "url": "https://www.atsc.org/atsc-documents/3312017-signaling-delivery-synchronization-error-protection/"
+            }
+          ],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-wakeup",
+          "group": "Signaling · emergency alerting",
+          "feature": "Emergency wake-up bits (bootstrap ea_wake_up) and wake-up policy",
+          "atsc_docs": [
+            "A/331",
+            "A/321",
+            "A/331 §AEA"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/321:2026-06 · A/331:2026-04",
+              "clause": "A/321 §6.1 (ea_wake_up_1/2); A/331 §6.5 (AEA@wakeup)",
+              "page": "A/321 doc p.15–16; A/331 doc p.43",
+              "value": "2-bit wake-up field in bootstrap symbols 1 and 2; AEA@wakeup marks the associated alert",
+              "req": "mandatory field; use optional"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3 · TTAK.KO-07.0142/R4",
+              "clause": "Part 3 부록 Ⅲ 재난인지정보 비트 <표 III.1-1>; 0142/R4 §5.1, §6.2 <표 6-2>",
+              "page": "Part 3 doc p.202 (pdf 208); 0142/R4 doc p.7–8",
+              "value": "ea_wake_up_1 = LSB, ea_wake_up_2 = MSB; '00' no event; each increment 01→10→11→01 = new wake-up call; at least one AEAT with @wakeup='true' while non-zero; automatic screen-on only for users who opt in (receiver setting)",
+              "req": "mandatory signaling; receiver auto-activation opt-in"
+            },
+            "SBTVD": {
+              "doc": "SBTVD OG-07 v1",
+              "clause": "§6 Table 1 (AEAT.AEA@wakeup)",
+              "page": "OG-07 pdf p.4",
+              "value": "@wakeup = true only when AEA@priority is maximum (4), false otherwise",
+              "req": "operational guideline"
+            }
+          },
+          "difference": "Bit semantics are the same; national policy differs: Korea restates the sequencing rule and makes automatic activation a user opt-in; Brazil binds wake-up to maximum-priority alerts only.",
+          "impact": "Receiver behaviour on wake-up is a national implementation policy rather than a standards difference.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "profile",
+              "conf": "partial"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Same bits and semantics; national activation policy",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "same",
+              "text": "Same bits; wake-up limited to maximum priority by guideline",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "A/331 §NRT",
@@ -6325,7 +7927,132 @@
           "code": "review",
           "text": "Counterpart document identified; clause-level comparison pending"
         }
-      }
+      },
+      "comparisons": [
+        {
+          "id": "sig-delivery",
+          "group": "Signaling · delivery",
+          "feature": "Delivery protocols (ROUTE/DASH, MMTP/MPU), hybrid delivery and file repair",
+          "atsc_docs": [
+            "A/331",
+            "A/331 §NRT"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§8.1–8.3; Annex A (ROUTE source protocol)",
+              "page": "doc p.126–146",
+              "value": "ROUTE/DASH and MMTP/MPU broadcast delivery, hybrid modes, file repair (AL-FEC capable or not)",
+              "req": "mandatory"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3",
+              "clause": "§5.5.1 방송망 전송, §5.5.2 하이브리드 전송, §5.5.2.3 파일 복구 절차; 부속서 A ROUTE source 프로토콜",
+              "page": "doc p.108–126 (pdf 113–131); p.162–188",
+              "value": "Same protocols; MPU constraint 'elst' box not used; broadband NRT file repair added in R2 (2023-12); 부속서 A corresponds to A/331 Annex A (ROUTE source protocol)",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "doc": "ABNT NBR 25602:2025 · SBTVD OG-08 §7.3/7.5",
+              "clause": "ABNT clause unverified; OG-08 DASH streams, NRT files",
+              "page": "—",
+              "value": "DASH/ROUTE and NRT delivery",
+              "req": "mandatory"
+            }
+          },
+          "difference": "No substantive difference; Korea adds an MPU profile constraint (no 'elst') and documented its file-repair procedure later than ATSC.",
+          "impact": "None for interoperability.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "unverified"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "same",
+              "text": "Same delivery protocols; minor MPU profile constraint",
+              "req": "mandatory"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "ABNT NBR 25602 not read",
+              "req": "mandatory"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        },
+        {
+          "id": "sig-data-only",
+          "group": "Signaling · datacasting",
+          "feature": "Data-only service signaling (Korean extension)",
+          "atsc_docs": [
+            "A/331",
+            "A/331 §NRT"
+          ],
+          "sides": {
+            "ATSC": {
+              "doc": "A/331:2026-04",
+              "clause": "§6.3 Table 6.4 (serviceCategory 7 Data Service, 8 Common Data Service); §7.1.9 DWD",
+              "page": "doc p.35, p.77–81",
+              "value": "Data services signaled with serviceCategory 7/8 and DWD",
+              "req": "optional"
+            },
+            "TTA": {
+              "doc": "TTAK.KO-07.0150/R3",
+              "clause": "§5.3.3.2 <표 5-5> (serviceCategory 10 Data only service); revisions R0 (2021-06) and R3 (2024-12) 'Data only service를 위한 시그널링 테이블 수정/추가'",
+              "page": "doc p.18–19; p.213–214",
+              "value": "Data-only services (basis of RTK/HP-GNSS and traffic datacasting) signaled with the national value 10 and modified signaling tables",
+              "req": "optional (national)"
+            },
+            "SBTVD": {
+              "doc": "SBTVD OG-CPC (draft) · OG-08 §7.5",
+              "clause": "Common Public Communication / Digital Government platform; NRT files",
+              "page": "—",
+              "value": "Public-communication datacasting via the application platform",
+              "req": "draft"
+            }
+          },
+          "difference": "Korea and ATSC signal data services with different serviceCategory values (10 vs 7/8); Korea's datacasting standards (TTAK.KO-07.0165/0167/0168, 0139) build on the Korean value.",
+          "impact": "Datacasting receivers are not interchangeable at the SLT level without a mapping.",
+          "recommendation": "Coordinate the Korean data-only code point with the ATSC Code Point Registry.",
+          "cells": {
+            "TTA": {
+              "rel": "profile",
+              "conf": "confirmed"
+            },
+            "SBTVD": {
+              "rel": "related",
+              "conf": "metadata"
+            }
+          },
+          "verdicts": {
+            "TTA": {
+              "code": "partial",
+              "text": "Different code point for data services (10 vs 7/8)",
+              "req": "optional"
+            },
+            "SBTVD": {
+              "code": "review",
+              "text": "Datacasting handled via the application platform; signaling not verified",
+              "req": "draft"
+            }
+          },
+          "evidence": [],
+          "reviewed": {
+            "date": "2026-08-31",
+            "by": "draft (AI-assisted; human review pending)"
+          }
+        }
+      ]
     },
     {
       "id": "(no ATSC document / RTK)",
