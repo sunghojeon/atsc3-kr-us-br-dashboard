@@ -1045,9 +1045,199 @@
       "title_en": "Digital terrestrial broadcasting systems"
     },
     "Report BT.2343": {
-      "title": "Collection of field trials of ultra-high definition television over digital terrestrial television broadcasting networks",
+      "title": "Collection of field trials of ultra high definition television over digital terrestrial television broadcasting networks",
       "lang": "en",
-      "title_en": "Collection of field trials of ultra-high definition television over digital terrestrial television broadcasting networks"
+      "title_en": "Collection of field trials of ultra high definition television over digital terrestrial television broadcasting networks"
+    },
+    "BT.1206": {
+      "title": "Spectrum limit masks for digital terrestrial television broadcasting",
+      "lang": "en",
+      "title_en": "Spectrum limit masks for digital terrestrial television broadcasting"
+    },
+    "BT.1209": {
+      "title": "Service multiplex methods for digital terrestrial television broadcasting",
+      "lang": "en",
+      "title_en": "Service multiplex methods for digital terrestrial television broadcasting"
+    },
+    "BT.1299": {
+      "title": "The basic elements of a worldwide common family of systems for digital terrestrial television broadcasting",
+      "lang": "en",
+      "title_en": "The basic elements of a worldwide common family of systems for digital terrestrial television broadcasting"
+    },
+    "BT.1300": {
+      "title": "Service multiplex, transport, and identification methods for digital terrestrial television broadcasting",
+      "lang": "en",
+      "title_en": "Service multiplex, transport, and identification methods for digital terrestrial television broadcasting"
+    },
+    "BT.1368": {
+      "title": "Planning criteria, including protection ratios, for digital terrestrial television services in the VHF/UHF bands",
+      "lang": "en",
+      "title_en": "Planning criteria, including protection ratios, for digital terrestrial television services in the VHF/UHF bands"
+    },
+    "BT.1699": {
+      "title": "Harmonization of declarative application formats for interactive TV",
+      "lang": "en",
+      "title_en": "Harmonization of declarative application formats for interactive TV"
+    },
+    "BT.1774": {
+      "title": "Use of satellite and terrestrial broadcast infrastructures for public warning, disaster mitigation and relief",
+      "lang": "en",
+      "title_en": "Use of satellite and terrestrial broadcast infrastructures for public warning, disaster mitigation and relief"
+    },
+    "BT.1833": {
+      "title": "Broadcasting of multimedia and data applications for mobile reception by handheld receivers",
+      "lang": "en",
+      "title_en": "Broadcasting of multimedia and data applications for mobile reception by handheld receivers"
+    },
+    "BT.1869": {
+      "title": "Multiplexing scheme for variable-length packets in digital multimedia broadcasting systems",
+      "lang": "en",
+      "title_en": "Multiplexing scheme for variable-length packets in digital multimedia broadcasting systems"
+    },
+    "BT.2016": {
+      "title": "Error-correction, data framing, modulation and emission methods for terrestrial multimedia broadcasting for mobile reception using handheld receivers in VHF/UHF bands",
+      "lang": "en",
+      "title_en": "Error-correction, data framing, modulation and emission methods for terrestrial multimedia broadcasting for mobile reception using handheld receivers in VHF/UHF bands"
+    },
+    "BT.2033": {
+      "title": "Planning criteria, including protection ratios, for second generation of digital terrestrial television broadcasting systems in the VHF/UHF bands",
+      "lang": "en",
+      "title_en": "Planning criteria, including protection ratios, for second generation of digital terrestrial television broadcasting systems in the VHF/UHF bands"
+    },
+    "BT.2036": {
+      "title": "Characteristics of a reference receiving system for frequency planning of digital terrestrial television systems",
+      "lang": "en",
+      "title_en": "Characteristics of a reference receiving system for frequency planning of digital terrestrial television systems"
+    },
+    "BT.2037": {
+      "title": "General requirements for broadcast-oriented applications of integrated broadcast-broadband systems and their envisaged utilization",
+      "lang": "en",
+      "title_en": "General requirements for broadcast-oriented applications of integrated broadcast-broadband systems and their envisaged utilization"
+    },
+    "BT.2073": {
+      "title": "Use of the high efficiency video coding for UHDTV and HDTV broadcasting applications",
+      "lang": "en",
+      "title_en": "Use of the high efficiency video coding for UHDTV and HDTV broadcasting applications"
+    },
+    "Report BT.2035": {
+      "title": "Guidelines and techniques for the evaluation of digital terrestrial television broadcasting systems including assessment of their coverage areas",
+      "lang": "en",
+      "title_en": "Guidelines and techniques for the evaluation of digital terrestrial television broadcasting systems including assessment of their coverage areas"
+    },
+    "Report BT.2049": {
+      "title": "Broadcasting of multimedia and data applications for mobile reception",
+      "lang": "en",
+      "title_en": "Broadcasting of multimedia and data applications for mobile reception"
+    },
+    "Report BT.2137": {
+      "title": "Coverage prediction methods and planning software for digital terrestrial television broadcasting (DTTB) networks",
+      "lang": "en",
+      "title_en": "Coverage prediction methods and planning software for digital terrestrial television broadcasting (DTTB) networks"
+    },
+    "Report BT.2140": {
+      "title": "Transition from analogue to digital terrestrial television broadcasting",
+      "lang": "en",
+      "title_en": "Transition from analogue to digital terrestrial television broadcasting"
+    },
+    "Report BT.2246": {
+      "title": "The present state of ultra-high definition television",
+      "lang": "en",
+      "title_en": "The present state of ultra-high definition television"
+    },
+    "Report BT.2299": {
+      "title": "Broadcasting for public warning, disaster mitigation and relief",
+      "lang": "en",
+      "title_en": "Broadcasting for public warning, disaster mitigation and relief"
+    },
+    "Report BT.2382": {
+      "title": "Description of interference into a digital terrestrial television receiver",
+      "lang": "en",
+      "title_en": "Description of interference into a digital terrestrial television receiver"
+    },
+    "Report BT.2386": {
+      "title": "Digital terrestrial broadcasting: Design and implementation of single frequency networks",
+      "lang": "en",
+      "title_en": "Digital terrestrial broadcasting: Design and implementation of single frequency networks"
+    },
+    "Report BT.2389": {
+      "title": "Guidelines on measurements for digital terrestrial television broadcasting systems",
+      "lang": "en",
+      "title_en": "Guidelines on measurements for digital terrestrial television broadcasting systems"
+    },
+    "Report BT.2390": {
+      "title": "High dynamic range television for production and international programme exchange",
+      "lang": "en",
+      "title_en": "High dynamic range television for production and international programme exchange"
+    },
+    "Report BT.2400": {
+      "title": "Usage scenarios, requirements and technical elements of a global platform for the broadcasting service",
+      "lang": "en",
+      "title_en": "Usage scenarios, requirements and technical elements of a global platform for the broadcasting service"
+    },
+    "Report BT.2467": {
+      "title": "Methods for the evaluation of the quality of service of second generation DTTB systems",
+      "lang": "en",
+      "title_en": "Methods for the evaluation of the quality of service of second generation DTTB systems"
+    },
+    "Report BT.2468": {
+      "title": "Guidance for selection of system parameters and implementation of second generation DTTB systems",
+      "lang": "en",
+      "title_en": "Guidance for selection of system parameters and implementation of second generation DTTB systems"
+    },
+    "Report BT.2485": {
+      "title": "Advanced network planning and transmission methods for enhancements of digital terrestrial television broadcasting",
+      "lang": "en",
+      "title_en": "Advanced network planning and transmission methods for enhancements of digital terrestrial television broadcasting"
+    },
+    "Report BT.2495": {
+      "title": "Methods for laboratory and field measurements for the assessment of ATSC 3.0 reception quality",
+      "lang": "en",
+      "title_en": "Methods for laboratory and field measurements for the assessment of ATSC 3.0 reception quality"
+    },
+    "Report BT.2522": {
+      "title": "A framework for the future of broadcasting",
+      "lang": "en",
+      "title_en": "A framework for the future of broadcasting"
+    },
+    "Report BT.2526": {
+      "title": "Field trials of terrestrial multimedia mobile broadcasting systems",
+      "lang": "en",
+      "title_en": "Field trials of terrestrial multimedia mobile broadcasting systems"
+    },
+    "Report BT.2538": {
+      "title": "Use cases of Versatile Video Coding multilayer profiles for broadcasting services",
+      "lang": "en",
+      "title_en": "Use cases of Versatile Video Coding multilayer profiles for broadcasting services"
+    },
+    "Report BT.2544": {
+      "title": "Compatibility between TMMB System-L and DTTB systems in the 470-694 MHz band within the GE06 agreement",
+      "lang": "en",
+      "title_en": "Compatibility between TMMB System-L and DTTB systems in the 470-694 MHz band within the GE06 agreement"
+    },
+    "Report BT.2545": {
+      "title": "Inter-tower communications network for terrestrial broadcasting and datacasting systems",
+      "lang": "en",
+      "title_en": "Inter-tower communications network for terrestrial broadcasting and datacasting systems"
+    },
+    "Report BT.2549": {
+      "title": "Terrestrial multimedia mobile broadcasting System L network planning and evaluation",
+      "lang": "en",
+      "title_en": "Terrestrial multimedia mobile broadcasting System L network planning and evaluation"
+    },
+    "Report BT.2556": {
+      "title": "Experiences of ultra-high definition television and high dynamic range television",
+      "lang": "en",
+      "title_en": "Experiences of ultra-high definition television and high dynamic range television"
+    },
+    "Report BT.2557": {
+      "title": "Application of Smart Media Transport based on MPEG Media Transport under different service requirements",
+      "lang": "en",
+      "title_en": "Application of Smart Media Transport based on MPEG Media Transport under different service requirements"
+    },
+    "Report BT.2568": {
+      "title": "Application-oriented television broadcasting",
+      "lang": "en",
+      "title_en": "Application-oriented television broadcasting"
     },
     "BR-SBTVD-TV30-CFP-2020": {
       "title": "TV 3.0 Project - Call for Proposals (Forum SBTVD)",
@@ -1291,9 +1481,11 @@
       "cells": {
         "ITU": {
           "docs": [
-            "Report BT.2295"
+            "Report BT.2295",
+            "BT.1299",
+            "Report BT.2400"
           ],
-          "note": "Collection of DTTB system specifications (includes an ATSC 3.0 system description)."
+          "note": "DTTB system specifications (ATSC 3.0 description); common family of DTTB systems (BT.1299); global platform for broadcasting (Report BT.2400)."
         },
         "ATSC": {
           "docs": [
@@ -1363,8 +1555,10 @@
       "summary": "Receiver requirements and minimum specifications.",
       "cells": {
         "ITU": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "BT.2036"
+          ],
+          "note": "Reference receiving system for frequency planning."
         },
         "ATSC": {
           "docs": [],
@@ -1486,9 +1680,12 @@
           "docs": [
             "BT.1877",
             "BT.1306",
-            "Report BT.2295"
+            "Report BT.2295",
+            "Report BT.2468",
+            "Report BT.2467",
+            "BT.1206"
           ],
-          "note": "Listed as a second-generation system in Rec. BT.1877."
+          "note": "Second-generation DTTB system in Rec. BT.1877; parameter selection and QoS evaluation guidance (Reports BT.2468, BT.2467); spectrum limit masks (BT.1206)."
         },
         "ATSC": {
           "docs": [
@@ -1620,8 +1817,10 @@
       "summary": "STLTP interface between the broadcast gateway (scheduler) and transmitters; timing and SFN synchronization.",
       "cells": {
         "ITU": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "Report BT.2386"
+          ],
+          "note": "Design and implementation of single frequency networks."
         },
         "ATSC": {
           "docs": [
@@ -1679,8 +1878,11 @@
       "summary": "Laboratory performance test plan for the ATSC 3.0 physical layer.",
       "cells": {
         "ITU": {
-          "docs": [],
-          "note": ""
+          "docs": [
+            "Report BT.2495",
+            "Report BT.2389"
+          ],
+          "note": "Laboratory and field measurement methods for ATSC 3.0 reception quality; DTTB measurement guidelines."
         },
         "ATSC": {
           "docs": [
@@ -1724,9 +1926,11 @@
       "cells": {
         "ITU": {
           "docs": [
-            "Report BT.2343"
+            "Report BT.2343",
+            "Report BT.2495",
+            "Report BT.2035"
           ],
-          "note": "Collection of field trials of UHDTV over DTTB networks."
+          "note": "UHDTV-over-DTTB field trials; ATSC 3.0 measurement methods; DTTB system evaluation guidelines."
         },
         "ATSC": {
           "docs": [
@@ -1852,9 +2056,11 @@
       "cells": {
         "ITU": {
           "docs": [
-            "Report BT.2295"
+            "Report BT.2295",
+            "BT.1869",
+            "BT.1209"
           ],
-          "note": ""
+          "note": "Multiplexing scheme for variable-length packets (BT.1869); service multiplex methods (BT.1209)."
         },
         "ATSC": {
           "docs": [
@@ -1908,9 +2114,12 @@
         "ITU": {
           "docs": [
             "Report BT.2295",
-            "BT.2090"
+            "BT.1300",
+            "Report BT.2557",
+            "BT.1774",
+            "Report BT.2299"
           ],
-          "note": "BT.2090: emergency warning via DTTB."
+          "note": "Transport/multiplex methods (BT.1300), MMT-based Smart Media Transport (Report BT.2557); public warning via broadcasting (BT.1774, Report BT.2299)."
         },
         "ATSC": {
           "docs": [
@@ -2312,11 +2521,12 @@
       "cells": {
         "ITU": {
           "docs": [
+            "BT.2073",
             "BT.2020",
             "BT.2100",
-            "BT.709"
+            "Report BT.2390"
           ],
-          "note": "UHDTV colorimetry, HDR-TV."
+          "note": "Use of HEVC for UHDTV/HDTV broadcasting (BT.2073); UHDTV and HDR-TV image parameters; HDR report."
         },
         "ATSC": {
           "docs": [
@@ -2586,9 +2796,12 @@
           "docs": [
             "BT.2053",
             "BT.2075",
-            "Report BT.2267"
+            "BT.2037",
+            "BT.1699",
+            "Report BT.2267",
+            "Report BT.2568"
           ],
-          "note": "IBB requirements, systems and report."
+          "note": "IBB requirements and systems; broadcast-oriented IBB applications (BT.2037); declarative application formats (BT.1699); application-oriented broadcasting report."
         },
         "ATSC": {
           "docs": [
@@ -2641,9 +2854,9 @@
       "cells": {
         "ITU": {
           "docs": [
-            "BT.[VVC] (draft)"
+            "Report BT.2538"
           ],
-          "note": "Draft new Recommendation on the use of VVC in progress in WP 6B."
+          "note": "VVC multilayer-profile use cases for broadcasting; a draft new Recommendation on the use of VVC is in progress in WP 6B."
         },
         "ATSC": {
           "docs": [
@@ -3171,10 +3384,10 @@
       "cells": {
         "ITU": {
           "docs": [
-            "BT.2090",
-            "Report BT.2382"
+            "BT.1774",
+            "Report BT.2299"
           ],
-          "note": "Emergency warning via DTTB."
+          "note": "Use of broadcast infrastructures for public warning (BT.1774); broadcasting for public warning, disaster mitigation and relief (Report BT.2299)."
         },
         "ATSC": {
           "docs": [
@@ -3221,9 +3434,10 @@
       "cells": {
         "ITU": {
           "docs": [
-            "Report BT.2295"
+            "Report BT.2295",
+            "Report BT.2545"
           ],
-          "note": ""
+          "note": "Inter-tower communications network for broadcasting and datacasting systems."
         },
         "ATSC": {
           "docs": [
