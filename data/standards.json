@@ -66,8 +66,7 @@
           "ref": "Art. 13 ① 3",
           "text": "비디오 신호의 압축 조건은 … ISO/IEC 23008-2의 Main 10 Profile 또는 Scalable Main 10 Profile, Main tier, Level 5.2의 내용을 따를 것",
           "maps": [
-            "A/341",
-            "A/345"
+            "A/341"
           ]
         },
         {
@@ -75,7 +74,6 @@
           "text": "오디오 신호의 압축 조건은 … ISO/IEC 23008-3의 LC(low complexity) Profile, Level 1, 2 또는 3의 내용을 따를 것",
           "maps": [
             "A/342 Part 1",
-            "A/342 Part 2",
             "A/342 Part 3"
           ]
         },
@@ -157,10 +155,10 @@
       "title_lang": "pt",
       "title_en": "",
       "issuer": "Presidência da República",
-      "effective": "2025-08-27",
+      "effective": "2025-08-28",
       "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12595.htm",
       "local": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md",
-      "note": "Adopts the ATSC 3.0 physical-layer signal standard for TV 3.0 (Art. 3º) with MIMO, LDM and TxID; technical specifications are drafted by Fórum SBTVD and standardized by ABNT (Art. 3º §1º–§2º). Art. 5º lists the system characteristics; Art. 2º of Decreto 11.484/2023 is revoked.",
+      "note": "Signed 27 Aug 2025, published in the DOU on 28 Aug 2025. Adopts the ATSC 3.0 physical-layer signal standard for TV 3.0 (Art. 3º) with MIMO, LDM and TxID; technical specifications are drafted by Fórum SBTVD and standardized by ABNT (Art. 3º §1º–§2º). Art. 5º lists the system characteristics; Art. 2º of Decreto 11.484/2023 is revoked.",
       "clauses": [
         {
           "ref": "Art. 3º, caput",
@@ -196,10 +194,10 @@
       "title_lang": "pt",
       "title_en": "",
       "issuer": "Agência Nacional de Telecomunicações (Anatel)",
-      "effective": "2026-02-24",
-      "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2705-ato-2705",
+      "effective": "2026-02-25",
+      "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705",
       "local": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md",
-      "note": "Provisional conformity-assessment requirements for TV 3.0 transmitters: the physical layer shall implement ATSC 3.0 per ATSC A/321:2025-07, A/322:2025-07a and A/324:2025-07 (item 4.1), with MER and emission-mask tests; definitive requirements under Consulta Pública nº 10/2026.",
+      "note": "Signed 24 Feb 2026, published in the Boletim de Serviço on 25 Feb 2026 (in force on publication). Provisional conformity-assessment requirements for TV 3.0 transmitters: the physical layer shall implement ATSC 3.0 per ATSC A/321:2025-07, A/322:2025-07a and A/324:2025-07 (item 4.1); emission mask per RCC-SRA (item 5.8.2); MER of at least 30 dB (item 5.9.2). Definitive requirements under Consulta Pública nº 10/2026.",
       "clauses": [
         {
           "ref": "Anexo, item 4.1",
@@ -211,8 +209,15 @@
           ]
         },
         {
-          "ref": "Anexo, item 5.9",
-          "text": "Taxa de Erro de Modulação (MER) — ensaio; máscara de emissão conforme os Requisitos Técnicos de Condições de Uso de Radiofrequências (RCC-SRA).",
+          "ref": "Anexo, item 5.8.2",
+          "text": "Requisito: o equipamento deve atender à máscara de emissão estabelecida nos Requisitos Técnicos de Condições de Uso de Radiofrequências aplicáveis aos Serviços de Radiodifusão de Sons e Imagens, de Retransmissão de Televisão e ao Serviço de Acesso Condicionado.",
+          "maps": [
+            "A/322"
+          ]
+        },
+        {
+          "ref": "Anexo, item 5.9.2",
+          "text": "Taxa de Erro de Modulação (MER) — Requisito: considera-se aceitável um valor de pelo menos 30 dB medido na saída do filtro de RF do transmissor.",
           "maps": [
             "A/322"
           ]
@@ -1749,8 +1754,14 @@
             {
               "org": "SBTVD",
               "id": "Anatel Ato nº 2.705, de 24 de fevereiro de 2026",
-              "ref": "Anexo, item 5.9",
-              "text": "Taxa de Erro de Modulação (MER) — ensaio; máscara de emissão conforme os Requisitos Técnicos de Condições de Uso de Radiofrequências (RCC-SRA)."
+              "ref": "Anexo, item 5.8.2",
+              "text": "Requisito: o equipamento deve atender à máscara de emissão estabelecida nos Requisitos Técnicos de Condições de Uso de Radiofrequências aplicáveis aos Serviços de Radiodifusão de Sons e Imagens, de Retransmissão de Televisão e ao Serviço de Acesso Condicionado."
+            },
+            {
+              "org": "SBTVD",
+              "id": "Anatel Ato nº 2.705, de 24 de fevereiro de 2026",
+              "ref": "Anexo, item 5.9.2",
+              "text": "Taxa de Erro de Modulação (MER) — Requisito: considera-se aceitável um valor de pelo menos 30 dB medido na saída do filtro de RF do transmissor."
             }
           ]
         }
@@ -1844,8 +1855,10 @@
           ]
         },
         "SBTVD": {
-          "docs": [],
-          "note": "A/324:2025-07 required for transmitters and retransmitters (Anatel Ato 2.705/2026, item 4.1).",
+          "docs": [
+            "ATSC A/324:2025-07 (incorporated by reference)"
+          ],
+          "note": "Required for TV 3.0 transmitters and retransmitters by Anatel Ato 2.705/2026, item 4.1; no separate ABNT document.",
           "reg": [
             {
               "org": "SBTVD",
@@ -2645,15 +2658,7 @@
         },
         "TTA": {
           "docs": [],
-          "note": "AC-4 not adopted in the Korean standard.",
-          "reg": [
-            {
-              "org": "TTA",
-              "id": "MSIT Notice No. 2023-34, Article 13",
-              "ref": "Art. 13 ① 4",
-              "text": "오디오 신호의 압축 조건은 … ISO/IEC 23008-3의 LC(low complexity) Profile, Level 1, 2 또는 3의 내용을 따를 것"
-            }
-          ]
+          "note": "AC-4 not adopted: MSIT Notice 2023-34 Art. 13 ①4 mandates MPEG-H (ISO/IEC 23008-3, LC profile) only."
         },
         "SBTVD": {
           "docs": [
@@ -2866,15 +2871,7 @@
         },
         "TTA": {
           "docs": [],
-          "note": "VVC not adopted in the Korean standard.",
-          "reg": [
-            {
-              "org": "TTA",
-              "id": "MSIT Notice No. 2023-34, Article 13",
-              "ref": "Art. 13 ① 3",
-              "text": "비디오 신호의 압축 조건은 … ISO/IEC 23008-2의 Main 10 Profile 또는 Scalable Main 10 Profile, Main tier, Level 5.2의 내용을 따를 것"
-            }
-          ]
+          "note": "VVC not adopted: MSIT Notice 2023-34 Art. 13 ①3 mandates HEVC (ISO/IEC 23008-2, Main 10 / Scalable Main 10, Level 5.2) only."
         },
         "SBTVD": {
           "docs": [
@@ -3582,14 +3579,12 @@
       "summary": "Positioning and timing derived from the terrestrial broadcast signal itself (ATSC 3.0 signal as a PNT source, independent of GNSS). A different technology from RTK correction datacasting.",
       "cells": {
         "ITU": {
-          "docs": [
-            "WP 6A contribution: Broadcast Positioning System (Sept 2026, planned)"
-          ],
-          "note": "Contributions on broadcast positioning in progress."
+          "docs": [],
+          "note": "No published document. A Korean contribution on broadcast positioning is planned for WP 6A (September 2026 meeting, per the Korean ITU-R SG6 study-group agenda; not yet public)."
         },
         "ATSC": {
           "docs": [],
-          "note": "No published standard — Broadcast Positioning System (BPS) standardization in progress."
+          "note": "No published standard; BPS is in industry trials — formal standardization status to be confirmed."
         },
         "TTA": {
           "docs": [],
@@ -3602,7 +3597,7 @@
       },
       "verdict": {
         "code": "review",
-        "text": "ATSC standardization in progress; no TTA or SBTVD Forum counterpart."
+        "text": "No published document in any of the four bodies; ATSC status to be confirmed."
       },
       "impact": "",
       "recommendation": "",

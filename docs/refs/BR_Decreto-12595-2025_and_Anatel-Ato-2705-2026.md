@@ -1,6 +1,6 @@
 # Brazil — TV 3.0 regulatory excerpts
 
-## Decreto nº 12.595, de 27 de agosto de 2025
+## Decreto nº 12.595, de 27 de agosto de 2025 (publicado no DOU de 28.8.2025)
 Dispõe sobre a escolha do padrão tecnológico da segunda geração do Sistema Brasileiro de Televisão Digital Terrestre, denominada TV 3.0, e sobre a sua implantação no território nacional.
 Source: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12595.htm (checked 2026-08-31)
 
@@ -17,10 +17,11 @@ Dispõe sobre as diretrizes para a evolução do Sistema Brasileiro de Televisã
 > Art. 1º Estabelecer diretrizes complementares para a canalização, cobertura do serviço e harmonização de faixas de frequência para implantação da evolução do Sistema Brasileiro de Televisão Digital Terrestre, denominada "TV 3.0", nos termos do art. 2º do Decreto nº 11.484, de 6 de abril de 2023.
 > Art. 2º Determinar que a Anatel garanta a destinação primária e exclusiva, ao serviço de radiodifusão de sons e imagens e ao serviço de retransmissão de televisão, das faixas de VHF alto (174-216 MHz) e UHF (470-608 MHz e 614-698 MHz), com vistas ao desenvolvimento da TV 3.0.
 
-## Anatel Ato nº 2.705, de 24 de fevereiro de 2026
+## Anatel Ato nº 2.705, de 24 de fevereiro de 2026 (publicado no Boletim de Serviço em 25/2/2026; em vigor na publicação)
 Requisitos técnicos provisórios para avaliação da conformidade de transmissores e retransmissores da segunda geração do SBTVD-T – TV 3.0 (Resolução Anatel nº 715/2019, art. 23). Definitive requirements: Consulta Pública nº 10/2026.
-Source: https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2705-ato-2705
+Source: https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705
 
 > 4.1. Os equipamentos básicos de transmissão da camada física (Over-the-Air Physical Layer) da TV 3.0, compreendendo transmissores e retransmissores, devem implementar o padrão ATSC 3.0, em conformidade com as normas ATSC A/321:2025-07, ATSC A/322:2025-07a e ATSC A/324:2025-07, bem como atender aos requisitos e padrões de transmissão dos sinais digitais de segunda geração estabelecidos nos Requisitos Técnicos de Condições de Uso de Radiofrequências …
 > 2.11. ABNT NBR 25601 – TV 3.0 — Camada física.  2.21. ATSC A/322 - ATSC Standard: Physical Layer Protocol.
-> 5.9. Taxa de Erro de Modulação (MER) … máscara de emissão definida nos Requisitos Técnicos de Condições de Uso de Radiofrequências para os Serviços de Radiodifusão de Sons e Imagens, de Retransmissão de Televisão e Serviço de Acesso Condicionado.
+> 5.8.2. Requisito: o equipamento deve atender à máscara de emissão estabelecida nos Requisitos Técnicos de Condições de Uso de Radiofrequências aplicáveis aos Serviços de Radiodifusão de Sons e Imagens, de Retransmissão de Televisão e ao Serviço de Acesso Condicionado.
+> 5.9.2. Requisito (MER): Considera-se aceitável um valor de pelo menos 30 dB medido na saída do filtro de RF do transmissor.

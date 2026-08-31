@@ -13,7 +13,7 @@
     --page: #FFFBEA;            /* signature: pale yellow outside the sheet */
     --sheet: #FFFFFF;           /* paper */
     --sheet-2: #FCFAF2;         /* cream for group rows */
-    --ink: #1F1E1A; --ink-2: #5B574C; --ink-3: #8A8474;
+    --ink: #1F1E1A; --ink-2: #504C42; --ink-3: #6B665C;
     --line: #E5E0D2; --line-2: #CFC8B4;     /* warm greys */
     --blue: #0072BC; --blue-soft: #E8F1FA;  /* ITU blue */
     --yellow: #EFD27A; --yellow-soft: #FFF6D6; --yellow-line: #E6C766;
@@ -43,7 +43,7 @@
   .purpose { max-width: 960px; margin: 0 0 14px; }
   .meta { display: flex; flex-wrap: wrap; gap: 6px 28px; color: var(--ink-2); font-size: 13.5px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 10px 0; margin-bottom: 30px; }
   .meta b { color: var(--ink); font-weight: 600; }
-  h2 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; margin: 0 0 12px; }
+  h2 { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; margin: 0 0 12px; }
   .reg-section { margin-top: 40px; }
   .regs { margin-top: 8px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px 32px; margin-bottom: 34px; }
   .reg-card { border-top: 3px solid var(--org); padding-top: 8px; font-size: 14px; }
@@ -65,6 +65,8 @@
   thead th.org { border-top: 3px solid var(--org, var(--ink)); }
   td { padding: 10px 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
   td.doc { width: 230px; min-width: 200px; }
+  td.doc, thead th:first-child { position: sticky; left: 0; background: var(--sheet); z-index: 1; }
+  tr.row:hover td.doc, tr.row[aria-expanded="true"] td.doc { background: var(--blue-soft); }
   td.org { min-width: 190px; }
   td.verdict { width: 150px; white-space: nowrap; }
   tr.group td { background: var(--sheet-2); border-bottom: 1px solid var(--line-2); padding: 8px 10px; font-weight: 600; }
@@ -181,9 +183,10 @@
     if (!c || !c.reg || !c.reg.length) return '';
     return c.reg.map(g => '<span class="reg"><span class="l">Regulation</span>' + hl(g.id) + ' · ' + hl(g.ref) + (full ? '<span class="q" lang="' + (/[가-힣]/.test(g.text) ? 'ko' : 'en') + '">' + hl(g.text) + '</span>' : '') + '</span>').join('');
   }
-  function cellHtml(c) {
+  function cellHtml(c, rowId) {
     if (!c || (!c.docs.length && !c.note && !(c.reg && c.reg.length))) return '<span class="dash">—</span>';
-    return c.docs.map(docHtml).join('') + (c.note ? '<span class="note">' + hl(c.note) + '</span>' : '') + regHtml(c, false);
+    const docs = c.docs.map(d => (rowId && baseId(d) === rowId) ? '<span class="d"><span class="n">' + esc(d) + '</span></span>' : docHtml(d)).join('');
+    return docs + (c.note ? '<span class="note">' + hl(c.note) + '</span>' : '') + regHtml(c, false);
   }
   function detailHtml(r) {
     const cols = orgs.map(o => { const c = r.cells[o.id] || { docs: [], note: '' };
@@ -211,7 +214,7 @@
       rows.forEach((r, i) => {
         const key = c.id + ':' + i + ':' + r.id, open = state.open === key, v = V[r.verdict.code] || V.review;
         html += '<tr class="row" data-key="' + esc(key) + '" aria-expanded="' + open + '"><td class="doc"><span class="id">' + hl(r.id) + '</span>' + (r.type === 'RP' ? '<span class="type">RP</span>' : '') + '<span class="title">' + hl(r.title) + '</span></td>' +
-          orgs.map(o => '<td class="org">' + cellHtml(r.cells[o.id]) + '</td>').join('') +
+          orgs.map(o => '<td class="org">' + cellHtml(r.cells[o.id], o.id === 'ATSC' ? r.id : null) + '</td>').join('') +
           '<td class="verdict"><span class="v ' + r.verdict.code + '"><span class="i">' + v.icon + '</span>' + esc(v.label) + '</span></td></tr>';
         if (open) html += '<tr class="detail"><td colspan="' + (orgs.length + 2) + '">' + detailHtml(r) + '</td></tr>';
       });
