@@ -1,69 +1,364 @@
 [
   {
-    "id": "stl-ref-version", "group": "STL · basis", "feature": "Reference edition and coverage of A/324 in national documents",
-    "atsc_docs": ["A/324"],
-    "sides": {
-      "ATSC": {"doc": "A/324:2026-04", "clause": "Revision history; §5–§10", "page": "p.ii–iii", "value": "Baseline: A/324:2025-04 (incl. 2025-01 Amd 1 and Corrigendum 1) with references updated 2025-07 and 2026-04 — no technical change after 2025-04", "req": "baseline"},
-      "TTA": {"doc": "TTAK.KO-07.0151/R1 · TTAR-07.0026/R1", "clause": "Part 4 §2 인용 표준 (A/324 Candidate Standard revision of A/324:2018, 2020.01); 서문 3.2 비교표 (부록 Ⅰ-2 = A/324 §7, §8 동일(번역)); §1.2 (SFN/STL 분배 인터페이스 언급)", "page": "doc p.5; p.ii–iii; p.2", "value": "Only DSTP (§7) and ALPTP (§8) are translated (부록 Ⅰ-2). Scheduler/BGW management (§5), CTP (§6), STLTP (§9) and transmitter requirements (§10) are not part of the Korean standard; TxID/BSID operation is covered by the technical report TTAR-07.0026/R1", "req": "DSTP/ALPTP normative; STLTP not standardized nationally"},
-      "SBTVD": {"doc": "Anatel Ato nº 2.705/2026 · ABNT NBR 25601:2025", "clause": "Anexo item 4.1 (A/324:2025-07)", "page": "—", "value": "A/324:2025-07 incorporated by reference for transmitters and retransmitters; content identical to the 2026-04 baseline (reference updates only)", "req": "mandatory (regulation)"}
-    },
-    "difference": "Korea standardizes only the data-source side (DSTP/ALPTP, from the 2020 candidate revision) and leaves STL transport, scheduler and transmitter requirements to vendor implementation plus a national TxID/BSID guideline; Brazil incorporates the whole of A/324:2025-07, which is technically identical to the baseline.",
-    "impact": "Korean gateway–exciter links are not bound to STLTP by standard (interoperability relies on A/324 as de facto practice); Brazilian transmitters must implement STLTP per regulation.",
-    "cells": {"TTA": {"rel": "profile", "conf": "confirmed"}, "SBTVD": {"rel": "incorporated", "conf": "confirmed"}},
-    "verdicts": {"TTA": {"code": "partial", "text": "DSTP/ALPTP translated (2020 CS); STLTP, CTP, scheduler and transmitter clauses not standardized in Korea", "req": "DSTP/ALPTP mandatory"}, "SBTVD": {"code": "same", "text": "Referenced edition technically identical to baseline (2025-04 content); ABNT NBR 25601 profile unverified", "req": "mandatory"}},
-    "evidence": [
-      {"label": "TTAK.KO-07.0151/R1 서문 비교표", "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0151%2FR1&nowSu=1"},
-      {"label": "Anatel Ato 2.705/2026", "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"}
+    "id": "stl-ref-version",
+    "group": "STL · basis",
+    "feature": "Current A/324 edition, reference adoption and informative national material",
+    "atsc_docs": [
+      "A/324"
     ],
-    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
-  },
-  {
-    "id": "stl-dstp-alptp", "group": "STL · protocols", "feature": "Data Source Transport Protocol (DSTP) and ALP Transport Protocol (ALPTP)",
-    "atsc_docs": ["A/324"],
     "sides": {
-      "ATSC": {"doc": "A/324:2026-04", "clause": "§7 DSTP (7.1 overview, 7.2 design); §8 ALPTP (8.1, 8.2)", "page": "doc p.71–81 (pdf 78–88)", "value": "RTP-tunneled data-source and ALP packet transport, incl. Emergency Alert wake-up RTP control", "req": "mandatory for the interfaces used"},
-      "TTA": {"doc": "TTAK.KO-07.0151/R1", "clause": "부록 Ⅰ-2.1 DSTP (Ⅰ-2.1.1 개요, Ⅰ-2.1.1.1 매핑 설정, Ⅰ-2.1.2 설계, Ⅰ-2.1.2.2 Emergency Alert Wakeup RTP 제어); 부록 Ⅰ-2.2 ALPTP", "page": "doc p.365–379 (pdf 372–386)", "value": "Translation of A/324 CS (2020-01) §7–§8 per the TTA comparison table", "req": "mandatory"},
-      "SBTVD": {"doc": "A/324:2025-07 (by reference)", "clause": "Anatel Ato 2.705/2026 item 4.1", "page": "—", "value": "Identical to baseline", "req": "mandatory"}
+      "ATSC": {
+        "doc": "A/324:2026-04",
+        "clause": "Revision history; §§5–10",
+        "page": "p.ii; §§5–10",
+        "value": "Current published standard (14 April 2026). The 2025-07 and 2026-04 releases update references following the 2025-04 technical text. The revision approved 12 August 2026 is a Candidate Standard, not the current final baseline.",
+        "req": "published technical baseline; candidate revision separate"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0151/R1 · TTAK.KO-07.0154/R1 · TTAR-07.0026/R1",
+        "clause": "Part 4 §2 and Appendix I-2 opening; monitoring §§5–6",
+        "page": "Part 4 pp.5, 365 (PDF pp.12, 372); monitoring pp.2–6",
+        "value": "Part 4 cites the January 2020 A/324 candidate revision and translates DSTP/ALPTP into Appendix I-2, explicitly not part of the standard. It does not reproduce the complete scheduler/CTP/STLTP/transmitter clauses. Separate national monitoring and TxID/BSID guidelines exist.",
+        "req": "I-2 informative, not normative/mandatory; related national guidelines separate"
+      },
+      "SBTVD": {
+        "doc": "Anatel Ato 2.705/2026 · SBTVD OG-02",
+        "clause": "Ato §4.1; OG-02 Annex B and bibliography [7]",
+        "page": "OG-02 pp.4–5",
+        "value": "Ato requires transmitter/retransmitter conformity with A/324:2025-07. OG-02 separately references A/324:2024-04 for CTP-based STL; it labels itself non-normative. Full ABNT profile not fully verified.",
+        "req": "Ato transmitter requirement; OG-02 non-normative"
+      }
     },
-    "difference": "Same protocols; Korea's text is the 2020 candidate revision (changes in A/324:2021 → 2025-04 amendments/corrigendum not itemized here).",
-    "impact": "Low — DSTP/ALPTP are gateway-side interfaces.",
-    "cells": {"TTA": {"rel": "profile", "conf": "partial"}, "SBTVD": {"rel": "incorporated", "conf": "confirmed"}},
-    "verdicts": {"TTA": {"code": "same", "text": "Translation of §7–§8; 2021–2025 amendment deltas not yet itemized", "req": "mandatory"}, "SBTVD": {"code": "same", "text": "Incorporated; identical content", "req": "mandatory"}},
-    "evidence": [],
-    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
-  },
-  {
-    "id": "stl-stltp-sfn", "group": "STL · protocols", "feature": "STLTP, Common Tunneling Protocol, scheduler/BGW management and SFN timing",
-    "atsc_docs": ["A/324"],
-    "sides": {
-      "ATSC": {"doc": "A/324:2026-04", "clause": "§5 Scheduler (5.3 BGW management protocol, 5.5 DSCP); §6 CTP (6.4 tunneled packet security); §9 STLTP (9.2 preamble data generator, 9.3 timing and management, 9.5 channel bonding); §10 transmitter requirements (10.1 timing manager); Annex F MIMO configuration", "page": "doc p.28–100 (pdf 35–109)", "value": "Normative STL transport and SFN timing/management", "req": "mandatory"},
-      "TTA": {"doc": "TTAK.KO-07.0151/R1 · MSIT Notice 2023-34", "clause": "Part 4 §1.2 (SFN/STL 분배 인터페이스 존재 언급); Notice Art. 13 ② 1 (SFN 주파수허용편차 ±2.1 Hz)", "page": "doc p.2; docs/refs KR excerpt", "value": "No national STLTP/CTP text; SFN frequency tolerance fixed by regulation (±2.1 Hz)", "req": "not standardized (regulation on SFN tolerance only)"},
-      "SBTVD": {"doc": "A/324:2025-07 (by reference) · Anatel Ato nº 2.705/2026", "clause": "Ato item 4.1; Anexo (transmitter conformity tests)", "page": "—", "value": "STLTP and transmitter requirements incorporated; conformity assessment of transmitters/retransmitters", "req": "mandatory"}
+    "difference": "Korean informative excerpts and related operating/monitoring guidance do not constitute complete normative adoption of current A/324. Brazil’s Ato cites a technically aligned older release, while the public guideline cites a different edition.",
+    "impact": "Document/reference alignment does not establish actual gateway/exciter interoperability, vendor conformance or deployed STL behavior.",
+    "cells": {
+      "TTA": {
+        "rel": "profile",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "incorporated",
+        "conf": "partial"
+      }
     },
-    "difference": "Korea has no standard for the studio-to-transmitter link or transmitter timing beyond the regulatory SFN tolerance; Brazil incorporates A/324 in full and tests transmitters against it.",
-    "impact": "Korean broadcasters rely on A/324-compatible equipment de facto; formal conformance is not defined nationally.",
-    "recommendation": "Consider adopting A/324 §9–§10 (STLTP, transmitter requirements) in a future TTA revision or guideline.",
-    "cells": {"TTA": {"rel": "related", "conf": "confirmed"}, "SBTVD": {"rel": "incorporated", "conf": "confirmed"}},
-    "verdicts": {"TTA": {"code": "none", "text": "No Korean standard for STLTP/CTP/transmitter requirements", "req": "not standardized", "kind": "not-adopted"}, "SBTVD": {"code": "same", "text": "Incorporated by regulation", "req": "mandatory"}},
-    "evidence": [],
-    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
-  },
-  {
-    "id": "stl-txid-bsid", "group": "STL · identification", "feature": "Transmitter identification (TxID) and broadcast stream identifier (BSID) assignment",
-    "atsc_docs": ["A/324", "A/322"],
-    "sides": {
-      "ATSC": {"doc": "A/322:2026-06 Annex N · A/324:2026-04", "clause": "A/322 Annex N (TxID signal, Table N.3.1 injection levels); A/324 §5 (TxID control from BGW), L1D_bsid", "page": "A/322 doc p.253–256", "value": "Gold-code DSBSS RF watermark in the first preamble symbol; injection level codes; BSID in SLT@bsid and L1D_bsid", "req": "TxID optional"},
-      "TTA": {"doc": "TTAK.KO-07.0151/R1 · TTAR-07.0026/R1", "clause": "Part 4 부록 Ⅰ-1.12 송신기 식별부호 (translation of Annex N); TTAR §5 (TxID 적용·운용·확인), §6 방송사별 TxID 할당 규칙 (KBS/EBS/OBS, MBC, 민영), §7 BSID 할당 규칙 (DTV TSID 방식, SLT@bsid = L1D_bsid), <표 5-1> recommended maximum injection level per L1 mode, 부록 Ⅱ BSID 할당표", "page": "Part 4 doc p.343–349; TTAR doc p.2–11", "value": "National allocation scheme: 4-digit TxID per broadcaster/region, STL-mode (BGW) or MANUAL-mode activation, ≥ −24 dB recommended in SFN overlap areas; BSID unique per broadcaster following the DTV TSID plan", "req": "TxID optional (activated on demand); BSID mandatory"},
-      "SBTVD": {"doc": "Decreto nº 12.595/2025 · A/322:2025-07a (by reference)", "clause": "Decreto Art. 3º III (Ferramenta de Identificação de Transmissor – TxID)", "page": "docs/refs BR excerpt", "value": "TxID mandated as a TV 3.0 feature; allocation rules not published", "req": "TxID mandatory (decree)"}
+    "verdicts": {
+      "TTA": {
+        "code": "partial",
+        "text": "2020-CS DSTP/ALPTP excerpts are informative; separate monitoring and identification guidelines provide related coverage."
+      },
+      "SBTVD": {
+        "code": "partial",
+        "text": "A/324:2025-07 incorporation verified; full national profile and equipment conformity not verified."
+      }
     },
-    "difference": "The TxID mechanism is identical (A/322 Annex N); Korea adds a national allocation and operating guideline (TTAR-07.0026/R1) while keeping TxID optional; Brazil makes TxID mandatory by decree but has no published allocation scheme.",
-    "impact": "Requirement level differs (optional vs mandatory); national numbering plans are needed for interference analysis and SFN tuning.",
-    "cells": {"TTA": {"rel": "profile", "conf": "confirmed"}, "SBTVD": {"rel": "incorporated", "conf": "confirmed"}},
-    "verdicts": {"TTA": {"code": "same", "text": "Same mechanism; national allocation guideline", "req": "TxID optional"}, "SBTVD": {"code": "same", "text": "Same mechanism; TxID mandatory by decree", "req": "TxID mandatory"}},
     "evidence": [
-      {"label": "TTAR-07.0026/R1 (committee.tta.or.kr)", "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAR-07.0026%2FR1&nowSu=1"},
-      {"label": "Decreto 12.595/2025 (excerpt)", "url": "docs/refs/BR_Decreto-12595-2025_and_Anatel-Ato-2705-2026.md"}
+      {
+        "label": "Current A/324 — revision history and §§5–10",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A324-2026-04-Scheduler-STL.pdf"
+      },
+      {
+        "label": "A/324 Candidate Revision — status, not final baseline",
+        "url": "https://www.atsc.org/atsc-documents/a-324-candidate-standard-revision/"
+      },
+      {
+        "label": "TTA Part 4 — Appendix I-2 opening, PDF p.372",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0151%2FR1&nowSu=1&rn=1"
+      },
+      {
+        "label": "TTA monitoring — §§5–6",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0154%2FR1&nowSu=1&rn=1"
+      },
+      {
+        "label": "Ato — §4.1",
+        "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
+      },
+      {
+        "label": "OG-02 — Annex B",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-02-Transport-Layer.pdf"
+      }
     ],
-    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Clause review",
+      "status": "reviewed-partial"
+    },
+    "recommendation": "Correct the Korean mandatory labels, retain the separate OG reference edition and track the 2026 Candidate Standard without replacing the final baseline.",
+    "review": {
+      "status": "reviewed-partial",
+      "by": "Clause review",
+      "updated": "2026-10-18"
+    }
+  },
+  {
+    "id": "stl-dstp-alptp",
+    "group": "STL · protocols",
+    "feature": "DSTP/ALPTP and the DSMapping configuration-version differences",
+    "atsc_docs": [
+      "A/324"
+    ],
+    "sides": {
+      "ATSC": {
+        "doc": "A/324:2026-04",
+        "clause": "§§7–8; §7.1 Data Source Mapping Configuration Description",
+        "page": "pp.71–81; DSMapping pp.73–75 (PDF pp.80–82)",
+        "value": "RTP-based DSTP and ALPTP include packet metadata and EA wake-up control. Current DSMapping uses the 2021 namespace, DSMapping-1.0-20210512.xsd and a JSON-schema alternative; configuration is control-plane information outside normal DSTP/ALPTP/STLTP data paths.",
+        "req": "normative definitions for the interfaces used"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0151/R1",
+        "clause": "Appendix I-2.1/I-2.2; I-2.1.1.1 DSMapping",
+        "page": "pp.365–379; DSMapping pp.367–370",
+        "value": "Informative 2020-CS-derived excerpts retain a 2016 namespace and DSMapping-1.0-2019mmdd.xsd placeholder; the configuration text contains broken cross-references and no JSON alternative. Basic tunnel and ALPTP single-PLP-stream rules correspond in the inspected passages.",
+        "req": "informative appendix, explicitly not part of the standard"
+      },
+      "SBTVD": {
+        "doc": "A/324:2025-07 by Ato reference · SBTVD OG-02",
+        "clause": "Ato §4.1; OG-02 Annex B references A/324:2024-04",
+        "page": "OG-02 pp.4–5",
+        "value": "Ato incorporates the older ATSC release for transmitter equipment; the guideline confirms CTP-based STL recommendations using its own cited edition. Complete ABNT normative mapping unverified.",
+        "req": "Ato transmitter requirement; guideline non-normative"
+      }
+    },
+    "difference": "Basic protocol concepts correspond, but the Korean DSMapping namespace/schema and available configuration forms differ from the current standard. The appendix’s informative status is a separate difference.",
+    "impact": "Configuration/schema interoperability must be checked explicitly. Gateway-side location does not make an unreviewed delta automatically low impact.",
+    "cells": {
+      "TTA": {
+        "rel": "profile",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "incorporated",
+        "conf": "partial"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "partial",
+        "text": "Confirmed DSMapping edition/configuration differences and informative appendix status."
+      },
+      "SBTVD": {
+        "code": "partial",
+        "text": "ATSC incorporation confirmed; complete national profile and actual interface behavior not verified."
+      }
+    },
+    "evidence": [
+      {
+        "label": "Current A/324 — §§7–8 and DSMapping description",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A324-2026-04-Scheduler-STL.pdf"
+      },
+      {
+        "label": "Official A/324 version history — 2021 DSMapping Clarification",
+        "url": "https://www.atsc.org/atsc-documents/3242018-scheduler-studio-transmitter-link/"
+      },
+      {
+        "label": "TTA Part 4 — Appendix I-2, pp.365–379",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0151%2FR1&nowSu=1&rn=1"
+      },
+      {
+        "label": "Ato — §4.1",
+        "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
+      },
+      {
+        "label": "OG-02 — Annex B, bibliography [7]",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-02-Transport-Layer.pdf"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Clause review",
+      "status": "reviewed-partial"
+    },
+    "recommendation": "Use a partial-match verdict, remove Korean mandatory labels and itemize the DSMapping changes before claiming current-protocol equivalence.",
+    "review": {
+      "status": "reviewed-partial",
+      "by": "Clause review",
+      "updated": "2026-10-18"
+    }
+  },
+  {
+    "id": "stl-stltp-sfn",
+    "group": "STL · protocols",
+    "feature": "STLTP/CTP, transmitter timing and related Korean monitoring provisions",
+    "atsc_docs": [
+      "A/324"
+    ],
+    "sides": {
+      "ATSC": {
+        "doc": "A/324:2026-04",
+        "clause": "§5 scheduler/BGW; §6 CTP; §9 STLTP; §10 transmitter requirements; Annex F",
+        "page": "pp.28–100; Annex F",
+        "value": "Defines scheduler/management, common tunneling, STL transport and transmitter timing/operation. Mode-specific constraints apply; support and conformance must be interpreted within the implemented interface and transmission mode.",
+        "req": "normative interface and transmitter provisions within scope"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0151/R1 · TTAK.KO-07.0154/R1 · cited MSIT Notice",
+        "clause": "Part 4 §1.2; monitoring §§5–6; Notice Art.13(2)1",
+        "page": "Part 4 p.2; monitoring pp.2–6; national-rule excerpt",
+        "value": "No complete translation of A/324 §§5,6,9,10 was found in Part 4. However, 0154/R1 specifies STLTP monitoring, synchronized measurement time, network_delay_now=Device_System_Time−Packet_Release_Time, Max_Delay/drop/FEC checks. The cited rule separately specifies SFN frequency tolerance ±2.1 Hz.",
+        "req": "full A/324 adoption not identified in Part 4; monitoring guideline and RF tolerance separate"
+      },
+      "SBTVD": {
+        "doc": "A/324:2025-07 by Ato reference · SBTVD OG-02",
+        "clause": "Ato §§4.1, 5.1.1; OG-02 Annex B",
+        "page": "Ato web clauses; OG-02 p.4",
+        "value": "Ato applies referenced ATSC transmitter requirements to conformity assessment of transmitters/retransmitters. OG-02 describes CTP-based STL using A/324:2024-04. This does not prove every interface has been independently tested.",
+        "req": "transmitter conformity rule; non-normative operating guideline"
+      }
+    },
+    "difference": "Part 4 does not provide a complete current A/324 adoption. It is incorrect to generalize this to absence of all Korean STL/timing guidance: a separate monitoring standard contains related provisions.",
+    "impact": "Formal reference adoption, monitoring methods and actual link interoperability are distinct. No live STLTP, synchronization or equipment conformance was tested.",
+    "recommendation": "Add 0154/R1 to the A/324 mapping and scope any absence claim to the reviewed Part 4 clauses. A future adoption proposal should identify the exact uncovered current clauses.",
+    "cells": {
+      "TTA": {
+        "rel": "related",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "incorporated",
+        "conf": "partial"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "partial",
+        "text": "Complete interface adoption not identified in Part 4; national STLTP monitoring/timing guidance exists."
+      },
+      "SBTVD": {
+        "code": "partial",
+        "text": "Regulatory incorporation verified; complete national profile and implementation/conformity test results remain unverified."
+      }
+    },
+    "evidence": [
+      {
+        "label": "Current A/324 — §§5,6,9,10 and Annex F",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A324-2026-04-Scheduler-STL.pdf"
+      },
+      {
+        "label": "TTA Part 4 — §1.2",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0151%2FR1&nowSu=1&rn=1"
+      },
+      {
+        "label": "TTA monitoring — §§5–6",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0154%2FR1&nowSu=1&rn=1"
+      },
+      {
+        "label": "Cited Korean rule — Art.13(2)1",
+        "url": "https://www.law.go.kr/admRulLsInfoP.do?admRulId=53476&efYd=0"
+      },
+      {
+        "label": "Ato — §§4.1,5.1.1",
+        "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
+      },
+      {
+        "label": "OG-02 — Annex B",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-02-Transport-Layer.pdf"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Clause review",
+      "status": "reviewed-partial"
+    },
+    "review": {
+      "status": "reviewed-partial",
+      "by": "Clause review",
+      "updated": "2026-10-18"
+    }
+  },
+  {
+    "id": "stl-txid-bsid",
+    "group": "STL · identification",
+    "feature": "TxID RF mechanism, national operation and per-stream BSID assignment",
+    "atsc_docs": [
+      "A/324",
+      "A/322",
+      "A/331"
+    ],
+    "sides": {
+      "ATSC": {
+        "doc": "A/322:2026-06 · A/324:2026-04 · A/331:2026-04",
+        "clause": "A/322 Annex N; A/324 §5 transmitter controls; A/322 L1D_bsid; A/331 SLT@bsid",
+        "page": "A/322 pp.253–256 and §9.3.1; A/331 SLT definition",
+        "value": "TxID uses a Gold-code DSBSS watermark in the first preamble symbol and defined injection levels. BSID identifies a broadcast stream; RF L1D_bsid and SLT@bsid belong to different signaling layers and must be interpreted with their version/scope rules.",
+        "req": "TxID optional in ATSC; selected-mode and signaling constraints apply"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0151/R1 · TTAR-07.0026/R1",
+        "clause": "Part 4 Appendix I-1.12; TTAR §§5–7, Table 5-1 and Appendix II",
+        "page": "Part 4 pp.343–349; TTAR pp.2–11",
+        "value": "TTAR provides four-digit TxID allocation, optional activation and BGW/STL or manual control. Its ≥−24 dB recommendation is scoped to detection in SFN overlap areas and must be read with mode-specific maximum-level recommendations and AWGN test conditions. BSID applies per broadcast stream, follows the DTV TSID plan and requires SLT@bsid=L1D_bsid; L1D_bsid is active from L1D_version=1. Part 4 I-1 is explicitly not part of the standard.",
+        "req": "TxID optional operating guideline; per-stream BSID assignment/equality prescribed in the guideline; appendix status separate"
+      },
+      "SBTVD": {
+        "doc": "Decreto 12.595/2025 · Ato 2.705/2026 · SBTVD OG-01",
+        "clause": "Decreto Art.3 III; Ato §4.1; OG-01 §§2,5.6",
+        "page": "OG-01 pp.2,7",
+        "value": "Decreto includes TxID in TV 3.0. OG-01 discusses 13-bit identifiers, per-polarization choices and a 24 dB injection recommendation, and states TxID use is mandatory while the document itself is non-normative. A station-by-station allocation plan was not identified in the reviewed sources; publication elsewhere is not ruled out.",
+        "req": "system adoption by decree; transmitter rule; OG-01 statements non-normative; full ABNT operation profile unverified"
+      }
+    },
+    "difference": "The underlying TxID technology is shared, while national operation and allocation differ. A technical report’s assignment rules, a decree’s system-level adoption and a guideline’s mandatory wording have different authority.",
+    "impact": "Use of a different BSID per stream and correct L1/SLT consistency are distinct from transmitter identification. Actual TxID injection, allocation compliance and received identifiers were not tested.",
+    "cells": {
+      "TTA": {
+        "rel": "profile",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "incorporated",
+        "conf": "partial"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "partial",
+        "text": "Mechanism corresponds; national optional operation, assignment guidance, appendix status and version conditions are additional distinctions."
+      },
+      "SBTVD": {
+        "code": "partial",
+        "text": "Decree and public operating guidance verified; normative ABNT operation/assignment details not fully verified."
+      }
+    },
+    "evidence": [
+      {
+        "label": "Current A/322 — Annex N and L1D_bsid",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/06/A322-2026-06-Physical-Layer-Protocol.pdf"
+      },
+      {
+        "label": "Current A/324 — transmitter controls",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A324-2026-04-Scheduler-STL.pdf"
+      },
+      {
+        "label": "Current A/331 — SLT@bsid",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A331-2026-04-Signaling-Delivery-Sync-FEC.pdf"
+      },
+      {
+        "label": "TTA TxID/BSID guideline — §§5–7, Table 5-1",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAR-07.0026%2FR1&nowSu=1&rn=1"
+      },
+      {
+        "label": "TTA Part 4 — Appendix I-1.12",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0151%2FR1&nowSu=1&rn=1"
+      },
+      {
+        "label": "Decreto — Art.3 III",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12595.htm"
+      },
+      {
+        "label": "OG-01 — §§2,5.6",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-01-Physical-Layer.pdf"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Clause review",
+      "status": "reviewed-partial"
+    },
+    "recommendation": "Keep −24 dB and BSID statements scoped to their source conditions; add the A/331 source for SLT and record allocation-plan searches as not-found-in-reviewed-sources rather than unpublished.",
+    "review": {
+      "status": "reviewed-partial",
+      "by": "Clause review",
+      "updated": "2026-10-18"
+    }
   }
 ]

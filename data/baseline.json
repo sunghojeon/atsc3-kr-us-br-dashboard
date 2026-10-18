@@ -1,0 +1,355 @@
+{
+  "verified": "2026-10-18",
+  "sources": [
+    {
+      "label": "ATSC Standards",
+      "url": "https://www.atsc.org/atsc-documents/type/3-0-standards/"
+    },
+    {
+      "label": "ATSC Recommended Practices",
+      "url": "https://www.atsc.org/atsc-documents/type/3-0-recommended-practices/"
+    },
+    {
+      "label": "ATSC Code Point Registry (TG3-255r9)",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/09/TG3-255r9-Code-Points-Registry.xlsx"
+    }
+  ],
+  "documents": [
+    {
+      "id": "A/200",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A200-2026-04-Regional-Service-Availability-Signaling.pdf",
+      "sha256": "60b176c7fabf3ca9c38ffd4a511dba8dd11f38c8e2a7b67c522b0ab261d462ce",
+      "pages": 34,
+      "title": "Regional Service Availability"
+    },
+    {
+      "id": "A/300",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A300-2026-04-ATSC-3-System-Standard.pdf",
+      "sha256": "48436a89c7a47a280bf1688463ea46dd1fe22667b057291e5bbdfea7b24ff6ad",
+      "pages": 41,
+      "title": "ATSC 3.0 System"
+    },
+    {
+      "id": "A/321",
+      "kind": "Standard",
+      "edition": "2026-06",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/06/A321-2026-06-System-Discovery-and-Signaling.pdf",
+      "sha256": "914211f8b912c9a47eda74e655012ad550b405065550bc4268c2733ce6fab432",
+      "pages": 34,
+      "title": "System Discovery and Signaling"
+    },
+    {
+      "id": "A/322",
+      "kind": "Standard",
+      "edition": "2026-06",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/06/A322-2026-06-Physical-Layer-Protocol.pdf",
+      "sha256": "f33c9aecbcbb0acdc244d7010cff07de804399047930b7bab1c149e769ef576e",
+      "pages": 287,
+      "title": "Physical Layer Protocol"
+    },
+    {
+      "id": "A/323",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A323-2026-04-Dedicated-Return-Channel.pdf",
+      "sha256": "9e69978ed2623111ff620ab63a526ca7150a8b8c4e6c131623550e8b0fea4b85",
+      "pages": 74,
+      "title": "Dedicated Return Channel for ATSC 3.0"
+    },
+    {
+      "id": "A/324",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A324-2026-04-Scheduler-STL.pdf",
+      "sha256": "4de4439c0e01fa3d3b09ececf2b2defdcb2b6750b7581aa96247e9ef685c450a",
+      "pages": 138,
+      "title": "Scheduler / Studio to Transmitter Link"
+    },
+    {
+      "id": "A/325",
+      "kind": "RP",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A325-2026-04-Lab-Performance-Test-Plan.pdf",
+      "sha256": "6a43ee61a350121de9fc9b079f9c67fea2fcd7d913c73875f98ed296fab09c42",
+      "pages": 75,
+      "title": "ATSC 3.0 PHY Lab Performance Test Plan"
+    },
+    {
+      "id": "A/326",
+      "kind": "RP",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A326-2026-04-Field-Test-Plan.pdf",
+      "sha256": "5ff1347f701dac0af84772a83313ab68373143ff7fde2de4b09732b7ef5c9f78",
+      "pages": 51,
+      "title": "ATSC 3.0 Field Test Plan"
+    },
+    {
+      "id": "A/327",
+      "kind": "RP",
+      "edition": "2026-08",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/09/A327-2026-08-Physical-Layer-RP.pdf",
+      "sha256": "a305e58535c612b33e03adf8fed74780f9dfca71cf1bc6b1f8d45d97d557e637",
+      "pages": 189,
+      "title": "Guidelines for the Physical Layer Protocol"
+    },
+    {
+      "id": "A/330",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A330-2026-04-Link-Layer-Protocol.pdf",
+      "sha256": "49dd1748539a6717d9146d1e5588aa522313b2b9fc4037aff66805363c232887",
+      "pages": 60,
+      "title": "Link-Layer Protocol"
+    },
+    {
+      "id": "A/331",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A331-2026-04-Signaling-Delivery-Sync-FEC.pdf",
+      "sha256": "3400e30312febdabd58dbcf371cc56a10ec4eaefba34dc9b5735007a7d74be34",
+      "pages": 256,
+      "title": "Signaling, Delivery, Synchronization, and Error Protection"
+    },
+    {
+      "id": "A/332",
+      "kind": "Standard",
+      "edition": "2026-08",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/08/A332-2026-08-Service-Announcement.pdf",
+      "sha256": "286e2e754e4408e8c54df74906ab9f4dbd38fa5258e6b11b17d4965924e8f9ec",
+      "pages": 42,
+      "title": "Service Announcement"
+    },
+    {
+      "id": "A/333",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A333-2026-04-Service-Usage-Reporting.pdf",
+      "sha256": "eccb566b7a6d672771af79ccf2499b7b136a2285a3eebdb1a8ffe294f461d06b",
+      "pages": 18,
+      "title": "Service Usage Reporting"
+    },
+    {
+      "id": "A/334",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A334-2026-04-Audio-Watermark-Emission.pdf",
+      "sha256": "b4a18a8e09528ef4351ad31fc772fe9fb2b43ea0fac8a7121c2749d297ecc64f",
+      "pages": 10,
+      "title": "Audio Watermark Emission"
+    },
+    {
+      "id": "A/335",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A335-2026-04-Video-Watermark-Emission.pdf",
+      "sha256": "1f537a33d88fe0ecdb70f9b00337dbdfc90fcb4a1e9f01b53ff5dc0d3ba522af",
+      "pages": 16,
+      "title": "Video Watermark Emission"
+    },
+    {
+      "id": "A/336",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A336-2026-04-Content-Recovery-in-Redistribution-Scenarios.pdf",
+      "sha256": "b4dbe3ef4b3055ddddcd1327ea7985a5613c8a155563d7544a71b2b5d196d2be",
+      "pages": 67,
+      "title": "Content Recovery in Redistribution Scenarios"
+    },
+    {
+      "id": "A/337",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A337-2026-07-Application-Event-Delivery.pdf",
+      "sha256": "67fb94e450a6f25a3a397dfe858bb7a455547df3d55eaf6e1bb9c94fdf2c4f34",
+      "pages": 22,
+      "title": "Application Event Delivery"
+    },
+    {
+      "id": "A/338",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A338-2026-04-Companion-Device.pdf",
+      "sha256": "88a59c750d81147ce847907e9a6f4b0aea21a132c79a59361ac2eb4adbe644f2",
+      "pages": 27,
+      "title": "Companion Device"
+    },
+    {
+      "id": "A/339",
+      "kind": "RP",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A339-2026-04-Audio-Watermark-Modification-Erasure.pdf",
+      "sha256": "59e487e018320a37624a471af194c16f5bae2265b1ae99c8d514ec3a1a790d2e",
+      "pages": 7,
+      "title": "Audio Watermark Modification and Erasure"
+    },
+    {
+      "id": "A/341",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A341-2026-04-Video-HEVC.pdf",
+      "sha256": "9dfd5da87c086627e5995dbb7b0ddb03bd4148e502dfa3ff5c353f167d30d787",
+      "pages": 50,
+      "title": "Video - HEVC"
+    },
+    {
+      "id": "A/342 Part 1",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A342-1-2026-04-Audio-Common-Elements.pdf",
+      "sha256": "cd63121432979cda29c6e37585c18957f132b5488c8dcc4801b6b7b7be37901d",
+      "pages": 17,
+      "title": "Audio Common Elements"
+    },
+    {
+      "id": "A/342 Part 2",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A342-2-2026-04-AC4-System.pdf",
+      "sha256": "cf202de56dc7997fcc079ef9622eae17b1ee3db3831f062e2b302cf79ce624a0",
+      "pages": 18,
+      "title": "AC-4 System"
+    },
+    {
+      "id": "A/342 Part 3",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A342-3-2026-04-MPEG-H-System.pdf",
+      "sha256": "4ddea9a0bc842ec9944127a62a343bcc40df06f51bcb2dfe2e2128397fc7147c",
+      "pages": 22,
+      "title": "MPEG-H System"
+    },
+    {
+      "id": "A/343",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A343-2026-04-Captions-and-Subtitles.pdf",
+      "sha256": "4b13a08279c869b05ac3cb01103e996f2a0f97b685b16dbe0db23386696a0a05",
+      "pages": 16,
+      "title": "Captions and Subtitles"
+    },
+    {
+      "id": "A/344",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A344-2026-04-Interactive-Content.pdf",
+      "sha256": "1b175fa48b0c15c866eb23e73bc0c96a6e0a8443884bcf5633fc41dd7f62d6bf",
+      "pages": 202,
+      "title": "ATSC 3.0 Interactive Content"
+    },
+    {
+      "id": "A/345",
+      "kind": "Standard",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A345-2026-04-VVC-Video.pdf",
+      "sha256": "c4c82ac6c331b936204fbc054f5b70489f4f94a390292202fb7539c63adf8a60",
+      "pages": 26,
+      "title": "VVC Video"
+    },
+    {
+      "id": "A/350",
+      "kind": "RP",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A350-2026-04-Link-Layer-Protocol-RP.pdf",
+      "sha256": "2f5f193c0c3a6a2519407a2c3d5327f8a1bc7fb36abc4396264ccf6cc14db6d5",
+      "pages": 25,
+      "title": "Guide to the Link-Layer Protocol"
+    },
+    {
+      "id": "A/351",
+      "kind": "RP",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A351-2026-04-Signaling-Delivery-RP.pdf",
+      "sha256": "a3aff4229a134cb86c844f7f1ddc95c2fa85a6b4002172de7e6a49ac31fc6258",
+      "pages": 51,
+      "title": "Techniques for Signaling, Delivery and Synchronization"
+    },
+    {
+      "id": "A/360",
+      "kind": "Standard",
+      "edition": "2026-08",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/08/A360-2026-08-Security.pdf",
+      "sha256": "201c0f0b37e4211d603b13b55237eaf334d60422f0bbdbc37ec2ae6e61cb6603",
+      "pages": 29,
+      "title": "ATSC 3.0 Security and Service Protection"
+    },
+    {
+      "id": "A/361",
+      "kind": "RP",
+      "edition": "2026-08",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/08/A361-2026-08-Security-RP.pdf",
+      "sha256": "53e3011bdbb4f0c0fcf5bd57c9851085d7f87fdd034cb61713c1513b4681d1ba",
+      "pages": 11,
+      "title": "Security and Content Protection"
+    },
+    {
+      "id": "A/362",
+      "kind": "RP",
+      "edition": "2026-09",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/09/A362-2026-09-RP-DRM.pdf",
+      "sha256": "e8c0b88eb3f1a65c107ddd2e6c39f055a4300b1e6744bb48fb15689cc5295868",
+      "pages": 35,
+      "title": "Digital Rights Management (DRM)"
+    },
+    {
+      "id": "A/370",
+      "kind": "RP",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A370-2026-04-Conversion-and-Redistribution.pdf",
+      "sha256": "5dd4df0c27777b8684b0394f1ae3ba7bcd8a25f55e355e577f89952fccb474d9",
+      "pages": 55,
+      "title": "Conversion of ATSC 3.0 Services for Redistribution"
+    },
+    {
+      "id": "A/371",
+      "kind": "RP",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A371-2026-04-Delivery-for-Redistribution.pdf",
+      "sha256": "544b66c17b633e8da7a9d1a728a3318e1a09610a8c7e28bda68d1fb2a0555f85",
+      "pages": 47,
+      "title": "Delivery of ATSC 3.0 Services for Redistribution"
+    },
+    {
+      "id": "A/380",
+      "kind": "RP",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A380-2026-04-RP-Haptics.pdf",
+      "sha256": "53469eb8e39e01e7953755c9a5a8754f3f1d4e4550537b60a0e6ab41cbc37844",
+      "pages": 19,
+      "title": "Haptics for ATSC 3.0"
+    },
+    {
+      "id": "A/381",
+      "kind": "RP",
+      "edition": "2026-04",
+      "url": "https://www.atsc.org/wp-content/uploads/2026/04/A381-2026-04-RP-Interactive-Content.pdf",
+      "sha256": "d54e50c075edd505d2be7579e0ff18c7f27a38f221971e41a47a5e4a108d1fb9",
+      "pages": 40,
+      "title": "Use of ATSC 3.0 Interactive Content"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "A/324 revision",
+      "date": "2026-08-12",
+      "expires": "2026-12-31",
+      "note": "Candidate revision; the approved A/324 baseline remains 2026-04."
+    },
+    {
+      "id": "A/344 revision",
+      "date": "2026-05-12",
+      "expires": "2026-12-31",
+      "note": "Candidate revision; the approved A/344 baseline remains 2026-04."
+    },
+    {
+      "id": "A/391 B2X",
+      "date": "2026-09-10",
+      "expires": "2027-06-30",
+      "note": "Separate B2X candidate; does not modify A/321 and is not a published BPS standard."
+    }
+  ],
+  "candidate_url": "https://www.atsc.org/atsc-documents/type/3-0-candidate-standards/"
+}

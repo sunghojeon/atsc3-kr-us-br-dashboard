@@ -1,77 +1,669 @@
 [
   {
-    "id": "codec-ref-version", "group": "Presentation · basis", "feature": "Reference editions adopted for video, audio and captions",
-    "atsc_docs": ["A/341", "A/342 Part 3", "A/343"],
+    "id": "codec-ref-version",
+    "group": "Presentation · basis",
+    "feature": "Latest ATSC baseline and national reference editions",
+    "atsc_docs": [
+      "A/341",
+      "A/342 Part 3",
+      "A/343",
+      "A/345"
+    ],
     "sides": {
-      "ATSC": {"doc": "A/341:2026-04 · A/342-3:2026-04 · A/343:2026-04", "clause": "Revision histories", "page": "—", "value": "Current editions (A/341 adds VVC via A/345; A/342-3 includes Baseline and LC profiles)", "req": "baseline"},
-      "TTA": {"doc": "TTAK.KO-07.0149/R1 (2022-12-07)", "clause": "§2 인용 표준", "page": "doc p.1 (pdf 13)", "value": "Cites the 2016 Candidate Standards: A/341 (2016-07), A/342 Part 3 (2016-05), A/343 (2016-08), A/332 Proposed Standard (2016-10) — all marked 'work in progress'", "req": "mandatory"},
-      "SBTVD": {"doc": "ABNT NBR 25603/25604/25605:2025 · SBTVD OG-03/04/05", "clause": "ABNT clauses unverified", "page": "—", "value": "Independent TV 3.0 codec standards (VVC+LCEVC video, MPEG-H audio, captions)", "req": "mandatory (ABNT)"}
+      "ATSC": {
+        "doc": "A/341:2026-04 · A/342-3:2026-04 · A/343:2026-04 · A/345:2026-04",
+        "clause": "Scope and revision histories",
+        "page": "Cover / revision-history pages",
+        "value": "HEVC remains in A/341. VVC and optional LCEVC are specified separately in A/345. Current A/342-3 includes Baseline and LC profiles; A/343 includes later caption extensions, safe-area and font-name provisions.",
+        "req": "latest approved baseline"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+        "clause": "§2 References; §§5–7",
+        "page": "printed p.1 / PDF p.8",
+        "value": "References 2016 A/341, A/342-3 and A/343 candidate editions and A/332 proposed standard. R1 adds animated-image captions. Later ATSC requirements must be compared individually; a legacy reference is not current-edition adoption.",
+        "req": "national profile"
+      },
+      "SBTVD": {
+        "doc": "ABNT NBR 25603/25604/25605:2025 · SBTVD OG-03/04/05",
+        "clause": "OG scopes; ABNT normative clauses unavailable",
+        "page": "OG §1; ABNT catalog metadata",
+        "value": "Independent Brazilian standards are identified. Public OGs describe VVC/LCEVC, MPEG-H and IMSC1/WebVTT topics, but are non-normative. ABNT requirements and options were not read.",
+        "req": "normative requirements unverified"
+      }
     },
-    "difference": "Korea's Part 2 is anchored to the 2016 candidate editions and has been revised only for animated-image captions (R1); ATSC has since finalized and amended these documents. Brazil uses its own ABNT texts.",
-    "impact": "Post-2016 ATSC changes (e.g., A/341 HDR/HFR clarifications, A/342 audio emergency information, A/343 font names) need a clause-level delta check; not itemized here.",
-    "cells": {"TTA": {"rel": "profile", "conf": "confirmed"}, "SBTVD": {"rel": "normative", "conf": "unverified"}},
-    "verdicts": {"TTA": {"code": "partial", "text": "2016 candidate-standard basis; later ATSC revisions not carried over", "req": "mandatory"}, "SBTVD": {"code": "review", "text": "ABNT texts not read", "req": "mandatory"}},
-    "evidence": [{"label": "TTAK.KO-07.0149/R1 (committee.tta.or.kr)", "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"}],
-    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+    "difference": "Compare current ATSC provisions with the specific Korean legacy-based clauses and the publicly readable Brazilian guidance; do not infer current-edition equivalence from shared codec names.",
+    "impact": "Edition differences affect bitstream constraints and signaling. This comparison does not certify receiver interoperability.",
+    "cells": {
+      "TTA": {
+        "rel": "profile",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "related",
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "partial",
+        "text": "Legacy-based Korean clauses differ from current ATSC requirements",
+        "req": "national profile"
+      },
+      "SBTVD": {
+        "code": "review",
+        "text": "Public guidance reviewed; ABNT normative details remain unread",
+        "req": "unverified"
+      }
+    },
+    "evidence": [
+      {
+        "label": "TTA Part 2 §2: dated candidate/proposed references",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+      },
+      {
+        "label": "ATSC official current Standards list",
+        "url": "https://www.atsc.org/atsc-documents/type/3-0-standards/"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+    }
   },
   {
-    "id": "codec-video-format", "group": "Presentation · video", "feature": "Video formats, codec profile/level and coding constraints",
-    "atsc_docs": ["A/341"],
+    "id": "codec-video-format",
+    "group": "Presentation · HEVC",
+    "feature": "HEVC formats, scalable coding and HFR constraints",
+    "atsc_docs": [
+      "A/341"
+    ],
     "sides": {
-      "ATSC": {"doc": "A/341:2026-04", "clause": "§6.1 HEVC; §6.2.1 legacy SD, §6.2.2 interlaced HD, §6.2.3 progressive (6.2.3.1 formats, 6.2.3.2 constraints); §6.3.1 spatial scalable; §6.3.4 HFR temporal sub-layering", "page": "doc p.13–24 (pdf 13–24)", "value": "HEVC Main 10 / Scalable Main 10, Main Tier, Level 5.2; ≤ 3840×2160, divisible by 8, square pixels, progressive (plus legacy SD and interlaced HD formats); 60 Hz-region rates 24/1.001…120; 4:2:0; two-layer spatial scalability (×1.5/2/3)", "req": "mandatory (options)"},
-      "TTA": {"doc": "TTAK.KO-07.0149/R1 · MSIT Notice 2023-34", "clause": "§5.2 <표 5-1>, §5.2.1; §5.3.1–5.3.4; Notice Art. 13 ①3", "page": "doc p.6–12 (pdf 14–20)", "value": "HEVC (ISO/IEC 23008-2:2015) Main 10 / Scalable Main 10, Main Tier, Level 5.2; formats limited to 1280×720, 1920×1080, 3840×2160, 16:9, progressive, 4:2:0, 8- or 10-bit, 23.976/24/29.97/30/59.94/60/120/1.001/120 Hz; BT.709 or BT.2020; scalable-coding constraints identical; 120 Hz must use temporal layering when 3840×2160 (mandatory) and must not otherwise", "req": "mandatory; regulation mandates the same profile/level"},
-      "SBTVD": {"doc": "ABNT NBR 25603:2025 · SBTVD OG-03", "clause": "ABNT clause unverified", "page": "—", "value": "VVC (H.266) with LCEVC enhancement; HEVC not used", "req": "mandatory"}
+      "ATSC": {
+        "doc": "A/341:2026-04",
+        "clause": "§§6.1–6.3.4",
+        "page": "printed pp.7–19 / PDF pp.13–25",
+        "value": "Progressive HEVC Main 10 / Scalable Main 10, Main tier, Level 5.2; up to 3840×2160, 8/10-bit, 4:2:0 and square pixels. Legacy SD/interlaced HD have separate constraints. Spatial scaling uses two layers and ×1.5/2/3. Level 5.2 HFR requires temporal sub-layering; its duration equation includes +1 for the minus1 fields. SPS VUI/chroma-location constraints also apply.",
+        "req": "conditional bitstream requirements"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+        "clause": "§§5.2–5.3.4",
+        "page": "printed pp.6–11 / PDF pp.13–18",
+        "value": "Selects progressive 720p/1080p/2160p, 16:9, 60-Hz-region rates, Main 10 / Scalable Main 10, Main tier, Level 5.2. §5.3.4 uses the equation d[0]=2*d[1], whereas current A/341 uses (d[0]+1)=2*(d[1]+1). HFR application conditions and general VUI/chroma constraints also require separate comparison.",
+        "req": "Korean terrestrial UHD profile"
+      },
+      "SBTVD": {
+        "doc": "ABNT NBR 25603:2025 · SBTVD OG-03",
+        "clause": "OG Annex A; Annexes B/C/E",
+        "page": "OG printed pp.3–6 and Annex E",
+        "value": "OG-03 describes single-layer VVC Main 10 / HDR10 / 4:2:0 and LCEVC guidance. It also contains HEVC and AVC annexes without further operational details. This does not establish HEVC prohibition or receiver-wide non-support.",
+        "req": "ABNT path and option requirements unverified"
+      }
     },
-    "difference": "Korea adopts the A/341 progressive formats and constraints (selecting HD/UHD progressive formats only — no SD or interlaced HD — and 60 Hz-region rates) and the same profile/level; Korea's rule for HFR temporal layering is stricter (mandatory at 2160p120, prohibited otherwise). Brazil uses a different codec (VVC + LCEVC).",
-    "impact": "Korean and US receivers share the HEVC decoding profile; Korean content is always progressive. Brazilian receivers need VVC/LCEVC decoders.",
-    "cells": {"TTA": {"rel": "profile", "conf": "confirmed"}, "SBTVD": {"rel": "alternative", "conf": "confirmed"}},
-    "verdicts": {"TTA": {"code": "same", "text": "Same codec, profile and constraints; national format subset (progressive only) and HFR layering rule", "req": "mandatory"}, "SBTVD": {"code": "diff", "text": "VVC (+LCEVC) instead of HEVC", "req": "mandatory"}},
-    "evidence": [{"label": "A/341 §6.2.3 (pdf p.16–17)", "url": "https://www.atsc.org/atsc-documents/3412017-video-hevc/"}, {"label": "MSIT Notice Art. 13 ①3", "url": "docs/refs/KR_MSIT-Notice-2023-34_Art13.md"}],
-    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+    "difference": "The Korean HEVC profile shares core tools but is not clause-identical to current A/341. Brazil has a VVC path, which should also be compared with current A/345 rather than only with HEVC.",
+    "impact": "The HFR equation mismatch needs standards/errata review. Codec selection alone does not prove that any national receiver rejects every other codec.",
+    "cells": {
+      "TTA": {
+        "rel": "profile",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "alternative",
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "partial",
+        "text": "Common HEVC tools; HFR equation, format subset and current constraints differ",
+        "req": "national profile"
+      },
+      "SBTVD": {
+        "code": "diff",
+        "text": "VVC path differs from HEVC; compare shared VVC/LCEVC tools under A/345",
+        "req": "ABNT details unverified"
+      }
+    },
+    "evidence": [
+      {
+        "label": "A/341 §6.3.4, printed p.18 / PDF p.24",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A341-2026-04-Video-HEVC.pdf#page=24"
+      },
+      {
+        "label": "TTA Part 2 §5.3.4, printed p.10 / PDF p.17",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+      },
+      {
+        "label": "A/345 §§4–5.2, printed pp.6–11 / PDF pp.11–16",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A345-2026-04-VVC-Video.pdf#page=11"
+      },
+      {
+        "label": "SBTVD OG-03 Annex A: VVC configuration; non-normative",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-03-Video-Coding.pdf#page=4"
+      },
+      {
+        "label": "A/341 §6.2.3.2: VUI/chroma constraints",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A341-2026-04-Video-HEVC.pdf#page=16"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+    }
   },
   {
-    "id": "codec-video-hdr", "group": "Presentation · video", "feature": "HDR / WCG transfer characteristics",
-    "atsc_docs": ["A/341"],
+    "id": "codec-video-hdr",
+    "group": "Presentation · HEVC",
+    "feature": "HDR/WCG transfer functions and bitstream signaling",
+    "atsc_docs": [
+      "A/341"
+    ],
     "sides": {
-      "ATSC": {"doc": "A/341:2026-04", "clause": "§6.3.2 Specific Constraints Regarding Video Transfer Characteristics", "page": "doc p.18–23", "value": "SDR (BT.709/BT.2020) and HDR with PQ (SMPTE ST 2084 / BT.2100) or HLG (BT.2100); optional metadata (ST 2086, content light level, SL-HDR1 …)", "req": "options"},
-      "TTA": {"doc": "TTAK.KO-07.0149/R1", "clause": "§5.3.5 HDR/WCG 비디오 신호 부호화의 제한 사항 (5.3.5.1 HDR, 5.3.5.2 WCG)", "page": "doc p.~11", "value": "HDR uses HLG or PQ (transfer_characteristics 18 or 14 for HLG); WCG per BT.2020 (colour_primaries)", "req": "options"},
-      "SBTVD": {"doc": "ABNT NBR 25603:2025", "clause": "ABNT clause unverified", "page": "—", "value": "—", "req": "unverified"}
+      "ATSC": {
+        "doc": "A/341:2026-04",
+        "clause": "§6.3.2, especially §6.3.2.3 HLG",
+        "page": "printed pp.12–16 / PDF pp.18–22",
+        "value": "SDR, PQ and HLG have specific bitstream constraints; HLG requires SPS transfer_characteristics=18, BT.2100 primaries/matrix, 10-bit narrow-range representation and chroma-location settings. Optional metadata tools have additional conditions.",
+        "req": "conditional bitstream requirements"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+        "clause": "§5.3.5.1 HDR; §5.3.5.2 WCG",
+        "page": "printed p.11 / PDF p.18",
+        "value": "HLG allows transfer_characteristics=18 or 14; the 14 path requires alternative-transfer SEI with preferred_transfer_characteristics=18. PQ uses 16. National WCG clauses list BT.709/BT.2020. These are not the same complete constraint set as current A/341.",
+        "req": "conditional on selected signal format"
+      },
+      "SBTVD": {
+        "doc": "ABNT NBR 25603:2025 · SBTVD OG-03",
+        "clause": "OG Annexes F–K; ABNT clauses unread",
+        "page": "OG Annexes F–K",
+        "value": "Public guidance covers HDR10, DM App #1/#4, SL-HDR1/2 and HLG. Their normative combinations, support requirements and signaling constraints remain unverified.",
+        "req": "unverified"
+      }
     },
-    "difference": "Same HDR/WCG toolset (HLG and PQ over BT.2020); detailed metadata constraints (e.g., SL-HDR1, dynamic metadata added to A/341 after 2016) not compared clause by clause.",
-    "impact": "Interoperable at the transfer-function level.",
-    "cells": {"TTA": {"rel": "profile", "conf": "partial"}, "SBTVD": {"rel": "alternative", "conf": "unverified"}},
-    "verdicts": {"TTA": {"code": "same", "text": "HLG/PQ over BT.2020 in both; later metadata clauses not itemized", "req": "options"}, "SBTVD": {"code": "review", "text": "ABNT NBR 25603 not read", "req": "unverified"}},
-    "evidence": [],
-    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+    "difference": "HLG/PQ are shared transfer-function families, but permitted signaling paths and representation constraints differ. Later metadata provisions are an additional difference.",
+    "impact": "Interoperability is not guaranteed for every nationally permitted stream; a common constrained subset and decoder tests would be needed.",
+    "cells": {
+      "TTA": {
+        "rel": "profile",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "related",
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "partial",
+        "text": "HLG 14+SEI path and current ATSC HLG constraints differ",
+        "req": "conditional"
+      },
+      "SBTVD": {
+        "code": "review",
+        "text": "HDR guidance identified; ABNT normative constraints unread",
+        "req": "unverified"
+      }
+    },
+    "evidence": [
+      {
+        "label": "A/341 §6.3.2.3, printed p.16 / PDF p.22",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A341-2026-04-Video-HEVC.pdf#page=22"
+      },
+      {
+        "label": "TTA Part 2 §5.3.5, printed p.11 / PDF p.18",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+    }
   },
   {
-    "id": "codec-audio", "group": "Presentation · audio", "feature": "Audio codec, profile/level and stream constraints",
-    "atsc_docs": ["A/342 Part 3", "A/342 Part 1", "A/342 Part 2"],
+    "id": "codec-vvc-profile",
+    "group": "Presentation · VVC",
+    "feature": "Current ATSC VVC profiles, formats and HDR",
+    "atsc_docs": [
+      "A/345"
+    ],
     "sides": {
-      "ATSC": {"doc": "A/342-3:2026-04 · A/342-2:2026-04", "clause": "A/342-3 §5.1 (5.1.1 Baseline profile, 5.1.2 Low Complexity profile), §5.2 MHAS / ISOBMFF encapsulation, §5.3 loudness/DRC, §5.4 audio emergency information; A/342-2 AC-4", "page": "A/342-3 doc p.11–16", "value": "Two audio systems (AC-4, MPEG-H); MPEG-H Baseline or LC profile", "req": "one system mandatory per service"},
-      "TTA": {"doc": "TTAK.KO-07.0149/R1 · MSIT Notice 2023-34", "clause": "§6.2 오디오 신호 규격; §6.3 오디오 부호화 (6.3.1 MHAS, 6.3.1.2 ISOBMFF mhm1/mhm2, RAP, configuration change); Notice Art. 13 ①4", "page": "doc p.13–18 (pdf 21–26)", "value": "MPEG-H 3D Audio (ISO/IEC 23008-3:2015 + Amd 3) LC profile Level 1–3 only; 48 kHz; 16/20/24-bit; up to 16 core channels (channels, objects, HOA); MHAS packet rules (no CRC packets, SYNC ignored); mhm1/mhm2; regulation mandates LC profile Level 1–3", "req": "mandatory (single system)"},
-      "SBTVD": {"doc": "ABNT NBR 25604:2025 · SBTVD OG-04", "clause": "ABNT clause unverified; OG-04 (2.0 stereo, 5.1 multichannel …)", "page": "—", "value": "MPEG-H audio", "req": "mandatory"}
+      "ATSC": {
+        "doc": "A/345:2026-04",
+        "clause": "§§4–5.3; Table 5.1; Annex A",
+        "page": "printed pp.6–13,16 / PDF pp.11–18,21",
+        "value": "CMAF profiles cvvc (constrained baseline), cafr (full-range constrained baseline) and cvvm (multilayer). Main 10 / Main tier / Level 6.1; 10-bit progressive video up to 7680×4320. The supported level permits 4K up to 120 fps and 8K up to 60 fps; 8K 100/120 fps is not included. HDR and multilayer capabilities are optional and constrained when used.",
+        "req": "optional capabilities; conditional constraints"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+        "clause": "§§5.2–5.3: HEVC national profile",
+        "page": "printed pp.6–11 / PDF pp.13–18",
+        "value": "The reviewed Korean terrestrial UHD profile selects HEVC. No corresponding national VVC adoption was identified in this reviewed document set; this is not a claim about every future standard or receiver capability.",
+        "req": "not adopted in reviewed profile"
+      },
+      "SBTVD": {
+        "doc": "ABNT NBR 25603:2025 · SBTVD OG-03",
+        "clause": "OG Annex A",
+        "page": "OG printed pp.4–5",
+        "value": "OG-03 describes single-layer VVC Main 10 with HDR10 and 4:2:0. ABNT profile brands, levels, formats and receiver obligations have not been verified.",
+        "req": "ABNT requirements unverified"
+      }
     },
-    "difference": "Korea and Brazil use MPEG-H only (AC-4 not adopted); Korea selects the LC profile (Levels 1–3) among the profiles A/342-3 defines. Stream-level rules in Korea correspond to the A/342-3 candidate text.",
-    "impact": "Receivers for Korea/Brazil need MPEG-H LC decoders only; US receivers additionally support AC-4.",
-    "cells": {"TTA": {"rel": "profile", "conf": "confirmed"}, "SBTVD": {"rel": "profile", "conf": "metadata"}},
-    "verdicts": {"TTA": {"code": "same", "text": "MPEG-H LC profile selected from the defined profiles; MHAS/ISOBMFF rules as in A/342-3", "req": "MPEG-H mandatory; AC-4 not adopted"}, "SBTVD": {"code": "partial", "text": "MPEG-H adopted; profile/level constraints not read", "req": "MPEG-H mandatory"}},
-    "evidence": [{"label": "MSIT Notice Art. 13 ①4", "url": "docs/refs/KR_MSIT-Notice-2023-34_Art13.md"}],
-    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+    "difference": "ATSC and Brazilian guidance share a VVC technology basis. Shared codec naming is not proof of equal profile/level, HDR or carriage constraints.",
+    "impact": "Current ATSC offers a direct technical comparison axis for Brazilian VVC, while Korea requires a separate HEVC-versus-VVC comparison.",
+    "cells": {
+      "TTA": {
+        "rel": "alternative",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "related",
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "diff",
+        "text": "Reviewed Korean profile uses HEVC; no VVC national adoption identified here",
+        "req": "reviewed national profile"
+      },
+      "SBTVD": {
+        "code": "review",
+        "text": "VVC technology shared; ABNT profile/level equivalence pending",
+        "req": "unverified"
+      }
+    },
+    "evidence": [
+      {
+        "label": "A/345 §§4–5.2, printed pp.6–11 / PDF pp.11–16",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A345-2026-04-VVC-Video.pdf#page=11"
+      },
+      {
+        "label": "SBTVD OG-03 Annex A: VVC configuration; non-normative",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-03-Video-Coding.pdf#page=4"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+    }
   },
   {
-    "id": "codec-captions", "group": "Presentation · captions", "feature": "Closed captions and subtitles",
-    "atsc_docs": ["A/343"],
+    "id": "codec-vvc-lcevc",
+    "group": "Presentation · VVC",
+    "feature": "VVC plus optional LCEVC enhancement",
+    "atsc_docs": [
+      "A/345"
+    ],
     "sides": {
-      "ATSC": {"doc": "A/343:2026-04", "clause": "§5 Content essence (IMSC1; 5.1 extensions 3D/HDR-WCG; 5.2 legacy CTA-708 conversion; 5.3 safe title area; 5.4 IMSC1 font names); §6 ISOBMFF packaging; §7 signaling; §8 decoder behaviour", "page": "doc p.10–14", "value": "IMSC1 text and image profiles", "req": "mandatory when captions are provided"},
-      "TTA": {"doc": "TTAK.KO-07.0149/R1", "clause": "§7.1 시스템 구조; §7.2 폐쇄 자막 데이터 규격 (IMSC1 + animated images, APNG); §7.2.1 확장; §7.3 ISOBMFF 패키징; §7.4 시그널링", "page": "doc p.21–27 (pdf 29–35)", "value": "IMSC1 with a Korean extension for animated-image captions (APNG, compatible with PNG image profile); Korean text/fonts", "req": "mandatory when captions are provided"},
-      "SBTVD": {"doc": "ABNT NBR 25605:2025 · SBTVD OG-05 · ABNT NBR 25606:2025 (closed signing)", "clause": "ABNT clauses unverified", "page": "—", "value": "Closed captioning standard (5 pp.) plus a separate closed-signing (sign language) standard", "req": "mandatory (accessibility)"}
+      "ATSC": {
+        "doc": "A/345:2026-04",
+        "clause": "§4.1; §5.4.1–5.4.4; Table 5.4",
+        "page": "printed pp.6,14–15 / PDF pp.11,19–20",
+        "value": "LCEVC scalability is optional. When used, clv1 media profile and §5.4.2 constraints apply: VVC base / LCEVC enhancement formats conform to §5.2; horizontal/vertical scaling factor is 1, 2 or 4; settings are aligned and random-access picture periods are equal. HDR and 3D combinations have further conditions.",
+        "req": "optional tool; constraints apply when used"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+        "clause": "§5: HEVC profile",
+        "page": "printed pp.6–12 / PDF pp.13–19",
+        "value": "No VVC+LCEVC adoption is specified by the reviewed Korean HEVC profile. HEVC spatial scalability is a different tool and is not interchangeable with LCEVC.",
+        "req": "not specified in reviewed profile"
+      },
+      "SBTVD": {
+        "doc": "ABNT NBR 25603:2025 · SBTVD OG-03",
+        "clause": "OG Annexes D/E",
+        "page": "OG Annexes D/E",
+        "value": "Public guidance describes LCEVC with a VVC base stream and scalable broadcast workflows. ABNT encoder/receiver support obligations, profile constraints and mandatory combinations remain unread.",
+        "req": "unverified"
+      }
     },
-    "difference": "Korea extends IMSC1 with animated-image (APNG) captions and does not need the CTA-708 legacy conversion; Brazil adds closed signing as a separate standard.",
-    "impact": "Korean animated-image captions are not decodable by receivers implementing plain A/343.",
-    "cells": {"TTA": {"rel": "profile", "conf": "confirmed"}, "SBTVD": {"rel": "related", "conf": "unverified"}},
-    "verdicts": {"TTA": {"code": "partial", "text": "IMSC1 core same; APNG animated-image extension", "req": "mandatory"}, "SBTVD": {"code": "review", "text": "ABNT NBR 25605 not read", "req": "mandatory"}},
-    "evidence": [],
-    "reviewed": {"date": "2026-08-31", "by": "draft (AI-assisted; human review pending)"}
+    "difference": "LCEVC is not uniquely Brazilian: the current approved A/345 already defines optional VVC+LCEVC. National support and mandatory use must be compared separately.",
+    "impact": "Use the same conditional-tool comparison for both systems; do not infer universal LCEVC receiver support from a guidance document.",
+    "cells": {
+      "TTA": {
+        "rel": "alternative",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "related",
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "diff",
+        "text": "No matching VVC+LCEVC adoption in the reviewed Korean profile",
+        "req": "reviewed profile"
+      },
+      "SBTVD": {
+        "code": "review",
+        "text": "Common VVC+LCEVC basis; normative requirements not compared",
+        "req": "unverified"
+      }
+    },
+    "evidence": [
+      {
+        "label": "A/345 §5.4, printed pp.14–15 / PDF pp.19–20",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A345-2026-04-VVC-Video.pdf#page=19"
+      },
+      {
+        "label": "SBTVD OG-03 Annex E: LCEVC operational guidance; non-normative",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-03-Video-Coding.pdf"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+    }
+  },
+  {
+    "id": "codec-audio",
+    "group": "Presentation · audio",
+    "feature": "Audio systems, profiles and receiver-support boundaries",
+    "atsc_docs": [
+      "A/342 Part 1",
+      "A/342 Part 2",
+      "A/342 Part 3"
+    ],
+    "sides": {
+      "ATSC": {
+        "doc": "A/342-1/2/3:2026-04",
+        "clause": "Part 1 §6.2; Part 3 §§5.1–5.4",
+        "page": "Part 1 printed p.10 / PDF p.15; Part 3 printed pp.7–11 / PDF pp.12–16",
+        "value": "ATSC defines AC-4 and MPEG-H paths selected by signaled codec. MPEG-H permits Baseline or LC Levels 1–3, with current stream/loudness/DRC/emergency constraints. These transmission specifications do not alone establish dual-codec support in every US receiver.",
+        "req": "conditional on signaled audio system"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+        "clause": "§§6.2–6.5",
+        "page": "printed pp.13–19 / PDF pp.20–26",
+        "value": "Selects MPEG-H LC Levels 1–3, 48 kHz, 16/20/24-bit input signals and at most 16 core channels. §6.3 requires receiver decoding capability for LC Levels 1, 2 and 3 within this national profile. AC-4 is not the selected terrestrial UHD coding system.",
+        "req": "national MPEG-H LC profile"
+      },
+      "SBTVD": {
+        "doc": "ABNT NBR 25604:2025 · SBTVD OG-04",
+        "clause": "OG Annex A",
+        "page": "OG Annex A",
+        "value": "MPEG-H is described in public guidance. Stereo/5.1/immersive configurations are audio channel layouts and bitrate examples, not evidence of LC-only versus Baseline profile requirements.",
+        "req": "ABNT profile/level requirements unverified"
+      }
+    },
+    "difference": "Korea selects MPEG-H LC; current ATSC defines multiple audio systems and MPEG-H profiles. Shared MPEG-H does not make current MHAS/RAP/DRC constraints identical.",
+    "impact": "Korean LC decoding requirements are source-backed. Brazilian LC-only support and universal US dual-codec implementation are not established by the cited documents.",
+    "cells": {
+      "TTA": {
+        "rel": "profile",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "related",
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "partial",
+        "text": "Common MPEG-H LC basis; current stream and metadata requirements differ",
+        "req": "national profile"
+      },
+      "SBTVD": {
+        "code": "review",
+        "text": "MPEG-H guidance confirmed; ABNT profile/level and receiver obligations unread",
+        "req": "unverified"
+      }
+    },
+    "evidence": [
+      {
+        "label": "A/342-3 §§5.1–5.4, printed pp.7–11 / PDF pp.12–16",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A342-3-2026-04-MPEG-H-System.pdf#page=12"
+      },
+      {
+        "label": "TTA Part 2 §§6.2–6.5, printed pp.13–19 / PDF pp.20–26",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+      },
+      {
+        "label": "SBTVD OG-04 Annex A: non-normative MPEG-H operational guidance",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-04-Audio-Coding.pdf"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+    }
+  },
+  {
+    "id": "codec-audio-encapsulation",
+    "group": "Presentation · audio",
+    "feature": "MPEG-H MHAS, random access and loudness/DRC deltas",
+    "atsc_docs": [
+      "A/342 Part 3"
+    ],
+    "sides": {
+      "ATSC": {
+        "doc": "A/342-3:2026-04",
+        "clause": "§§5.2–5.4",
+        "page": "printed pp.8–11 / PDF pp.13–16",
+        "value": "CRC packet types are prohibited; SYNC/SYNCGAP may be ignored. RAP includes AUDIOSCENEINFO only when ASI is present, with fragment/sample rules. Current text adds descriptor/marker and bitrate/downmix/profile-compatibility constraints. DRC metadata is required, with specified loudness coverage; audio emergency information has a separate clause.",
+        "req": "conditional bitstream requirements"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+        "clause": "§6.3.1.1–6.3.1.2; §6.4.1",
+        "page": "printed pp.15–18 / PDF pp.22–25",
+        "value": "CRC prohibition and mhm1/mhm2 carriage are common. SYNC/SYNCGAP must be ignored; the RAP packet list includes AUDIOSCENEINFO without the current ATSC presence condition. DRC metadata is described conditionally when included. Current ATSC bitrate, compatibility, fragment and emergency details are not all reproduced here.",
+        "req": "national stream constraints"
+      },
+      "SBTVD": {
+        "doc": "ABNT NBR 25604:2025 · SBTVD OG-04",
+        "clause": "Normative stream constraints not read",
+        "page": "—",
+        "value": "Operational MPEG-H guidance is available, but no complete ABNT MHAS/RAP/DRC clause comparison has been performed.",
+        "req": "unverified"
+      }
+    },
+    "difference": "There are explicit shall-versus-may and RAP-condition differences; matching codec/sample-entry names do not establish identical stream behavior.",
+    "impact": "Use separate acceptance checks for SYNC handling, RAP/fragment layout, loudness/DRC and emergency metadata.",
+    "cells": {
+      "TTA": {
+        "rel": "profile",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "related",
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "partial",
+        "text": "SYNC handling, RAP conditions and current metadata constraints differ",
+        "req": "national profile"
+      },
+      "SBTVD": {
+        "code": "review",
+        "text": "ABNT stream constraints unavailable",
+        "req": "unverified"
+      }
+    },
+    "evidence": [
+      {
+        "label": "A/342-3 §§5.1–5.4, printed pp.7–11 / PDF pp.12–16",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A342-3-2026-04-MPEG-H-System.pdf#page=12"
+      },
+      {
+        "label": "TTA Part 2 §§6.2–6.5, printed pp.13–19 / PDF pp.20–26",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+      },
+      {
+        "label": "SBTVD OG-04 Annex A: non-normative MPEG-H operational guidance",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-04-Audio-Coding.pdf"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+    }
+  },
+  {
+    "id": "codec-captions",
+    "group": "Presentation · captions",
+    "feature": "IMSC1 captions, APNG and extension boundaries",
+    "atsc_docs": [
+      "A/343"
+    ],
+    "sides": {
+      "ATSC": {
+        "doc": "A/343:2026-04",
+        "clause": "§§5–8",
+        "page": "printed pp.5–9 / PDF pp.10–14",
+        "value": "IMSC1 text/image profiles, HDR/3D extensions, safe-title-area and font-name provisions; packaging, signaling and expected decoder behavior. CTA-708 conversion applies conditionally when the source captioning is translated from that format.",
+        "req": "caption-track constraints; reference decoder expectations"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+        "clause": "§§7.1–7.4; §5.4.3",
+        "page": "printed pp.20–23 / PDF pp.27–30; printed p.12 / PDF p.19",
+        "value": "IMSC1 with optional animated-image APNG captions, explicitly described as PNG-compatible. The cited caption clauses do not establish a specific Korean font requirement. An optional CEA-708 SEI path also exists in §5.4.3; absence of a matching conversion clause does not mean legacy input conversion is never needed.",
+        "req": "APNG optional; national caption constraints"
+      },
+      "SBTVD": {
+        "doc": "ABNT NBR 25605/25606:2025 · SBTVD OG-05/06",
+        "clause": "OG-05 Annexes A/B; OG-06 §4",
+        "page": "OG-05 printed pp.1–3; OG-06 printed p.1",
+        "value": "OG-05 identifies IMSC1 and WebVTT. Closed signing is covered by a separate ABNT standard and public guide. Normative format and accessibility obligations are not verified.",
+        "req": "unverified"
+      }
+    },
+    "difference": "IMSC1 is a common basis; APNG animation and current ATSC safe-area/font/HDR/3D details require separate support. Signing is a separate accessibility comparison.",
+    "impact": "Plain A/343 does not require APNG animation. PNG-compatible static fallback may be possible; actual animation/static rendering has not been tested on receivers.",
+    "cells": {
+      "TTA": {
+        "rel": "profile",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "related",
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "partial",
+        "text": "IMSC1 common; APNG and other current caption constraints differ",
+        "req": "conditional"
+      },
+      "SBTVD": {
+        "code": "review",
+        "text": "IMSC1/WebVTT guidance identified; ABNT normative details unread",
+        "req": "unverified"
+      }
+    },
+    "evidence": [
+      {
+        "label": "A/343 §§5–8, printed pp.5–9 / PDF pp.10–14",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A343-2026-04-Captions-and-Subtitles.pdf#page=10"
+      },
+      {
+        "label": "TTA Part 2 §§7.1–7.4, printed pp.20–23 / PDF pp.27–30",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+      },
+      {
+        "label": "SBTVD OG-05: IMSC1 / WebVTT guidance, non-normative",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-05-Closed-Captioning.pdf"
+      },
+      {
+        "label": "W3C PNG3 §4.1: static image and animation fallback concepts",
+        "url": "https://www.w3.org/TR/png-3/"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+    }
+  },
+  {
+    "id": "codec-caption-packaging",
+    "group": "Presentation · captions",
+    "feature": "Caption sample/segment size, timing and decoder expectations",
+    "atsc_docs": [
+      "A/343"
+    ],
+    "sides": {
+      "ATSC": {
+        "doc": "A/343:2026-04",
+        "clause": "§§5.3–5.4,6–8",
+        "page": "printed pp.7–9 / PDF pp.12–14",
+        "value": "Broadband DASH segment size is <500K bytes; typical broadcast IMSC1 duration is 1–3 seconds. Live text should specify a maximum duration up to 16 seconds. Safe-area/font-name constraints and expected scrolling/profile support are specified separately.",
+        "req": "conditional constraints and stated expectations"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0149/R1 (2022-12-07)",
+        "clause": "§§7.2–7.4",
+        "page": "printed pp.21–23 / PDF pp.28–30",
+        "value": "Broadband ISOBMFF caption sample size is ≤500K bytes; typical IMSC1 duration is 0.5–3 seconds. Live caption data must specify a maximum duration up to 16 seconds. The sample-versus-segment unit, boundary inequality and shall/should differ; current ATSC decoder expectations are not fully mapped by §7.4 signaling.",
+        "req": "national caption constraints"
+      },
+      "SBTVD": {
+        "doc": "ABNT NBR 25605:2025 · SBTVD OG-05",
+        "clause": "ABNT packaging/timing clauses unread",
+        "page": "—",
+        "value": "Public guidance identifies technologies but supplies no complete packaging/timing equivalence check.",
+        "req": "unverified"
+      }
+    },
+    "difference": "Related packaging concepts are not equal requirements: the unit, exact size bound, typical duration and obligation level differ.",
+    "impact": "Check memory limits and live-caption persistence against each national stream specification; no device validation is implied.",
+    "cells": {
+      "TTA": {
+        "rel": "profile",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "related",
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "partial",
+        "text": "Sample/segment unit, size boundary, timing and requirement level differ",
+        "req": "conditional"
+      },
+      "SBTVD": {
+        "code": "review",
+        "text": "ABNT packaging and timing unavailable",
+        "req": "unverified"
+      }
+    },
+    "evidence": [
+      {
+        "label": "A/343 §§5–8, printed pp.5–9 / PDF pp.10–14",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A343-2026-04-Captions-and-Subtitles.pdf#page=10"
+      },
+      {
+        "label": "TTA Part 2 §§7.1–7.4, printed pp.20–23 / PDF pp.27–30",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+      },
+      {
+        "label": "SBTVD OG-05: IMSC1 / WebVTT guidance, non-normative",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-05-Closed-Captioning.pdf"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+    }
   }
 ]

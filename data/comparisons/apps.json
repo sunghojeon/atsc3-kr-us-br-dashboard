@@ -2,104 +2,35 @@
   {
     "id": "app-runtime",
     "group": "Applications · runtime",
-    "feature": "Broadcaster application runtime and standards basis",
+    "feature": "Application environments and reference-model scope",
     "atsc_docs": [
       "A/344"
     ],
     "sides": {
       "ATSC": {
-        "doc": "A/344:2026-04",
-        "clause": "§4 Overview; §5 ATSC Reference Receiver Model; §6 Broadcaster Application Management",
-        "page": "doc p.10–32",
-        "value": "HTML5 Broadcaster Application executed by the receiver's user agent; lifecycle per HELD signaling (A/331 §7.1.8)",
-        "req": "mandatory for interactive services"
+        "doc": "A/344:2026-04 · A/381:2026-04",
+        "clause": "A/344 §§4–6; A/381 §§1,3.1.1,4",
+        "page": "A/344 printed pp.10–32 / PDF pp.21–43",
+        "value": "W3C/HTML5 user agent, HTTP access to delivered files, WebSocket JSON-RPC and broadcaster-application lifecycle/cache. A/381 explicitly distinguishes reference-model expectations from normative requirements for actual receiver implementations.",
+        "req": "reference-model and signaled-service behavior"
       },
       "TTA": {
         "doc": "TTAK.KO-07.0128/R3",
-        "clause": "§5 Part 1 공통 기술; §6 Part 2 애플리케이션 시그널링; §7 Part 3 브라우저 애플리케이션 환경 (참조표준: ETSI TS 102 796 HbbTV, ETSI TS 102 809, OIPF Release 2, W3C HTML5, A/333, A/338)",
-        "page": "doc §5–§7",
-        "value": "HbbTV 2.0-based IBB service: application signaling per ETSI TS 102 809 / TS 102 796 with ROUTE/DASH and MMT carriage",
-        "req": "mandatory for IBB services"
+        "clause": "§§5–7",
+        "page": "printed pp.11–47 / PDF pp.19–55",
+        "value": "HbbTV/OIPF-based HTML5 IBB environment with national signaling and ROUTE/DASH/MMT carriage. Clauses inside this adopted service profile contain conditional and required behavior; this is not evidence that every receiver must offer every IBB feature.",
+        "req": "within adopted IBB profile"
       },
       "SBTVD": {
-        "doc": "ABNT NBR 25608:2025 · SBTVD OG-08",
-        "clause": "OG-08 §6 architecture; §7 Ginga Common Core; Annex A NCL 4.0; Annex B; Annex C TV 3.0 WebServices; Annex D NCLua",
-        "page": "OG-08 pdf p.3–38",
-        "value": "Ginga (NCL 4.0 + NCLua + HTML/WebServices) application coding; harmonization with TV 2.X Ginga",
-        "req": "mandatory (ABNT NBR 25608, 528 pp.)"
+        "doc": "ABNT NBR 25608:2025 · SBTVD OG-08 (July 2026)",
+        "clause": "OG §§1,6–7; Annexes A–D",
+        "page": "OG §§1,6–7; Annexes A–D",
+        "value": "Ginga application model includes NCL 4.0, HTML5 presentation, WebServices and NCLua. OG-08 is non-normative implementation guidance referring detailed requirements to ABNT.",
+        "req": "ABNT requirements unverified"
       }
     },
-    "difference": "Three different runtimes: A/344 Broadcaster Application (HTML5 + WebSocket/JSON-RPC), Korea's HbbTV-based IBB, Brazil's Ginga. Only the ATSC signaling substrate (ROUTE/DASH, NRT) is shared.",
-    "impact": "Applications are not portable across the three markets; receivers need market-specific application engines.",
-    "cells": {
-      "TTA": {
-        "rel": "alternative",
-        "conf": "confirmed"
-      },
-      "SBTVD": {
-        "rel": "alternative",
-        "conf": "confirmed"
-      }
-    },
-    "verdicts": {
-      "TTA": {
-        "code": "diff",
-        "text": "HbbTV 2.0-based IBB instead of A/344",
-        "req": "mandatory"
-      },
-      "SBTVD": {
-        "code": "diff",
-        "text": "Ginga instead of A/344",
-        "req": "mandatory"
-      }
-    },
-    "evidence": [
-      {
-        "label": "TTAK.KO-07.0128/R3 (committee.tta.or.kr)",
-        "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0128%2FR3&nowSu=1"
-      },
-      {
-        "label": "SBTVD OG-08 Application Coding (forumsbtvd.org.br)",
-        "url": "https://forumsbtvd.org.br/tv3-0/"
-      }
-    ],
-    "reviewed": {
-      "date": "2026-08-31",
-      "by": "draft (AI-assisted; human review pending)"
-    }
-  },
-  {
-    "id": "app-apis",
-    "group": "Applications · APIs",
-    "feature": "Receiver APIs available to applications",
-    "atsc_docs": [
-      "A/344"
-    ],
-    "sides": {
-      "ATSC": {
-        "doc": "A/344:2026-04",
-        "clause": "§8 ATSC 3.0 WebSocket Interface; §9 Supported Methods (JSON-RPC 2.0)",
-        "page": "doc p.33–180",
-        "value": "WebSocket JSON-RPC methods (content recovery, DRM, event stream, media player, receiver settings, caption/audio preferences …)",
-        "req": "mandatory subset"
-      },
-      "TTA": {
-        "doc": "TTAK.KO-07.0128/R3",
-        "clause": "§7.2 브라우저 애플리케이션 (HbbTV/OIPF JavaScript APIs)",
-        "page": "—",
-        "value": "OIPF DAE / HbbTV JavaScript object model",
-        "req": "mandatory subset"
-      },
-      "SBTVD": {
-        "doc": "SBTVD OG-08",
-        "clause": "Annex C.6 TV 3.0 WebServices APIs (client identification, event notification, DTV context, broadcaster tables, media players, geolocation, closed signing, application context cache, audience measurement, remote devices, sensory effects, NRT filters); Annex D NCLua APIs",
-        "page": "OG-08 pdf p.27–38",
-        "value": "REST/WebServices API groups plus NCLua libraries",
-        "req": "mandatory (ABNT NBR 25608)"
-      }
-    },
-    "difference": "API models differ entirely (JSON-RPC over WebSocket vs OIPF/HbbTV DOM objects vs Ginga WebServices/NCLua).",
-    "impact": "No API-level compatibility.",
+    "difference": "Broadcast-specific runtime, lifecycle and signaling models differ, while common HTML/W3C technologies remain available across environments.",
+    "impact": "Broadcast control integration needs porting; reusable web/UI code is not ruled out. Actual receiver API availability must be checked separately.",
     "cells": {
       "TTA": {
         "rel": "alternative",
@@ -107,60 +38,156 @@
       },
       "SBTVD": {
         "rel": "alternative",
-        "conf": "confirmed"
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
       }
     },
     "verdicts": {
       "TTA": {
         "code": "diff",
-        "text": "Different API model",
-        "req": "mandatory"
+        "text": "HbbTV-based IBB has different broadcast-specific lifecycle/signaling; shared web technologies remain",
+        "req": "within adopted profile"
       },
       "SBTVD": {
         "code": "diff",
-        "text": "Different API model",
-        "req": "mandatory"
+        "text": "Ginga environment differs; ABNT normative implementation details remain unread",
+        "req": "unverified"
       }
     },
-    "evidence": [],
+    "evidence": [
+      {
+        "label": "A/344 §§4–6: reference receiver, lifecycle and cache",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A344-2026-04-Interactive-Content.pdf#page=21"
+      },
+      {
+        "label": "TTA IBB §§5–7: HbbTV/OIPF environment and national signaling",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0128%2FR3&nowSu=1&rn=1"
+      },
+      {
+        "label": "SBTVD OG-08 §§1,6–7 and Annexes A–D: non-normative application guidance",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
+      },
+      {
+        "label": "A/381 §3.1.1: reference-model expectations do not impose normative receiver implementation requirements",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A381-2026-04-RP-Interactive-Content.pdf#page=9"
+      }
+    ],
     "reviewed": {
-      "date": "2026-08-31",
-      "by": "draft (AI-assisted; human review pending)"
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+    }
+  },
+  {
+    "id": "app-apis",
+    "group": "Applications · APIs",
+    "feature": "Broadcast-specific APIs and common web APIs",
+    "atsc_docs": [
+      "A/344"
+    ],
+    "sides": {
+      "ATSC": {
+        "doc": "A/344:2026-04",
+        "clause": "§8 WebSocket interface; §9 methods; A/381 §4.2",
+        "page": "printed pp.34–180 / PDF pp.45–191",
+        "value": "Broadcast receiver control uses JSON-RPC over WebSocket; HTTP provides file/resource access. W3C user-agent APIs are also used. The reference model does not prove that every product implements every listed method.",
+        "req": "method-specific/reference-model scope"
+      },
+      "TTA": {
+        "doc": "TTAK.KO-07.0128/R3",
+        "clause": "§7.2 HbbTV/OIPF APIs and Korean additions",
+        "page": "§7.2",
+        "value": "HbbTV/OIPF object model and national stream-event/service APIs coexist with common HTML5/W3C APIs.",
+        "req": "method-specific within adopted IBB profile"
+      },
+      "SBTVD": {
+        "doc": "ABNT NBR 25608:2025 · SBTVD OG-08",
+        "clause": "OG Annexes C/D; detailed APIs referred to ABNT",
+        "page": "OG Annexes C/D",
+        "value": "WebServices and NCLua API groups are identified. Complete endpoints, schemas, authorization and mandatory subsets have not been verified from ABNT.",
+        "req": "unverified"
+      }
+    },
+    "difference": "Broadcast-specific API models differ; that is narrower than claiming no API-level compatibility across all HTML/W3C features.",
+    "impact": "Port broadcast control adapters and verify supported methods; preserve common web components where compatible.",
+    "cells": {
+      "TTA": {
+        "rel": "alternative",
+        "conf": "partial"
+      },
+      "SBTVD": {
+        "rel": "alternative",
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
+      }
+    },
+    "verdicts": {
+      "TTA": {
+        "code": "diff",
+        "text": "Different broadcast control model; shared W3C APIs are not excluded",
+        "req": "method-specific"
+      },
+      "SBTVD": {
+        "code": "review",
+        "text": "API groups known; complete ABNT API contracts and obligations unread",
+        "req": "unverified"
+      }
+    },
+    "evidence": [
+      {
+        "label": "A/344 §§4–6: reference receiver, lifecycle and cache",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A344-2026-04-Interactive-Content.pdf#page=21"
+      },
+      {
+        "label": "TTA IBB §§5–7: HbbTV/OIPF environment and national signaling",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0128%2FR3&nowSu=1&rn=1"
+      },
+      {
+        "label": "SBTVD OG-08 §§1,6–7 and Annexes A–D: non-normative application guidance",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
+      },
+      {
+        "label": "A/381 §3.1.1: reference-model expectations do not impose normative receiver implementation requirements",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A381-2026-04-RP-Interactive-Content.pdf#page=9"
+      }
+    ],
+    "reviewed": {
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
     }
   },
   {
     "id": "app-signaling",
     "group": "Applications · signaling",
-    "feature": "Application signaling and event delivery",
+    "feature": "Application signaling and ROUTE/MMT event paths",
     "atsc_docs": [
       "A/344",
       "A/337"
     ],
     "sides": {
       "ATSC": {
-        "doc": "A/344:2026-04 · A/337:2026-04 · A/331 §7.1.8",
-        "clause": "HELD (HTML Entry pages Location Description); A/337 event delivery (EventStream / emsg)",
-        "page": "—",
-        "value": "HELD in SLS; events via DASH EventStream and emsg boxes",
-        "req": "mandatory for apps"
+        "doc": "A/344:2026-04 · A/337:2026-04 · A/331:2026-04",
+        "clause": "HELD in SLS; A/337 application event delivery",
+        "page": "A/344 §6; A/337 event-delivery clauses",
+        "value": "HELD identifies broadcaster entry packages. Event delivery uses defined DASH/ISO-BMFF mechanisms and event semantics. Descriptor delivery and event payload/control semantics must be compared separately.",
+        "req": "conditional on service/application path"
       },
       "TTA": {
         "doc": "TTAK.KO-07.0128/R3",
-        "clause": "§6.2 애플리케이션 시그널링 (6.2.2.1 AST; <표 6-1> AST 제약, <표 6-2> AST 추가 사항); DASH events",
-        "page": "doc p.14–17 (pdf 22–25)",
-        "value": "AST (Application Signaling Table) = XML AIT per ETSI TS 102 809 / HbbTV 2.0 §7.2.3.2 with a Korean extension namespace (http://www.nextb.or.kr/XMLSchemas/UHDIBB/AST/1.0/, prefix uhdibb: requiredCapabilities, appSize, contentLinkage …); broadcast delivery of app files over ROUTE; static events via MPD EventStream, dynamic events via DASH 'emsg' (as in A/337)",
-        "req": "mandatory for IBB"
+        "clause": "§6.2.2 AST; §6.2.3 events",
+        "page": "printed pp.14–25 / PDF pp.22–33",
+        "value": "AST is XML-AIT-based with uhdibb namespace/extensions. ROUTE/DASH uses MPD EventStream for static events and emsg for dynamic events. MMT broadcast uses static AEI and dynamic evti in MPU; broadband event paths use the specified MPD/emsg mechanisms.",
+        "req": "path-specific IBB requirements"
       },
       "SBTVD": {
-        "doc": "SBTVD OG-08 §10.1 · ABNT NBR 25608:2025",
-        "clause": "Broadcaster Application Location Description (BALD); §8.4 Bootstrap applications",
-        "page": "OG-08 pdf p.14",
-        "value": "BALD signaling for Ginga applications; application catalog bootstrap",
-        "req": "mandatory"
+        "doc": "ABNT NBR 25608:2025 · SBTVD OG-08",
+        "clause": "OG §10.1 BALD; §8 bootstrap/catalog",
+        "page": "OG printed p.14 and §8",
+        "value": "BALD and application-catalog bootstrap are identified; the guide delegates detailed syntax and requirements to ABNT. Full event payload/semantics equivalence is not established.",
+        "req": "unverified"
       }
     },
-    "difference": "Each market signals applications with its own descriptor (HELD vs XML-AIT-based AST vs BALD) although all ride on ATSC 3.0 delivery; event carriage (EventStream/emsg) is shared between ATSC and Korea.",
-    "impact": "Signaling generators must be market-specific.",
+    "difference": "HELD, AST and BALD are different application descriptors. Shared DASH event carriers do not establish identical event semantics, and the Korean MMT broadcast path is distinct.",
+    "impact": "Configure descriptor and event generators by delivery path and platform; do not silently apply ROUTE-only event assumptions to MMT.",
     "cells": {
       "TTA": {
         "rel": "alternative",
@@ -168,85 +195,129 @@
       },
       "SBTVD": {
         "rel": "alternative",
-        "conf": "partial"
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
       }
     },
     "verdicts": {
       "TTA": {
         "code": "diff",
-        "text": "AST (XML AIT + uhdibb extensions) instead of HELD; event carriage as in A/337",
-        "req": "mandatory"
+        "text": "AST differs from HELD; ROUTE and MMT event paths are explicitly distinguished",
+        "req": "path-specific"
       },
       "SBTVD": {
-        "code": "diff",
-        "text": "BALD signaling (Ginga) instead of HELD",
-        "req": "mandatory"
+        "code": "review",
+        "text": "BALD identified; ABNT syntax and event semantics unread",
+        "req": "unverified"
       }
     },
-    "evidence": [],
+    "evidence": [
+      {
+        "label": "A/344 §§4–6: reference receiver, lifecycle and cache",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A344-2026-04-Interactive-Content.pdf#page=21"
+      },
+      {
+        "label": "TTA IBB §§5–7: HbbTV/OIPF environment and national signaling",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0128%2FR3&nowSu=1&rn=1"
+      },
+      {
+        "label": "SBTVD OG-08 §§1,6–7 and Annexes A–D: non-normative application guidance",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
+      },
+      {
+        "label": "A/381 §3.1.1: reference-model expectations do not impose normative receiver implementation requirements",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A381-2026-04-RP-Interactive-Content.pdf#page=9"
+      },
+      {
+        "label": "TTA IBB §6.2.3.2: MMT AEI/evti",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0128%2FR3&nowSu=1&rn=1"
+      },
+      {
+        "label": "A/337 current PDF: cover remains 2026-04 despite filename",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A337-2026-07-Application-Event-Delivery.pdf"
+      }
+    ],
     "reviewed": {
-      "date": "2026-08-31",
-      "by": "draft (AI-assisted; human review pending)"
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
     }
   },
   {
     "id": "app-companion",
     "group": "Applications · companion",
-    "feature": "Companion device / second screen",
+    "feature": "Companion discovery, launch and A/338 communication",
     "atsc_docs": [
       "A/338"
     ],
     "sides": {
       "ATSC": {
         "doc": "A/338:2026-04",
-        "clause": "§5 Specification (discovery, WebSocket communication)",
-        "page": "doc p.8–25",
-        "value": "Companion device protocol",
-        "req": "optional"
+        "clause": "§§5.1–5.8",
+        "page": "printed pp.4–21 / PDF pp.9–26",
+        "value": "Discovery, launch, application-to-application and companion-to-primary communication; current edition also includes emergency communication and companion APIs. System feature adoption and individual conditional protocol requirements are separate questions.",
+        "req": "conditional protocol requirements"
       },
       "TTA": {
         "doc": "TTAK.KO-07.0128/R3",
-        "clause": "§8 Part 4 컴패니언 스크린 서비스 (참조: OIPF Release 2, ETSI TS 102 796, A/338)",
-        "page": "—",
-        "value": "HbbTV 2.0 companion-screen framework (WebSocket server on the IBB terminal for app-to-app communication); A/338:2017 listed as a reference",
-        "req": "optional"
+        "clause": "§8.1; §§8.2.3–8.2.7.1",
+        "page": "printed pp.48–57 / PDF pp.56–65",
+        "value": "Hybrid profile: HbbTV 2.0 launch/discovery/app-to-app rules plus direct adoption of A/338:2017 §5.6 for companion-to-IBB communication. §8.2.7.1 extends service enumerations with ibb.services.sl.1. §8.1 contains required behavior; the entire feature cannot be labeled optional solely from this text.",
+        "req": "required behavior within adopted companion profile"
       },
       "SBTVD": {
-        "doc": "SBTVD OG-08 §9 · Annex C.6.15",
-        "clause": "Remote devices; remote device communication APIs",
-        "page": "OG-08 pdf p.14, p.34",
-        "value": "Ginga remote-device communication",
-        "req": "optional"
+        "doc": "ABNT NBR 25608:2025 · SBTVD OG-08",
+        "clause": "OG §9 and Annex C.6.15",
+        "page": "OG printed pp.14,34",
+        "value": "Remote-device communication is identified, but these guide sections refer detailed requirements to ABNT. Protocol equivalence and optional/mandatory support remain unverified.",
+        "req": "unverified"
       }
     },
-    "difference": "Functionally similar goals with different protocols; Korea references A/338 but its normative basis is HbbTV/OIPF.",
-    "impact": "Second-screen apps are market-specific.",
+    "difference": "Korea does more than cite A/338: it directly adopts a specified 2017 communication clause alongside HbbTV mechanisms and a national extension. A 2017-to-current delta remains.",
+    "impact": "Compare discovery/launch, CD–PD communication and service extensions separately; no full cross-market interoperability has been tested.",
     "cells": {
       "TTA": {
-        "rel": "related",
-        "conf": "metadata"
+        "rel": "profile",
+        "conf": "partial"
       },
       "SBTVD": {
-        "rel": "alternative",
-        "conf": "metadata"
+        "rel": "related",
+        "conf": "partial",
+        "flag": "ABNT normative clauses unverified"
       }
     },
     "verdicts": {
       "TTA": {
         "code": "partial",
-        "text": "HbbTV companion framework with A/338 as reference",
-        "req": "optional"
+        "text": "HbbTV plus directly adopted A/338:2017 communication and Service Linkage extension",
+        "req": "within adopted companion profile"
       },
       "SBTVD": {
-        "code": "diff",
-        "text": "Ginga remote-device APIs",
-        "req": "optional"
+        "code": "review",
+        "text": "Remote-device function identified; ABNT protocol and support requirements unread",
+        "req": "unverified"
       }
     },
-    "evidence": [],
+    "evidence": [
+      {
+        "label": "TTA IBB §8.2.7, printed p.54 / PDF p.62: direct A/338:2017 §5.6 adoption",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0128%2FR3&nowSu=1&rn=1"
+      },
+      {
+        "label": "TTA IBB §8.2.7.1, printed p.55 / PDF p.63: Service Linkage extension",
+        "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0128%2FR3&nowSu=1&rn=1"
+      },
+      {
+        "label": "A/338:2026-04 §5, printed pp.4–21 / PDF pp.9–26",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/04/A338-2026-04-Companion-Device.pdf#page=9"
+      },
+      {
+        "label": "SBTVD OG-08 §9 / Annex C.6.15: details referred to ABNT NBR 25608",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-08-Application-Coding.pdf#page=14"
+      }
+    ],
     "reviewed": {
-      "date": "2026-08-31",
-      "by": "draft (AI-assisted; human review pending)"
+      "date": "2026-10-18",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
     }
   }
 ]
