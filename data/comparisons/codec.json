@@ -269,9 +269,10 @@
     },
     "verdicts": {
       "TTA": {
-        "code": "diff",
-        "text": "Reviewed Korean profile uses HEVC; no VVC national adoption identified here",
-        "req": "reviewed national profile"
+        "code": "none",
+        "kind": "not-adopted",
+        "text": "Not adopted: Korean terrestrial UHD video is HEVC only (MSIT Notice 2023-34 Art.13(1)3; TTAK.KO-07.0149/R1 §5)",
+        "req": "not adopted"
       },
       "SBTVD": {
         "code": "review",
@@ -291,7 +292,7 @@
     ],
     "reviewed": {
       "date": "2026-10-22",
-      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified; 2026-10-22 baseline re-check (findings carried forward)"
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified; 2026-10-22 Korean verdict set to not adopted"
     }
   },
   {
@@ -339,9 +340,10 @@
     },
     "verdicts": {
       "TTA": {
-        "code": "diff",
-        "text": "No matching VVC+LCEVC adoption in the reviewed Korean profile",
-        "req": "reviewed profile"
+        "code": "none",
+        "kind": "not-adopted",
+        "text": "Not adopted: Korean terrestrial UHD video is HEVC only (MSIT Notice 2023-34 Art.13(1)3; TTAK.KO-07.0149/R1 §5); no VVC base for LCEVC",
+        "req": "not adopted"
       },
       "SBTVD": {
         "code": "review",
@@ -361,7 +363,7 @@
     ],
     "reviewed": {
       "date": "2026-10-22",
-      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified; 2026-10-22 baseline re-check (findings carried forward)"
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified; 2026-10-22 Korean verdict set to not adopted"
     }
   },
   {

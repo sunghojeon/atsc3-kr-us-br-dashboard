@@ -3743,11 +3743,15 @@
         },
         "TTA": {
           "docs": [],
-          "note": "AC-4 is not selected by the reviewed Korean terrestrial UHD profile, which specifies MPEG-H LC Levels 1–3.",
-          "rel": "alternative",
-          "conf": "partial",
-          "unverified": [
-            "Comparison is limited to the cited clauses and reviewed documents."
+          "note": "AC-4 is not adopted in Korea. Terrestrial UHD audio is MPEG-H LC Levels 1–3: MSIT Notice 2023-34 Art.13(1)4 and TTAK.KO-07.0149/R1 §6 specify ISO/IEC 23008-3. The Korean MPEG-H profile is compared under A/342 Part 3. This is not a statement about receiver capability or future revisions.",
+          "conf": "confirmed",
+          "reg": [
+            {
+              "org": "TTA",
+              "id": "MSIT Notice No. 2023-34, Article 13",
+              "ref": "Art. 13 ① 4",
+              "text": "오디오 신호의 압축 조건은 한국정보통신기술협회가 정한 \"지상파 UHDTV방송 송수신 정합 표준\"에서 규정한 ISO/IEC 23008-3의 LC(low complexity) Profile, Level 1, 2 또는 3의 내용을 따를 것"
+            }
           ]
         },
         "SBTVD": {
@@ -3786,19 +3790,26 @@
         {
           "label": "SBTVD OG-04 Annex A: non-normative MPEG-H operational guidance",
           "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-04-Audio-Coding.pdf"
+        },
+        {
+          "org": "TTA",
+          "doc": "MSIT Notice 2023-34",
+          "clause": "Art.13(1)4 audio coding: ISO/IEC 23008-3 (MPEG-H LC) only",
+          "url": "https://www.law.go.kr/admRulLsInfoP.do?admRulId=53476&efYd=0"
         }
       ],
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
         "updated": "2026-10-22",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: Korean verdict changed from Different to Not adopted (MSIT Notice 2023-34 Art.13(1)4 specifies MPEG-H LC only); other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
-          "code": "diff",
-          "text": "The reviewed Korean terrestrial UHD coding profile selects MPEG-H instead of AC-4",
-          "req": "national profile"
+          "code": "none",
+          "kind": "not-adopted",
+          "text": "Not adopted: the Korean terrestrial UHD standard and MSIT Notice 2023-34 Art.13(1)4 specify MPEG-H LC (ISO/IEC 23008-3); AC-4 is not specified",
+          "req": "national rule specifies MPEG-H LC"
         },
         "SBTVD": {
           "code": "review",
@@ -4116,11 +4127,15 @@
         },
         "TTA": {
           "docs": [],
-          "note": "Reviewed terrestrial UHD profile selects HEVC; no corresponding VVC adoption identified in this source set. This is not a receiver-wide prohibition.",
-          "rel": "alternative",
-          "conf": "partial",
-          "unverified": [
-            "Comparison is limited to the cited clauses and reviewed documents."
+          "note": "VVC is not adopted in Korea. Terrestrial UHD video is HEVC only: MSIT Notice 2023-34 Art.13(1)3 and TTAK.KO-07.0149/R1 §5 specify ISO/IEC 23008-2 Main 10 or Scalable Main 10, Level 5.2. The Korean HEVC profile is compared under A/341. This is not a statement about receiver capability or future revisions.",
+          "conf": "confirmed",
+          "reg": [
+            {
+              "org": "TTA",
+              "id": "MSIT Notice No. 2023-34, Article 13",
+              "ref": "Art. 13 ① 3",
+              "text": "비디오 신호의 압축 조건은 한국정보통신기술협회가 정한 \"지상파 UHDTV방송 송수신 정합 표준\"에서 규정한 ISO/IEC 23008-2의 Main 10 Profile 또는 Scalable Main 10 Profile, Main tier, Level 5.2의 내용을 따를 것"
+            }
           ]
         },
         "SBTVD": {
@@ -4137,7 +4152,7 @@
           ]
         }
       },
-      "impact": "Current ATSC offers a direct technical comparison axis for Brazilian VVC, while Korea requires a separate HEVC-versus-VVC comparison.",
+      "impact": "Current ATSC offers a direct technical comparison axis for Brazilian VVC. Korea has not adopted VVC; its HEVC profile is compared under A/341.",
       "recommendation": "Compare cvvc/cafr/cvvm and clv1, format/level limits, HDR signaling, scalability and RAP conditions against ABNT when its text is available.",
       "evidence": [
         {
@@ -4155,19 +4170,26 @@
         {
           "label": "SBTVD OG-03 Annex E: LCEVC operational guidance; non-normative",
           "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-03-Video-Coding.pdf"
+        },
+        {
+          "org": "TTA",
+          "doc": "MSIT Notice 2023-34",
+          "clause": "Art.13(1)3 video coding: ISO/IEC 23008-2 (HEVC) only",
+          "url": "https://www.law.go.kr/admRulLsInfoP.do?admRulId=53476&efYd=0"
         }
       ],
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
         "updated": "2026-10-22",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: Korean verdict changed from Different to Not adopted (MSIT Notice 2023-34 Art.13(1)3 specifies HEVC only); other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
-          "code": "diff",
-          "text": "Reviewed Korean profile uses HEVC; no VVC national adoption identified here",
-          "req": "reviewed national profile"
+          "code": "none",
+          "kind": "not-adopted",
+          "text": "Not adopted: the Korean terrestrial UHD standard and MSIT Notice 2023-34 Art.13(1)3 specify HEVC (ISO/IEC 23008-2); VVC is not specified",
+          "req": "national rule specifies HEVC"
         },
         "SBTVD": {
           "code": "review",

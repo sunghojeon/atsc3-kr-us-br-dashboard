@@ -554,7 +554,7 @@
       {
         "atsc": "AC-4 system specification",
         "tta": "Reviewed Korean profile selects MPEG-H LC, not AC-4",
-        "tta_rel": "different selected audio system",
+        "tta_rel": "not adopted (Korean standard specifies MPEG-H LC)",
         "sbtvd": "OG04 describes MPEG-H; ABNT exclusions/receiver obligations unread",
         "sbtvd_rel": "OG guidance; ABNT normative clauses unverified",
         "note": "National profile selection is not proof of absence of all other decoder capabilities."
@@ -735,7 +735,7 @@
       {
         "atsc": "§5.1 cvvc/cafr/cvvm media profiles",
         "tta": "No VVC adoption identified in reviewed Korean HEVC profile",
-        "tta_rel": "different selected codec",
+        "tta_rel": "not adopted (Korean standard specifies HEVC)",
         "sbtvd": "OG03 AnnexA single-layer VVCMain10/HDR10/4:2:0",
         "sbtvd_rel": "OG guidance; ABNT normative clauses unverified",
         "note": "Common VVC technology axis; ABNT brand/level equivalence pending."
@@ -743,7 +743,7 @@
       {
         "atsc": "§5.2 format/level/HDR constraints; AnnexA 8K limit",
         "tta": "Korean HEVC format/HDR clauses are a different codec profile",
-        "tta_rel": "related function, different codec",
+        "tta_rel": "not adopted (Korean standard specifies HEVC)",
         "sbtvd": "OG03 AnnexA and HDR Annexes F–K",
         "sbtvd_rel": "OG guidance; ABNT normative clauses unverified",
         "note": "Current ATSC Level6.1 permits4K120/8K60; not8K120. ABNT complete bounds unread."
