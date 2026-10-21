@@ -144,12 +144,36 @@ def check_browser(artifacts):
             assert page.evaluate('document.documentElement.scrollWidth <= innerWidth+1'),(width,theme,'detail overflow')
             result['viewports'].append({'width':width,'theme':theme,'page_overflow':False})
             page.locator('#reset').click()
+        # Review notes: select text, add a note; it must survive re-render and reload, export, and delete cleanly.
+        page.set_viewport_size({'width':1440,'height':1100});page.emulate_media(color_scheme='light');page.locator('#reset').click()
+        page.on('dialog',lambda dialog:dialog.accept())
+        page.locator('.memo-mode').click();assert page.locator('.memo-mode').get_attribute('aria-pressed')=='true'
+        quote=page.evaluate("""() => {const t=document.querySelector('tr.row[data-id="A/345"] td[data-col="TTA"] .note').firstChild;
+          const r=document.createRange();r.setStart(t,0);r.setEnd(t,24);const s=getSelection();s.removeAllRanges();s.addRange(r);return r.toString();}""")
+        page.locator('.memo-add').wait_for(state='visible');page.locator('.memo-add').click()
+        page.locator('.memo-pop textarea').fill('Test note: wording check');page.locator('.memo-save').click()
+        saved=page.evaluate('window.DASHBOARD_NOTES.list()')
+        assert len(saved)==1 and saved[0]['quote']==quote and saved[0]['anchor']=={'scope':'row','rowId':'A/345','col':'TTA'},saved
+        mark='tr.row[data-id="A/345"] mark.memo-hl'
+        assert ''.join(page.locator(mark).all_inner_texts())==quote
+        page.locator('#q').fill('VVC');assert ''.join(page.locator(mark).all_inner_texts())==quote,'note lost after re-render'
+        page.locator('#reset').click();page.reload(wait_until='load');page.wait_for_function('Boolean(window.DASHBOARD_NOTES)')
+        assert ''.join(page.locator(mark).all_inner_texts())==quote,'note lost after reload'
+        assert page.locator('tr.row[data-id="A/345"] .memo-count').inner_text().strip()=='✎ 1'
+        exported=page.evaluate('window.DASHBOARD_NOTES.exportMarkdown()');assert quote in exported and 'Test note: wording check' in exported
+        page.locator(mark).first.click()
+        assert page.locator('.memo-pop').is_visible() and page.locator('tr.row[data-id="A/345"]').get_attribute('aria-expanded')=='false','highlight click toggled the row'
+        page.locator('.memo-del').click()
+        assert page.evaluate('window.DASHBOARD_NOTES.list().length')==0 and page.locator('mark.memo-hl').count()==0
+        page.locator('.memo-mode').click()
+        result['notes']={'quote':quote,'survives_render':True,'survives_reload':True,'exported':True,'deleted':True}
         # The downloadable single file must also work without companion assets.
         single=ROOT/'dist/atsc3-kr-us-br-reviewed.html'
         if single.exists():
             page.route('**/*',lambda route:route.abort() if route.request.url.startswith(('https://','http://')) else route.continue_())
             page.goto(single.as_uri(),wait_until='load');page.wait_for_function('Boolean(window.COMPARISON_APP)')
             assert page.locator('tr.row').count()==len(data['rows'])
+            page.wait_for_function('Boolean(window.DASHBOARD_NOTES)');assert page.locator('.memo-bar').is_visible()
             result['standalone']=True
         assert not result['errors'],result['errors']
         result['features_rendered']=len(feature_ids);result['browser']=browser.version

@@ -102,7 +102,7 @@
   const regCard = regulation => {
     const dates = [['signed','Signed'],['published','Published'],['effective','Effective']].filter(([key]) => regulation[key]).map(([key,label]) => label+' '+regulation[key]);
     if (regulation.effective_rule) dates.push(regulation.effective_rule);
-    return '<div class="reg-card"><h4>'+esc(regulation.id)+'</h4><span class="t" lang="'+esc(regulation.title_lang || 'en')+'">'+esc(regulation.title)+'</span><span class="m">'+esc([regulation.issuer,...dates].filter(Boolean).join(' · '))+'</span><p>'+link(regulation.url,'Official source')+(regulation.local ? ' · '+link(regulation.local,'Local excerpt') : '')+'</p><p>'+esc(regulation.note)+'</p>'+ (regulation.unverified?.length ? '<p class="limits">'+esc(regulation.unverified.join(' '))+'</p>' : '')+'</div>';
+    return '<div class="reg-card" data-reg="'+esc(regulation.id)+'"><h4>'+esc(regulation.id)+'</h4><span class="t" lang="'+esc(regulation.title_lang || 'en')+'">'+esc(regulation.title)+'</span><span class="m">'+esc([regulation.issuer,...dates].filter(Boolean).join(' · '))+'</span><p>'+link(regulation.url,'Official source')+(regulation.local ? ' · '+link(regulation.local,'Local excerpt') : '')+'</p><p>'+esc(regulation.note)+'</p>'+ (regulation.unverified?.length ? '<p class="limits">'+esc(regulation.unverified.join(' '))+'</p>' : '')+'</div>';
   };
   document.getElementById('regs').innerHTML = orgs.map(org => {
     const regulations = (data.regulations || []).filter(reg => reg.org === org.id);
@@ -165,7 +165,7 @@
     document.getElementById('overview').innerHTML = data.categories.map(category => {
       const rows = data.rows.filter(row => row.category === category.id);
       if (!rows.length) return '';
-      return '<div class="ov-block"><h3>'+esc(category.name)+'</h3><div class="wrap"><table class="ov"><thead><tr><th>Document</th><th class="c">TTA</th><th class="c">SBTVD Forum</th></tr></thead><tbody>'+rows.map(row => '<tr><td class="id"><b>'+esc(row.id)+'</b><span>'+esc(row.title)+'</span></td>'+['TTA','SBTVD'].map(org => '<td class="cell '+esc(row.verdicts[org].code)+'"><button type="button" data-open="'+esc(row.id)+'" aria-label="'+esc('Open '+row.id+', '+org+': '+verdictLabel(row.verdicts[org]))+'" title="'+esc(row.verdicts[org].text)+'">'+esc((V[row.verdicts[org].code] || V.review).icon)+' '+esc(verdictLabel(row.verdicts[org]))+'</button></td>').join('')+'</tr>').join('')+'</tbody></table></div></div>';
+      return '<div class="ov-block"><h3>'+esc(category.name)+'</h3><div class="wrap"><table class="ov"><thead><tr><th>Document</th><th class="c">TTA</th><th class="c">SBTVD Forum</th></tr></thead><tbody>'+rows.map(row => '<tr data-row="'+esc(row.id)+'"><td class="id"><b>'+esc(row.id)+'</b><span>'+esc(row.title)+'</span></td>'+['TTA','SBTVD'].map(org => '<td class="cell '+esc(row.verdicts[org].code)+'"><button type="button" data-open="'+esc(row.id)+'" aria-label="'+esc('Open '+row.id+', '+org+': '+verdictLabel(row.verdicts[org]))+'" title="'+esc(row.verdicts[org].text)+'">'+esc((V[row.verdicts[org].code] || V.review).icon)+' '+esc(verdictLabel(row.verdicts[org]))+'</button></td>').join('')+'</tr>').join('')+'</tbody></table></div></div>';
     }).join('');
     document.querySelectorAll('#overview [data-open]').forEach(button => button.addEventListener('click',() => openRow(button.dataset.open,true)));
   }
@@ -182,17 +182,19 @@
       html+='<tr class="group"><td colspan="'+cols+'">'+esc(category.name)+'<small>'+esc(category.desc)+'</small></td></tr>';
       for (const row of rows) {
         const index = data.rows.indexOf(row), open=state.open===row.id, detailId='detail-'+index;
-        html+='<tr class="row" data-id="'+esc(row.id)+'" aria-expanded="'+open+'"><td class="doc"><button type="button" class="row-toggle" data-row="'+esc(row.id)+'" aria-expanded="'+open+'" aria-controls="'+detailId+'"><span aria-hidden="true">'+(open?'−':'+')+'</span> '+hl(row.id)+'</button>'+(row.type==='RP'?'<span class="type">RP</span>':'')+'<span class="title">'+hl(row.title)+'</span></td>'+orgs.map(org=>'<td class="org">'+cellHtml(row.cells[org.id])+'</td>').join('')+'</tr>';
-        html+='<tr class="detail" id="'+detailId+'"'+(open?'':' hidden')+'><td colspan="'+cols+'">'+(open?detailHtml(row):'')+'</td></tr>';
+        html+='<tr class="row" data-id="'+esc(row.id)+'" aria-expanded="'+open+'"><td class="doc"><button type="button" class="row-toggle" data-row="'+esc(row.id)+'" aria-expanded="'+open+'" aria-controls="'+detailId+'"><span aria-hidden="true">'+(open?'−':'+')+'</span> '+hl(row.id)+'</button>'+(row.type==='RP'?'<span class="type">RP</span>':'')+'<span class="title">'+hl(row.title)+'</span></td>'+orgs.map(org=>'<td class="org" data-col="'+esc(org.label)+'">'+cellHtml(row.cells[org.id])+'</td>').join('')+'</tr>';
+        html+='<tr class="detail" id="'+detailId+'" data-row="'+esc(row.id)+'"'+(open?'':' hidden')+'><td colspan="'+cols+'">'+(open?detailHtml(row):'')+'</td></tr>';
       }
     }
     document.querySelector('#matrix tbody').innerHTML = html || '<tr><td colspan="'+cols+'">No documents match these filters.</td></tr>';
     document.getElementById('count').textContent = shown+' of '+total+' documents';
     document.querySelectorAll('.row-toggle').forEach(button=>button.addEventListener('click',()=>openRow(button.dataset.row)));
-    document.querySelectorAll('tr.row').forEach(row=>row.addEventListener('click',event=>{if(!event.target.closest('a,button,input,select'))openRow(row.dataset.id);}));
+    document.querySelectorAll('tr.row').forEach(row=>row.addEventListener('click',event=>{if(!event.target.closest('a,button,input,select')&&!String(window.getSelection()||'').trim())openRow(row.dataset.id);}));
     if(focusId)document.querySelector('.row-toggle[data-row="'+CSS.escape(focusId)+'"]')?.focus({preventScroll:true});
+    window.DASHBOARD_NOTES?.refresh();
   }
   renderOverview();render();
   // Pure selectors/renderers are exported for reproducible local regression checks.
   window.COMPARISON_APP = {state,passes,hasDifferences,hasUnverified,haystack,detailHtml,hl,render,openRow,reset,data};
+  document.dispatchEvent(new CustomEvent('comparison:ready'));
 })();

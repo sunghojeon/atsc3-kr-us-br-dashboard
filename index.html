@@ -183,6 +183,44 @@
   @media (max-width: 900px) { .panel { width: min(100%, calc(100vw - 90px)); } }
   @media (max-width: 600px) { .sheet { padding: 22px 12px; } h1 { font-size: 25px; } .panel { grid-template-columns: 1fr; width: min(100%, calc(100vw - 74px)); } .regs { grid-template-columns: minmax(0,1fr); } .controls input[type="search"] { width: 210px; } td.doc { min-width: 170px; } .count { margin-left: 0; } }
   @media print { body { padding: 0; } .sheet { border: 0; max-width: none; padding: 0; } .controls, nav.tabs, .baseline-panel { display: none; } }
+
+  /* Review notes (notes.js) — saved only in the viewer's browser */
+  :root { --memo: #D97706; --memo-soft: rgba(217,119,6,.20); }
+  mark.memo-hl { background: var(--memo-soft); border-bottom: 2px solid var(--memo); color: inherit; padding: 0; cursor: pointer; }
+  mark.memo-hl.done { background: rgba(46,125,50,.14); border-bottom-color: var(--same); }
+  mark.memo-hl.flash { outline: 3px solid var(--memo); outline-offset: 1px; }
+  .memo-count { display: inline-block; margin-left: 6px; border: 0; border-radius: 9px; background: var(--memo); color: #fff; font: inherit; font-size: 11px; font-weight: 700; line-height: 1.6; padding: 0 7px; cursor: pointer; vertical-align: 1px; }
+  .memo-ui button { font: inherit; }
+  .memo-bar { position: fixed; right: 16px; bottom: 16px; z-index: 50; display: flex; gap: 6px; }
+  .memo-bar button { border: 1px solid var(--line-2); background: var(--sheet); color: var(--ink); padding: 6px 12px; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  .memo-bar .memo-mode[aria-pressed="true"] { background: var(--memo); border-color: var(--memo); color: #fff; font-weight: 600; }
+  .memo-add { position: absolute; z-index: 60; border: 0; background: var(--memo); color: #fff; padding: 5px 10px; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+  .memo-pop { position: absolute; z-index: 70; width: 360px; background: var(--sheet); color: var(--ink); border: 1px solid var(--line-2); border-top: 3px solid var(--memo); padding: 12px 14px; box-shadow: 0 6px 24px rgba(0,0,0,.2); font-size: 13px; }
+  .memo-pop .memo-ctx { margin: 0 0 4px; color: var(--ink-3); font-size: 12px; }
+  .memo-pop blockquote, .memo-item blockquote { margin: 0 0 8px; padding-left: 8px; border-left: 3px solid var(--line-2); color: var(--ink-2); font-size: 12.5px; max-height: 6.6em; overflow: auto; }
+  .memo-pop textarea, .memo-copybox { width: 100%; font: inherit; font-size: 14px; color: var(--ink); background: var(--sheet); border: 1px solid var(--line-2); padding: 6px 8px; resize: vertical; }
+  .memo-actions, .memo-item-acts, .memo-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
+  .memo-actions .grow { flex: 1; }
+  .memo-actions button, .memo-item-acts button, .memo-tools button { border: 1px solid var(--line-2); background: var(--sheet); color: var(--ink); padding: 3px 9px; font-size: 12.5px; cursor: pointer; }
+  .memo-actions .memo-save { background: var(--memo); border-color: var(--memo); color: #fff; font-weight: 600; }
+  .memo-panel { position: fixed; top: 0; right: 0; bottom: 0; z-index: 80; width: min(420px, 100vw); overflow-y: auto; background: var(--sheet); color: var(--ink); border-left: 1px solid var(--line-2); box-shadow: -6px 0 24px rgba(0,0,0,.15); padding: 14px 16px 70px; font-size: 13px; }
+  .memo-head { display: flex; align-items: center; justify-content: space-between; font-size: 15px; }
+  .memo-head button { border: 0; background: none; color: var(--ink-2); font-size: 22px; line-height: 1; cursor: pointer; }
+  .memo-help { color: var(--ink-3); margin: 4px 0 8px; font-size: 12px; }
+  .memo-name { display: flex; align-items: center; gap: 6px; color: var(--ink-2); }
+  .memo-name input { flex: 1; font: inherit; color: var(--ink); background: var(--sheet); border: 1px solid var(--line-2); padding: 3px 6px; }
+  .memo-warn { color: var(--diff); font-weight: 600; }
+  .memo-items { list-style: none; padding: 0; margin: 12px 0 0; }
+  .memo-group { margin-top: 12px; padding: 4px 0; font-weight: 700; border-bottom: 2px solid var(--memo); }
+  .memo-item { border-bottom: 1px solid var(--line); padding: 8px 0; }
+  .memo-item.done > p, .memo-item.done blockquote { opacity: .55; }
+  .memo-item-ctx { color: var(--ink-2); font-size: 12px; font-weight: 600; }
+  .memo-item p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .memo-item-meta { color: var(--ink-3); font-size: 11.5px; margin-top: 4px; }
+  .memo-off { color: var(--partial); }
+  .memo-empty { color: var(--ink-3); padding: 12px 0; }
+  @media (max-width: 600px) { .memo-pop { position: fixed; left: 8px !important; right: 8px; top: auto !important; bottom: 60px; width: auto; } .memo-bar { right: 8px; bottom: 8px; } }
+  @media print { .memo-ui, .memo-count { display: none !important; } mark.memo-hl { background: none; } }
 </style>
 </head>
 <body>
@@ -242,5 +280,6 @@
 </div>
 <script src="data/standards.js"></script>
 <script src="app.js"></script>
+<script src="notes.js"></script>
 </body>
 </html>

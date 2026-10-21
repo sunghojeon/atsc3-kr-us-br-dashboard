@@ -38,6 +38,7 @@ python tools/test_dashboard.py --browser --artifacts dist/qa
 | `data/chapters/*.json` | 명시한 국가판의 장절 대응과 차이 |
 | `data/standards.json`, `data/standards.js` | 위 정본에서 함께 생성하는 화면 데이터 |
 | `index.html`, `app.js` | 화면·검색·필터·세부 근거 표시 |
+| `notes.js` | 검토 메모(선택한 글자에 메모, 이 브라우저에만 저장) |
 | `docs/sources.md` | 공식 출처와 자료의 지위 |
 | `docs/REVIEW_2026-10-18_ko.md` | 수정·검증·남는 한계 |
 | `docs/REVIEW_2026-10-22_ko.md` | 2026-10-22 갱신: SBTVD 현행판·ABNT 원제·검색 보조어·브라질 법령 일자 |
@@ -45,6 +46,22 @@ python tools/test_dashboard.py --browser --artifacts dist/qa
 | `standards/` | 로컬 원문; 저작권 때문에 Git 및 전달 ZIP에서 제외 |
 
 정본 JSON을 수정한 뒤 생성기를 실행한다. 생성 파일만 고치면 `--check`가 실패한다. 기존 수집 도구 `tools/tta_*.py`는 화면 실행이나 재빌드에 필요하지 않다.
+
+## 검토 메모
+
+1. 화면 오른쪽 아래 `✎ Memo off` 단추를 눌러 메모 모드를 켠다.
+2. 고칠 부분의 글자를 선택하고 `✎ Add note`를 눌러 메모를 적는다.
+   - 선택한 글자에 주황색 표시가 남는다.
+   - 표시를 누르면 수정·완료(Done)·삭제를 할 수 있다.
+3. `Notes` 목록에서 문서별로 모아 보고, `Show`로 그 위치를 연다.
+4. 끝나면 `Export .md`(읽는 용도)나 `Export .json`(다시 가져오기용)으로 내보낸다. `Import .json`은 다른 기기에서 만든 메모를 합친다.
+
+메모의 저장과 표시는 다음과 같다.
+
+- 메모는 **그 브라우저에만** 저장된다(localStorage). 서버로 보내지 않으므로 다른 방문자에게 보이지 않는다.
+- 공개 주소와 내려받은 단일 HTML은 저장소가 서로 다르다. 기기나 브라우저를 바꾸면 json으로 옮긴다.
+- 표의 필터·탭·행 펼침이 바뀌거나 페이지를 다시 열어도, 메모는 인용한 글자와 앞뒤 문맥으로 다시 찾아 표시된다.
+- 나중에 내용이 바뀌어 인용 글자를 찾지 못하면 표시 없이 목록에만 남는다.
 
 ## 판정의 의미
 
