@@ -76,6 +76,10 @@ def check_browser(artifacts):
         page.goto((ROOT/'index.html').as_uri(),wait_until='load')
         page.wait_for_function('Boolean(window.COMPARISON_APP)')
         data=load(); assert page.locator('tr.row').count()==len(data['rows'])
+        # 2026-10-22: verdicts live in the overview table and detail panels, not as matrix columns.
+        assert page.locator('#matrix thead th').count()==1+len(data['orgs'])
+        assert 'vs ATSC' not in page.locator('#matrix thead').inner_text()
+        assert page.locator('#overview td.cell').count()==2*len(data['rows'])
         page.screenshot(path=str(artifacts/'desktop-top.png'))
         # Native button keyboard activation must expand and collapse, retaining focus.
         first=page.locator('.row-toggle').first

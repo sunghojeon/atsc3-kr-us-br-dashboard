@@ -171,20 +171,22 @@
   }
   function render(focusId) {
     tabs.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.id === state.cat)));
-    document.querySelector('#matrix thead').innerHTML = '<tr><th>Document<small>ATSC current baseline</small></th>'+orgs.map(org => '<th class="org" style="--org:'+esc(org.color)+'">'+esc(org.label)+'<small>'+esc(org.sub)+'</small></th>').join('')+'<th class="vh vsep">TTA vs ATSC<small>Korea</small></th><th class="vh">SBTVD vs ATSC<small>Brazil</small></th></tr>';
+    // Verdicts are shown in the overview table and in each row's detail panel, not as matrix columns.
+    document.querySelector('#matrix thead').innerHTML = '<tr><th>Document<small>ATSC current baseline</small></th>'+orgs.map(org => '<th class="org" style="--org:'+esc(org.color)+'">'+esc(org.label)+'<small>'+esc(org.sub)+'</small></th>').join('')+'</tr>';
+    const cols = 1+orgs.length;
     let html='',shown=0,total=0;
     for (const category of data.categories) {
       if (state.cat !== 'all' && state.cat !== category.id) continue;
       const all = data.rows.filter(row => row.category === category.id);total+=all.length;
       const rows = all.filter(passes);shown+=rows.length;if(!rows.length)continue;
-      html+='<tr class="group"><td colspan="5">'+esc(category.name)+'<small>'+esc(category.desc)+'</small></td><td class="vsep" colspan="2"></td></tr>';
+      html+='<tr class="group"><td colspan="'+cols+'">'+esc(category.name)+'<small>'+esc(category.desc)+'</small></td></tr>';
       for (const row of rows) {
         const index = data.rows.indexOf(row), open=state.open===row.id, detailId='detail-'+index;
-        html+='<tr class="row" data-id="'+esc(row.id)+'" aria-expanded="'+open+'"><td class="doc"><button type="button" class="row-toggle" data-row="'+esc(row.id)+'" aria-expanded="'+open+'" aria-controls="'+detailId+'"><span aria-hidden="true">'+(open?'−':'+')+'</span> '+hl(row.id)+'</button>'+(row.type==='RP'?'<span class="type">RP</span>':'')+'<span class="title">'+hl(row.title)+'</span></td>'+orgs.map(org=>'<td class="org">'+cellHtml(row.cells[org.id])+'</td>').join('')+'<td class="verdict vsep">'+verdictHtml(row.verdicts.TTA,row.cells.TTA,false)+'</td><td class="verdict">'+verdictHtml(row.verdicts.SBTVD,row.cells.SBTVD,false)+'</td></tr>';
-        html+='<tr class="detail" id="'+detailId+'"'+(open?'':' hidden')+'><td colspan="7">'+(open?detailHtml(row):'')+'</td></tr>';
+        html+='<tr class="row" data-id="'+esc(row.id)+'" aria-expanded="'+open+'"><td class="doc"><button type="button" class="row-toggle" data-row="'+esc(row.id)+'" aria-expanded="'+open+'" aria-controls="'+detailId+'"><span aria-hidden="true">'+(open?'−':'+')+'</span> '+hl(row.id)+'</button>'+(row.type==='RP'?'<span class="type">RP</span>':'')+'<span class="title">'+hl(row.title)+'</span></td>'+orgs.map(org=>'<td class="org">'+cellHtml(row.cells[org.id])+'</td>').join('')+'</tr>';
+        html+='<tr class="detail" id="'+detailId+'"'+(open?'':' hidden')+'><td colspan="'+cols+'">'+(open?detailHtml(row):'')+'</td></tr>';
       }
     }
-    document.querySelector('#matrix tbody').innerHTML = html || '<tr><td colspan="7">No documents match these filters.</td></tr>';
+    document.querySelector('#matrix tbody').innerHTML = html || '<tr><td colspan="'+cols+'">No documents match these filters.</td></tr>';
     document.getElementById('count').textContent = shown+' of '+total+' documents';
     document.querySelectorAll('.row-toggle').forEach(button=>button.addEventListener('click',()=>openRow(button.dataset.row)));
     document.querySelectorAll('tr.row').forEach(row=>row.addEventListener('click',event=>{if(!event.target.closest('a,button,input,select'))openRow(row.dataset.id);}));
