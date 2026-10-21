@@ -59,7 +59,7 @@
     "sources": [
       "Current A/321:2026-06 §§4–7: https://www.atsc.org/wp-content/uploads/2026/06/A321-2026-06-System-Discovery-and-Signaling.pdf",
       "TTA Part 4 foreword comparison table and §10; cited 2016 edition",
-      "Ato 2.705 §4.1 (2025-07); non-normative OG-01 §5.9"
+      "Ato 2.705 §4.1 (2025-07); non-normative OG-01 §5.9 (unchanged in the September 2026 edition)"
     ],
     "rows": [
       {
@@ -101,7 +101,7 @@
       "Current A/322:2026-06: https://www.atsc.org/wp-content/uploads/2026/06/A322-2026-06-Physical-Layer-Protocol.pdf",
       "Official current change summary: https://www.atsc.org/wp-content/uploads/2026/06/TG3-201r12-A322-Changes.pdf",
       "TTA Part 4 inspected equations/tables; informative Appendix I-1 declaration retained",
-      "Ato §4.1 and non-normative OG-01 §§5.13,8.2"
+      "Ato §4.1 and non-normative OG-01 §§5.13,8.2 (September 2026 edition; Tables I–J)"
     ],
     "rows": [
       {
@@ -116,7 +116,7 @@
         "atsc": "Current §6 BICM",
         "tta": "TTA Part 4 §6",
         "tta_rel": "partial: confirmed parity endpoint discrepancy",
-        "sbtvd": "Referenced A/322 toolbox; OG-01 §8.2 combination profile",
+        "sbtvd": "Referenced A/322 toolbox; OG-01 §8.2 combination profile (Tables I–J)",
         "sbtvd_rel": "reference requirement plus non-normative guidance",
         "note": "TTA §6.2.1 prints s≤360; current ATSC requires s<360. TTA Tables6-15/6-16 are present."
       },
@@ -158,14 +158,14 @@
     "sources": [
       "Current A/324:2026-04 §§5–10: https://www.atsc.org/wp-content/uploads/2026/04/A324-2026-04-Scheduler-STL.pdf",
       "TTA Part 4 I-2 opening and DSMapping; 0154/R1 §§5–6; TTAR0026 §§5–7",
-      "Ato §4.1 (2025-07); OG-02 actual Annex B references 2024-04"
+      "Ato §4.1 (2025-07); OG-02 (Sep 2026) Annex C references 2024-04"
     ],
     "rows": [
       {
         "atsc": "Current §5 Scheduler and §6 CTP",
         "tta": "No complete translated counterpart identified in Part 4; I-2 mentions CTP",
         "tta_rel": "bounded non-adoption finding; related descriptions exist",
-        "sbtvd": "A/324:2025-07 by Ato reference; OG-02 Annex B",
+        "sbtvd": "A/324:2025-07 by Ato reference; OG-02 Annex C",
         "sbtvd_rel": "transmitter rule; non-normative guideline",
         "note": "No claim that all Korean studio/STL standards are absent."
       },
@@ -189,7 +189,7 @@
         "atsc": "Current §§9–10 STLTP and transmitter/SFN timing",
         "tta": "TTA0154/R1 §§5–6 monitoring; TTAR0026 TxID/BSID operation",
         "tta_rel": "related monitoring/identification guidance; not full interface adoption",
-        "sbtvd": "Ato-referenced A/324; OG-02 Annex B CTP guidance",
+        "sbtvd": "Ato-referenced A/324; OG-02 Annex C CTP guidance",
         "sbtvd_rel": "transmitter rule and non-normative guidance distinct",
         "note": "Korean synchronized delay/drop/FEC measurement methods exist. Exact interface gaps should be itemized against current clauses; device operation untested."
       }
@@ -199,14 +199,14 @@
     "sources": [
       "Current A/330:2026-04 §§4–7: https://www.atsc.org/wp-content/uploads/2026/04/A330-2026-04-Link-Layer-Protocol.pdf",
       "TTA Part 3 §6 with cited 2017 edition; inspected §§6.1–6.4",
-      "Non-normative OG-02 actual Annex A/A.1 (source scope lists different annex letters)"
+      "Non-normative OG-02 (Sep 2026) Annex B/B.1; the January 2026 edition printed it as Annex A/A.1 against its own scope list"
     ],
     "rows": [
       {
         "atsc": "Current §4 Link Layer Overview",
         "tta": "TTA Part 3 §6.1",
         "tta_rel": "ALP correspondence confirmed",
-        "sbtvd": "OG-02 actual Annex A; A/330:2024-04 reference",
+        "sbtvd": "OG-02 Annex B; A/330:2024-04 reference",
         "sbtvd_rel": "public ALP guidance verified; ABNT normative text not fully verified",
         "note": "ALP inclusion is confirmed in the reviewed public guideline; not a full ABNT clause audit."
       },
@@ -214,7 +214,7 @@
         "atsc": "Current §5 ALP Packet Format",
         "tta": "TTA Part 3 §6.2",
         "tta_rel": "encapsulation correspondence; complete bit-level equivalence not asserted",
-        "sbtvd": "OG-02 Annex A.1 excludes MPEG-2 TS for OTA/OTT",
+        "sbtvd": "OG-02 Annex B.1 excludes MPEG-2 TS for OTA/OTT",
         "sbtvd_rel": "national public operating-profile distinction",
         "note": "Shared ALP does not imply every optional packet type is used or required."
       },
@@ -230,7 +230,7 @@
         "atsc": "Current §7 Link Layer Signaling",
         "tta": "TTA Part 3 §6.4",
         "tta_rel": "corresponding LMT/RDT subject matter; full profile not closed",
-        "sbtvd": "OG-02 Annex A link-layer signaling",
+        "sbtvd": "OG-02 Annex B link-layer signaling",
         "sbtvd_rel": "public guidance confirmed",
         "note": "Keep ALP signaling correspondence separate from national upper-layer LLS address/profile differences."
       },
@@ -251,7 +251,8 @@
       "TTAK.KO-07.0142/R4 목차",
       "SBTVD OG-07 v1 (Emergency Warning System) contents",
       "A/331:2026-04 §5.9,§6.3–6.5,Tables 7.1/7.2; independently reviewed 2026-10-18",
-      "ATSC Code Point Registry TG3-255r9, LLS_table_id/serviceCategory sheets; 2026-10-18"
+      "ATSC Code Point Registry TG3-255r9, LLS_table_id/serviceCategory sheets; 2026-10-18",
+      "SBTVD OG-02 (Sep 2026) Annex A.1–A.4 Brazilian configurations; Registry regionIdentifier row 7; 2026-10-21"
     ],
     "rows": [
       {
@@ -316,7 +317,8 @@
     "sources": [
       "TTAK.KO-07.0149/R1 서문 3.2 비교표 (§8 = A/332 준용)",
       "TTAK.KO-07.0128/R3 참조표준 (Part 5 서비스 가이드 references A/332)",
-      "A/332:2026-08 §5, current official PDF and Korean §8; reviewed 2026-10-18"
+      "A/332:2026-08 §5, current official PDF and Korean §8; reviewed 2026-10-18",
+      "SBTVD OG-08 (Oct 2026) §7.10.2: SG data model per A/332:2025-10 via ABNT NBR 25602 Annex D; 2026-10-21"
     ],
     "rows": [
       {
@@ -371,7 +373,7 @@
         "atsc": "A/332 (service guide in the IBB context)",
         "tta": "TTAK.KO-07.0128/R3 §9 Part 5 서비스 가이드 (참조: ETSI TS 102 796, A/332, A/153, OMA BCAST)",
         "tta_rel": "참조",
-        "sbtvd": "SBTVD OG-08 §8.5 Electronic Programming Guide (EPG); §8.6 Electronic Content Guide (ECG)",
+        "sbtvd": "SBTVD OG-08 §8.5 Electronic Programming Guide (EPG); §8.6 Electronic Content Guide (ECG); §7.10.2 SG data model per A/332:2025-10 (ABNT NBR 25602 Annex D)",
         "sbtvd_rel": "related (Ginga application catalog)",
         "note": ""
       }
@@ -380,14 +382,15 @@
   "A/333": {
     "sources": [
       "TTAK.KO-07.0128/R3 참조표준 (Part 3 references A/333, A/338)",
-      "0128/R3 _text lines2054–2057 and A/333:2026-04 §4.2; reviewed 2026-10-18"
+      "0128/R3 _text lines2054–2057 and A/333:2026-04 §4.2; reviewed 2026-10-18",
+      "Fórum SBTVD Guia de Mensuração de Mercado v1.0 §§2, 7–9; 2026-10-21"
     ],
     "rows": [
       {
         "atsc": "A/333 §4 Service Usage Reporting (CDM)",
         "tta": "TTAK.KO-07.0128/R3 §7.2.4.2 viewing-history paragraph, printed p.31 / PDF39",
         "tta_rel": "Selected A/333-related storage; optional terminal feature; transmission/use explicitly outside this Korean specification",
-        "sbtvd": "SBTVD OG-08 §7.10 Audience Measurement Manager; Annex C.6.13 Audience measurement APIs",
+        "sbtvd": "SBTVD OG-08 §7.10 Audience Measurement Manager; Annex C.6.13 Audience measurement APIs; Market Measurement Guide v1.0 §§7–9 census (AMM) and panel models",
         "sbtvd_rel": "related (Ginga)",
         "note": "Do not infer adoption of current CDM reporting transport from an optional history-storage reference."
       }
@@ -413,14 +416,14 @@
     "sources": [
       "A/338:2026-04 §5",
       "TTAK.KO-07.0128/R3 §§8.1,8.2.3–8.2.7.1",
-      "SBTVD OG-08 §9/Annex C.6.15 (non-normative)"
+      "SBTVD OG-08 (Oct 2026) §9/Annex C.6.15 (non-normative)"
     ],
     "rows": [
       {
         "atsc": "§§5.3–5.5 discovery/launch/app-to-app",
         "tta": "IBB §§8.2.3–8.2.6: HbbTV 2.0 §§14.3–14.7",
         "tta_rel": "related clauses; current-edition differences stated",
-        "sbtvd": "OG-08 §9 remote devices",
+        "sbtvd": "OG-08 §9 remote devices (Oct 2026: applications may define further device classes)",
         "sbtvd_rel": "OG guidance; ABNT normative clauses unverified",
         "note": "Discovery/launch must be distinguished from adopted CD–PD communication."
       },
@@ -677,7 +680,7 @@
       "A/344:2026-04 §§4–9",
       "A/381:2026-04 §§1,3.1.1,4",
       "TTAK.KO-07.0128/R3 §§5–8",
-      "SBTVD OG-08 §§1,6–10/12 and Annexes A–D"
+      "SBTVD OG-08 (Oct 2026, 4th edition) §§1,6–10/12 and Annexes A–D"
     ],
     "rows": [
       {

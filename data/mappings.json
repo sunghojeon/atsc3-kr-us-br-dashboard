@@ -240,13 +240,14 @@
       "title_lang": "pt",
       "issuer": "Ministério das Comunicações",
       "signed": "2023-10-05",
-      "effective": "",
+      "published": "2023-10-19",
+      "effective": "2023-10-19",
       "url": "https://www.in.gov.br/web/dou/-/portaria-n-10.693-de-5-de-outubro-de-2023-517434885",
       "local": "",
-      "note": "Spectrum-policy background: high-VHF 174–216 MHz and UHF 470–608 / 614–698 MHz. The signing date is not an effective date. Publication and effective date were not verified from the full official text; the later Resolução 789/2026 below supplies the current additional channelization.",
+      "note": "Spectrum-policy background: high-VHF 174–216 MHz and UHF 470–608 / 614–698 MHz. The signing date is not an effective date. Publication on 19 October 2023 (DOU nº 199, Seção 1, p.10) is listed by the official MCom SERAD register; Art. 3 puts the ordinance in force on publication. The later Resolução 789/2026 below supplies the current additional channelization.",
       "clauses": [],
       "unverified": [
-        "Publication/effective date of this ordinance"
+        "The DOU page/PDF itself could not be downloaded in this review; Art. 3 was read from the official DOU search extract and the publication date from the MCom SERAD register."
       ]
     },
     {
@@ -258,8 +259,8 @@
       "issuer": "Anatel",
       "signed": "2026-07-06",
       "published": "2026-07-13",
-      "effective": "",
-      "effective_rule": "Article 5: 30 days counted from publication",
+      "effective": "2026-08-12 (computed)",
+      "effective_rule": "Article 5: 30 days counted from publication. 2026-08-12 is computed under LC 95/1998 Art. 8 §1 (publication day and last day counted, in force on the following day); Anatel does not state a calendar date.",
       "url": "https://informacoes.anatel.gov.br/legislacao/resolucoes/2026/2157-resolucao-789",
       "local": "docs/refs/BR_Resolucao-789-2026.md",
       "note": "Article 2/Table II adds 250–298 and 298–322 MHz alongside 174–216, 470–608 and 614–698 MHz for second-generation digital TV. The 6 July date is the signing date, not the effective date. The associated channelization tables distinguish TVD and TV 3.0.",
@@ -668,7 +669,8 @@
     "TTAK.KO-07.0139": {
       "title": "지상파 UHD 교통 및 여행정보 서비스 요구사항",
       "lang": "ko",
-      "title_en": "Requirements for TPEG Services of Terrestiral UHD Mobile Broadcasting"
+      "title_en": "Requirements for TPEG Services of Terrestiral UHD Mobile Broadcasting",
+      "search": "Requirements for TPEG Services of Terrestrial UHD Mobile Broadcasting"
     },
     "TTAR-07.0034": {
       "title": "8K UHD 위성방송 서비스 (기술보고서)",
@@ -698,7 +700,8 @@
     "TTAR-07.0022": {
       "title": "지상파 UHD 셋탑박스 최소 기술규격 (기술보고서)",
       "lang": "ko",
-      "title_en": "Minimum Requirement of technical standard forTerrestrial UHD set-top box (Technical Report)"
+      "title_en": "Minimum Requirement of technical standard forTerrestrial UHD set-top box (Technical Report)",
+      "search": "Minimum Requirement of technical standard for Terrestrial UHD set-top box"
     },
     "TTAK.KO-07.0082/R2": {
       "title": "초고화질(UHD) 디지털 TV 영상 신호",
@@ -728,7 +731,8 @@
     "TTAR-07.0010": {
       "title": "위성 UHDTV 실험방송 송수신 정합",
       "lang": "ko",
-      "title_en": "Experimnetal Satellite Broadcasting of UHDTV Services"
+      "title_en": "Experimnetal Satellite Broadcasting of UHDTV Services",
+      "search": "Experimental Satellite Broadcasting of UHDTV Services"
     },
     "TTAR-07.0008": {
       "title": "위성 UHDTV 실험방송 송수신 정합연구",
@@ -928,7 +932,8 @@
     "TTAK.KO-07.0063/R1": {
       "title": "지상파 디지털멀티미디어방송(DMB) 수신기 방송웹사이트(BWS) 서비스 표준적합성 시험",
       "lang": "ko",
-      "title_en": "Conformance Test for Terrestrial Digital Multimedia Broadcasting (DMB) Recievers Supporting Broadcast Web Site (BWS) Services"
+      "title_en": "Conformance Test for Terrestrial Digital Multimedia Broadcasting (DMB) Recievers Supporting Broadcast Web Site (BWS) Services",
+      "search": "Conformance Test for Terrestrial Digital Multimedia Broadcasting (DMB) Receivers Supporting Broadcast Web Site (BWS) Services"
     },
     "TTAK.KO-07.0024/R2": {
       "title": "지상파 디지털멀티미디어방송(DMB) 송수신 정합",
@@ -1058,7 +1063,8 @@
     "TTAK.KO-07.0119/R3": {
       "title": "HTML5 기반 스마트 TV 플랫폼 수신기 표준 적합성 시험",
       "lang": "ko",
-      "title_en": "Receiver Conformance Testfor HTML5-based Smart TV Platform"
+      "title_en": "Receiver Conformance Testfor HTML5-based Smart TV Platform",
+      "search": "Receiver Conformance Test for HTML5-based Smart TV Platform"
     },
     "TTAK.KO-07.0084": {
       "title": "디지털 유선방송 보급형 수신기 가이드라인",
@@ -1446,7 +1452,7 @@
       "title_en": "TV 3.0 Operational Guidelines - Common Public Communication and Digital Government Platform Support in Experimental AoP Implementations (final draft)"
     },
     "BR-SBTVD-TV30-GUIDE-USABILITY-PT": {
-      "title": "TV 3.0 Guia de Usabilidade (Modulo de Mercado, Forum SBTVD)",
+      "title": "TV 3.0 Guia de Usabilidade (Módulo de Mercado, Fórum SBTVD)",
       "lang": "pt",
       "title_en": ""
     },
@@ -1456,7 +1462,7 @@
       "title_en": "TV 3.0 Usability Guide (Market Module, Forum SBTVD) - English version"
     },
     "BR-SBTVD-TV30-GUIDE-PRIVACY-PT": {
-      "title": "TV 3.0 Guia de Acesso a Dados e Privacidade (Modulo de Propriedade Intelectual, Forum SBTVD)",
+      "title": "TV 3.0 Guia de Acesso a Dados e Privacidade (Módulo de Propriedade Intelectual, Fórum SBTVD)",
       "lang": "pt",
       "title_en": ""
     },
@@ -1466,14 +1472,14 @@
       "title_en": "TV 3.0 Data Access and Privacy Guide (Intellectual Property Module, Forum SBTVD) - English version"
     },
     "BR-SBTVD-TV30-GUIDE-MARKET-MEASUREMENT": {
-      "title": "TV 3.0 Guia de Mensuracao de Mercado (Forum SBTVD)",
+      "title": "TV 3.0 Guia de Mensuração de Mercado (Módulo de Mercado, Fórum SBTVD)",
       "lang": "pt",
       "title_en": ""
     },
     "ABNT NBR 25601:2025": {
-      "title": "TV 3.0 — Over-the-air physical layer",
-      "lang": "en",
-      "title_en": ""
+      "title": "TV 3.0 — Camada física",
+      "lang": "pt",
+      "title_en": "TV 3.0 — Over-the-air physical layer"
     },
     "ABNT NBR 25602:2025": {
       "title": "TV 3.0 — Camada de transporte",
@@ -1501,14 +1507,14 @@
       "title_en": "TV 3.0 — Closed signing"
     },
     "ABNT NBR 25607:2025": {
-      "title": "TV 3.0 — Emergency warning system",
-      "lang": "en",
-      "title_en": ""
+      "title": "TV 3.0 — Sistema de alerta de emergência",
+      "lang": "pt",
+      "title_en": "TV 3.0 — Emergency warning system"
     },
     "ABNT NBR 25608:2025": {
-      "title": "TV 3.0 — Application coding",
-      "lang": "en",
-      "title_en": ""
+      "title": "TV 3.0 — Codificação de aplicações",
+      "lang": "pt",
+      "title_en": "TV 3.0 — Application coding"
     },
     "ABNT NBR 25609:2025": {
       "title": "TV 3.0 — Receptores",
@@ -1559,6 +1565,11 @@
       "title": "TV 3.0 Operational Guidelines — Common Public Communication and Digital Government Platform Support (final draft)",
       "lang": "en",
       "title_en": "TV 3.0 Operational Guidelines — Common Public Communication and Digital Government Platform Support (final draft)"
+    },
+    "SBTVD Guia de Mensuração de Mercado v1.0": {
+      "title": "TV 3.0 — Guia de Mensuração de Mercado (Módulo de Mercado, Versão 1.0)",
+      "lang": "pt",
+      "title_en": ""
     }
   },
   "rows": [
@@ -1614,7 +1625,8 @@
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -1722,7 +1734,8 @@
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -1800,7 +1813,8 @@
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -1913,8 +1927,8 @@
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0151%2FR1&nowSu=1&rn=1"
         },
         {
-          "label": "OG-01 — §5.9",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-01-Physical-Layer.pdf"
+          "label": "OG-01 (Sep 2026) — §5.9",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/GuidelineTV3PHYrev0926_v3.pdf"
         },
         {
           "label": "Ato — §4.1",
@@ -1928,7 +1942,8 @@
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -2016,7 +2031,7 @@
             "ABNT NBR 25601:2025",
             "SBTVD OG-01"
           ],
-          "note": "Ato cites A/322:2025-07a; decree includes MIMO/LDM/TxID. OG-01 §5.13 already prohibits 32K MP4_2; complete normative ABNT profile remains open.",
+          "note": "Ato cites A/322:2025-07a; decree includes MIMO/LDM/TxID. OG-01 §5.13 already prohibits 32K MP4_2 (unchanged in the September 2026 edition, which still cites A/322:2025-07; its new Annex C §7 recommends MIMO Type A); complete normative ABNT profile remains open.",
           "reg": [
             {
               "org": "SBTVD",
@@ -2067,8 +2082,8 @@
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0151%2FR1&nowSu=1&rn=1"
         },
         {
-          "label": "OG-01 — §§5.13,8.2",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-01-Physical-Layer.pdf"
+          "label": "OG-01 (Sep 2026) — §§5.13,8.2",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/GuidelineTV3PHYrev0926_v3.pdf"
         },
         {
           "label": "Ato — §§4.1–4.3",
@@ -2082,7 +2097,8 @@
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -2149,18 +2165,19 @@
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0151%2FR1&nowSu=1&rn=1"
         },
         {
-          "label": "OG-01 — reviewed physical-layer scope",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-01-Physical-Layer.pdf"
+          "label": "OG-01 (Sep 2026) — reviewed physical-layer scope",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/GuidelineTV3PHYrev0926_v3.pdf"
         },
         {
-          "label": "OG-02 — reviewed transport-layer scope",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-02-Transport-Layer.pdf"
+          "label": "OG-02 (Sep 2026) — reviewed transport-layer scope",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-02-Transport-Layer.pdf"
         }
       ],
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -2227,7 +2244,7 @@
             "ATSC A/324:2025-07 (incorporated by reference)",
             "SBTVD OG-02"
           ],
-          "note": "Ato §4.1 references A/324:2025-07 for transmitter equipment. OG-02 Annex B separately cites A/324:2024-04. Full normative profile not fully verified.",
+          "note": "Ato §4.1 references A/324:2025-07 for transmitter equipment. OG-02 (Sep 2026) Annex C separately cites A/324:2024-04. Full normative profile not fully verified.",
           "reg": [
             {
               "org": "SBTVD",
@@ -2264,8 +2281,8 @@
           "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
         },
         {
-          "label": "OG-02 — Annex B",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-02-Transport-Layer.pdf"
+          "label": "OG-02 (Sep 2026) — Annex C, bibliography [12]",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-02-Transport-Layer.pdf#page=7"
         },
         {
           "label": "Current Candidate Revision status",
@@ -2275,7 +2292,8 @@
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -2331,7 +2349,7 @@
             "TV 3.0 Phase 3 PL lab report",
             "SBTVD OG-01"
           ],
-          "note": "Phase reports document performed evaluations; OG-01 includes public operational/test guidance. Neither by itself proves full adoption of every current ATSC RP procedure.",
+          "note": "Phase reports document performed evaluations; OG-01 includes public operational/test guidance; the September 2026 edition adds a DVB-P1 indoor channel ensemble (Table B 9), sets −63 dBm for the MIMO adjacent-channel desired signal and softens most Annex A/B “shall/must” wording to “should”. Neither by itself proves full adoption of every current ATSC RP procedure.",
           "rel": "related",
           "conf": "partial",
           "flag": "",
@@ -2352,8 +2370,8 @@
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0157&nowSu=1&rn=1"
         },
         {
-          "label": "OG-01 — operational/test guidance",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-01-Physical-Layer.pdf"
+          "label": "OG-01 (Sep 2026) — operational/test guidance",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/GuidelineTV3PHYrev0926_v3.pdf"
         },
         {
           "label": "Brazil Phase 3 performed-test report",
@@ -2363,7 +2381,8 @@
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -2420,7 +2439,7 @@
             "TV 3.0 Phase 3 PL field report",
             "SBTVD OG-01"
           ],
-          "note": "Phase reports document performed evaluations; OG-01 includes public operational/test guidance. Neither by itself proves full adoption of every current ATSC RP procedure.",
+          "note": "Phase reports document performed evaluations; OG-01 includes public operational/test guidance; the September 2026 edition adds a DVB-P1 indoor channel ensemble (Table B 9), sets −63 dBm for the MIMO adjacent-channel desired signal and softens most Annex A/B “shall/must” wording to “should”. Neither by itself proves full adoption of every current ATSC RP procedure.",
           "rel": "related",
           "conf": "partial",
           "flag": "",
@@ -2441,8 +2460,8 @@
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0157&nowSu=1&rn=1"
         },
         {
-          "label": "OG-01 — operational/test guidance",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-01-Physical-Layer.pdf"
+          "label": "OG-01 (Sep 2026) — operational/test guidance",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/GuidelineTV3PHYrev0926_v3.pdf"
         },
         {
           "label": "Brazil Phase 3 performed-test report",
@@ -2452,7 +2471,8 @@
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -2503,7 +2523,7 @@
           "docs": [
             "SBTVD OG-01"
           ],
-          "note": "OG-01 explicitly references A/327 for operating recommendations, including FFT choices, LDM and TxID. It is non-normative; complete chapter equivalence not established.",
+          "note": "OG-01 explicitly references A/327:2025-07 for GI choice against transmitter distance (§5.5), TxID use (§5.6) and LDM core-layer modulation (§7). Its FFT-size advice (§5.12) cites CIT-196r23, not A/327 (corrected 2026-10-22; the same in the January and September 2026 editions). It is non-normative; complete chapter equivalence not established.",
           "rel": "related",
           "conf": "partial",
           "flag": "",
@@ -2528,14 +2548,15 @@
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAR-07.0026%2FR1&nowSu=1&rn=1"
         },
         {
-          "label": "OG-01 — §§5.6,5.12,7.1",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-01-Physical-Layer.pdf"
+          "label": "OG-01 (Sep 2026) — §§5.5, 5.6, 7 (A/327:2025-07 citations)",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/GuidelineTV3PHYrev0926_v3.pdf#page=7"
         }
       ],
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -2605,14 +2626,15 @@
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0154%2FR1&nowSu=1&rn=1"
         },
         {
-          "label": "OG-01 — operational/test guidance",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-01-Physical-Layer.pdf"
+          "label": "OG-01 (Sep 2026) — operational/test guidance",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/GuidelineTV3PHYrev0926_v3.pdf"
         }
       ],
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -2678,7 +2700,7 @@
             "ABNT NBR 25602:2025",
             "SBTVD OG-02"
           ],
-          "note": "OG-02 actual Annex A confirms ALP/link-layer signaling and cites A/330:2024-04; A.1 excludes MPEG-2 TS for OTA/OTT. Full ABNT normative clauses not fully verified.",
+          "note": "OG-02 (Sep 2026) Annex B confirms ALP/link-layer signaling and cites A/330:2024-04; B.1 excludes MPEG-2 TS for OTA/OTT. The January 2026 edition printed this as Annex A/A.1 against its own scope list; the letters now match. Full ABNT normative clauses not fully verified.",
           "rel": "related",
           "conf": "partial",
           "flag": "ALP public guidance verified; full ABNT normative profile unverified",
@@ -2699,14 +2721,15 @@
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0150%2FR3&nowSu=1&rn=1"
         },
         {
-          "label": "OG-02 — actual Annex A/A.1 and bibliography [2]",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-02-Transport-Layer.pdf"
+          "label": "OG-02 (Sep 2026) — Annex B/B.1 and bibliography [2]",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-02-Transport-Layer.pdf#page=6"
         }
       ],
       "review": {
         "status": "reviewed-partial",
         "by": "Clause review",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -2774,7 +2797,7 @@
             "SBTVD OG-02",
             "SBTVD OG-07 v1"
           ],
-          "note": "Registry verifies BAMT 0x90/TBSAT 0x91 and categories 30/31/32; OG-07 verifies selected alert guidance. ABNT normative transport/profile clauses not obtained.",
+          "note": "Registry verifies BAMT 0x90/TBSAT 0x91, categories 30/31/32 and regionIdentifier 0x06 (Brazil); OG-07 verifies selected alert guidance. OG-02 (Sep 2026) Annex A adds non-normative Brazilian settings: Plataforma Comum LLS via broadband over HTTPS, rating_region 0x06 and BSID derived from the Anatel call sign. ABNT normative transport/profile clauses not obtained.",
           "rel": "related",
           "conf": "partial",
           "flag": "ABNT normative clauses unverified",
@@ -2803,12 +2826,19 @@
           "doc": "TTAK.KO-07.0150/R3",
           "clause": "§5.3–5.5",
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0150%2FR3&nowSu=1"
+        },
+        {
+          "org": "SBTVD",
+          "doc": "SBTVD OG-02 (Sep 2026)",
+          "clause": "Annex A.1–A.4 Brazilian configurations",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-02-Transport-Layer.pdf#page=3"
         }
       ],
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -2860,7 +2890,7 @@
             "ABNT NBR 25602:2025",
             "SBTVD OG-08"
           ],
-          "note": "OG-08 EPG/ECG and application catalogue are related; no full ABNT SG XML/delivery equivalence established.",
+          "note": "OG-08 EPG/ECG and application catalogue are related. The October 2026 OG-08 §7.10.2 states that the TV 3.0 Service Guide data model follows ATSC A/332:2025-10 as specified in ABNT NBR 25602:2025 Annex D (not read); that edition precedes the current A/332:2026-08. No full ABNT SG XML/delivery equivalence established.",
           "rel": "related",
           "conf": "unverified",
           "flag": "ABNT normative clauses unverified",
@@ -2889,12 +2919,19 @@
           "doc": "TTAK.KO-07.0128/R3",
           "clause": "§9",
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0128%2FR3&nowSu=1"
+        },
+        {
+          "org": "SBTVD",
+          "doc": "SBTVD OG-08 (Oct 2026)",
+          "clause": "§7.10.2 Service Guide data model reference",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-08-Application-Coding.pdf#page=6"
         }
       ],
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -2943,9 +2980,10 @@
         "SBTVD": {
           "docs": [
             "ABNT NBR 25608:2025",
-            "SBTVD OG-08"
+            "SBTVD OG-08",
+            "SBTVD Guia de Mensuração de Mercado v1.0"
           ],
-          "note": "Audience-measurement APIs and privacy guidance are related; A/333 CDM protocol equivalence has not been established.",
+          "note": "Audience-measurement APIs and privacy guidance are related; the October 2026 OG-08 §7.10.1 makes AMM collection conditional on the viewer’s prior agreement to a PRRD purpose dpv:ServiceUsageAnalytics, and §7.10.2 takes the reported contentID from the Service Guide Content@globalContentID (else Content@id). The non-normative Market Measurement Guide v1.0 (cover August 2026) describes census measurement through the AMM defined in ABNT NBR 25608 and separate panel measurement; it leaves report formats and APIs to ABNT. A/333 CDM protocol equivalence has not been established.",
           "rel": "related",
           "conf": "unverified",
           "flag": "ABNT normative clauses unverified",
@@ -2968,12 +3006,25 @@
           "doc": "TTAK.KO-07.0128/R3",
           "clause": "§7.2.4.2 viewing-history paragraph, printed p.31 / PDF39; _text lines2054–2057",
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0128%2FR3&nowSu=1"
+        },
+        {
+          "org": "SBTVD",
+          "doc": "SBTVD Guia de Mensuração de Mercado v1.0",
+          "clause": "§§2, 7–9 (non-normative; AMM census and panel models)",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/09/Guia_Mensuracao_Mercado_TV30_20260824_rev-clean.pdf"
+        },
+        {
+          "org": "SBTVD",
+          "doc": "SBTVD OG-08 (Oct 2026)",
+          "clause": "§7.10.1–7.10.2 AMM consent precondition and contentID",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-08-Application-Coding.pdf#page=5"
         }
       ],
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3048,7 +3099,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3123,7 +3175,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3198,7 +3251,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3278,7 +3332,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3334,7 +3389,7 @@
             "ABNT NBR 25608:2025",
             "SBTVD OG-08"
           ],
-          "note": "Remote-device function appears in OG §9/C.6.15; detailed protocol and support requirements are delegated to ABNT.",
+          "note": "Remote-device function appears in OG §9/C.6.15; the October 2026 §9 adds that remote-device classes are not limited to those in ABNT NBR 25608 and applications may define their own. Detailed protocol and support requirements are delegated to ABNT.",
           "reg": [
             {
               "org": "SBTVD",
@@ -3367,15 +3422,15 @@
           "url": "https://www.atsc.org/wp-content/uploads/2026/04/A338-2026-04-Companion-Device.pdf#page=9"
         },
         {
-          "label": "SBTVD OG-08 §9 / Annex C.6.15: details referred to ABNT NBR 25608",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-08-Application-Coding.pdf#page=14"
+          "label": "SBTVD OG-08 (Oct 2026) §9 p.16 / Annex C.6.15 p.39: details referred to ABNT NBR 25608",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-08-Application-Coding.pdf#page=16"
         }
       ],
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
-        "updated": "2026-10-18",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified."
+        "updated": "2026-10-22",
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3450,7 +3505,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3556,8 +3612,8 @@
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
-        "updated": "2026-10-18",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified."
+        "updated": "2026-10-22",
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3649,8 +3705,8 @@
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
-        "updated": "2026-10-18",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified."
+        "updated": "2026-10-22",
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3735,8 +3791,8 @@
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
-        "updated": "2026-10-18",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified."
+        "updated": "2026-10-22",
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3828,8 +3884,8 @@
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
-        "updated": "2026-10-18",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified."
+        "updated": "2026-10-22",
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3916,8 +3972,8 @@
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
-        "updated": "2026-10-18",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified."
+        "updated": "2026-10-22",
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -3990,7 +4046,8 @@
           "conf": "partial",
           "flag": "ABNT normative clauses unverified",
           "unverified": [
-            "ABNT normative syntax, profiles and obligations have not been read."
+            "ABNT normative syntax, profiles and obligations have not been read.",
+            "The October 2026 OG-08 C.6.6.2.2/Table C.6.1 rules for media-player control by content type were not compared with A/344 in this update."
           ]
         }
       },
@@ -4006,8 +4063,8 @@
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0128%2FR3&nowSu=1&rn=1"
         },
         {
-          "label": "SBTVD OG-08 §§1,6–7 and Annexes A–D: non-normative application guidance",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
+          "label": "SBTVD OG-08 (Oct 2026) §§1,6–7 and Annexes A–D: non-normative application guidance",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
         },
         {
           "label": "A/381 §3.1.1: reference-model expectations do not impose normative receiver implementation requirements",
@@ -4017,8 +4074,8 @@
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
-        "updated": "2026-10-18",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified."
+        "updated": "2026-10-22",
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4103,8 +4160,8 @@
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
-        "updated": "2026-10-18",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified."
+        "updated": "2026-10-22",
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4193,8 +4250,8 @@
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
-        "updated": "2026-10-18",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified."
+        "updated": "2026-10-22",
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4261,8 +4318,8 @@
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
-        "updated": "2026-10-18",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified."
+        "updated": "2026-10-22",
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4338,7 +4395,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4422,7 +4480,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4517,7 +4576,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4600,7 +4660,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4683,7 +4744,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4758,7 +4820,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4833,7 +4896,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4900,7 +4964,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -4979,15 +5044,15 @@
           "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0128%2FR3&nowSu=1&rn=1"
         },
         {
-          "label": "SBTVD OG-08 §§1,6–7 and Annexes A–D: non-normative application guidance",
-          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
+          "label": "SBTVD OG-08 (Oct 2026) §§1,6–7 and Annexes A–D: non-normative application guidance",
+          "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
         }
       ],
       "review": {
         "status": "reviewed",
         "by": "Codex cited-clause review",
-        "updated": "2026-10-18",
-        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified."
+        "updated": "2026-10-22",
+        "scope": "Displayed claims and cited clauses reviewed; not a full-text equivalence certification. ABNT normative texts and device interoperability remain unverified. 2026-10-22: Brazilian entries updated against the current SBTVD guidelines (OG-01/OG-02 September 2026, OG-08 October 2026), the Registry, the ABNT catalogue or the regulation sources as shown; other clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -5080,7 +5145,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -5171,7 +5237,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -5252,7 +5319,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -5326,7 +5394,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {
@@ -5397,7 +5466,8 @@
       "review": {
         "status": "reviewed",
         "by": "Independent source review; selected clauses only; national and device limits stated",
-        "updated": "2026-10-18"
+        "updated": "2026-10-22",
+        "scope": "2026-10-22: current ATSC editions, candidates and Registry r9 re-confirmed; clause findings carried forward from the 2026-10-18 review."
       },
       "verdicts": {
         "TTA": {

@@ -23,7 +23,7 @@
       },
       "SBTVD": {
         "doc": "ABNT NBR 25602:2025 · SBTVD OG-02",
-        "clause": "ABNT clause unverified; OG-02 (5 pp.) has no chapter detail",
+        "clause": "ABNT clause unverified; OG-02 (Sep 2026, 8 pp.) gives recommendations and Annex A Brazilian settings, not ABNT chapter detail",
         "page": "—",
         "value": "ABNT NBR 25602:2025 transport standard identified; normative text not obtained. Current ATSC Registry independently lists Brazilian LLS and serviceCategory assignments.",
         "req": "ABNT clause requirements unverified; OG-02 informative"
@@ -68,8 +68,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 Brazilian evidence update"
     },
     "recommendation": "Use the current published ATSC edition plus its referenced schemas and Registry. Track national provisions, edition changes and implementation support separately."
   },
@@ -96,10 +96,10 @@
         "req": "Table support and CPT use depend on the Korean service/receiver profile"
       },
       "SBTVD": {
-        "doc": "ABNT NBR 25602:2025",
-        "clause": "ABNT clause unverified",
-        "page": "—",
-        "value": "Registry LLS_table_id rows 14–15: SBTVD BAMT 0x90 and TBSAT 0x91, added 2025-07-14. These rows do not identify a defining specification; syntax and carriage obligations remain unverified.",
+        "doc": "ABNT NBR 25602:2025 · SBTVD OG-02 (Sep 2026)",
+        "clause": "ABNT clause unverified; OG-02 Annex A.1",
+        "page": "OG-02 p.3",
+        "value": "Registry LLS_table_id rows 14–15: SBTVD BAMT 0x90 and TBSAT 0x91, added 2025-07-14. These rows do not identify a defining specification; syntax and carriage obligations remain unverified. OG-02 (Sep 2026) A.1 delivers the LLS of the Plataforma Comum via broadband over a secure HTTPS URL, for that service only, citing Guideline nº 10 and Decree 12.595.",
         "req": "Public allocation confirmed; ABNT carriage obligations unverified"
       }
     },
@@ -143,11 +143,15 @@
       {
         "label": "0152 CPT and protection signaling",
         "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0152&nowSu=1"
+      },
+      {
+        "label": "OG-02 (Sep 2026) — Annex A.1",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-02-Transport-Layer.pdf#page=3"
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 Brazilian evidence update"
     },
     "recommendation": "Show core, A/360/A/323 and national table assignments separately. Verify receiver support and signing policy from the applicable profile; do not assume every Korean receiver must process CPT or every US receiver ignores it."
   },
@@ -221,8 +225,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 baseline re-check (findings carried forward)"
     }
   },
   {
@@ -290,8 +294,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 baseline re-check (findings carried forward)"
     },
     "recommendation": "Use Partial match. Preserve the Korean printed discrepancy and cross-check the authoritative schema before implementing either interpretation."
   },
@@ -318,14 +322,14 @@
         "req": "Reviewed ESG/MMT rating paths not used"
       },
       "SBTVD": {
-        "doc": "ABNT NBR 25602:2025",
-        "clause": "ABNT clause unverified",
-        "page": "—",
-        "value": "Brazilian content rating (Classificação Indicativa) is a legal requirement; TV 3.0 signaling of it not verified",
-        "req": "ABNT rating signaling requirements unverified"
+        "doc": "ABNT NBR 25602:2025 · SBTVD OG-02 (Sep 2026) · Registry TG3-255r9",
+        "clause": "OG-02 Annex A.2, Table A 1; Registry regionIdentifier row 7; ABNT clause unverified",
+        "page": "OG-02 p.3; Registry regionIdentifier sheet",
+        "value": "OG-02 (Sep 2026, non-normative) Annex A.2 recommends rating_region 0x06 and Table A 1: a graduated Rating Classification dimension (N, L, 6+, 10+, 12+, 14+, 16+, 18+) plus non-graduated Sex and Nudity, Violence, Drugs, Interactivity and Self-classification, citing MJSP Ordinance 1,048/2025. The Registry lists regionIdentifier 0x06 “Brazil” for the SBTVD Forum. ABNT carriage obligations and receiver support remain unverified.",
+        "req": "OG-02 recommendation (non-normative); ABNT rating signaling requirements unverified"
       }
     },
-    "difference": "The reviewed Korean ESG/MMT content-advisory mechanisms are unused. This does not establish that every Korean app or receiver lacks machine-readable ratings or an RRT parser.",
+    "difference": "The reviewed Korean ESG/MMT content-advisory mechanisms are unused. This does not establish that every Korean app or receiver lacks machine-readable ratings or an RRT parser. Brazil’s September 2026 OG-02 recommends the ATSC rating-region mechanism with its own registered region 0x06; the Registry also lists 0x04 for Korea (TTAK.KO-07.0014).",
     "impact": "National rating policy and parser requirements need the applicable receiver/application specification. A retained table ID alone proves neither mandatory use nor parser absence.",
     "cells": {
       "TTA": {
@@ -344,9 +348,9 @@
         "req": "Reviewed ESG/MMT rating paths not used"
       },
       "SBTVD": {
-        "code": "review",
-        "text": "ABNT normative clauses not reviewed; public evidence is limited to the sources cited",
-        "req": "ABNT rating signaling requirements unverified"
+        "code": "partial",
+        "text": "Public guideline uses the A/331 rating-region mechanism with registered region 0x06 and national dimensions; ABNT obligations and receiver parsing unverified",
+        "req": "OG-02 recommendation (non-normative); ABNT rating signaling requirements unverified"
       }
     },
     "evidence": [
@@ -361,11 +365,19 @@
       {
         "label": "0149/R1 §8.2 service/content guide constraints",
         "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0149%2FR1&nowSu=1"
+      },
+      {
+        "label": "OG-02 (Sep 2026) — Annex A.2, Table A 1",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-02-Transport-Layer.pdf#page=3"
+      },
+      {
+        "label": "Registry regionIdentifier rows 5 and 7",
+        "url": "https://www.atsc.org/wp-content/uploads/2026/09/TG3-255r9-Code-Points-Registry.xlsx"
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 Brazilian evidence update"
     },
     "recommendation": "Limit the result to the specific unused Korean paths; keep legal rating display rules and implementation support separate."
   },
@@ -443,8 +455,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 baseline re-check (findings carried forward)"
     },
     "recommendation": "Keep verified profile differences, quote the scope boundary and flag the 5/6-digit conflict for ABNT/COBRADE resolution before implementing a parser constraint."
   },
@@ -523,8 +535,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 baseline re-check (findings carried forward)"
     },
     "recommendation": "Use Partial match for the combined bits-and-policy feature. Do not label the Korean bit sequence a unique Korean technology or extend the dedicated-receiver guide to all home TVs."
   },
@@ -598,8 +610,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 baseline re-check (findings carried forward)"
     }
   },
   {
@@ -671,8 +683,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 baseline re-check (findings carried forward)"
     },
     "recommendation": "Separate transport/MPU signaling, encryption/key delivery and SLS authenticity; record the applicable edition and conditional requirements."
   },
@@ -742,8 +754,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 baseline re-check (findings carried forward)"
     },
     "recommendation": "Retain Partial match and cross-reference namespace, SLS M/O/na, security, MPU constraints and file-repair comparisons before selecting a receiver/gateway profile."
   },
@@ -826,8 +838,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 baseline re-check (findings carried forward)"
     }
   },
   {
@@ -896,8 +908,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 baseline re-check (findings carried forward)"
     }
   },
   {
@@ -966,8 +978,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 baseline re-check (findings carried forward)"
     }
   },
   {
@@ -1036,8 +1048,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 baseline re-check (findings carried forward)"
     }
   },
   {
@@ -1067,7 +1079,7 @@
         "doc": "ABNT NBR 25602/25608/25609:2025",
         "clause": "Normative clauses not reviewed",
         "page": "—",
-        "value": "No conclusion on Brazilian normative signing or trust policy from the available OG/Registry evidence.",
+        "value": "No conclusion on Brazilian normative signing or trust policy from the available OG/Registry evidence. OG-02 (Sep 2026) A.1 requires a secure HTTPS URL for broadband delivery of the Plataforma Comum LLS; that is a transport condition for one service, not a signing or trust policy.",
         "req": "Unverified"
       }
     },
@@ -1108,11 +1120,15 @@
       {
         "label": "0152 §7 and §8",
         "url": "https://committee.tta.or.kr/data/standard_view.jsp?pk_num=TTAK.KO-07.0152&nowSu=1"
+      },
+      {
+        "label": "OG-02 (Sep 2026) — Annex A.1",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-02-Transport-Layer.pdf#page=3"
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 Brazilian evidence update"
     }
   },
   {
@@ -1139,9 +1155,9 @@
       },
       "SBTVD": {
         "doc": "Registry · ABNT NBR 25602:2025",
-        "clause": "LLS_table_id rows 14–15; serviceCategory rows 12–14",
+        "clause": "LLS_table_id rows 14–15; serviceCategory rows 12–14; regionIdentifier row 7",
         "page": "Spreadsheet",
-        "value": "BAMT 0x90/TBSAT 0x91 registered 2025-07-14; categories 30 bootstrap-app,31 additional linear A/V,32 additional linear audio-only reference ABNT NBR 25602. LLS rows have no defining document entered.",
+        "value": "BAMT 0x90/TBSAT 0x91 registered 2025-07-14; categories 30 bootstrap-app,31 additional linear A/V,32 additional linear audio-only reference ABNT NBR 25602; regionIdentifier 0x06 “Brazil” added at the SBTVD Forum’s request. LLS and regionIdentifier rows have no defining document entered.",
         "req": "Allocations verified; normative payload/use requirements unverified"
       }
     },
@@ -1185,8 +1201,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested"
+      "date": "2026-10-22",
+      "by": "Independent source review; selected clauses and public registries checked; device interoperability untested; 2026-10-22 Brazilian evidence update"
     }
   }
 ]

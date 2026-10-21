@@ -22,7 +22,7 @@
         "req": "within adopted IBB profile"
       },
       "SBTVD": {
-        "doc": "ABNT NBR 25608:2025 · SBTVD OG-08 (July 2026)",
+        "doc": "ABNT NBR 25608:2025 · SBTVD OG-08 (October 2026, 4th edition)",
         "clause": "OG §§1,6–7; Annexes A–D",
         "page": "OG §§1,6–7; Annexes A–D",
         "value": "Ginga application model includes NCL 4.0, HTML5 presentation, WebServices and NCLua. OG-08 is non-normative implementation guidance referring detailed requirements to ABNT.",
@@ -64,8 +64,8 @@
         "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0128%2FR3&nowSu=1&rn=1"
       },
       {
-        "label": "SBTVD OG-08 §§1,6–7 and Annexes A–D: non-normative application guidance",
-        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
+        "label": "SBTVD OG-08 (Oct 2026) §§1,6–7 and Annexes A–D: non-normative application guidance",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
       },
       {
         "label": "A/381 §3.1.1: reference-model expectations do not impose normative receiver implementation requirements",
@@ -73,8 +73,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+      "date": "2026-10-22",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified; 2026-10-22 Brazilian evidence update"
     }
   },
   {
@@ -142,8 +142,8 @@
         "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0128%2FR3&nowSu=1&rn=1"
       },
       {
-        "label": "SBTVD OG-08 §§1,6–7 and Annexes A–D: non-normative application guidance",
-        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
+        "label": "SBTVD OG-08 (Oct 2026) §§1,6–7 and Annexes A–D: non-normative application guidance",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
       },
       {
         "label": "A/381 §3.1.1: reference-model expectations do not impose normative receiver implementation requirements",
@@ -151,8 +151,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+      "date": "2026-10-22",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified; 2026-10-22 Brazilian evidence update"
     }
   },
   {
@@ -181,7 +181,7 @@
       "SBTVD": {
         "doc": "ABNT NBR 25608:2025 · SBTVD OG-08",
         "clause": "OG §10.1 BALD; §8 bootstrap/catalog",
-        "page": "OG printed p.14 and §8",
+        "page": "OG printed p.17 and §8",
         "value": "BALD and application-catalog bootstrap are identified; the guide delegates detailed syntax and requirements to ABNT. Full event payload/semantics equivalence is not established.",
         "req": "unverified"
       }
@@ -221,8 +221,8 @@
         "url": "https://committee.tta.or.kr/data/standard_view.jsp?s_owned_section=Y&kor_standard=&nowPage=1&pk_num=TTAK.KO-07.0128%2FR3&nowSu=1&rn=1"
       },
       {
-        "label": "SBTVD OG-08 §§1,6–7 and Annexes A–D: non-normative application guidance",
-        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
+        "label": "SBTVD OG-08 (Oct 2026) §§1,6–7 and Annexes A–D: non-normative application guidance",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-08-Application-Coding.pdf"
       },
       {
         "label": "A/381 §3.1.1: reference-model expectations do not impose normative receiver implementation requirements",
@@ -238,8 +238,8 @@
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+      "date": "2026-10-22",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified; 2026-10-22 Brazilian evidence update"
     }
   },
   {
@@ -267,8 +267,8 @@
       "SBTVD": {
         "doc": "ABNT NBR 25608:2025 · SBTVD OG-08",
         "clause": "OG §9 and Annex C.6.15",
-        "page": "OG printed pp.14,34",
-        "value": "Remote-device communication is identified, but these guide sections refer detailed requirements to ABNT. Protocol equivalence and optional/mandatory support remain unverified.",
+        "page": "OG printed pp.16,39",
+        "value": "Remote-device communication is identified, but these guide sections refer detailed requirements to ABNT. The October 2026 edition adds that applications may define their own remote-device classes. Protocol equivalence and optional/mandatory support remain unverified.",
         "req": "unverified"
       }
     },
@@ -311,13 +311,13 @@
         "url": "https://www.atsc.org/wp-content/uploads/2026/04/A338-2026-04-Companion-Device.pdf#page=9"
       },
       {
-        "label": "SBTVD OG-08 §9 / Annex C.6.15: details referred to ABNT NBR 25608",
-        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-08-Application-Coding.pdf#page=14"
+        "label": "SBTVD OG-08 (Oct 2026) §9 p.16 / Annex C.6.15 p.39: details referred to ABNT NBR 25608",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-08-Application-Coding.pdf#page=16"
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified"
+      "date": "2026-10-22",
+      "by": "Codex cited-clause review; ABNT normative texts and device interoperability not verified; 2026-10-22 Brazilian evidence update"
     }
   }
 ]

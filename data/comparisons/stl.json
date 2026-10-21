@@ -22,9 +22,9 @@
         "req": "I-2 informative, not normative/mandatory; related national guidelines separate"
       },
       "SBTVD": {
-        "doc": "Anatel Ato 2.705/2026 · SBTVD OG-02",
-        "clause": "Ato §4.1; OG-02 Annex B and bibliography [7]",
-        "page": "OG-02 pp.4–5",
+        "doc": "Anatel Ato 2.705/2026 · SBTVD OG-02 (Sep 2026)",
+        "clause": "Ato §4.1; OG-02 Annex C and bibliography [12]",
+        "page": "OG-02 pp.7–8",
         "value": "Ato requires transmitter/retransmitter conformity with A/324:2025-07. OG-02 separately references A/324:2024-04 for CTP-based STL; it labels itself non-normative. Full ABNT profile not fully verified.",
         "req": "Ato transmitter requirement; OG-02 non-normative"
       }
@@ -73,13 +73,13 @@
         "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
       },
       {
-        "label": "OG-02 — Annex B",
-        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-02-Transport-Layer.pdf"
+        "label": "OG-02 (Sep 2026) — Annex C",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-02-Transport-Layer.pdf#page=7"
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Clause review",
+      "date": "2026-10-22",
+      "by": "Clause review; 2026-10-22 Brazilian evidence update",
       "status": "reviewed-partial"
     },
     "recommendation": "Correct the Korean mandatory labels, retain the separate OG reference edition and track the 2026 Candidate Standard without replacing the final baseline.",
@@ -113,8 +113,8 @@
       },
       "SBTVD": {
         "doc": "A/324:2025-07 by Ato reference · SBTVD OG-02",
-        "clause": "Ato §4.1; OG-02 Annex B references A/324:2024-04",
-        "page": "OG-02 pp.4–5",
+        "clause": "Ato §4.1; OG-02 Annex C references A/324:2024-04",
+        "page": "OG-02 pp.7–8",
         "value": "Ato incorporates the older ATSC release for transmitter equipment; the guideline confirms CTP-based STL recommendations using its own cited edition. Complete ABNT normative mapping unverified.",
         "req": "Ato transmitter requirement; guideline non-normative"
       }
@@ -159,13 +159,13 @@
         "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
       },
       {
-        "label": "OG-02 — Annex B, bibliography [7]",
-        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-02-Transport-Layer.pdf"
+        "label": "OG-02 (Sep 2026) — Annex C, bibliography [12]",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-02-Transport-Layer.pdf#page=7"
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Clause review",
+      "date": "2026-10-22",
+      "by": "Clause review; 2026-10-22 Brazilian evidence update",
       "status": "reviewed-partial"
     },
     "recommendation": "Use a partial-match verdict, remove Korean mandatory labels and itemize the DSMapping changes before claiming current-protocol equivalence.",
@@ -198,14 +198,14 @@
         "req": "full A/324 adoption not identified in Part 4; monitoring guideline and RF tolerance separate"
       },
       "SBTVD": {
-        "doc": "A/324:2025-07 by Ato reference · SBTVD OG-02",
-        "clause": "Ato §§4.1, 5.1.1; OG-02 Annex B",
-        "page": "Ato web clauses; OG-02 p.4",
-        "value": "Ato applies referenced ATSC transmitter requirements to conformity assessment of transmitters/retransmitters. OG-02 describes CTP-based STL using A/324:2024-04. This does not prove every interface has been independently tested.",
+        "doc": "A/324:2025-07 by Ato reference · SBTVD OG-02 · SBTVD OG-01 (Sep 2026)",
+        "clause": "Ato §§4.1, 5.1.1; OG-02 Annex C; OG-01 §5.3 and Annex C §4",
+        "page": "Ato web clauses; OG-02 p.7; OG-01 pp.6, 38–39",
+        "value": "Ato applies referenced ATSC transmitter requirements to conformity assessment of transmitters/retransmitters. OG-02 describes CTP-based STL using A/324:2024-04. This does not prove every interface has been independently tested. OG-01 §5.3 states ±0.5 Hz (A/324:2025-07 item 10.3.1); its September 2026 Annex C §4, copied from Anatel rules, keeps ±0.5 Hz for SFN transmitters and allows ±500 Hz (≤100 W) or ±1 Hz (>100 W) for non-SFN transmitters.",
         "req": "transmitter conformity rule; non-normative operating guideline"
       }
     },
-    "difference": "Part 4 does not provide a complete current A/324 adoption. It is incorrect to generalize this to absence of all Korean STL/timing guidance: a separate monitoring standard contains related provisions.",
+    "difference": "Part 4 does not provide a complete current A/324 adoption. It is incorrect to generalize this to absence of all Korean STL/timing guidance: a separate monitoring standard contains related provisions. For SFN operation, Brazil’s public guidance states ±0.5 Hz, tighter than the ±2.1 Hz in the cited Korean rule.",
     "impact": "Formal reference adoption, monitoring methods and actual link interoperability are distinct. No live STLTP, synchronization or equipment conformance was tested.",
     "recommendation": "Add 0154/R1 to the A/324 mapping and scope any absence claim to the reviewed Part 4 clauses. A future adoption proposal should identify the exact uncovered current clauses.",
     "cells": {
@@ -250,13 +250,17 @@
         "url": "https://informacoes.anatel.gov.br/legislacao/atos-de-certificacao-de-produtos/2026/2124-ato-2705"
       },
       {
-        "label": "OG-02 — Annex B",
-        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-02-Transport-Layer.pdf"
+        "label": "OG-02 (Sep 2026) — Annex C",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-02-Transport-Layer.pdf#page=7"
+      },
+      {
+        "label": "OG-01 (Sep 2026) — §5.3 and Annex C §4",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/GuidelineTV3PHYrev0926_v3.pdf#page=67"
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Clause review",
+      "date": "2026-10-22",
+      "by": "Clause review; 2026-10-22 Brazilian evidence update",
       "status": "reviewed-partial"
     },
     "review": {
@@ -290,14 +294,14 @@
         "req": "TxID optional operating guideline; per-stream BSID assignment/equality prescribed in the guideline; appendix status separate"
       },
       "SBTVD": {
-        "doc": "Decreto 12.595/2025 · Ato 2.705/2026 · SBTVD OG-01",
-        "clause": "Decreto Art.3 III; Ato §4.1; OG-01 §§2,5.6",
-        "page": "OG-01 pp.2,7",
-        "value": "Decreto includes TxID in TV 3.0. OG-01 discusses 13-bit identifiers, per-polarization choices and a 24 dB injection recommendation, and states TxID use is mandatory while the document itself is non-normative. A station-by-station allocation plan was not identified in the reviewed sources; publication elsewhere is not ruled out.",
+        "doc": "Decreto 12.595/2025 · Ato 2.705/2026 · SBTVD OG-01 · SBTVD OG-02 (Sep 2026)",
+        "clause": "Decreto Art.3 III; Ato §4.1; OG-01 §§2,5.6; OG-02 Annex A.3–A.4",
+        "page": "OG-01 pp.2,7; OG-02 pp.4–5",
+        "value": "Decreto includes TxID in TV 3.0. OG-01 discusses 13-bit identifiers, per-polarization choices and a 24 dB injection recommendation, and states TxID use is mandatory while the document itself is non-normative; its September 2026 §2 says each transmitter’s value “should” (previously “shall”) be uniquely assigned per RF channel. OG-02 (Sep 2026) Annex A.3–A.4 recommends deriving the BSID from the Anatel call sign (third letter A/B/P/Q/T → 0–4, then the three digits; 0–4999 recommended, 5000–65535 reserved), assigning txid_address sequentially from 0001 in each network and identifying a station by L1D_bsid plus txid_address; it cites A/322:2026-06 Annex N for up to 8,191 transmitters. This is an assignment method; a station-by-station allocation plan was not identified in the reviewed sources; publication elsewhere is not ruled out.",
         "req": "system adoption by decree; transmitter rule; OG-01 statements non-normative; full ABNT operation profile unverified"
       }
     },
-    "difference": "The underlying TxID technology is shared, while national operation and allocation differ. A technical report’s assignment rules, a decree’s system-level adoption and a guideline’s mandatory wording have different authority.",
+    "difference": "The underlying TxID technology is shared, while national operation and allocation differ. A technical report’s assignment rules, a decree’s system-level adoption and a guideline’s mandatory wording have different authority. Brazil’s public BSID rule is station-based (derived from the call sign), whereas the Korean guideline assigns BSID per broadcast stream following the DTV TSID plan.",
     "impact": "Use of a different BSID per stream and correct L1/SLT consistency are distinct from transmitter identification. Actual TxID injection, allocation compliance and received identifiers were not tested.",
     "cells": {
       "TTA": {
@@ -316,7 +320,7 @@
       },
       "SBTVD": {
         "code": "partial",
-        "text": "Decree and public operating guidance verified; normative ABNT operation/assignment details not fully verified."
+        "text": "Decree and public operating guidance, including the OG-02 BSID/TxID assignment method, verified; normative ABNT operation/assignment details not fully verified."
       }
     },
     "evidence": [
@@ -345,13 +349,17 @@
         "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12595.htm"
       },
       {
-        "label": "OG-01 — §§2,5.6",
-        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/08/SBTVD-TV3.0-OG-01-Physical-Layer.pdf"
+        "label": "OG-01 (Sep 2026) — §§2,5.6",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/GuidelineTV3PHYrev0926_v3.pdf"
+      },
+      {
+        "label": "OG-02 (Sep 2026) — Annex A.3–A.4",
+        "url": "https://forumsbtvd.org.br/wp-content/uploads/2026/10/SBTVD-TV3.0-OG-02-Transport-Layer.pdf#page=4"
       }
     ],
     "reviewed": {
-      "date": "2026-10-18",
-      "by": "Clause review",
+      "date": "2026-10-22",
+      "by": "Clause review; 2026-10-22 Brazilian evidence update",
       "status": "reviewed-partial"
     },
     "recommendation": "Keep −24 dB and BSID statements scoped to their source conditions; add the A/331 source for SLT and record allocation-plan searches as not-found-in-reviewed-sources rather than unpublished.",

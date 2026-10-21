@@ -1,6 +1,6 @@
 # ATSC 3.0 Standards Comparison
 
-최신 확정 ATSC 문서를 기준으로 한국 TTA와 브라질 TV 3.0의 대응 조항·국가 프로파일·차이를 비교하는 정적 HTML 자료다. ITU-R 문서는 국제적 맥락으로 연결한다. 검증 기준일은 **2026-10-18**이다.
+최신 확정 ATSC 문서를 기준으로 한국 TTA와 브라질 TV 3.0의 대응 조항·국가 프로파일·차이를 비교하는 정적 HTML 자료다. ITU-R 문서는 국제적 맥락으로 연결한다. 검증 기준일은 **2026-10-22**이다(2026-10-18판의 갱신판; 바뀐 점은 `docs/REVIEW_2026-10-22_ko.md`).
 
 **35개 ATSC 문서(표준23, Recommended Practice12), 비교44행, 세부 기능44개, 18문서의 장절 대응80행**을 포함한다. 공식 current 목록의 판본·PDF·SHA-256을 확인하고 화면 주장의 관련 조항을 대조했다. 전체 표준의 모든 문장에 대한 동등성 인증은 아니다.
 
@@ -40,6 +40,7 @@ python tools/test_dashboard.py --browser --artifacts dist/qa
 | `index.html`, `app.js` | 화면·검색·필터·세부 근거 표시 |
 | `docs/sources.md` | 공식 출처와 자료의 지위 |
 | `docs/REVIEW_2026-10-18_ko.md` | 수정·검증·남는 한계 |
+| `docs/REVIEW_2026-10-22_ko.md` | 2026-10-22 갱신: SBTVD 현행판·ABNT 원제·검색 보조어·브라질 법령 일자 |
 | `docs/refs/` | 법령 요약과 참조 |
 | `standards/` | 로컬 원문; 저작권 때문에 Git 및 전달 ZIP에서 제외 |
 

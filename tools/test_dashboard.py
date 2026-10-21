@@ -46,7 +46,18 @@ def check_data():
     js=(ROOT/'data/standards.js').read_text(encoding='utf-8')
     assert json.loads(js.split('=',1)[1].strip().removesuffix(';'))==data
     reg=next(r for r in data['regulations'] if 'Resolução nº 789' in r['id'])
-    assert reg['signed']=='2026-07-06' and reg['published']=='2026-07-13' and not reg['effective']
+    assert reg['signed']=='2026-07-06' and reg['published']=='2026-07-13' and reg['effective']=='2026-08-12 (computed)' and 'LC 95/1998' in reg['effective_rule']
+    portaria=next(r for r in data['regulations'] if r['id'].startswith('Portaria MCom nº 10.693'))
+    assert portaria['published']=='2023-10-19' and portaria['effective']=='2023-10-19'
+    # 2026-10-22: ABNT original titles, current SBTVD editions and hidden search aliases.
+    for key in ('ABNT NBR 25601:2025','ABNT NBR 25607:2025','ABNT NBR 25608:2025'):
+        assert data['docTitles'][key]['lang']=='pt' and data['docTitles'][key]['title_en'],key
+    blob=json.dumps(data,ensure_ascii=False)
+    for stale in ('uploads/2026/08/SBTVD-TV3.0-OG-01','uploads/2026/08/SBTVD-TV3.0-OG-02','uploads/2026/08/SBTVD-TV3.0-OG-08'):
+        assert stale not in blob,stale
+    assert data['docTitles']['TTAR-07.0022']['search'].count('for Terrestrial')==1
+    rrt=next(f for f in features if f['id']=='sig-rrt')
+    assert '0x06' in rrt['sides']['SBTVD']['value']
     assert '250–298' in reg['note'] and '298–322' in reg['note']
     assert len(next(r for r in data['regulations'] if r['org']=='ATSC')['clauses'])==2
     return {'rows':len(rows),'features':len(features),'chapter_documents':sum(bool(r.get('chapters')) for r in rows),'chapter_rows':sum(len(r.get('chapters',{}).get('rows',[])) for r in rows),'approved_atsc':len(official)}
@@ -89,7 +100,7 @@ def check_browser(artifacts):
                 panel.scroll_into_view_if_needed();page.screenshot(path=str(artifacts/('detail-'+re.sub(r'[^a-zA-Z0-9]','_',row['id'])+'.png')))
             result['row_details'].append(row['id'])
         assert feature_ids=={f['id'] for f in data['comparisons']}
-        for term,required in [('currentUtcOffset','A/331'),('dsHour','A/331'),('ZIP_BR','A/331 §AEA'),('AEAVoiceText','A/331 §AEA'),('MP24_2','A/322'),('Service Linkage','A/338'),('QUOTA_EXCEEDED_ERROR','A/362')]:
+        for term,required in [('for Terrestrial','(no ATSC document / receivers)'),('Mensuração','A/333'),('rating_region','A/331'),('currentUtcOffset','A/331'),('dsHour','A/331'),('ZIP_BR','A/331 §AEA'),('AEAVoiceText','A/331 §AEA'),('MP24_2','A/322'),('Service Linkage','A/338'),('QUOTA_EXCEEDED_ERROR','A/362')]:
             page.locator('#q').fill(term)
             matches=page.locator('tr.row').evaluate_all('(rows)=>rows.map(r=>r.dataset.id)')
             assert required in matches,(term,matches)
